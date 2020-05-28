@@ -7,7 +7,7 @@
 ---------------
 
 `conda <https://conda.io/>`_ 是由 `Anaconda <https://www.anaconda.com/>`_ 提供的
-一個跨平臺軟件包管理器。conda的 `conda-forge <https://conda-forge.org/>`_
+一個跨平臺軟體包管理器。conda的 `conda-forge <https://conda-forge.org/>`_
 通道提供了最新的GMT。
 
 如果你是 Anaconda 用戶，則可以直接通過如下命令安裝。

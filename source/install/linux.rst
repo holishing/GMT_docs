@@ -1,7 +1,7 @@
 Linux 下安裝 GMT
 ================
 
-儘管大多數Linux發行版都提供了GMT二進制包，可以直接通過軟件包管理器 **apt-get**
+儘管大多數Linux發行版都提供了GMT二進制包，可以直接通過軟體包管理器 **apt-get**
 或 **yum** 安裝，但發行版提供的GMT版本都很老，不建議使用。
 
 針對Fedora/RHEL/CentOS用戶，GMT的官方RPM倉庫提供了最新版本的GMT。
@@ -36,7 +36,7 @@ Fedora
 
 .. note::
 
-    如果你已經安裝了Fedora系統倉庫提供的GMT軟件包，你必須在使用GMT官方倉庫
+    如果你已經安裝了Fedora系統倉庫提供的GMT軟體包，你必須在使用GMT官方倉庫
     前卸載舊的GMT安裝包。使用如下命令::
 
         dnf remove GMT dcw-gmt gshhg-gmt-nc4 gshhg-gmt-nc4-full gshhg-gmt-nc4-high
@@ -84,7 +84,7 @@ RHEL/CentOS
 
 .. note::
 
-    如果你已經安裝了EPEL倉庫提供的GMT軟件包，你必須在使用GMT官方倉庫
+    如果你已經安裝了EPEL倉庫提供的GMT軟體包，你必須在使用GMT官方倉庫
     前卸載舊的GMT安裝包。使用如下命令::
 
         yum remove GMT dcw-gmt gshhg-gmt-nc4 gshhg-gmt-nc4-full gshhg-gmt-nc4-high

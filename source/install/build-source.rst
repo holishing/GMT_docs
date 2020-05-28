@@ -8,13 +8,13 @@ GMT源碼請參考GMT官方
 編譯及運行依賴
 --------------
 
-GMT的編譯及運行需要如下軟件：
+GMT的編譯及運行需要如下軟體：
 
 - CMake: >=2.8.7
 - netCDF（>=4.0且支持netCDF-4/HDF5）
 - curl
 
-除此之外，還可以安裝如下軟件庫以增強GMT的更多功能：
+除此之外，還可以安裝如下軟體庫以增強GMT的更多功能：
 
 - `Ghostscript <https://www.ghostscript.com/>`_: 生成PDF或者其他位圖格式的圖片
 - `GDAL <https://www.gdal.org/>`_: 讀寫其它地學常用的網格和圖片格式
@@ -26,24 +26,24 @@ GMT的編譯及運行需要如下軟件：
 - `GraphicsMagick <http://www.graphicsmagick.org>`_: 生成GIF格式的動畫
 - `FFmpeg <http://www.ffmpeg.org/>`_: 生成MP4格式的動畫
 
-安裝依賴軟件
+安裝依賴軟體
 ------------
 
 對於Ubuntu/Debian::
 
-    # 安裝編譯所需軟件包
+    # 安裝編譯所需軟體包
     $ sudo apt-get install build-essential cmake libcurl4-gnutls-dev libnetcdf-dev
-    # 安裝可選軟件包
+    # 安裝可選軟體包
     $ sudo apt install ghostscript gdal-bin libgdal-dev libglib2.0-dev libpcre3-dev libfftw3-dev liblapack-dev
-    # 安裝製作動畫所需的軟件包
+    # 安裝製作動畫所需的軟體包
     $ sudo apt install graphicsmagick ffmpeg
 
 對於CentOS/RHEL::
 
     $ sudo yum install epel-release
-    # 安裝編譯所需軟件包
+    # 安裝編譯所需軟體包
     $ sudo yum install gcc cmake make glibc netcdf-devel libcurl-devel
-    # 安裝可選軟件包
+    # 安裝可選軟體包
     $ sudo yum install ghostscript gdal gdal-devel lapack-devel openblas-devel glib2-devel pcre-devel fftw-devel
     # 安裝其他可選包
     $ sudo yum localinstall --nogpgcheck https://download1.rpmfusion.org/free/el/rpmfusion-free-release-`rpm -E %rhel`.noarch.rpm
@@ -51,9 +51,9 @@ GMT的編譯及運行需要如下軟件：
 
 對於Fedora用戶::
 
-    # 安裝編譯所需軟件包
+    # 安裝編譯所需軟體包
     $ sudo dnf install gcc cmake make glibc netcdf-devel libcurl-devel
-    # 安裝可選軟件包
+    # 安裝可選軟體包
     $ sudo dnf install ghostscript gdal gdal-devel lapack-devel openblas-devel glib2-devel pcre-devel fftw-devel
     # 安裝其他可選包
     $ sudo dnf install https://download1.rpmfusion.org/free/el/rpmfusion-free-release-`rpm -E %fedora`.noarch.rpm
@@ -136,7 +136,7 @@ GMT的編譯及運行需要如下軟件：
     $ cd build/
     $ cmake ..
 
-``cmake ..`` 會檢查系統軟件是否滿足GMT的依賴關係，過程中會輸出大量信息，並
+``cmake ..`` 會檢查系統軟體是否滿足GMT的依賴關係，過程中會輸出大量信息，並
 在最後彙總輸出檢查結果。我們只需要關注檢查結果是否正確即可。
 正常情況下結果結果如下，若存在一些差異也沒有問題。只要過程中不出現報錯，即可。
 如果出現報錯，則需要檢查之前的步驟是否有誤，檢查完成後刪除原build目錄再新建build，

@@ -1,13 +1,13 @@
 macOS 下安裝 GMT
 ================
 
-macOS 下可以直接使用 GMT 提供的安裝包，也可以使用 Homebrew 或 Macports 軟件管理
+macOS 下可以直接使用 GMT 提供的安裝包，也可以使用 Homebrew 或 Macports 軟體管理
 工具進行安裝。\ **推薦使用Homebrew**\ 。
 
 使用 Homebrew 安裝
 ------------------
 
-`Homebrew <https://brew.sh/>`__ 是 macOS 下的第三方軟件包管理工具。
+`Homebrew <https://brew.sh/>`__ 是 macOS 下的第三方軟體包管理工具。
 未安裝 Homebrew 的用戶，可以訪問其 `官網 <https://brew.sh/index_zh-cn>`_
 以瞭解如何安裝與使用。
 
@@ -20,12 +20,12 @@ macOS 下可以直接使用 GMT 提供的安裝包，也可以使用 Homebrew �
 
        $ brew install gmt --HEAD
 
-2.  安裝GMT依賴的其它軟件::
+2.  安裝GMT依賴的其它軟體::
 
-       # 必須軟件包
+       # 必須軟體包
        $ brew install ghostscript
 
-       # 安裝生成動畫所需要的軟件包（可選）
+       # 安裝生成動畫所需要的軟體包（可選）
        $ brew install graphicsmagick ffmpeg
 
 3.  重新打開一個終端，檢測安裝是否成功::
@@ -85,14 +85,14 @@ Ghostscript、GDAL、GraphicsMagick和FFmpeg，可以直接雙擊安裝使用。
 使用 Macports 安裝
 ------------------
 
-`Macports <https://www.macports.org/>`_ 是 macOS 下的第三方軟件包管理工具。
+`Macports <https://www.macports.org/>`_ 是 macOS 下的第三方軟體包管理工具。
 
 1.  安裝GMT::
 
         $ sudo port install gdal +hdf5 +netcdf +openjpeg
         $ sudo port install gmt6
 
-2.  安裝GMT依賴的其他軟件::
+2.  安裝GMT依賴的其他軟體::
 
         $ sudo port install graphicsmagick ffmpeg
 
@@ -113,7 +113,7 @@ Ghostscript、GDAL、GraphicsMagick和FFmpeg，可以直接雙擊安裝使用。
 使用 Fink 安裝
 --------------
 
-`Fink <http://www.finkproject.org/>`_ 是 macOS 下的第三方軟件包管理工具。
+`Fink <http://www.finkproject.org/>`_ 是 macOS 下的第三方軟體包管理工具。
 
 1.  安裝GMT::
 

@@ -33,8 +33,8 @@ GADM提供了兩種下載方式：
 
 對於每個數據，GADM提供了5種不同的格式：
 
-- Geopackage：可以被GDAL/OGR、ArcGIS、QGIS等軟件讀取
-- Shapefile：可直接用於ArcGIS等軟件
+- Geopackage：可以被GDAL/OGR、ArcGIS、QGIS等軟體讀取
+- Shapefile：可直接用於ArcGIS等軟體
 - KMZ：可直接在Google Earth中打開
 - R (sp)：可直接用於R語言繪圖
 - R (sf)：可直接用於R語言繪圖
@@ -44,7 +44,7 @@ GADM提供了兩種下載方式：
 數據轉換成純文本文件，以方便從數據中提取出需要的部分。
 
 GDAL 的 `ogr2ogr <https://www.gdal.org/ogr2ogr.html>`_ 可以實現多種地理數據
-格式之間的互相轉換。該軟件的安裝及介紹見
+格式之間的互相轉換。該軟體的安裝及介紹見
 `GDAL/OGR: 地理空間數據格式轉換神器 <https://gmt-china.org/blog/gdal-ogr/>`_\ 。
 本文使用的是 GDAL 2.4.2，其他版本的GDAL可能用法略有不同。
 

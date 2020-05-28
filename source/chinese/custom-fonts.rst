@@ -56,7 +56,7 @@ CentOS 7 中 ghostscript 中文配置文件的默認內容爲::
 - 字體名是任意的，比如字體名可以取爲 ``/ABC`` ；
 - 字體文件似乎只能是 ``ttc`` 或 ``ttf`` 格式的，當然修改參數也有可能可以使用其他格式的字體；
 - 要注意確認字體文件是否存在，比如 CentOS7 下的 ``wqy-zenhei.ttc`` 字體實際上
-  位於軟件包 ``wqy-zenhei-fonts`` 中。若字體不存在，則需要安裝相應軟件包。
+  位於軟體包 ``wqy-zenhei-fonts`` 中。若字體不存在，則需要安裝相應軟體包。
 
 添加 Windows 中文字體
 ~~~~~~~~~~~~~~~~~~~~~
@@ -238,7 +238,7 @@ Ubuntu 12.04
 參考資料
 --------
 
-1. GMT 軟件顯示漢字的技術原理與實現，趙桂儒，《測繪通報》
+1. GMT 軟體顯示漢字的技術原理與實現，趙桂儒，《測繪通報》
 2. `ghostscript 中文打印經驗 <https://web.archive.org/web/20180112111635/http://guoyoooping.blog.163.com/blog/static/13570518320101291442176>`_
 3. `GMT 中文支持 <https://web.archive.org/web/20171130081550/http://xxqhome.blog.163.com/blog/static/1967330202011112810120598/>`_
 4. `維基詞條：PostScript <https://en.wikipedia.org/wiki/PostScript>`_
