@@ -1,39 +1,39 @@
-FONT参数
+FONT參數
 ========
 
-这一节列出所有字体相关的参数，参数的默认值在中括号内列出。
+這一節列出所有字體相關的參數，參數的默認值在中括號內列出。
 
 .. glossary::
 
     **FONT**
-        同时设置所有FONT类参数（\ ``FONT_LOGO`` 除外）的字体
+        同時設置所有FONT類參數（\ ``FONT_LOGO`` 除外）的字體
 
     **FONT_ANNOT**
-        同时设置 ``FONT_ANNOT_PRIMARY`` 和 ``FONT_ANNOT_SECONDARY`` 的值。
+        同時設置 ``FONT_ANNOT_PRIMARY`` 和 ``FONT_ANNOT_SECONDARY`` 的值。
 
     **FONT_ANNOT_PRIMARY**
-        一级（Primary）标注的字体 [``12p,Helvetica,black``]
+        一級（Primary）標註的字體 [``12p,Helvetica,black``]
 
-        若在该参数的值前加上 ``+``\ ，则其它字体、偏移量、刻度长度等参数值会
-        相对于 ``FONT_ANNOT_PRIMARY`` 成比例缩放。
+        若在該參數的值前加上 ``+``\ ，則其它字體、偏移量、刻度長度等參數值會
+        相對於 ``FONT_ANNOT_PRIMARY`` 成比例縮放。
 
     **FONT_ANNOT_SECONDARY**
-        二级（Secondary）标注的字体 [``14p,Helvetica,black``]
+        二級（Secondary）標註的字體 [``14p,Helvetica,black``]
 
     **FONT_LABEL**
-        轴标签的字体 [``16p,Helvetica,black``]
+        軸標籤的字體 [``16p,Helvetica,black``]
 
     **FONT_TITLE**
-        图上方标题的字体 [``24p,Helvetica,black``]
+        圖上方標題的字體 [``24p,Helvetica,black``]
 
     **FONT_HEADING**
-        子图模式下总标题的字体 [``32p,Helvetica,black``]
+        子圖模式下總標題的字體 [``32p,Helvetica,black``]
 
     **FONT_TAG**
-        子图模式下每个子图编号（如 ``a)``\ 、\ ``ii)`` 等）的字体 [``20p,Helvetica,black``]
+        子圖模式下每個子圖編號（如 ``a)``\ 、\ ``ii)`` 等）的字體 [``20p,Helvetica,black``]
 
     **FONT_LOGO**
-        GMT时间戳中字符串的字体 [``8p,Helvetica,black``]
+        GMT時間戳中字符串的字體 [``8p,Helvetica,black``]
 
-        该参数中仅字体ID有效，字号及颜色均无效。
+        該參數中僅字體ID有效，字號及顏色均無效。
 

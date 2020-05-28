@@ -4,13 +4,13 @@
 gmtlogo
 =======
 
-:官方文档: :doc:`gmt:gmtlogo`
-:说明: 在图上绘制GMT的图形logo
+:官方文檔: :doc:`gmt:gmtlogo`
+:說明: 在圖上繪製GMT的圖形logo
 
-该模块将GMT的图形logo绘制在图上。默认情况下，GMT的图形logo默认宽2英寸，高1英寸，
-将放在当前的绘图原点处。
+該模塊將GMT的圖形logo繪製在圖上。默認情況下，GMT的圖形logo默認寬2英寸，高1英寸，
+將放在當前的繪圖原點處。
 
-语法
+語法
 ----
 
 **gmt logo** [ |-D|\ [**g**\|\ **j**\|\ **J**\|\ **n**\|\ **x**]\ *refpoint*\ **+w**\ *width*\ [**+j**\ *justify*]\ [**+o**\ *dx*\ [/*dy*]] ]
@@ -25,48 +25,48 @@ gmtlogo
 [ |SYN_OPT-t| ]
 [ |SYN_OPT--| ]
 
-必选选项
+必選選項
 --------
 
-无
+無
 
-可选选项
+可選選項
 --------
 
 .. _-D:
 
 **-D**\ [**g**\|\ **j**\|\ **J**\|\ **n**\|\ **x**]\ *refpoint*\ **+w**\ *width*\ [**+j**\ *justify*]\ [**+o**\ *dx*\ [/*dy*]]
-    设置logo在图中的位置
+    設置logo在圖中的位置
 
-    简单介绍各子选项的含义，详情见 :doc:`/basis/embellishment`
+    簡單介紹各子選項的含義，詳情見 :doc:`/basis/embellishment`
 
-    - **g**\|\ **j**\|\ **J**\|\ **n**\|\ **x**]\ *refpoint*\ 指定地图上的参考点
+    - **g**\|\ **j**\|\ **J**\|\ **n**\|\ **x**]\ *refpoint*\ 指定地圖上的參考點
 
-      - **g** 指定某地图坐标位参考点
-      - **j**\|\ **J** 通过2字母的对齐方式码指定矩形区域的某个锚点作为参考点
-      - **n** 在归一化坐标系（即0-1）中指定参考点
-      - **x** 在绘图坐标系下指定参考点
+      - **g** 指定某地圖座標位參考點
+      - **j**\|\ **J** 通過2字母的對齊方式碼指定矩形區域的某個錨點作爲參考點
+      - **n** 在歸一化座標系（即0-1）中指定參考點
+      - **x** 在繪圖座標系下指定參考點
 
-    - **+j**\ *justify* 指定logo上的锚点（默认锚点为logo的左下角(BL)）
-    - **+o**\ *dx*/*dy* 在参考点的基础上设置比例尺的额外偏移量
-    - **+w**\ *width* 设置logo的宽度
+    - **+j**\ *justify* 指定logo上的錨點（默認錨點爲logo的左下角(BL)）
+    - **+o**\ *dx*/*dy* 在參考點的基礎上設置比例尺的額外偏移量
+    - **+w**\ *width* 設置logo的寬度
 
 .. _-F:
 
 **-F**\ [**+c**\ *clearances*][**+g**\ *fill*][**+i**\ [[*gap*/]\ *pen*]][**+p**\ [*pen*]][**+r**\ [*radius*]][**+s**\ [[*dx*/*dy*/][*shade*]]]
-    控制GMT logo的背景面板属性
+    控制GMT logo的背景面板屬性
 
-    若只使用 **-F** 而不使用其它子选项，则会在 GMT logo 周围绘制矩形边框。
-    下面简单介绍各子选项，详细用法见 :doc:`/basis/embellishment`
+    若只使用 **-F** 而不使用其它子選項，則會在 GMT logo 周圍繪製矩形邊框。
+    下面簡單介紹各子選項，詳細用法見 :doc:`/basis/embellishment`
 
-    - **+p**\ *pen* 指定背景面板的画笔属性（默认画笔属性由 :term:`MAP_FRAME_PEN` 决定）
-    - **+g**\ *fill* 设置背景面板的填充色 [默认不填充]
-    - **+c**\ *clearances* 以设置不同方向的空白间隔
-    - **+i**\ *gap*/*pen* 在背景面板内部绘制一个额外的内边框。\ *gap* 为外边框
-      与内边界之间的距离 [2p]，默认边界属性由 :term:`MAP_DEFAULT_PEN` 控制
-    - **+r**\ *radius* 控制圆角矩形边框，圆角矩形半径 *radius* 默认为 6p
-    - **+s** 绘制背景面板阴影区。\ *dx*/*dy* 是阴影区相对于背景面板的偏移量 [4p/4p]。
-      *shade* 为阴影区的颜色 [gray50]。
+    - **+p**\ *pen* 指定背景面板的畫筆屬性（默認畫筆屬性由 :term:`MAP_FRAME_PEN` 決定）
+    - **+g**\ *fill* 設置背景面板的填充色 [默認不填充]
+    - **+c**\ *clearances* 以設置不同方向的空白間隔
+    - **+i**\ *gap*/*pen* 在背景面板內部繪製一個額外的內邊框。\ *gap* 爲外邊框
+      與內邊界之間的距離 [2p]，默認邊界屬性由 :term:`MAP_DEFAULT_PEN` 控制
+    - **+r**\ *radius* 控制圓角矩形邊框，圓角矩形半徑 *radius* 默認爲 6p
+    - **+s** 繪製背景面板陰影區。\ *dx*/*dy* 是陰影區相對於背景面板的偏移量 [4p/4p]。
+      *shade* 爲陰影區的顏色 [gray50]。
 
 .. include:: explain_-R.rst_
 .. include:: explain_-Rz.rst_
@@ -74,11 +74,11 @@ gmtlogo
 .. _-S:
 
 **-S**\ [**l**\|\ **n**\|\ **u**]
-    控制GMT logo中地图下方的文字
+    控制GMT logo中地圖下方的文字
 
-    - **l** 添加文字“The Generic Mapping Tools” [默认值]
+    - **l** 添加文字“The Generic Mapping Tools” [默認值]
     - **n** 不添加文字
-    - **u** 添加GMT网站链接
+    - **u** 添加GMT網站鏈接
 
 .. include:: explain_-U.rst_
 
@@ -93,11 +93,11 @@ gmtlogo
 示例
 ----
 
-单独绘制一个2英寸宽的GMT logo::
+單獨繪製一個2英寸寬的GMT logo::
 
     gmt logo -pdf map
 
-将GMT logo作为一个图层放在当前底图的右上角：
+將GMT logo作爲一個圖層放在當前底圖的右上角：
 
 .. gmtplot::
    :width: 80%
@@ -110,10 +110,10 @@ gmtlogo
 注意
 ----
 
-若想要绘制链接到GMT官网的二维码，可以使用 :doc:`plot` 提供的自定义符号
+若想要繪製鏈接到GMT官網的二維碼，可以使用 :doc:`plot` 提供的自定義符號
 **QR** 和 **QR_transparent**\ 。
 
-相关模块
+相關模塊
 --------
 
 :doc:`legend`,

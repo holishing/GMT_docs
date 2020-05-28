@@ -1,16 +1,16 @@
-内置CPT
+內置CPT
 =======
 
-GMT内置了一个分类型CPT和几十个常规型CPT文件。这一节仅展示GMT内置CPT的配色，
-具体如何使用这些内置CPT文件会在后面做进一步介绍。
+GMT內置了一個分類型CPT和幾十個常規型CPT文件。這一節僅展示GMT內置CPT的配色，
+具體如何使用這些內置CPT文件會在後面做進一步介紹。
 
-下面列出了GMT内置的若干个CPT文件的具体配色以及CPT文件名（位于图下方）。
-每张图中有两个色标，上面的色标是原始的CPT文件，可以使用如下命令绘制得到::
+下面列出了GMT內置的若干個CPT文件的具體配色以及CPT文件名（位於圖下方）。
+每張圖中有兩個色標，上面的色標是原始的CPT文件，可以使用如下命令繪製得到::
 
     gmt colorbar -D0c/0c+w10c/1c+h -B0 -C<cpt> -pdf CPT
 
-下面的色标是利用 :doc:`/module/makecpt` 对原始CPT文件做离散处理得到的单色型
-CPT文件，可以用如下命令绘制得到::
+下面的色標是利用 :doc:`/module/makecpt` 對原始CPT文件做離散處理得到的單色型
+CPT文件，可以用如下命令繪製得到::
 
     gmt begin CPT png,pdf
     gmt makecpt -C<cpt> -T-1/1/0.25
@@ -179,11 +179,11 @@ CPT文件，可以用如下命令绘制得到::
 |    wysiwyg                     |                                |
 +--------------------------------+--------------------------------+
 
-GMT内置CPT文件中，某些是针对特定的需求设计的，因而常用于特定的图件中：
+GMT內置CPT文件中，某些是針對特定的需求設計的，因而常用於特定的圖件中：
 
 #. 海深：abyss、bathy、gebco、ibcso
-#. 陆地高程：elevation
+#. 陸地高程：elevation
 #. 全球地形起伏：dem1、dem2、dem3、dem4、earth、etopo1、geo、globe、oleron
    relief、terra、topo、world
 #. 地震成像：seis、polar
-#. 分类型数据：categorical
+#. 分類型數據：categorical

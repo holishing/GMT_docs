@@ -1,30 +1,30 @@
-# GMT中文手册
+# GMT中文手冊
 
 [![Build Status](https://travis-ci.org/gmt-china/GMT_docs.svg?branch=master)](https://travis-ci.org/gmt-china/GMT_docs)
 [![Documentation version](https://img.shields.io/badge/版本-v6.0-blue.svg)](https://docs.gmt-china.org/6.0/)
 
-[在线阅读](https://docs.gmt-china.org/6.0/) |
-[PDF下载](https://docs.gmt-china.org/6.0/GMT_docs.pdf) |
-[文档源码](https://github.com/gmt-china/GMT_Docs) |
-[GMT中文社区](https://gmt-china.org) |
-[GMT官方网站](https://www.generic-mapping-tools.org) |
-[GMT官方文档](https://docs.generic-mapping-tools.org)
+[在線閱讀](https://docs.gmt-china.org/6.0/) |
+[PDF下載](https://docs.gmt-china.org/6.0/GMT_docs.pdf) |
+[文檔源碼](https://github.com/gmt-china/GMT_Docs) |
+[GMT中文社區](https://gmt-china.org) |
+[GMT官方網站](https://www.generic-mapping-tools.org) |
+[GMT官方文檔](https://docs.generic-mapping-tools.org)
 
-欢迎来到 [Generic Mapping Tools](https://www.generic-mapping-tools.org) 的世界。
+歡迎來到 [Generic Mapping Tools](https://www.generic-mapping-tools.org) 的世界。
 
-本文档是由 GMT 中文社区维护的 GMT 中文手册，既可以作为入门读物，也可以作为日常参考。
+本文檔是由 GMT 中文社區維護的 GMT 中文手冊，既可以作爲入門讀物，也可以作爲日常參考。
 
-## 文档维护
+## 文檔維護
 
-本文档尚有很多不完善之处，欢迎GMT用户参与到GMT中文手册的维护与更新中。
-详情见 [维护指南](CONTRIBUTING.md)。
+本文檔尚有很多不完善之處，歡迎GMT用戶參與到GMT中文手冊的維護與更新中。
+詳情見 [維護指南](CONTRIBUTING.md)。
 
-> 一个人可以走的很快，但是一群人却可以走的更远。
+> 一個人可以走的很快，但是一羣人卻可以走的更遠。
 
-## 许可协议
+## 許可協議
 
-本作品采用 [知识共享署名-非商业性使用 4.0 国际许可协议](http://creativecommons.org/licenses/by-nc/4.0/) 。
-任何人都可以自由地分享、修改本作品，但必须遵循如下条件：
+本作品採用 [知識共享署名-非商業性使用 4.0 國際許可協議](http://creativecommons.org/licenses/by-nc/4.0/) 。
+任何人都可以自由地分享、修改本作品，但必須遵循如下條件：
 
-- 署名：必须提到原作者，提供指向此许可协议的链接，表明是否有做修改
-- 非商业性使用：不能对本作品进行任何形式的商业性使用
+- 署名：必須提到原作者，提供指向此許可協議的鏈接，表明是否有做修改
+- 非商業性使用：不能對本作品進行任何形式的商業性使用

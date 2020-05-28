@@ -3,76 +3,76 @@
 gmt-config
 ==========
 
-**gmt-config** 是GMT 的 bin 目录下的一个 bash 脚本，主要用于返回 GMT
-编译安装过程中的相关信息，以供其他开发者使用。
+**gmt-config** 是GMT 的 bin 目錄下的一個 bash 腳本，主要用於返回 GMT
+編譯安裝過程中的相關信息，以供其他開發者使用。
 
-语法
+語法
 ----
 
 **gmt-config** [ *options* ]
 
-可选选项
+可選選項
 --------
 
 **--help**
-    显示此帮助信息并退出
+    顯示此幫助信息並退出
 
 **--all**
-    显示全部选项的值
+    顯示全部選項的值
 
 **--bits**
-    库文件是32位还是64位
+    庫文件是32位還是64位
 
 **--cc**
-    编译过程中使用的C编译器
+    編譯過程中使用的C編譯器
 
 **--cflags**
-    C预处理器和编译器的CFLAGS，例如 ``-I/opt/GMT/include/gmt``
+    C預處理器和編譯器的CFLAGS，例如 ``-I/opt/GMT/include/gmt``
 
 **--datadir**
-    GMT 数据目录，默认为空
+    GMT 數據目錄，默認爲空
 
 **--dataserver**
-    GMT数据服务器网址
+    GMT數據服務器網址
 
 **--dcw**
-    DCW 数据的位置（可能为空）
+    DCW 數據的位置（可能爲空）
 
 **--dep-libs**
-    GMT 函数库依赖的其它函数库
+    GMT 函數庫依賴的其它函數庫
 
 **--gshhg**
-    GSHHG 数据的位置
+    GSHHG 數據的位置
 
 **--has-fftw**
-    编译过程中是否链接了 FFTW
+    編譯過程中是否鏈接了 FFTW
 
 **--has-gdal**
-    编译过程中是否链接了 GDAL
+    編譯過程中是否鏈接了 GDAL
 
 **--has-pcre**
-    编译过程中是否链接了 PCRE
+    編譯過程中是否鏈接了 PCRE
 
 **--has-lapack**
-    编译过程中是否链接了 LAPACK
+    編譯過程中是否鏈接了 LAPACK
 
 **--has-openmp**
-    编译过程中是否开启了 OpenMP 支持
+    編譯過程中是否開啓了 OpenMP 支持
 
 **--includedir**
-    include 目录所在位置
+    include 目錄所在位置
 
 **--libdir**
-    library 目录所在位置
+    library 目錄所在位置
 
 **--libs**
-    链接GMT函数库所需的信息，例如 ``-L/opt/GMT/lib64 -lgmt``
+    鏈接GMT函數庫所需的信息，例如 ``-L/opt/GMT/lib64 -lgmt``
 
 **--plugindir**
-    GMT 插件目录
+    GMT 插件目錄
 
 **--prefix**
-    GMT 安装目录
+    GMT 安裝目錄
 
 **--version**
     GMT 版本

@@ -4,13 +4,13 @@
 gmtsimplify
 ===========
 
-:官方文档: :doc:`gmt:gmtsimplify`
-:简介: 使用Douglas-Peucker算法对线段做简化
+:官方文檔: :doc:`gmt:gmtsimplify`
+:簡介: 使用Douglas-Peucker算法對線段做簡化
 
-**gmtsimplify** 模块读取一个或多个数据文件，并使用 Douglas-Peucker 算法对复杂多边形
-进行简化，用曲线近似表示为一系列点并减少点的数量，并保证每个点与直线的偏离都在可容忍的范围内。
+**gmtsimplify** 模塊讀取一個或多個數據文件，並使用 Douglas-Peucker 算法對複雜多邊形
+進行簡化，用曲線近似表示爲一系列點並減少點的數量，並保證每個點與直線的偏離都在可容忍的範圍內。
 
-语法
+語法
 ----
 
 **gmt simplify**
@@ -28,16 +28,16 @@ gmtsimplify
 [ |SYN_OPT-:| ]
 [ |SYN_OPT--| ]
 
-必须选项
+必須選項
 --------
 
 .. _-T:
 
 **-T**\ *tolerance*\ [*unit*]
-    指定最大所能容忍的误差，即任意数据点与简化后的线段间的距离小于该值。
-    默认单位为用户单位。对于地理数据（例如海岸线）可以指定其它距离单位。
+    指定最大所能容忍的誤差，即任意數據點與簡化後的線段間的距離小於該值。
+    默認單位爲用戶單位。對於地理數據（例如海岸線）可以指定其它距離單位。
 
-可选选项
+可選選項
 --------
 
 .. include:: explain_intables.rst_
@@ -69,36 +69,36 @@ gmtsimplify
 示例
 ----
 
-将澳大利亚的高精度海岸线数据简化，容忍误差为500km::
+將澳大利亞的高精度海岸線數據簡化，容忍誤差爲500km::
 
     gmt simplify @GSHHS_h_Australia.txt -T500k
 
-将笛卡尔线段简化，可容忍误差为0.45::
+將笛卡爾線段簡化，可容忍誤差爲0.45::
 
     gmt simplify xylines.d -T0.45 > new_xylines.d
 
-注意事项
+注意事項
 --------
 
-**gmtsimplify** 对于线段和闭合多边形的处理方式略有区别。
-显式闭合的线段（即线段的首尾坐标相同）会被认为是闭合多边形，
-否则视为线段。被当作多边形的线段可以被简化为无面积的3点多边形，
-其不会被输出。
+**gmtsimplify** 對於線段和閉合多邊形的處理方式略有區別。
+顯式閉合的線段（即線段的首尾座標相同）會被認爲是閉合多邊形，
+否則視爲線段。被當作多邊形的線段可以被簡化爲無面積的3點多邊形，
+其不會被輸出。
 
 BUGS
 ----
 
-Douglas-Peucker 算法的已知问题是交叉点的处理，即其无法保证简化后的线段不自我交叉，
-多个线段也可能互相交叉。此外，当前的算法实现只支持Flat Earth距离。
+Douglas-Peucker 算法的已知問題是交叉點的處理，即其無法保證簡化後的線段不自我交叉，
+多個線段也可能互相交叉。此外，當前的算法實現只支持Flat Earth距離。
 
-参考文献
+參考文獻
 --------
 
 Douglas, D. H., and T. K. Peucker, Algorithms for the reduction of the
 number of points required to represent a digitized line of its
 caricature, *Can. Cartogr.*, **10**, 112-122, 1973.
 
-相关模块
+相關模塊
 --------
 
 :doc:`gmtconnect`,

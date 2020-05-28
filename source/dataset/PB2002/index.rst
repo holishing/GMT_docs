@@ -1,38 +1,38 @@
-PB2002: 全球板块边界数据
+PB2002: 全球板塊邊界數據
 ========================
 
-PB2002 是常用的一个全球板块边界数据，其包含了14个大板块和38个小板块，共计52个板块的边界数据。
+PB2002 是常用的一個全球板塊邊界數據，其包含了14個大板塊和38個小板塊，共計52個板塊的邊界數據。
 
-- 官方网站: http://peterbird.name/publications/2003_PB2002/2003_PB2002.htm
-- 原始数据下载地址: http://peterbird.name/oldFTP/PB2002/
-- 数据格式说明: http://peterbird.name/oldFTP/PB2002/2001GC000252_readme.txt
+- 官方網站: http://peterbird.name/publications/2003_PB2002/2003_PB2002.htm
+- 原始數據下載地址: http://peterbird.name/oldFTP/PB2002/
+- 數據格式說明: http://peterbird.name/oldFTP/PB2002/2001GC000252_readme.txt
 
-数据下载
+數據下載
 --------
 
-原始数据的格式无法直接用于GMT绘图。这里我们从官方网站下载了 ``PB2002_plates.dig.txt``
-和 ``PB2002_boundaries.dig.txt`` 数据，并将其段头记录做了修改以供GMT用户使用。
+原始數據的格式無法直接用於GMT繪圖。這裏我們從官方網站下載了 ``PB2002_plates.dig.txt``
+和 ``PB2002_boundaries.dig.txt`` 數據，並將其段頭記錄做了修改以供GMT用戶使用。
 
-可供GMT直接使用的数据下载地址:
+可供GMT直接使用的數據下載地址:
 
 - :download:`PB2002_plates.dig.txt`
 - :download:`PB2002_boundaries.dig.txt`
 
-两个数据是等效的，区别在于 **PB2002_plates.dig.txt** 中数据分为52段，
-每段数据对应一个板块边界闭合多边形，每段数据的段头记录为该段数据的板块名称缩写。
+兩個數據是等效的，區別在於 **PB2002_plates.dig.txt** 中數據分爲52段，
+每段數據對應一個板塊邊界閉合多邊形，每段數據的段頭記錄爲該段數據的板塊名稱縮寫。
 
-**PB2002_boundaries.dig.txt** 中数据分为229段，其将相邻板块的共同边界分为不同的段列出来。
-段头记录中包含了两个板块的名称缩写，以及板块数据来源的参考文献。
+**PB2002_boundaries.dig.txt** 中數據分爲229段，其將相鄰板塊的共同邊界分爲不同的段列出來。
+段頭記錄中包含了兩個板塊的名稱縮寫，以及板塊數據來源的參考文獻。
 
 使用示例
 --------
 
-在绘图方面，两个数据没有区别。
+在繪圖方面，兩個數據沒有區別。
 
 .. gmtplot:: PB2002.sh
    :width: 80%
 
-   PB2002 全球板块边界
+   PB2002 全球板塊邊界
 
 引用信息
 --------

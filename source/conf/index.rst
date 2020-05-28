@@ -1,6 +1,6 @@
 .. index:: ! gmt.conf
 
-配置参数
+配置參數
 ########
 
 .. toctree::

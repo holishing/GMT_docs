@@ -1,27 +1,27 @@
--Jq：圆柱等距投影
+-Jq：圓柱等距投影
 =================
 
-维基链接：https://en.wikipedia.org/wiki/Equirectangular_projection
+維基鏈接：https://en.wikipedia.org/wiki/Equirectangular_projection
 
-这个简单的圆柱投影是一个经度和纬度的线性缩放。最常用的形式是Plate Carrée投影，
-其中对经线和纬线的缩放比例是相同的。所有的经纬线都是直线。
+這個簡單的圓柱投影是一個經度和緯度的線性縮放。最常用的形式是Plate Carrée投影，
+其中對經線和緯線的縮放比例是相同的。所有的經緯線都是直線。
 
-该投影的参数为：
+該投影的參數爲：
 
 **-JQ**\ [*lon*/[*lat*]/]\ *width*
 或
 **-Jq**\ [*lon*/[*lat*]/]\ *scale*
 
-- *lon* 是中心经线，默认为地图区域的中心
-- *lat* 是标准纬线，默认为赤道，若指定了标准纬线，则必须指定中心经线
+- *lon* 是中心經線，默認爲地圖區域的中心
+- *lat* 是標準緯線，默認爲赤道，若指定了標準緯線，則必須指定中心經線
 
 .. gmtplot::
-    :caption: 使用Plate Carrée投影绘制全球地图
+    :caption: 使用Plate Carrée投影繪製全球地圖
     :width: 85%
 
     gmt coast -Rg -JQ4.5i -B60f30g30 -Dc -A5000 -Gtan4 -Slightcyan -png GMT_equi_cyl
 
-选择不同的标准纬线，则可以获取经度和纬度的不同缩放比例。流行的几个标准纬线如下：
+選擇不同的標準緯線，則可以獲取經度和緯度的不同縮放比例。流行的幾個標準緯線如下：
 
 .. table::
    :align: center

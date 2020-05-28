@@ -1,30 +1,30 @@
-目录参数
+目錄參數
 ========
 
-有一些环境变量以及GMT配置参数，可以用于指定某些特殊用途的目录。这些环境变量和
-配置参数包括：
+有一些環境變量以及GMT配置參數，可以用於指定某些特殊用途的目錄。這些環境變量和
+配置參數包括：
 
-- ``$GMT_SHAREDIR`` GMT的share目录所在位置，通常不用设置，GMT会自动猜测其所在位置
-- ``$GMT_DATADIR`` 或 :term:`DIR_DATA` 可以指向一个或多个目录，用于放置
-  用户常用的数据文件。目录之间用逗号分隔。任何以斜杠 ``/`` 结尾的目录会被递归搜索
-  （Windows不支持此功能）。若二者同时有值，以 :term:`DIR_DATA`
-  的值优先
-- ``$GMT_CACHEDIR`` 或 :term:`DIR_CACHE` 用于放置GMT模块从GMT服务器上
-  下载的临时数据
-- ``$GMT_USERDIR`` 用户放置自定义配置文件的地方，比如用户自定义的 :file:`gmt.conf`
-  文件、自定义符号、CPT文件、数学宏、网格文件后缀文件等。若该变量未定义，则默认值为
+- ``$GMT_SHAREDIR`` GMT的share目錄所在位置，通常不用設置，GMT會自動猜測其所在位置
+- ``$GMT_DATADIR`` 或 :term:`DIR_DATA` 可以指向一個或多個目錄，用於放置
+  用戶常用的數據文件。目錄之間用逗號分隔。任何以斜槓 ``/`` 結尾的目錄會被遞歸搜索
+  （Windows不支持此功能）。若二者同時有值，以 :term:`DIR_DATA`
+  的值優先
+- ``$GMT_CACHEDIR`` 或 :term:`DIR_CACHE` 用於放置GMT模塊從GMT服務器上
+  下載的臨時數據
+- ``$GMT_USERDIR`` 用戶放置自定義配置文件的地方，比如用戶自定義的 :file:`gmt.conf`
+  文件、自定義符號、CPT文件、數學宏、網格文件後綴文件等。若該變量未定義，則默認值爲
   :file:`${HOME}/.gmt` 。
-- ``$GMT_TMPDIR`` 临时文件（比如 :file:`gmt.history` 和 :file:`gmt.conf` ）放置的
-  目录。若未设置，则默认为当前目录
-- :term:`DIR_DCW` DCW数据放置的目录
-- :term:`DIR_GSHHG` 海岸线数据放置的目录
+- ``$GMT_TMPDIR`` 臨時文件（比如 :file:`gmt.history` 和 :file:`gmt.conf` ）放置的
+  目錄。若未設置，則默認爲當前目錄
+- :term:`DIR_DCW` DCW數據放置的目錄
+- :term:`DIR_GSHHG` 海岸線數據放置的目錄
 
-当命令行中有文件需要读入时，GMT不仅仅会在当前目录下寻找文件，还会到这些特殊
-变量中寻找。GMT会\ **依次**\ 到下列目录中寻找文件：
+當命令行中有文件需要讀入時，GMT不僅僅會在當前目錄下尋找文件，還會到這些特殊
+變量中尋找。GMT會\ **依次**\ 到下列目錄中尋找文件：
 
-#. 当前目录
-#. GMT参数 :term:`DIR_DATA` 所定义的目录
-#. GMT参数 :term:`DIR_CACHE` 所定义的目录
-#. 环境变量 ``$GMT_USERDIR`` 所定义的目录
-#. 环境变量 ``$GMT_CACHEDIR`` 所定义的目录
-#. 环境变量 ``$GMT_DATADIR`` 所定义的目录
+#. 當前目錄
+#. GMT參數 :term:`DIR_DATA` 所定義的目錄
+#. GMT參數 :term:`DIR_CACHE` 所定義的目錄
+#. 環境變量 ``$GMT_USERDIR`` 所定義的目錄
+#. 環境變量 ``$GMT_CACHEDIR`` 所定義的目錄
+#. 環境變量 ``$GMT_DATADIR`` 所定義的目錄

@@ -3,50 +3,50 @@
 grdtrend
 ==========
 
-:官方文档: :doc:`gmt:grdtrend`
-:简介: 拟合网格的趋势面并计算残差
+:官方文檔: :doc:`gmt:grdtrend`
+:簡介: 擬合網格的趨勢面並計算殘差
 
-该命令会读取一个2D网格文件，并用最小二乘方法拟合一个低阶多项式趋势面。
-多项式趋势面的定义为：
+該命令會讀取一個2D網格文件，並用最小二乘方法擬合一個低階多項式趨勢面。
+多項式趨勢面的定義爲：
 
     m1 + m2\*x + m3\*y + m4\*x\*y + m5\*x\*x + m6\*y\*y + m7\*x\*x\*x +
     m8\*x\*x\*y + m9\*x\*y\*y + m10\*y\*y\*y.
 
-必选选项
+必選選項
 --------
 
 ``<gridfile>``
-    2D网格文件名
+    2D網格文件名
 
 ``-N<n_model>[+r]``
-    指定要拟合的模型。
+    指定要擬合的模型。
 
-    ``<n_model>`` 指定要拟合的模型的参数个数。例如 ``-N3`` 表示bilinear趋势，
-    ``-N6`` 表示 quadratic趋势面。加上 ``+r`` 表示robust拟合，此时，程序会根据
-    robust scale estimate多次迭代，给数据重新赋予权重，以得到一个对outliers
+    ``<n_model>`` 指定要擬合的模型的參數個數。例如 ``-N3`` 表示bilinear趨勢，
+    ``-N6`` 表示 quadratic趨勢面。加上 ``+r`` 表示robust擬合，此時，程序會根據
+    robust scale estimate多次迭代，給數據重新賦予權重，以得到一個對outliers
     不敏感的解。
 
-可选选项
+可選選項
 --------
 
 ``-D<diff.nc>``
-    将残差（输入减去拟合）结果写到网格文件中
+    將殘差（輸入減去擬合）結果寫到網格文件中
 
 ``-T<trend.nc>``
-    将拟合得到的趋势文件写到网格文件 ``<trend.nc>`` 中
+    將擬合得到的趨勢文件寫到網格文件 ``<trend.nc>`` 中
 
 ``-W<weight.nc>``
-    若 ``<weight.nc>`` 存在，则读取该文件，并求解一个有权重的最小二乘问题。
-    默认为常规的最小二乘拟合。若 ``-N`` 选项中指定了robust拟合，则robust拟合中
-    所使用的权重会写到文件 ``<weight.nc>`` 中。
+    若 ``<weight.nc>`` 存在，則讀取該文件，並求解一個有權重的最小二乘問題。
+    默認爲常規的最小二乘擬合。若 ``-N`` 選項中指定了robust擬合，則robust擬閤中
+    所使用的權重會寫到文件 ``<weight.nc>`` 中。
 
 示例
 ----
 
-从网格文件中移除线性趋势，并将结果写到残差文件中::
+從網格文件中移除線性趨勢，並將結果寫到殘差文件中::
 
     gmt grdtrend hawaii_topo.nc -N3 -Dhawaii_residual.nc
 
-对网格文件做bicubic面的robust拟合::
+對網格文件做bicubic面的robust擬合::
 
     gmt grdtrend hawaii_topo.nc -N10r -Thawaii_trend.nc -Whawaii_weight.nc -V

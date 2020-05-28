@@ -1,17 +1,17 @@
 GMT初探: Linux篇
 ================
 
-启动终端
+啓動終端
 --------
 
-GMT是一个纯命令行软件，没有任何的图形界面。所有的绘图操作都需要通过
-在终端和脚本中执行命令来完成。
-终端是Linux系统的标配，通常你可以在系统的“应用程序”中找到并启动它。
+GMT是一個純命令行軟件，沒有任何的圖形界面。所有的繪圖操作都需要通過
+在終端和腳本中執行命令來完成。
+終端是Linux系統的標配，通常你可以在系統的“應用程序”中找到並啓動它。
 
-运行GMT
+運行GMT
 -------
 
-启动终端后，敲入 ``gmt`` 以执行GMT命令。你将看到GMT的欢迎界面信息，类似于::
+啓動終端後，敲入 ``gmt`` 以執行GMT命令。你將看到GMT的歡迎界面信息，類似於::
 
         GMT - The Generic Mapping Tools, Version 6.0.0 [64-bit] [8 cores]
         (c) 1991-2019 The GMT Team (https://www.generic-mapping-tools.org/team.html).
@@ -41,29 +41,29 @@ GMT是一个纯命令行软件，没有任何的图形界面。所有的绘图�
 
     if <module-options> is '=' we call exit (0) if module exist and non-zero otherwise.
 
-生成脚本模板
+生成腳本模板
 ------------
 
-继续在终端中敲入::
+繼續在終端中敲入::
 
     gmt --new-script > myplot.sh
 
-该命令会在当前目录生成一个GMT模板脚本，并保存到Bash脚本文件 :file:`myplot.sh` 中。
+該命令會在當前目錄生成一個GMT模板腳本，並保存到Bash腳本文件 :file:`myplot.sh` 中。
 
 .. note::
 
-    本手册中所有示例均使用Bash脚本，要求读者对Bash脚本及Unix命令行有最基本的了解。
-    不了解的用户请阅读网络上Bash相关教程，或本手册中 :doc:`/tutorial/scripting` 一节。
+    本手冊中所有示例均使用Bash腳本，要求讀者對Bash腳本及Unix命令行有最基本的瞭解。
+    不瞭解的用戶請閱讀網絡上Bash相關教程，或本手冊中 :doc:`/tutorial/scripting` 一節。
 
-查看并编辑脚本文件
+查看並編輯腳本文件
 ------------------
 
-Bash脚本文件是一个纯文本文件，可以直接用文本编辑器打开。比如，可以使用大多数
-Linux都自带了的文本编辑器 **gedit** 打开该脚本文件::
+Bash腳本文件是一個純文本文件，可以直接用文本編輯器打開。比如，可以使用大多數
+Linux都自帶了的文本編輯器 **gedit** 打開該腳本文件::
 
     gedit myplot.sh
 
-打开脚本文件后会看到如下内容::
+打開腳本文件後會看到如下內容::
 
     #!/usr/bin/env bash
     # GMT modern mode bash template
@@ -75,10 +75,10 @@ Linux都自带了的文本编辑器 **gedit** 打开该脚本文件::
         # Place modern session commands here
     gmt end show
 
-其中，以 **#** 开头的行尾注释行，\ **export GMT_SESSION_NAME=$$** 这一行属于
-高级用法，可以忽略。因而核心内容只有两行，即 **gmt begin** 和 **gmt end** 这两行。
+其中，以 **#** 開頭的行尾註釋行，\ **export GMT_SESSION_NAME=$$** 這一行屬於
+高級用法，可以忽略。因而核心內容只有兩行，即 **gmt begin** 和 **gmt end** 這兩行。
 
-编辑脚本，在 **gmt begin** 和 **gmt end** 中间添加GMT命令，将脚本修改如下::
+編輯腳本，在 **gmt begin** 和 **gmt end** 中間添加GMT命令，將腳本修改如下::
 
     #!/usr/bin/env -S bash -e
     # GMT modern mode bash template
@@ -90,17 +90,17 @@ Linux都自带了的文本编辑器 **gedit** 打开该脚本文件::
         gmt coast -Rg -JH15c -Gpurple -Baf -B+t"My First Plot"
     gmt end show
 
-编辑完成后记得保存文件。
+編輯完成後記得保存文件。
 
-执行脚本以绘图
+執行腳本以繪圖
 --------------
 
-回到终端，运行Bash脚本::
+回到終端，運行Bash腳本::
 
     bash myplot.sh
 
-待脚本执行完成后，会自动用阅读器（通常是evince）打开生成的PDF格式的图片文件。
-你将看到如下图所示的图片。
+待腳本執行完成後，會自動用閱讀器（通常是evince）打開生成的PDF格式的圖片文件。
+你將看到如下圖所示的圖片。
 
 .. gmtplot::
     :width: 75%
@@ -116,8 +116,8 @@ Linux都自带了的文本编辑器 **gedit** 打开该脚本文件::
         gmt coast -Rg -JH15c -Gpurple -Baf -B+t"My First Plot"
     gmt end
 
-这基本上就是运行GMT脚本的基本流程，即：
+這基本上就是運行GMT腳本的基本流程，即：
 
-- 生成脚本模板
-- 编辑脚本，添加GMT绘图命令
-- 运行脚本并查看绘图效果
+- 生成腳本模板
+- 編輯腳本，添加GMT繪圖命令
+- 運行腳本並查看繪圖效果

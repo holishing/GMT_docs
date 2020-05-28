@@ -1,154 +1,154 @@
 GMT/Matlab Toolbox
 ==================
 
-简介
+簡介
 ----
 
-GMT的Matlab接口，顾名思义，提供了在Matlab中调用GMT命令的功能。通过该接口，
-GMT的所有模块命令都可以在Matlab脚本中嵌入执行。GMT命令生成的结果
-（grid格网数据、table表格数据、CPT颜色表、文本文件、图片等）
-都可以作为Matlab变量进行运算；Matlab中的矩阵变量也可以直接作为GMT的输入。
+GMT的Matlab接口，顧名思義，提供了在Matlab中調用GMT命令的功能。通過該接口，
+GMT的所有模塊命令都可以在Matlab腳本中嵌入執行。GMT命令生成的結果
+（grid格網數據、table表格數據、CPT顏色表、文本文件、圖片等）
+都可以作爲Matlab變量進行運算；Matlab中的矩陣變量也可以直接作爲GMT的輸入。
 
-GMT/MATLAB工具包用户请引用如下文章:
+GMT/MATLAB工具包用戶請引用如下文章:
 
 Wessel, P., and J. F. Luis
 The GMT/MATLAB Toolbox,
 *Geochem. Geophys. Geosyst.*, **18(2)**, 811-823, 2017.
 `doi:10.1002/2016GC006723 <http://dx.doi.org/10.1002/2016GC006723>`_.
 
-安装
+安裝
 ----
 
-Windows平台
+Windows平臺
 +++++++++++
 
-GMT5.3以后的用户在GMT执行路径（默认为 ``C:\programs\gmt5\bin`` ）下已经存在 ``gmt.m``
-和 ``gmtmex.mexw64|32`` 两个文件，只要确保如下两点即可在Windows下使用该接口了。
+GMT5.3以後的用戶在GMT執行路徑（默認爲 ``C:\programs\gmt5\bin`` ）下已經存在 ``gmt.m``
+和 ``gmtmex.mexw64|32`` 兩個文件，只要確保如下兩點即可在Windows下使用該接口了。
 
-- GMT的执行路径已经加入了系统环境变量path中，保证系统可调用GMT命令；
-- GMT的执行路径已经加入Matlab的搜索路径下，保证Matlab可调用GMT命令，如下图所示。
+- GMT的執行路徑已經加入了系統環境變量path中，保證系統可調用GMT命令；
+- GMT的執行路徑已經加入Matlab的搜索路徑下，保證Matlab可調用GMT命令，如下圖所示。
 
 .. figure:: /images/Matlab_path.png
    :width: 100%
    :align: center
 
-   Matlab PATH 设置
+   Matlab PATH 設置
 
-测试安装是否正确：在Matlab的命令行窗口直接敲入 ``gmt``，若出现GMT的版本及
-使用方法介绍，则安装成功。
+測試安裝是否正確：在Matlab的命令行窗口直接敲入 ``gmt``，若出現GMT的版本及
+使用方法介紹，則安裝成功。
 
-macOS 平台
+macOS 平臺
 ++++++++++
 
-在macOS上按照如下流程可以成功编译GMT的Matlab接口。但由于Matlab处理动态链接库的
-方式很特别，因而该接口可能不太稳定。GMT开发者正试图与MathWorks合作以解决这个问题，
-将来以下编译方法可能会修改：
+在macOS上按照如下流程可以成功編譯GMT的Matlab接口。但由於Matlab處理動態鏈接庫的
+方式很特別，因而該接口可能不太穩定。GMT開發者正試圖與MathWorks合作以解決這個問題，
+將來以下編譯方法可能會修改：
 
-#. 安装macOS平台下最新版本的GMT；
-#. 运行安装目录下 ``share/tools`` 下的 ``gmt_prepmex.sh`` 文件。
-   此操作会复制GMT的已安装文件到 ``/opt/gmt`` 目录下，并且会重新检查所有的共享库；
-#. 使用 ``gmtswitch`` 切换当前使用的GMT版本，确保 ``/opt/gmt`` 下的GMT为当前激活版本；
-#. 使用svn获取 ``gmt-mex`` 项目文件到本地::
+#. 安裝macOS平臺下最新版本的GMT；
+#. 運行安裝目錄下 ``share/tools`` 下的 ``gmt_prepmex.sh`` 文件。
+   此操作會複製GMT的已安裝文件到 ``/opt/gmt`` 目錄下，並且會重新檢查所有的共享庫；
+#. 使用 ``gmtswitch`` 切換當前使用的GMT版本，確保 ``/opt/gmt`` 下的GMT爲當前激活版本；
+#. 使用svn獲取 ``gmt-mex`` 項目文件到本地::
 
     svn checkout svn://gmtserver.soest.hawaii.edu/gmt-mex gmt-mex
 
-#. 进入 ``get-mex`` 目录并编译生成 ``gmtmex.mexmaci64`` ::
+#. 進入 ``get-mex`` 目錄並編譯生成 ``gmtmex.mexmaci64`` ::
 
     cd gmt-mex/trunk/
     autoconf
     ./configure --enable-matlab
     make
 
-#. 将 ``gmt.m`` 和 ``gmtmex.mexmaci64`` 所在目录添加到MTATLAB路径中
-#. 确保 ``gmt.conf`` 文件中包含选项： ``GMT_CUSTOM_LIBS=/opt/gmt/lib/gmt/plugins/supplements.so``
+#. 將 ``gmt.m`` 和 ``gmtmex.mexmaci64`` 所在目錄添加到MTATLAB路徑中
+#. 確保 ``gmt.conf`` 文件中包含選項： ``GMT_CUSTOM_LIBS=/opt/gmt/lib/gmt/plugins/supplements.so``
 
-经测试，该项目在2015a、2015b的MATLAB版本中可使用，对于更老版本的MATLAB，还未进行测试。
+經測試，該項目在2015a、2015b的MATLAB版本中可使用，對於更老版本的MATLAB，還未進行測試。
 
-Unix/Linux平台
+Unix/Linux平臺
 ++++++++++++++
 
-正在努力开发中，还望有志之士加入...
+正在努力開發中，還望有志之士加入...
 
 使用方法
 --------
 
-GMT接口完全模仿了传统的matlab命令，可以在命令行、m文件或IDE中使用。形式是::
+GMT接口完全模仿了傳統的matlab命令，可以在命令行、m文件或IDE中使用。形式是::
 
-    返回参数 = gmt('<module> <module-options>', 输入数据)
+    返回參數 = gmt('<module> <module-options>', 輸入數據)
 
-其中 **输入数据** 可以为Matlab的矩阵、结构体或数组等； **返回参数**
-可直接在Matlab中参与后续的计算。调用GMT完毕后，清空缓存::
+其中 **輸入數據** 可以爲Matlab的矩陣、結構體或數組等； **返回參數**
+可直接在Matlab中參與後續的計算。調用GMT完畢後，清空緩存::
 
     gmt('destroy')
 
-入门级示例
+入門級示例
 ++++++++++
 
-在matlab环境中调用 ``pscoast`` 绘制地图::
+在matlab環境中調用 ``pscoast`` 繪製地圖::
 
     gmt('pscoast -Rg -JA280/30/3.5i -Bg -Dc -A1000 -Gnavy -P > GMT_lambert_az_hemi.ps')
 
-上例中，并不存在输入数据，也就是不存在与Matlab变量的交互，生成的ps文件在Matlab当前路径下。
+上例中，並不存在輸入數據，也就是不存在與Matlab變量的交互，生成的ps文件在Matlab當前路徑下。
 
-进阶级示例
+進階級示例
 ++++++++++
 
-在Matlab环境中，绘制文字::
+在Matlab環境中，繪製文字::
 
-    %创建字符串数组
+    %創建字符串數組
     lines = {'5 6 Some label', '6 7 Another label'};
-    % 绘制
+    % 繪製
     gmt('pstext -R0/10/0/10 -JX6i -Bafg -F+f18p -P > text.ps ', lines);
     gmt('destroy');
 
-上例中，字符串数组 ``lines`` 可以直接作为 ``pstext`` 的输入参数。
+上例中，字符串數組 ``lines`` 可以直接作爲 ``pstext`` 的輸入參數。
 
-以上为单个输入参数，若需要多个输入参数，如何确定参数的先后顺序？
+以上爲單個輸入參數，若需要多個輸入參數，如何確定參數的先後順序？
 
-高手级示例
+高手級示例
 ++++++++++
 
-对一个矩阵数组进行格网化并绘图：
+對一個矩陣數組進行格網化並繪圖：
 
 .. code-block:: matlab
 
-    % 创建一个100*3矩阵，xyz值均为0~150之间的随机数
+    % 創建一個100*3矩陣，xyz值均爲0~150之間的隨機數
     t= rand(100,3)*150
-    % 利用GMT的surface命令对t进行格网化，输出为结构体G，数组结构见附录
+    % 利用GMT的surface命令對t進行格網化，輸出爲結構體G，數組結構見附錄
     G = gmt('surface -R0/150/0/150 -I1', t );
-    % 利用grd2cpt创建颜色表文件，输出为颜色表结构体cpt
+    % 利用grd2cpt創建顏色表文件，輸出爲顏色表結構體cpt
     cpt = gmt('grd2cpt -Cjet', G);
-    % 利用grdimage绘制格网化结果
+    % 利用grdimage繪製格網化結果
     gmt('grdimage -JX8c -Ba -P -C -G > crap_img.ps', G, cpt);
     gmt('destroy');
 
-上例中，\ ``grdimage`` 命令需要两个输入参数：颜色表 ``cpt`` 和格网数据 ``G``\ ，
-两者先后顺序不可交换。强制性输入参数（本例中的 ``G`` ）要在所有可选参数
-（本例中的 ``cpt`` ）之前。若有多个选项参数，强制性输入参数写在最前，
-然后按顺序给出可选参数。
+上例中，\ ``grdimage`` 命令需要兩個輸入參數：顏色表 ``cpt`` 和格網數據 ``G``\ ，
+兩者先後順序不可交換。強制性輸入參數（本例中的 ``G`` ）要在所有可選參數
+（本例中的 ``cpt`` ）之前。若有多個選項參數，強制性輸入參數寫在最前，
+然後按順序給出可選參數。
 
-大神级示例
+大神級示例
 ++++++++++
 
-另一个多参数的例子：
+另一個多參數的例子：
 
 .. code-block:: matlab
 
-    x = linspace(-pi, pi)';            % 创建x值
-    seno = sin(x);                     % 创建y值
-    xyz  = [x seno seno];              % 创建xyz三列数据，其中y=z
-    cpt  = gmt('makecpt -T-1/1/0.1');  % 创建rainbow颜色表
-    %绘制函数曲线，以z值赋颜色。cpt和xyz先后顺序不可交换。
+    x = linspace(-pi, pi)';            % 創建x值
+    seno = sin(x);                     % 創建y值
+    xyz  = [x seno seno];              % 創建xyz三列數據，其中y=z
+    cpt  = gmt('makecpt -T-1/1/0.1');  % 創建rainbow顏色表
+    %繪製函數曲線，以z值賦顏色。cpt和xyz先後順序不可交換。
     gmt('psxy -R-3.2/3.2/-1.1/1.1 -JX12c -Sc0.1c -C -P -Ba > seno.ps', xyz, cpt);
     gmt('destroy');
 
-敲黑板，上例 ``psxy`` 一句中，``-C`` 为可选参数，因此引号外 ``cpt`` 要在强制性
-输入数据 ``xyz`` 之后。
+敲黑板，上例 ``psxy`` 一句中，``-C`` 爲可選參數，因此引號外 ``cpt`` 要在強制性
+輸入數據 ``xyz`` 之後。
 
-常见问题
+常見問題
 --------
 
-- 使用完GMT接口后要记得 ``gmt('destroy')`` 释放内存，不然有可能出现不可预知错误。
-- gmt括号内直接写module名，看似GMT4语句，实际只支持GMT5的语法。
-- 绘制地理投影时，经纬度标注可能会出现 ``%s`` 乱码（即使设置为不显示任何度分秒符号），
-  目前已知Matlab2016存在该问题，其他版本还未有此类反馈。
+- 使用完GMT接口後要記得 ``gmt('destroy')`` 釋放內存，不然有可能出現不可預知錯誤。
+- gmt括號內直接寫module名，看似GMT4語句，實際只支持GMT5的語法。
+- 繪製地理投影時，經緯度標註可能會出現 ``%s`` 亂碼（即使設置爲不顯示任何度分秒符號），
+  目前已知Matlab2016存在該問題，其他版本還未有此類反饋。

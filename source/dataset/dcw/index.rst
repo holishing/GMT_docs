@@ -1,65 +1,65 @@
-DCW: 世界数字图表
+DCW: 世界數字圖表
 =================
 
 .. figure:: /images/dcw.*
    :width: 75%
    :align: center
 
-   DCW: 世界数字图表
+   DCW: 世界數字圖表
 
-**DCW数据主页**\ ： http://www.soest.hawaii.edu/wessel/dcw/
+**DCW數據主頁**\ ： http://www.soest.hawaii.edu/wessel/dcw/
 
-DCW，全称为 Digital Chart of the World，即世界数字图表。
-GMT提供的DCW数据是在原始DCW数据的基础上修改得到的，其中包含了如下行政边界数据：
+DCW，全稱爲 Digital Chart of the World，即世界數字圖表。
+GMT提供的DCW數據是在原始DCW數據的基礎上修改得到的，其中包含了如下行政邊界數據：
 
 #.  七大洲的洲界
-#.  全球250个国家或地区的边界
-#.  8个大国的省界/州界
+#.  全球250個國家或地區的邊界
+#.  8個大國的省界/州界
 
 .. warning::
 
-    DCW数据提供的中国国界数据不符合中国的领土主张，在正式刊物中发表使用此类国界
-    数据的图件时都可能存在问题。
+    DCW數據提供的中國國界數據不符合中國的領土主張，在正式刊物中發表使用此類國界
+    數據的圖件時都可能存在問題。
 
-GMT的 :doc:`/module/coast` 模块可以直接绘制DCW数据中提供的行政边界数据，
-也可以使用 :doc:`/module/coast` 的 **-M** 选项将边界数据导出为纯文本文件
+GMT的 :doc:`/module/coast` 模塊可以直接繪製DCW數據中提供的行政邊界數據，
+也可以使用 :doc:`/module/coast` 的 **-M** 選項將邊界數據導出爲純文本文件
 供其它程序使用。
 
-GMT提供的DCW数据默认位于GMT安装目录下的 **share/dcw** 下，其中主要包含了三个文件：
+GMT提供的DCW數據默認位於GMT安裝目錄下的 **share/dcw** 下，其中主要包含了三個文件：
 
-- :file:`dcw-gmt.nc`: netCDF格式的DCW数据
-- :download:`dcw-countries.txt`: 辅助文件，内含国家代码
-- :download:`dcw-states.txt`: 辅助文件，内含省界代码
+- :file:`dcw-gmt.nc`: netCDF格式的DCW數據
+- :download:`dcw-countries.txt`: 輔助文件，內含國家代碼
+- :download:`dcw-states.txt`: 輔助文件，內含省界代碼
 
-区域代码
+區域代碼
 --------
 
-为了绘制某个特定行政区域的边界，首先需要知道这些行政区域的代码。
+爲了繪製某個特定行政區域的邊界，首先需要知道這些行政區域的代碼。
 
-洲代码
+洲代碼
 ++++++
 
-七大洲都有各自的代码，其代码分别为:
+七大洲都有各自的代碼，其代碼分別爲:
 
 - **AF**: 非洲（Africa）
-- **AN**: 南极洲（Antarctica）
-- **AS**: 亚洲（Asia）
-- **EU**: 欧洲（Europe）
+- **AN**: 南極洲（Antarctica）
+- **AS**: 亞洲（Asia）
+- **EU**: 歐洲（Europe）
 - **OC**: 大洋洲（Oceania）
 - **NA**: 北美洲（North America）
 - **SA**: 南美洲（South America）
 
-国家代码
+國家代碼
 ++++++++
 
-每个国家都有一个国家代码，国家代码可以直接从 `ISO Country Codes <https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2>`_ 中查找。
-也可以从DCW辅助文件 :download:`dcw-countries.txt` 中查找，其文件格式为::
+每個國家都有一個國家代碼，國家代碼可以直接從 `ISO Country Codes <https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2>`_ 中查找。
+也可以從DCW輔助文件 :download:`dcw-countries.txt` 中查找，其文件格式爲::
 
-    洲代码 国家代码 国家名
+    洲代碼 國家代碼 國家名
 
-也可以使用命令 ``gmt coast -E+l`` 查看国家代码列表。
+也可以使用命令 ``gmt coast -E+l`` 查看國家代碼列表。
 
-该文件共计约 250 个国家。文件内容大致如下::
+該文件共計約 250 個國家。文件內容大致如下::
 
     AS BH Bahrain
     AS BN Brunei
@@ -73,31 +73,31 @@ GMT提供的DCW数据默认位于GMT安装目录下的 **share/dcw** 下，其�
     AS IL Israel
     AS IN India
 
-其中可以看到，中国的国家代码为 **CN**\ 。
+其中可以看到，中國的國家代碼爲 **CN**\ 。
 
-省/州代码
+省/州代碼
 +++++++++
 
-目前有如下八个国家的省界/州界数据：
+目前有如下八個國家的省界/州界數據：
 
 - **AR**: 阿根廷
-- **AU**: 澳大利亚
+- **AU**: 澳大利亞
 - **BR**: 巴西
 - **CA**: 加拿大
-- **US**: 美国
-- **CN**: 中国
+- **US**: 美國
+- **CN**: 中國
 - **IN**: 印度
-- **RU**: 俄罗斯
+- **RU**: 俄羅斯
 
-省代码可以从 DCW 辅助文件 :download:`dcw-states.txt` 中查找到，其文件格式为::
+省代碼可以從 DCW 輔助文件 :download:`dcw-states.txt` 中查找到，其文件格式爲::
 
-    国家代码 省代码 省名
+    國家代碼 省代碼 省名
 
-也可以使用命令 ``gmt coast -E+L`` 查看省代码。
+也可以使用命令 ``gmt coast -E+L`` 查看省代碼。
 
-以中国的数据为例，其包括全部 34 个省级行政区域：23 个省（包括台湾省），
-5 个自治区，4 个直辖市，以及香港，澳门 2 个特别行政区。
-中国的省代码是数字，和中国居民身份证号码相同::
+以中國的數據爲例，其包括全部 34 個省級行政區域：23 個省（包括臺灣省），
+5 個自治區，4 個直轄市，以及香港，澳門 2 個特別行政區。
+中國的省代碼是數字，和中國居民身份證號碼相同::
 
     CN 11 Beijing
     CN 50 Chongqing
@@ -134,59 +134,59 @@ GMT提供的DCW数据默认位于GMT安装目录下的 **share/dcw** 下，其�
     CN 91 Xianggang (Hong Kong)
     CN 92 Aomen (Macao)
 
-使用说明
+使用說明
 --------
 
-GMT中至少有两处会使用DCW数据：
+GMT中至少有兩處會使用DCW數據：
 
-#. :doc:`-R 选项 </option/R>` 中可以直接使用区域代码以间接指定绘图范围
-#. :doc:`/module/coast` 模块 **-E**\ *code1*,\ *code2*,... 选项调用 DCW 数据绘制或导出国界/省界
+#. :doc:`-R 選項 </option/R>` 中可以直接使用區域代碼以間接指定繪圖範圍
+#. :doc:`/module/coast` 模塊 **-E**\ *code1*,\ *code2*,... 選項調用 DCW 數據繪製或導出國界/省界
 
-洲代码、国家代码和省代码都由两个字符构成，为了避免可能的冲突，GMT通过如下方式区分：
+洲代碼、國家代碼和省代碼都由兩個字符構成，爲了避免可能的衝突，GMT通過如下方式區分：
 
--   在洲代码前加上 **=** 号表示某个大洲，比如 **=AS** 表示亚洲
--   国家代码不需要做任何处理格式，比如 **GB** 表示英国
--   省代码的格式为 *country*.\ *state*\ ，即必须在省代码前加上国家代码才可以，比如 **US.TX** 表示美国 Texas 州
+-   在洲代碼前加上 **=** 號表示某個大洲，比如 **=AS** 表示亞洲
+-   國家代碼不需要做任何處理格式，比如 **GB** 表示英國
+-   省代碼的格式爲 *country*.\ *state*\ ，即必須在省代碼前加上國家代碼纔可以，比如 **US.TX** 表示美國 Texas 州
 
 使用示例
 --------
 
-绘制洲界
+繪製洲界
 ++++++++
 
-绘制主要大洋洲国家的边界：
+繪製主要大洋洲國家的邊界：
 
 .. gmtplot::
    :width: 60%
 
    gmt coast -R100/190/-50/10 -JM12c -Baf -E=OC+p0.25p,red -png dataset_dcw_01
 
-绘制国界
+繪製國界
 ++++++++
 
-绘制澳大利亚边界：
+繪製澳大利亞邊界：
 
 .. gmtplot::
    :width: 60%
 
    gmt coast -JM12c -Baf -EAU+p0.25p,red -png dataset_dcw_02
 
-绘制省/洲界
+繪製省/洲界
 +++++++++++
 
-绘制澳大利亚昆士兰州(Queensland)，并设置边界颜色和填充颜色。其中 **-R** 选项后跟区域代码 **AU.QLD** 可间接指定该区域范围， **+R2** 表示在原有范围外扩大2度:
+繪製澳大利亞昆士蘭州(Queensland)，並設置邊界顏色和填充顏色。其中 **-R** 選項後跟區域代碼 **AU.QLD** 可間接指定該區域範圍， **+R2** 表示在原有範圍外擴大2度:
 
 .. gmtplot::
    :width: 60%
 
    gmt coast -RAU.QLD+R2 -JM12c -Baf -EAU.QLD+p1p,blue+gred -png dataset_dcw_03
 
-导出省/洲界数据
+導出省/洲界數據
 +++++++++++++++
 
-导出昆士兰州的边界数据::
+導出昆士蘭州的邊界數據::
 
     gmt coast -EAU.QLD -M > Queensland.dat
 
-这里只需要使用 **-M** 选项即可。
+這裏只需要使用 **-M** 選項即可。
 

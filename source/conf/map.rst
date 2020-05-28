@@ -1,55 +1,55 @@
-MAP参数
+MAP參數
 =======
 
-边框相关参数
+邊框相關參數
 ------------
 
 .. glossary::
 
     **MAP_FRAME_TYPE**
-        底图边框类型 [fancy]
+        底圖邊框類型 [fancy]
 
-        可选值包括 ``inside|plain|graph|fancy|fancy+``\ 。
-        一般情况下，\ ``fancy`` 边框类型仅适用于投影后的X、Y方向平行于经度纬度方向的
-        情况，比如rectangular投影、polar投影。
-        对于某些投影，只能使用plain底图，即便 **MAP_FRAME_TYPE** 被设置为fancy。
+        可選值包括 ``inside|plain|graph|fancy|fancy+``\ 。
+        一般情況下，\ ``fancy`` 邊框類型僅適用於投影后的X、Y方向平行於經度緯度方向的
+        情況，比如rectangular投影、polar投影。
+        對於某些投影，只能使用plain底圖，即便 **MAP_FRAME_TYPE** 被設置爲fancy。
 
-        下图给出了不同的底图边框类型的效果：
+        下圖給出了不同的底圖邊框類型的效果：
 
         .. gmtplot:: map_frame_type.sh
             :show-code: false
-            :caption: GMT底图边框类型
+            :caption: GMT底圖邊框類型
 
     **MAP_FRAME_PEN**
-        绘制底图类型为plain时边框的画笔属性 [``thicker,black``]
+        繪製底圖類型爲plain時邊框的畫筆屬性 [``thicker,black``]
 
     **MAP_FRAME_WIDTH**
-        设置底图类型为fancy时的边框宽度 [``5p``]
+        設置底圖類型爲fancy時的邊框寬度 [``5p``]
 
     **MAP_FRAME_AXES**
-        要绘制/标注的轴 [``WSENZ``]
+        要繪製/標註的軸 [``WSENZ``]
 
-        默认值为 ``WSENZ``\ ，即2D底图下绘制并标注四条边，可以通过 ``-B`` 选项
-        控制实际绘制的边。详情见 :doc:`/option/B` 选项。
+        默認值爲 ``WSENZ``\ ，即2D底圖下繪製並標註四條邊，可以通過 ``-B`` 選項
+        控制實際繪製的邊。詳情見 :doc:`/option/B` 選項。
 
-标注相关参数
+標註相關參數
 ------------
 
 .. glossary::
 
     **MAP_ANNOT_OFFSET**
-        同时设置 ``MAP_ANNOT_OFFSET_PRIMARY`` 和 ``MAP_ANNOT_OFFSET_SECONDARY`` 的值
+        同時設置 ``MAP_ANNOT_OFFSET_PRIMARY`` 和 ``MAP_ANNOT_OFFSET_SECONDARY`` 的值
 
     **MAP_ANNOT_OFFSET_PRIMARY**
-        一级标注的开始位置与刻度尾端间的距离 [5p]
+        一級標註的開始位置與刻度尾端間的距離 [5p]
 
     **MAP_ANNOT_OFFSET_SECONDARY**
-        二级标注的底部与secondary标注的顶部之间的距离 [5p]
+        二級標註的底部與secondary標註的頂部之間的距離 [5p]
 
     **MAP_DEGREE_SYMBOL**
-        在地图上绘制“度”时所使用的符号 [degree]
+        在地圖上繪製“度”時所使用的符號 [degree]
 
-        可以取 ``ring|degree|colon|none``\ 。下图给出了取不同值时的绘图效果：
+        可以取 ``ring|degree|colon|none``\ 。下圖給出了取不同值時的繪圖效果：
 
         .. gmtplot::
             :show-code: false
@@ -64,9 +64,9 @@ MAP参数
             gmt end
 
     **MAP_ANNOT_ORTHO**
-        控制笛卡尔投影下哪些轴的标注垂直于轴 [``we``]
+        控制笛卡爾投影下哪些軸的標註垂直於軸 [``we``]
 
-        该参数可以将 ``wesnz`` 做任意组合。下图给出了取不同值时的绘图效果：
+        該參數可以將 ``wesnz`` 做任意組合。下圖給出了取不同值時的繪圖效果：
 
         .. gmtplot::
             :show-code: false
@@ -81,96 +81,96 @@ MAP参数
 
         .. note::
 
-           此参数仅对笛卡尔投影有效。对于地理投影，可使用 :term:`MAP_ANNOT_OBLIQUE`\ 。
+           此參數僅對笛卡爾投影有效。對於地理投影，可使用 :term:`MAP_ANNOT_OBLIQUE`\ 。
 
     **MAP_ANNOT_OBLIQUE**
-        控制倾斜投影下标注和刻度线的显示
+        控制傾斜投影下標註和刻度線的顯示
 
-        可以将如下任意几个数字求和的结果作为该参数的值：
+        可以將如下任意幾個數字求和的結果作爲該參數的值：
 
-        - ``1``\ ：当网格线穿过底图边界时添加标注，否则仅在上下边界处标注经度，在
-          左右边界处标注纬度
-        - ``2``\ ：经度标注水平绘制
-        - ``4``\ ：纬度标注水平绘制
-        - ``8``\ ：倾斜的刻度线会扩展使得其长度等于指定刻度线长度
-        - ``16``\ ：忽略网格线与边框的夹角，刻度线总是垂直于底图边框
-        - ``32``\ ：纬度标注平行于底图边框
+        - ``1``\ ：當網格線穿過底圖邊界時添加標註，否則僅在上下邊界處標註經度，在
+          左右邊界處標註緯度
+        - ``2``\ ：經度標註水平繪製
+        - ``4``\ ：緯度標註水平繪製
+        - ``8``\ ：傾斜的刻度線會擴展使得其長度等於指定刻度線長度
+        - ``16``\ ：忽略網格線與邊框的夾角，刻度線總是垂直於底圖邊框
+        - ``32``\ ：緯度標註平行於底圖邊框
 
     **MAP_ANNOT_MIN_ANGLE**
-        对于某些倾斜投影方式而言，如果标注的基线与地图的边界之间的夹角小于该值，
-        则不绘制标注。合理的取值范围为0到90 [20]
+        對於某些傾斜投影方式而言，如果標註的基線與地圖的邊界之間的夾角小於該值，
+        則不繪製標註。合理的取值範圍爲0到90 [20]
 
     **MAP_ANNOT_MIN_SPACING**
-        在某些倾斜投影中，相邻两个标注之间的最小距离，若标注的距离小于该值，则不绘制 [0p]
+        在某些傾斜投影中，相鄰兩個標註之間的最小距離，若標註的距離小於該值，則不繪製 [0p]
 
-标签相关参数
+標籤相關參數
 ------------
 
 .. glossary::
 
     **MAP_LABEL_OFFSET**
-        轴标注底部与轴标签顶部间的距离 [8p]
+        軸標註底部與軸標籤頂部間的距離 [8p]
 
-刻度相关参数
+刻度相關參數
 ------------
 
 .. glossary::
 
     **MAP_TICK_PEN**
-        同时设置 ``MAP_TICK_PEN_PRIMARY`` 和 ``MAP_TICK_PEN_SECONDARY`` 的值
+        同時設置 ``MAP_TICK_PEN_PRIMARY`` 和 ``MAP_TICK_PEN_SECONDARY`` 的值
 
     **MAP_TICK_PEN_PRIMARY**
-        一级刻度的画笔属性 [thinner,black]
+        一級刻度的畫筆屬性 [thinner,black]
 
     **MAP_TICK_PEN_SECONDARY**
-        二级刻度的画笔属性 [thinner,black]
+        二級刻度的畫筆屬性 [thinner,black]
 
     **MAP_TICK_LENGTH**
-        同时设置 ``MAP_TICK_LENGTH_PRIMARY`` 和 ``MAP_TICK_LENGTH_SECONDARY`` 的值
+        同時設置 ``MAP_TICK_LENGTH_PRIMARY`` 和 ``MAP_TICK_LENGTH_SECONDARY`` 的值
 
     **MAP_TICK_LENGTH_PRIMARY**
-        一级刻度的主刻度和次刻度的长度 [5p/2.5p]
+        一級刻度的主刻度和次刻度的長度 [5p/2.5p]
 
-        若只给定一个长度值，则次刻度的长度假定为主刻度的一半
+        若只給定一個長度值，則次刻度的長度假定爲主刻度的一半
 
     **MAP_TICK_LENGTH_SECONDARY**
-        二级刻度的主刻度和次刻度的长度 [15p/3.75p]
+        二級刻度的主刻度和次刻度的長度 [15p/3.75p]
 
-        若只给定一个长度值，则次刻度的长度假定为主刻度的25%
+        若只給定一個長度值，則次刻度的長度假定爲主刻度的25%
 
-网格线相关参数
+網格線相關參數
 --------------
 
 .. glossary::
 
     **MAP_GRID_PEN**
-        同时设置 ``MAP_GRID_PEN_PRIMARY`` 和 ``MAP_GRID_PEN_SECONDARY`` 的值
+        同時設置 ``MAP_GRID_PEN_PRIMARY`` 和 ``MAP_GRID_PEN_SECONDARY`` 的值
 
     **MAP_GRID_PEN_PRIMARY**
-        一级网格线的线条属性 [default,black]
+        一級網格線的線條屬性 [default,black]
 
     **MAP_GRID_PEN_SECONDARY**
-        二级网格线的线条属性 [thinner,black]
+        二級網格線的線條屬性 [thinner,black]
 
     **MAP_GRID_CROSS_SIZE**
-        同时设置 ``MAP_GRID_CROSS_SIZE_PRIMARY`` 和 ``MAP_GRID_CROSS_SIZE_SECONDARY`` 的值
+        同時設置 ``MAP_GRID_CROSS_SIZE_PRIMARY`` 和 ``MAP_GRID_CROSS_SIZE_SECONDARY`` 的值
 
     **MAP_GRID_CROSS_SIZE_PRIMARY**
-        一级网格十字线的大小，0表示绘制连续的网格线 [0p]
+        一級網格十字線的大小，0表示繪製連續的網格線 [0p]
 
     **MAP_GRID_CROSS_SIZE_SECONDARY**
-        二级网格十字线的大小，0表示绘制连续的网格线 [0p]
+        二級網格十字線的大小，0表示繪製連續的網格線 [0p]
 
     **MAP_POLAR_CAP**
-        控制网格线在两极附近的显示 [``85/90``]
+        控制網格線在兩極附近的顯示 [``85/90``]
 
-        若取值为 ``none``\ ，则表示不对极点附近的网格线做特殊处理。
-        否则可以按 ``<lat>/<dlon>`` 格式取值，表示在 ``-<lat>`` 到 ``+<lat>`` 纬度
-        范围内正常绘制网格线；在大于 ``+<lat>`` 和小于 ``-<lat>`` 纬度区域内，则
-        按照 ``<dlon>`` 指定的经线间隔绘制网格线。GMT会在 ``<lat>`` 纬度处绘制一个
-        圈圈以分隔这两个纬度区间。
+        若取值爲 ``none``\ ，則表示不對極點附近的網格線做特殊處理。
+        否則可以按 ``<lat>/<dlon>`` 格式取值，表示在 ``-<lat>`` 到 ``+<lat>`` 緯度
+        範圍內正常繪製網格線；在大於 ``+<lat>`` 和小於 ``-<lat>`` 緯度區域內，則
+        按照 ``<dlon>`` 指定的經線間隔繪製網格線。GMT會在 ``<lat>`` 緯度處繪製一個
+        圈圈以分隔這兩個緯度區間。
 
-        下图展示了该参数取不同值时的绘图效果：
+        下圖展示了該參數取不同值時的繪圖效果：
 
         .. gmtplot::
             :show-code: false
@@ -184,55 +184,55 @@ MAP参数
             gmt subplot end
             gmt end
 
-标题相关参数
+標題相關參數
 ------------
 
 .. glossary::
 
     **MAP_TITLE_OFFSET**
-        图标题的底部与轴标注（或轴标签）的顶部之间的距离 [14p]
+        圖標題的底部與軸標註（或軸標籤）的頂部之間的距離 [14p]
 
     **MAP_HEADING_OFFSET**
-        子图标题的顶部与图总标题的底部之间的距离 [18p]
+        子圖標題的頂部與圖總標題的底部之間的距離 [18p]
 
-其它参数
+其它參數
 --------
 
 .. glossary::
 
     **MAP_DEFAULT_PEN**
-        设置所有与 ``-W`` 选项相关的画笔属性的默认值 [``default,pen``]
+        設置所有與 ``-W`` 選項相關的畫筆屬性的默認值 [``default,pen``]
 
-        在参数值的前面加上 ``+`` 可以覆盖其他PEN相关参数中的颜色。
+        在參數值的前面加上 ``+`` 可以覆蓋其他PEN相關參數中的顏色。
 
     **MAP_ORIGIN_X**
-        新绘图在纸张上的原点的X坐标（仅适用于GMT经典模式）[72p]
+        新繪圖在紙張上的原點的X座標（僅適用於GMT經典模式）[72p]
 
     **MAP_ORIGIN_Y**
-        设置新绘图在纸张上的原点的Y坐标（仅适用于GMT经典模式）[72p]
+        設置新繪圖在紙張上的原點的Y座標（僅適用於GMT經典模式）[72p]
 
     **MAP_LOGO**
-        是否在左下角绘制GMT时间戳 [``false``]
+        是否在左下角繪製GMT時間戳 [``false``]
 
-        可以取 ``true|false``\ ，等效于在命令行中使用 :doc:`/option/U`
+        可以取 ``true|false``\ ，等效於在命令行中使用 :doc:`/option/U`
 
     **MAP_LOGO_POS**
-        GMT时间戳相对于当前绘图原点的对齐方式与位置 [``BL/-54p/-54p``]
+        GMT時間戳相對於當前繪圖原點的對齊方式與位置 [``BL/-54p/-54p``]
 
     **MAP_SCALE_HEIGHT**
-        地图比例尺的高度 [5p]
+        地圖比例尺的高度 [5p]
 
     **MAP_LINE_STEP**
-        绘制线段时所使用的最大步长 [0.75p]
+        繪製線段時所使用的最大步長 [0.75p]
 
-        地理投影下，两点之间会用大圆路径连接，因而GMT需要先计算大圆路径上的其他
-        中间点的坐标，并将这些点用直线连起来。若该步长太大，会导致大圆路径看上去很不光滑。
+        地理投影下，兩點之間會用大圓路徑連接，因而GMT需要先計算大圓路徑上的其他
+        中間點的座標，並將這些點用直線連起來。若該步長太大，會導致大圓路徑看上去很不光滑。
 
     **MAP_VECTOR_SHAPE**
-        矢量箭头的形状 [0]
+        矢量箭頭的形狀 [0]
 
-        可以取-2到2之间的任意实数。
-        下面展示了取-2、-1、0、1和2时的矢量箭头的形状：
+        可以取-2到2之間的任意實數。
+        下面展示了取-2、-1、0、1和2時的矢量箭頭的形狀：
 
         .. gmtplot::
             :show-code: false

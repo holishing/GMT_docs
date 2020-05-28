@@ -1,21 +1,21 @@
 msgid "Edit on GitHub"
-msgstr "编辑本页"
+msgstr "編輯本頁"
 
 msgid "Docs"
-msgstr "首页"
+msgstr "首頁"
 
 msgid "Previous"
-msgstr "上页"
+msgstr "上頁"
 
 msgid "Next"
-msgstr "下页"
+msgstr "下頁"
 
 msgid "Search docs"
-msgstr "搜索文档"
+msgstr "搜索文檔"
 
 msgid "Search"
 msgstr "搜索"
 
 msgid "Search Results"
-msgstr "搜索结果"
+msgstr "搜索結果"
 

@@ -1,51 +1,51 @@
 GMT4 → GMT5
 ===========
 
-GMT5相对于GMT4有很多功能上的更新以及语法上的改进。最大的变化在于，GMT5中所有GMT命令
-必须以 **gmt** 开头。
+GMT5相對於GMT4有很多功能上的更新以及語法上的改進。最大的變化在於，GMT5中所有GMT命令
+必須以 **gmt** 開頭。
 
-GMT4中使用 **psbasemap** 命令绘制底图、使用 **pscoast** 绘制海岸线。
-**psbasemap** 和 **pscoast** 都是GMT4提供的命令，每个命令均对应一个可执行文件。
-GMT4总共提供了上百个命令，这带来一个命名空间污染（namespace pollution）的问题。
-即不同的软件提供了相同名字的命令，导致不同命令之间出现冲突，使得用户难以确认
-自己执行的 **pscoast** 命令是由GMT提供的还是其它软件包提供的。
+GMT4中使用 **psbasemap** 命令繪製底圖、使用 **pscoast** 繪製海岸線。
+**psbasemap** 和 **pscoast** 都是GMT4提供的命令，每個命令均對應一個可執行文件。
+GMT4總共提供了上百個命令，這帶來一個命名空間污染（namespace pollution）的問題。
+即不同的軟件提供了相同名字的命令，導致不同命令之間出現衝突，使得用戶難以確認
+自己執行的 **pscoast** 命令是由GMT提供的還是其它軟件包提供的。
 
-为了解决这个问题，GMT5对源码做了大量改写。GMT5中只提供 **gmt** 这一个命令/可执行文件。
-GMT4中的所有\ **命令**\ 在GMT5中都变成了 **gmt** 命令的\ **模块**\ 。
-所有模块都以 **gmt** *module* *options* 的形式进行调用。
-例如，GMT4中的命令 **psbasemap** 在GMT5中应写为 **gmt psbasemap**\ 。
+爲了解決這個問題，GMT5對源碼做了大量改寫。GMT5中只提供 **gmt** 這一個命令/可執行文件。
+GMT4中的所有\ **命令**\ 在GMT5中都變成了 **gmt** 命令的\ **模塊**\ 。
+所有模塊都以 **gmt** *module* *options* 的形式進行調用。
+例如，GMT4中的命令 **psbasemap** 在GMT5中應寫爲 **gmt psbasemap**\ 。
 
-因而，将GMT4脚本迁移到GMT5下，只需要遵循如下步骤：
+因而，將GMT4腳本遷移到GMT5下，只需要遵循如下步驟：
 
-#.  将所有GMT4命令前加上 **gmt**\ ，即 **psbasemap** 改成 **gmt psbasemap**
-#.  保存并执行脚本。若出现报错，则找到最早的报错信息并查询当前GMT版本对应的文档，
-    检查是否语法存在变化，并进一步更正。
+#.  將所有GMT4命令前加上 **gmt**\ ，即 **psbasemap** 改成 **gmt psbasemap**
+#.  保存並執行腳本。若出現報錯，則找到最早的報錯信息並查詢當前GMT版本對應的文檔，
+    檢查是否語法存在變化，並進一步更正。
 
-GMT提供了脚本 **gmt5syntax**\ ，可以自动在GMT4命令前加上 **gmt**\ ，该脚本位于
-GMT的 :file:`share/tools` 目录下。该脚本的使用方法也很简单::
+GMT提供了腳本 **gmt5syntax**\ ，可以自動在GMT4命令前加上 **gmt**\ ，該腳本位於
+GMT的 :file:`share/tools` 目錄下。該腳本的使用方法也很簡單::
 
     gmt5syntax old_script.sh > new_script.sh
 
-如果不愿意修改原脚本，GMT还为旧命令提供了软链接，使得依然可以直接使用 **psbasemap** 等命令，
-但极其不推荐这一方法。为旧命令生成软链接有多种方法，用户可任选其一即可：
+如果不願意修改原腳本，GMT還爲舊命令提供了軟鏈接，使得依然可以直接使用 **psbasemap** 等命令，
+但極其不推薦這一方法。爲舊命令生成軟鏈接有多種方法，用戶可任選其一即可：
 
-#.  如果你是自行编译GMT源码并安装，则可以在 :file:`cmake/ConfigUser.cmake` 中加上
-    ``set (GMT_INSTALL_MODULE_LINKS TRUE)`` 再进行编译安装
+#.  如果你是自行編譯GMT源碼並安裝，則可以在 :file:`cmake/ConfigUser.cmake` 中加上
+    ``set (GMT_INSTALL_MODULE_LINKS TRUE)`` 再進行編譯安裝
 
-#.  对于已经安装GMT的用户，可以执行::
+#.  對於已經安裝GMT的用戶，可以執行::
 
         $(gmt --show-sharedir)/tools/gmt_links.sh create
 
-    该脚本会自动为所有旧命令创建软链接。
+    該腳本會自動爲所有舊命令創建軟鏈接。
 
-#.  对于Bash用户，可以直接在Bash脚本、终端或者Bash配置文件中加入如下语句::
+#.  對於Bash用戶，可以直接在Bash腳本、終端或者Bash配置文件中加入如下語句::
 
         source $(gmt --show-sharedir)/tools/gmt_functions.sh
 
-    该脚本会为所有旧命令构建一个等效的bash函数。
+    該腳本會爲所有舊命令構建一個等效的bash函數。
 
-#.  对于csh用户，可以直接在csh脚本、终端或者csh配置文件中加入如下语句::
+#.  對於csh用戶，可以直接在csh腳本、終端或者csh配置文件中加入如下語句::
 
         source `gmt --show-sharedir`/tools/gmt_aliases.csh
 
-    该脚本会为所有旧命令构建一个等效的csh别名。
+    該腳本會爲所有舊命令構建一個等效的csh別名。

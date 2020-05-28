@@ -1,132 +1,132 @@
-Linux 下安装 GMT
+Linux 下安裝 GMT
 ================
 
-尽管大多数Linux发行版都提供了GMT二进制包，可以直接通过软件包管理器 **apt-get**
-或 **yum** 安装，但发行版提供的GMT版本都很老，不建议使用。
+儘管大多數Linux發行版都提供了GMT二進制包，可以直接通過軟件包管理器 **apt-get**
+或 **yum** 安裝，但發行版提供的GMT版本都很老，不建議使用。
 
-针对Fedora/RHEL/CentOS用户，GMT的官方RPM仓库提供了最新版本的GMT。
+針對Fedora/RHEL/CentOS用戶，GMT的官方RPM倉庫提供了最新版本的GMT。
 
 Fedora
 ------
 
-**Fedora 30** 及之后版本的用户，可以启用
-`GMT官方RPM仓库 <https://copr.fedorainfracloud.org/coprs/genericmappingtools/gmt/>`__
-以安装GMT最新版本::
+**Fedora 30** 及之後版本的用戶，可以啓用
+`GMT官方RPM倉庫 <https://copr.fedorainfracloud.org/coprs/genericmappingtools/gmt/>`__
+以安裝GMT最新版本::
 
-    # 启用GMT官方RPM仓库
+    # 啓用GMT官方RPM倉庫
     dnf copr enable genericmappingtools/gmt
 
-    # 安装最新版GMT
+    # 安裝最新版GMT
     dnf install gmt
 
-    # 当有新版本发布时可直接更新
+    # 當有新版本發佈時可直接更新
     dnf update gmt
 
-除此之外，还可以安装如下可选包以使用GMT的更多功能::
+除此之外，還可以安裝如下可選包以使用GMT的更多功能::
 
-    # 地理数据格式转换工具
+    # 地理數據格式轉換工具
     dnf install gdal
 
-    # 制作GIF格式动画需要GraphicsMagick
+    # 製作GIF格式動畫需要GraphicsMagick
     dnf install GraphicsMagick
 
-    # 制作MP4、WebM格式动画需要ffmpeg
+    # 製作MP4、WebM格式動畫需要ffmpeg
     dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-`rpm -E %fedora`.noarch.rpm
     dnf install ffmpeg
 
 .. note::
 
-    如果你已经安装了Fedora系统仓库提供的GMT软件包，你必须在使用GMT官方仓库
-    前卸载旧的GMT安装包。使用如下命令::
+    如果你已經安裝了Fedora系統倉庫提供的GMT軟件包，你必須在使用GMT官方倉庫
+    前卸載舊的GMT安裝包。使用如下命令::
 
         dnf remove GMT dcw-gmt gshhg-gmt-nc4 gshhg-gmt-nc4-full gshhg-gmt-nc4-high
 
 RHEL/CentOS
 -----------
 
-**RHEL/CentOS 6/7/8** 用户可以启用
-`GMT官方RPM仓库 <https://copr.fedorainfracloud.org/coprs/genericmappingtools/gmt/>`__
-以安装GMT最新版本。
+**RHEL/CentOS 6/7/8** 用戶可以啓用
+`GMT官方RPM倉庫 <https://copr.fedorainfracloud.org/coprs/genericmappingtools/gmt/>`__
+以安裝GMT最新版本。
 
 .. note::
 
-    CentOS 8 中的 GMT 目前不支持 GDAL 相关功能。
+    CentOS 8 中的 GMT 目前不支持 GDAL 相關功能。
 
-安装方式如下::
+安裝方式如下::
 
-    # 安装 epel-release
+    # 安裝 epel-release
     yum install epel-release
 
-    # 启用GMT官方仓库 (仅限于RHEL/CentOS 7/8 用户)
+    # 啓用GMT官方倉庫 (僅限於RHEL/CentOS 7/8 用戶)
     yum install yum-plugin-copr
     yum copr enable genericmappingtools/gmt
 
-    # 启用GMT官方仓库 (仅限于RHEL/CentOS 6 用户)
+    # 啓用GMT官方倉庫 (僅限於RHEL/CentOS 6 用戶)
     wget https://copr.fedorainfracloud.org/coprs/genericmappingtools/gmt/repo/epel-6/genericmappingtools-gmt-epel-6.repo -O /etc/yum.repos.d/genericmappingtools-gmt-epel-6.repo
 
-    # 安装最新版GMT
+    # 安裝最新版GMT
     yum install gmt
 
-    # 当有新版本发布时可直接更新
+    # 當有新版本發佈時可直接更新
     yum update gmt
 
-除此之外，还可以安装如下可选包以使用GMT的更多功能::
+除此之外，還可以安裝如下可選包以使用GMT的更多功能::
 
-    # 地理数据格式转换工具
+    # 地理數據格式轉換工具
     yum install gdal
 
-    # 制作GIF格式动画需要GraphicsMagick
+    # 製作GIF格式動畫需要GraphicsMagick
     yum install GraphicsMagick
 
-    # 制作MP4、WebM格式动画需要ffmpeg
+    # 製作MP4、WebM格式動畫需要ffmpeg
     yum localinstall --nogpgcheck https://download1.rpmfusion.org/free/el/rpmfusion-free-release-`rpm -E %rhel`.noarch.rpm
     yum install ffmpeg
 
 .. note::
 
-    如果你已经安装了EPEL仓库提供的GMT软件包，你必须在使用GMT官方仓库
-    前卸载旧的GMT安装包。使用如下命令::
+    如果你已經安裝了EPEL倉庫提供的GMT軟件包，你必須在使用GMT官方倉庫
+    前卸載舊的GMT安裝包。使用如下命令::
 
         yum remove GMT dcw-gmt gshhg-gmt-nc4 gshhg-gmt-nc4-full gshhg-gmt-nc4-high
 
-Ubuntu/Debian用户
+Ubuntu/Debian用戶
 -----------------
 
-Ubuntu/Debian官方源中提供的GMT版本较老，不建议安装使用。
-目前Ubuntu/Debian用户只能通过编译源码的方式安装GMT最新版，
-具体编译方法见 :doc:`build-source`\ 。
+Ubuntu/Debian官方源中提供的GMT版本較老，不建議安裝使用。
+目前Ubuntu/Debian用戶只能通過編譯源碼的方式安裝GMT最新版，
+具體編譯方法見 :doc:`build-source`\ 。
 
-如果不介意使用老版本的GMT5，可以通过如下方式安装。
-但注意，本手册中的所有脚本无法在GMT5下运行。
+如果不介意使用老版本的GMT5，可以通過如下方式安裝。
+但注意，本手冊中的所有腳本無法在GMT5下運行。
 
-安装方式为::
+安裝方式爲::
 
     sudo apt-get install gmt gmt-dcw gmt-gshhg
     sudo apt-get install ghostscript gdal-bin
 
-ArchLinux用户
+ArchLinux用戶
 -------------
 
-ArchLinux用户可以使用AUR提供的非官方源，使用方法为::
+ArchLinux用戶可以使用AUR提供的非官方源，使用方法爲::
 
-    # 完整更新系统包
+    # 完整更新系統包
     sudo pacman -Syu
 
-    # 安装构建AUR包所需要的工具
+    # 安裝構建AUR包所需要的工具
     sudo pacman -S base-devel
 
-    # 下载 AUR 提供的 gmt 构建代码
+    # 下載 AUR 提供的 gmt 構建代碼
     git clone https://aur.archlinux.org/gmt.git
 
-    # 下载 AUR 提供的其它 gmt 相关包
+    # 下載 AUR 提供的其它 gmt 相關包
     git clone https://aur.archlinux.org/gmt-coast.git
     git clone https://aur.archlinux.org/gmt-cpt-city.git
     git clone https://aur.archlinux.org/gmt-dcw.git
 
-    # 使用 makepkg 构建并使用 pacman 安装 gmt
+    # 使用 makepkg 構建並使用 pacman 安裝 gmt
     cd gmt
     makepkg -sc
     sudo pacman -U *.pkg.tar.xz
 
 注意：\ `ArchlinuxCN repo <https://www.archlinuxcn.org/archlinux-cn-repo-and-mirror>`_
-尚未提供GMT的二进制包。
+尚未提供GMT的二進制包。

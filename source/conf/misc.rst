@@ -1,131 +1,131 @@
-其他参数
+其他參數
 ========
 
-本节介绍GMT中的其他参数，参数的默认值在中括号内列出。
+本節介紹GMT中的其他參數，參數的默認值在中括號內列出。
 
-数据下载相关参数
+數據下載相關參數
 ----------------
 
 .. glossary::
 
     **GMT_AUTO_DOWNLOAD**
-        是否允许GMT自动从GMT服务器（由 :term`GMT_DATA_SERVER` 控制）下载数据文件到
-        缓存目录，可以取 **on** 或者 **off** [``on``]
+        是否允許GMT自動從GMT服務器（由 :term`GMT_DATA_SERVER` 控制）下載數據文件到
+        緩存目錄，可以取 **on** 或者 **off** [``on``]
 
     **GMT_DATA_SERVER**
-        GMT数据服务器地址，默认使用SOEST官方镜像 [https://oceania.generic-mapping-tools.org/]
+        GMT數據服務器地址，默認使用SOEST官方鏡像 [https://oceania.generic-mapping-tools.org/]
 
     **GMT_DATA_SERVER_LIMIT**
-        从GMT服务器上下载的单个文件的大小上限，默认无限制。
-        可以给定文件大小上限的字节数，也可以加上 ``k``\ 、\ ``m``\ 或 ``g`` 表示
+        從GMT服務器上下載的單個文件的大小上限，默認無限制。
+        可以給定文件大小上限的字節數，也可以加上 ``k``\ 、\ ``m``\ 或 ``g`` 表示
         KB、MB 或 GB。
 
-算法选择相关参数
+算法選擇相關參數
 ----------------
 
 .. glossary::
 
     **GMT_TRIANGULATE**
-        设置 :doc:`gmt:triangulate` 模块中算法代码的来源 [Watson]
+        設置 :doc:`gmt:triangulate` 模塊中算法代碼的來源 [Watson]
 
-        :doc:`gmt:triangulate` 模块的核心源码有两个版本，
+        :doc:`gmt:triangulate` 模塊的核心源碼有兩個版本，
         ``Watson`` 的版本遵循GPL，\ ``Shewchuk`` 的版本不遵循GPL。
-        该选项用于控制要使用哪个版本，\ ``Shewchuk`` 版本拥有更多功能。
+        該選項用於控制要使用哪個版本，\ ``Shewchuk`` 版本擁有更多功能。
 
     **GMT_FFT**
         要使用的FFT算法 [auto]
 
         可以取：
 
-        #. ``auto``\ ：自动选择合适的算法
+        #. ``auto``\ ：自動選擇合適的算法
         #. ``fftw[,planner]``\ ：FFTW算法，其中 ``planner`` 可以取 ``measure|patient|exhaustive``
         #. ``accelerate`` OS X下使用Accelerate Framework
         #. ``kiss``\ ：kiss FFT
         #. ``brenner``\ ：Brenner Legacy FFT
 
     **GMT_INTERPOLANT**
-        程序中一维插值所使用的算法 [``akima``]
+        程序中一維插值所使用的算法 [``akima``]
 
-        #. ``linear``\ ：线性插值
+        #. ``linear``\ ：線性插值
         #. ``akima``\ ：akima's spline
         #. ``cubic``\ ：natural cubic spline
         #. ``none``\ ：不插值
 
     **GMT_EXTRAPOLATE_VAL**
-        外插时超过数据区时如何处理 [NaN]
+        外插時超過數據區時如何處理 [NaN]
 
-        可选值包括：
+        可選值包括：
 
-        #. ``NaN``\ ：区域范围外的值一律为NaN
-        #. ``extrap``\ ： 使用外插算法计算的区域外的值
-        #. ``extrapval,val``\ ：设置区域外的值为 ``val``
+        #. ``NaN``\ ：區域範圍外的值一律爲NaN
+        #. ``extrap``\ ： 使用外插算法計算的區域外的值
+        #. ``extrapval,val``\ ：設置區域外的值爲 ``val``
 
-其他参数
+其他參數
 --------
 
 .. glossary::
 
     **GMT_EXPORT_TYPE**
-        控制表数据的数据类型，仅被外部接口使用 [``double``]
+        控制表數據的數據類型，僅被外部接口使用 [``double``]
 
         可以取 ``double``\ 、\ ``single``\ 、\ ``[u]long``\ 、\ ``[u]int``\ 、
         ``[u]short``\ 、\ ``[u]char``\ 。
 
     **GMT_CUSTOM_LIBS**
-        要链接的自定义GMT库文件，默认值为空
+        要鏈接的自定義GMT庫文件，默認值爲空
 
-        GMT支持自定义模块。用户可以写一个GMT模块，并将其编译成动态函数库。通过设置
-        该参数告知GMT该函数库的位置，即可通过 ``gmt xxx`` 的语法调用自定义模块，以
-        实现扩充GMT功能的目的。
+        GMT支持自定義模塊。用戶可以寫一個GMT模塊，並將其編譯成動態函數庫。通過設置
+        該參數告知GMT該函數庫的位置，即可通過 ``gmt xxx`` 的語法調用自定義模塊，以
+        實現擴充GMT功能的目的。
 
-        该参数用于指定自定义动态库函数的路径，多个路径之间用逗号分隔。
-        路径可以是共享库文件的绝对路径，也可以是其所在的目录。若路径是一个目录名，
-        该目录必须需斜杠或反斜杠结尾，表明使用该目录下的全部共享库文件。
-        在Windows下，若目录名是 ``/``\ ，则表示在GMT的bin目录下的 ``gmt_plugins``
-        子目录下寻找库文件。
+        該參數用於指定自定義動態庫函數的路徑，多個路徑之間用逗號分隔。
+        路徑可以是共享庫文件的絕對路徑，也可以是其所在的目錄。若路徑是一個目錄名，
+        該目錄必須需斜槓或反斜槓結尾，表明使用該目錄下的全部共享庫文件。
+        在Windows下，若目錄名是 ``/``\ ，則表示在GMT的bin目錄下的 ``gmt_plugins``
+        子目錄下尋找庫文件。
 
     **GMT_LANGUAGE**
-        设置GMT绘图时使用的语言 [``us``]
+        設置GMT繪圖時使用的語言 [``us``]
 
-        不同的语言中，月份、星期几、东西南北的表达方法是不同的。
-        该参数用于设置GMT绘图时所使用的语言。GMT支持多种语言，各语言的定义文件
-        位于GMT安装目录中 ``share/localization`` 目录下的文件。
+        不同的語言中，月份、星期幾、東西南北的表達方法是不同的。
+        該參數用於設置GMT繪圖時所使用的語言。GMT支持多種語言，各語言的定義文件
+        位於GMT安裝目錄中 ``share/localization`` 目錄下的文件。
 
-        此处仅列举几个常见语言如下：
+        此處僅列舉幾個常見語言如下：
 
-        - ``cn1``\ 简体中文
-        - ``cn2``\ 繁体中文
-        - ``uk``\ 英式英语
-        - ``us``\ 美式英语
-        - ``jp``\ 日语
-        - ``kr``\ 韩语
+        - ``cn1``\ 簡體中文
+        - ``cn2``\ 繁體中文
+        - ``uk``\ 英式英語
+        - ``us``\ 美式英語
+        - ``jp``\ 日語
+        - ``kr``\ 韓語
         - ...
 
-        实际使用时，除了需要修改该参数外，可能还需要修改相应的字符编码和字体。
+        實際使用時，除了需要修改該參數外，可能還需要修改相應的字符編碼和字體。
 
-        若设置语言为 ``cn1`` 即简体中文并正确设置中文字体，则GMT在绘制时可以显式
-        “一月”、“星期一”、“周一”等中文。相关示例见
+        若設置語言爲 ``cn1`` 即簡體中文並正確設置中文字體，則GMT在繪製時可以顯式
+        “一月”、“星期一”、“週一”等中文。相關示例見
         :doc:`/chinese/showcase`\ 。
 
     **GMT_COMPATIBILITY**
-        是否开启兼容模式 [4]
+        是否開啓兼容模式 [4]
 
-        - 若值为4，表示兼容GMT4语法并给出警告
-        - 若值为5，则表示不兼容GMT4语法，严格遵守GMT5语法，遇到GMT4语法时直接报错
+        - 若值爲4，表示兼容GMT4語法並給出警告
+        - 若值爲5，則表示不兼容GMT4語法，嚴格遵守GMT5語法，遇到GMT4語法時直接報錯
 
     **GMT_VERBOSE**
-        控制GMT命令的verbose级别 [``c``]
+        控制GMT命令的verbose級別 [``c``]
 
-        可选值包括 ``quiet``\ 、\ ``normal``\ 、\ ``compat``\ 、\ ``verbose``\ 、
+        可選值包括 ``quiet``\ 、\ ``normal``\ 、\ ``compat``\ 、\ ``verbose``\ 、
         ``long``\ 、\ ``debug``\ 。
-        也可以直接使用每个级别的第一个字母。每个级别的具体含义见 :doc:`/option/V` 一节。
+        也可以直接使用每個級別的第一個字母。每個級別的具體含義見 :doc:`/option/V` 一節。
 
     **GMT_HISTORY**
-        GMT历史文件 ``gmt.history`` 的处理方式 [true]
+        GMT歷史文件 ``gmt.history`` 的處理方式 [true]
 
-        - ``true`` 可以读写
-        - ``readonly`` 只能读不能写
-        - ``false`` 不显示历史文件
+        - ``true`` 可以讀寫
+        - ``readonly`` 只能讀不能寫
+        - ``false`` 不顯示歷史文件
 
     **GMT_GRAPHICS_FORMAT**
-        现代模式下默认的图片文件格式 [pdf]
+        現代模式下默認的圖片文件格式 [pdf]

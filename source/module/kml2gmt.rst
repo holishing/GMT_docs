@@ -4,18 +4,18 @@
 kml2gmt
 =======
 
-:官方文档: :doc:`gmt:kml2gmt`
-:简介: 将Google Earth的KML文件转换为GMT表数据
+:官方文檔: :doc:`gmt:kml2gmt`
+:簡介: 將Google Earth的KML文件轉換爲GMT表數據
 
-**kml2gmt** 模块读取 Google Earth KML 文件，并输出GMT可识别的表数据。
-仅支持包含点、线或多边形的KML文件。
+**kml2gmt** 模塊讀取 Google Earth KML 文件，並輸出GMT可識別的表數據。
+僅支持包含點、線或多邊形的KML文件。
 
 .. note::
 
-   KMZ 文件本质上是一个 ZIP 压缩包，其中包含了一个 KML 文件以及若干个辅助文件。
-   可以将 KMZ 文件解压得到 KML 文件，再使用该模块进行转换。
+   KMZ 文件本質上是一個 ZIP 壓縮包，其中包含了一個 KML 文件以及若干個輔助文件。
+   可以將 KMZ 文件解壓得到 KML 文件，再使用該模塊進行轉換。
 
-语法
+語法
 ----
 
 **gmt kml2gmt** [ *kmlfiles* ]
@@ -28,36 +28,36 @@ kml2gmt
 [ |SYN_OPT-:| ]
 [ |SYN_OPT--| ]
 
-必选选项
+必選選項
 --------
 
 *kmlfiles*
-    要转换的KML文件
+    要轉換的KML文件
 
-可选选项
+可選選項
 --------
 
 .. _-E:
 
 **-E**
-    从 *ExtendData* 属性中获取高程信息，且忽略 *z* 坐标。
+    從 *ExtendData* 屬性中獲取高程信息，且忽略 *z* 座標。
 
-    KML提供了多种机制来通过 *ExtendData* 储存信息，但GMT只是想了
-    *<SimpleData name="string">* 一种。该选项会自动启动 **-Z** 选项。
+    KML提供了多種機制來通過 *ExtendData* 儲存信息，但GMT只是想了
+    *<SimpleData name="string">* 一種。該選項會自動啓動 **-Z** 選項。
 
 .. _-F:
 
 **-F**\ **s**\|\ **l**\|\ **p**
-    指定要输出的数据类型。默认会输出KML中包含的所有点、线或多边形
+    指定要輸出的數據類型。默認會輸出KML中包含的所有點、線或多邊形
 
-    - **-Fs** 只输出点
-    - **-Fl** 只输出线
-    - **-Fp** 只输出多边形
+    - **-Fs** 只輸出點
+    - **-Fl** 只輸出線
+    - **-Fp** 只輸出多邊形
 
 .. _-Z:
 
 **-Z**
-    默认只输出经纬度信息，若使用该选项，则输出坐标的高程信息作为GMT的Z值
+    默認只輸出經緯度信息，若使用該選項，則輸出座標的高程信息作爲GMT的Z值
 
 .. include:: explain_-V.rst_
 
@@ -72,20 +72,20 @@ kml2gmt
 示例
 ----
 
-从 KML 文件中提取所有经纬度信息::
+從 KML 文件中提取所有經緯度信息::
 
     gmt kml2gmt google.kml -V > google.txt
 
-从一个KML文件中分别提取点和多边形到不同的文件::
+從一個KML文件中分別提取點和多邊形到不同的文件::
 
     gmt kml2gmt google.kml -Fp -V > polygons.txt
     gmt kml2gmt google.kml -Fs -V > points.txt
 
-也可直接用GDAL提供的命令 **ogr2ogr** 实现转换::
+也可直接用GDAL提供的命令 **ogr2ogr** 實現轉換::
 
     ogr2ogr -f "GMT" somefile.gmt somefile.kml
 
-相关模块
+相關模塊
 --------
 
 :doc:`gmt:supplements/img/img2google`,
