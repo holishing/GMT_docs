@@ -1,9 +1,13 @@
 # GMT中文手冊
 
+本文件是由[GMT 中文社區](https://gmt-china.org)維護, 此分支僅測試使用 [OpenCC](https://github.com/BYVoid/OpenCC.git) 工具轉換, 諸多用語尚未檢視與修正, 請見諒！
+
+---
+
 [![Build Status](https://travis-ci.org/gmt-china/GMT_docs.svg?branch=master)](https://travis-ci.org/gmt-china/GMT_docs)
 [![Documentation version](https://img.shields.io/badge/版本-v6.0-blue.svg)](https://docs.gmt-china.org/6.0/)
 
-[在線閱讀](https://docs.gmt-china.org/6.0/) |
+[線上閱讀](https://docs.gmt-china.org/6.0/) |
 [PDF下載](https://docs.gmt-china.org/6.0/GMT_docs.pdf) |
 [文件源碼](https://github.com/gmt-china/GMT_Docs) |
 [GMT中文社區](https://gmt-china.org) |
