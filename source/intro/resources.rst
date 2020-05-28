@@ -29,6 +29,6 @@
 
 **論壇/討論組**
 
-#. 地學GMT中文社區QQ羣：1羣（218905582，已滿）；2羣（791856541）
+#. 地學GMT中文社區QQ群：1群（218905582，已滿）；2群（791856541）
 #. `GMT官方論壇 <https://forum.generic-mapping-tools.org/>`_
 #. `GMT Gitter 聊天室 <https://gitter.im/GenericMappingTools>`_
