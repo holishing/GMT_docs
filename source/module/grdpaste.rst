@@ -4,7 +4,7 @@
 grdpaste
 ========
 
-:官方文檔: :doc:`gmt:grdpaste`
+:官方文件: :doc:`gmt:grdpaste`
 :簡介: 將兩個網格文件沿着其共同邊界拼接成一個文件
 
 **grdpaste** 用於將兩個網格文件沿着共同的邊界拼接爲一個網格文件。

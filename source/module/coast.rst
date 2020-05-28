@@ -4,7 +4,7 @@
 coast
 =====
 
-:官方文檔: :doc:`gmt:coast`
+:官方文件: :doc:`gmt:coast`
 :簡介: 在地圖上繪製海岸線、河流、國界線
 
 **coast** 模塊利用 GMT 自帶的 :doc:`GSHHG數據</dataset/gshhg>` 和

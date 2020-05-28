@@ -4,7 +4,7 @@
 kml2gmt
 =======
 
-:官方文檔: :doc:`gmt:kml2gmt`
+:官方文件: :doc:`gmt:kml2gmt`
 :簡介: 將Google Earth的KML文件轉換爲GMT表數據
 
 **kml2gmt** 模塊讀取 Google Earth KML 文件，並輸出GMT可識別的表數據。

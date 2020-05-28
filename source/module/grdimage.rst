@@ -4,7 +4,7 @@
 grdimage
 ==========
 
-:官方文檔: :doc:`gmt:grdimage`
+:官方文件: :doc:`gmt:grdimage`
 :簡介: 繪製網格數據
 
 語法
@@ -56,7 +56,7 @@ grdimage
     若GMT支持GDAL，則可以以更多的光柵格式保存。
 
     #. ``<out_img>`` 爲要保存的文件名
-    #. ``<driver>`` 圖片格式，見GDAL的文檔
+    #. ``<driver>`` 圖片格式，見GDAL的文件
 
 .. include:: explain_-B.rst_
 
@@ -72,7 +72,7 @@ grdimage
 .. _-D:
 
 **-D**\ [**r**]
-    表明輸入的網格文件是需要通過GDAL讀取的圖片文件，見官方文檔。
+    表明輸入的網格文件是需要通過GDAL讀取的圖片文件，見官方文件。
 
 ``-E[i|<dpi>]``
     設置投影后網格的精度，默認值爲100。

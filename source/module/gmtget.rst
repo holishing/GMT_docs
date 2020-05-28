@@ -4,7 +4,7 @@
 gmtget
 ======
 
-:官方文檔: :doc:`gmt:gmtget`
+:官方文件: :doc:`gmt:gmtget`
 :簡介: 列出單個或多個GMT配置參數的當前值
 
 語法

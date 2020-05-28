@@ -4,7 +4,7 @@
 mapproject
 ==========
 
-:官方文檔: :doc:`gmt:mapproject`
+:官方文件: :doc:`gmt:mapproject`
 :簡介: 地圖投影正變換及逆變換
 :譯文作者: `@cugliming <https://github.com/cugliming/>`_
 

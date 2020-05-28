@@ -4,7 +4,7 @@
 sac
 ===
 
-:官方文檔: :doc:`gmt:supplements/seis/sac`
+:官方文件: :doc:`gmt:supplements/seis/sac`
 :簡介: 繪製 SAC 格式的地震波形數據
 
 **sac** 模塊可以讀取SAC文件並繪製波形數據。

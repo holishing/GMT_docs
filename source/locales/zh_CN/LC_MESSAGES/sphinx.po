@@ -11,7 +11,7 @@ msgid "Next"
 msgstr "下頁"
 
 msgid "Search docs"
-msgstr "搜索文檔"
+msgstr "搜索文件"
 
 msgid "Search"
 msgstr "搜索"

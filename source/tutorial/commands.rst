@@ -79,7 +79,7 @@ GMT在繪圖時，總是以 :doc:`/module/begin` 開始，並以 :doc:`/module/e
 .. tip::
 
     想了解 **gmt coast** 的具體用法？打開終端，敲入 ``gmt docs coast``\ ，
-    GMT會自動幫你打開 **coast** 模塊的說明文檔。
+    GMT會自動幫你打開 **coast** 模塊的說明文件。
 
 GMT命令格式
 -----------

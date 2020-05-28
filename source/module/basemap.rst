@@ -4,7 +4,7 @@
 basemap
 =======
 
-:官方文檔: :doc:`gmt:basemap`
+:官方文件: :doc:`gmt:basemap`
 :簡介: 繪製底圖及邊框
 
 該命令用於繪製：

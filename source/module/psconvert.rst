@@ -4,7 +4,7 @@
 psconvert
 =========
 
-:官方文檔: :doc:`gmt:psconvert`
+:官方文件: :doc:`gmt:psconvert`
 :簡介: 將 GMT 生成的 PS/EPS 文件轉換爲其它圖片格式
 
 **psconvert** 模塊通過調用 Ghostscript 將 PS/EPS 文件轉換爲其它圖片格式，
@@ -229,7 +229,7 @@ psconvert
 **-W**
     生成geoTIFF或KML文件
 
-    該選項很複雜，見官方文檔的說明。
+    該選項很複雜，見官方文件的說明。
 
 .. _-Z:
 

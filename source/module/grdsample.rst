@@ -4,7 +4,7 @@
 grdsample
 =========
 
-:官方文檔: :doc:`gmt:grdsample`
+:官方文件: :doc:`gmt:grdsample`
 :簡介: 對網格文件做重採樣
 
 **grdsample** 模塊讀取一個網格文件，並對其做插值以生成一個新的網格文件。

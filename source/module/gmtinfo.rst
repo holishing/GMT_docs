@@ -3,7 +3,7 @@
 gmtinfo
 =======
 
-:官方文檔: :doc:`gmt:gmtinfo`
+:官方文件: :doc:`gmt:gmtinfo`
 :簡介: 從表數據中提取極值信息
 
 最小示例

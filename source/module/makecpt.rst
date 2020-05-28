@@ -3,7 +3,7 @@
 makecpt
 =======
 
-:官方文檔: :doc:`gmt:makecpt`
+:官方文件: :doc:`gmt:makecpt`
 :簡介: 製作GMT CPT文件
 
 選項

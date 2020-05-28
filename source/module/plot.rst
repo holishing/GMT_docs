@@ -3,7 +3,7 @@
 plot
 ====
 
-:官方文檔: :doc:`gmt:plot`
+:官方文件: :doc:`gmt:plot`
 :簡介: 在圖上繪製線段、多邊形和符號
 
 該命令既可以用於畫線段（多邊形可以認爲是閉合的線段）也可以用於畫符號，唯一的
@@ -398,14 +398,14 @@ plot
        ``start_lon/start_lat/stop_lon/stop_lat`` ，其中 ``start_lon/start_lat``
        以及 ``stop_lon/stop_lat`` 可以用錨點中的兩字符替換。
     #. ``L<line1>[,<line2>,...]`` 與 ``l`` 類似，只是將線段解釋爲兩點之間的大圓路徑
-    #. ``n<n_label>`` 指定等間隔標籤的數目，見官方文檔
-    #. ``N<n_label>`` 見官方文檔
-    #. ``s<n_label>`` 見官方文檔
-    #. ``S<n_label>`` 見官方文檔
-    #. ``x<xfile.d>`` 見官方文檔
-    #. ``X<xfile.d>`` 見官方文檔
+    #. ``n<n_label>`` 指定等間隔標籤的數目，見官方文件
+    #. ``N<n_label>`` 見官方文件
+    #. ``s<n_label>`` 見官方文件
+    #. ``S<n_label>`` 見官方文件
+    #. ``x<xfile.d>`` 見官方文件
+    #. ``X<xfile.d>`` 見官方文件
 
-    ``<labelinfo>`` 用於控制標籤的格式，其可以是下面子選項的任意組合，詳情見官方文檔：
+    ``<labelinfo>`` 用於控制標籤的格式，其可以是下面子選項的任意組合，詳情見官方文件：
 
     #. ``+a<angle>``
     #. ``+c<dx>/<dy>``
@@ -484,7 +484,7 @@ plot
        左邊-Sw，右邊-SW；圖中1格表示1cm。
 
 ``-S~[d|D|f|l|L|n|N|s|S|x|X]<info>[:<symbolinfo>]``
-    繪製decorated line，即帶有符號的線段。詳見官方文檔。
+    繪製decorated line，即帶有符號的線段。詳見官方文件。
 
 輸入數據格式
 ------------

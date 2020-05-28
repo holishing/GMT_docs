@@ -5,18 +5,18 @@
 
 [在線閱讀](https://docs.gmt-china.org/6.0/) |
 [PDF下載](https://docs.gmt-china.org/6.0/GMT_docs.pdf) |
-[文檔源碼](https://github.com/gmt-china/GMT_Docs) |
+[文件源碼](https://github.com/gmt-china/GMT_Docs) |
 [GMT中文社區](https://gmt-china.org) |
 [GMT官方網站](https://www.generic-mapping-tools.org) |
-[GMT官方文檔](https://docs.generic-mapping-tools.org)
+[GMT官方文件](https://docs.generic-mapping-tools.org)
 
 歡迎來到 [Generic Mapping Tools](https://www.generic-mapping-tools.org) 的世界。
 
-本文檔是由 GMT 中文社區維護的 GMT 中文手冊，既可以作爲入門讀物，也可以作爲日常參考。
+本文件是由 GMT 中文社區維護的 GMT 中文手冊，既可以作爲入門讀物，也可以作爲日常參考。
 
-## 文檔維護
+## 文件維護
 
-本文檔尚有很多不完善之處，歡迎GMT用戶參與到GMT中文手冊的維護與更新中。
+本文件尚有很多不完善之處，歡迎GMT用戶參與到GMT中文手冊的維護與更新中。
 詳情見 [維護指南](CONTRIBUTING.md)。
 
 > 一個人可以走的很快，但是一羣人卻可以走的更遠。

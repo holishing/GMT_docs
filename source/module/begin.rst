@@ -4,7 +4,7 @@
 begin
 =====
 
-:官方文檔: :doc:`gmt:begin`
+:官方文件: :doc:`gmt:begin`
 :簡介: 初始化一個新的GMT現代模式會話
 
 在GMT現代模式下，一個GMT繪圖總是以 **gmt begin** 開始，以 **gmt end** 結束。
@@ -48,7 +48,7 @@ begin
 
     GMT支持輸出如下矢量圖片格式：
 
-    - ``pdf``\ ：\ `Portable Document Format <https://zh.wikipedia.org/wiki/可移植文檔格式>`_ [默認格式]
+    - ``pdf``\ ：\ `Portable Document Format <https://zh.wikipedia.org/wiki/可移植文件格式>`_ [默認格式]
     - ``ps``\ ：\  `Plain PostScript <https://zh.wikipedia.org/wiki/PostScript>`_
     - ``eps``\ ：\ `Encapsulated PostScript <https://zh.wikipedia.org/wiki/EPS>`_
 
@@ -79,7 +79,7 @@ begin
     - **Q**\ *args*: 設置圖像和文本的抗鋸齒選項
     - **S** : 把 Ghostscript 命令輸出到標準錯誤輸出，且不刪除所有中間文件
 
-    詳細解釋見 :doc:`psconvert` 的說明文檔。
+    詳細解釋見 :doc:`psconvert` 的說明文件。
 
 .. include:: explain_-V.rst_
 

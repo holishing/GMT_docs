@@ -6,4 +6,4 @@ GMT.jl
 用戶可以直接在 Julia 腳本中調用 GMT 的相關模塊以實現繪圖功能。
 
 - 源碼地址: https://github.com/GenericMappingTools/GMT.jl
-- 官方文檔: https://www.generic-mapping-tools.org/GMT.jl
+- 官方文件: https://www.generic-mapping-tools.org/GMT.jl

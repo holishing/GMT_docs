@@ -4,7 +4,7 @@
 image
 =====
 
-:官方文檔: :doc:`gmt:image`
+:官方文件: :doc:`gmt:image`
 :簡介: 將圖片或EPS文件放在圖上
 
 **image** 模塊可以讀取EPS文件或任意一個光柵圖片文件，並將其畫在圖上。

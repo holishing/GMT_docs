@@ -4,7 +4,7 @@
 grdvolume
 =========
 
-:官方文檔: :doc:`gmt:grdvolume`
+:官方文件: :doc:`gmt:grdvolume`
 :簡介: 計算網格數據中某個等值線所包圍的表面積和體積
 
 **grdvolume** 模塊讀取一個2D網格文件，通過指定某條等值線確定一個Z值平面，並計算由該等值線

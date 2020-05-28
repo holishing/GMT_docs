@@ -4,7 +4,7 @@
 gmtwhich
 ========
 
-:官方文檔: :doc:`gmt:gmtwhich`
+:官方文件: :doc:`gmt:gmtwhich`
 :簡介: 返回指定文件的完整路徑
 
 GMT會依次在如下目錄中去尋找命令行中指定的文件::

@@ -4,7 +4,7 @@
 colorbar
 ========
 
-:官方文檔: :doc:`gmt:colorbar`
+:官方文件: :doc:`gmt:colorbar`
 :簡介: 在地圖上繪製灰色或彩色色條
 
 **gmt colorbar**

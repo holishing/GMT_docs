@@ -4,7 +4,7 @@
 grdconvert
 ==========
 
-:官方文檔: :doc:`gmt:grdconvert`
+:官方文件: :doc:`gmt:grdconvert`
 :簡介: 將網格文件轉換爲其它網格文件格式
 
 語法

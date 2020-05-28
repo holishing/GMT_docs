@@ -4,7 +4,7 @@
 subplot
 =======
 
-:官方文檔: :doc:`gmt:subplot`
+:官方文件: :doc:`gmt:subplot`
 :簡介: 管理和設置子圖模式
 
 **subplot** 模塊可以將當前紙張分隔成若干個網格區域，每個區域內都可以包含一張

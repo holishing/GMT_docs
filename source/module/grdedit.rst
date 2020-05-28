@@ -4,7 +4,7 @@
 grdedit
 =======
 
-:官方文檔: :doc:`gmt:grdedit`
+:官方文件: :doc:`gmt:grdedit`
 :簡介: 修改網格文件的頭段或內容
 
 **grdedit** 模塊具有如下功能：

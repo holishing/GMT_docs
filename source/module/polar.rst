@@ -4,7 +4,7 @@
 polar
 =====
 
-:官方文檔: :doc:`gmt:supplements/seis/polar`
+:官方文件: :doc:`gmt:supplements/seis/polar`
 :簡介: 將臺站的極性信息畫在震源球上
 
 通常可以使用 :doc:`meca` 模塊繪製震源球，再使用 :doc:`polar` 模塊將每個臺站的

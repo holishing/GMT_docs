@@ -4,7 +4,7 @@
 ternary
 =======
 
-:官方文檔: :doc:`gmt:ternary`
+:官方文件: :doc:`gmt:ternary`
 :簡介: 繪製三角圖解
 
 **ternary** 從文件或者標準輸入中讀取數據，並在三角圖中繪製符號。

@@ -4,7 +4,7 @@
 grdfill
 =======
 
-:官方文檔: :doc:`gmt:grdfill`
+:官方文件: :doc:`gmt:grdfill`
 :簡介:
 
 **grdfill** 模塊讀入一個文件數據，並向數據中的“洞”填充數據。

@@ -4,7 +4,7 @@
 grd2xyz
 =======
 
-:官方文檔: :doc:`gmt:grd2xyz`
+:官方文件: :doc:`gmt:grd2xyz`
 :簡介: 將網格文件轉換成表數據
 
 **grd2xyz** 讀取一個或多個二進制2D網格文件，並將XYZ數據以ASCII或二進制格式

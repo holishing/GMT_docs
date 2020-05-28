@@ -3,7 +3,7 @@
 project
 =======
 
-:官方文檔: :doc:`gmt:project`
+:官方文件: :doc:`gmt:project`
 :簡介: 生成測線、將數據點投影到測線上
 
 該模塊具有三個主要功能：

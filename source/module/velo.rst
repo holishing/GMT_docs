@@ -3,7 +3,7 @@
 velo
 ====
 
-:官方文檔: :doc:`gmt:supplements/geodesy/velo`
+:官方文件: :doc:`gmt:supplements/geodesy/velo`
 :簡介: 在地圖上繪製三種符號：矢量（向量）、十字線和旋轉餅圖
 
 -S選項

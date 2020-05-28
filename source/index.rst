@@ -8,12 +8,12 @@ GMT中文手冊
 歡迎來到 `Generic Mapping Tools (GMT) <https://www.generic-mapping-tools.org>`_ 的世界。
 GMT 是地球科學最廣泛使用的製圖軟件之一。
 
-本文檔是由 `GMT中文社區 <https://gmt-china.org/>`_ 維護整理的GMT中文手冊。
+本文件是由 `GMT中文社區 <https://gmt-china.org/>`_ 維護整理的GMT中文手冊。
 手冊詳盡地介紹了GMT的用法並提供了大量的實用示例。
 其既可以作爲初學者的入門讀物，也可以作爲日常使用的參考書。
 
-文檔源碼在 `GitHub <https://github.com/gmt-china/GMT_Docs>`_ 上開源，
-歡迎更多的志願者加入到文檔的維護工作中來。
+文件源碼在 `GitHub <https://github.com/gmt-china/GMT_Docs>`_ 上開源，
+歡迎更多的志願者加入到文件的維護工作中來。
 
     **一個人可以走的很快，但是一羣人卻可以走的更遠。**
 

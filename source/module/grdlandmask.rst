@@ -4,7 +4,7 @@
 grdlandmask
 ===========
 
-:官方文檔: :doc:`gmt:grdlandmask`
+:官方文件: :doc:`gmt:grdlandmask`
 :簡介: 根據海岸線數據創建陸地-海洋的mask網格文件
 
 **grdlandmask** 模塊讀取指定的海岸線數據，用於確定網格內的每個節點是位於陸地還是

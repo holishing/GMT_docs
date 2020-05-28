@@ -4,7 +4,7 @@
 meca
 ====
 
-:官方文檔: :doc:`gmt:supplements/seis/meca`
+:官方文件: :doc:`gmt:supplements/seis/meca`
 :簡介: 繪製震源機制解
 
 語法

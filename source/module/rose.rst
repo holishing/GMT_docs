@@ -3,7 +3,7 @@
 rose
 ====
 
-:官方文檔: :doc:`gmt:rose`
+:官方文件: :doc:`gmt:rose`
 :簡介: 繪製極座標下的直方圖（sector圖、rose圖或windrose圖）
 
 可選選項

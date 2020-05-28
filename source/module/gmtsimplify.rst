@@ -4,7 +4,7 @@
 gmtsimplify
 ===========
 
-:官方文檔: :doc:`gmt:gmtsimplify`
+:官方文件: :doc:`gmt:gmtsimplify`
 :簡介: 使用Douglas-Peucker算法對線段做簡化
 
 **gmtsimplify** 模塊讀取一個或多個數據文件，並使用 Douglas-Peucker 算法對複雜多邊形

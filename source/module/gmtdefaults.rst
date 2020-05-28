@@ -4,7 +4,7 @@
 gmtdefaults
 ===========
 
-:官方文檔: :doc:`gmt:gmtdefaults`
+:官方文件: :doc:`gmt:gmtdefaults`
 :簡介: 列出所有GMT配置參數的當前值或系統默認值
 
 語法

@@ -4,7 +4,7 @@
 grdclip
 ========
 
-:官方文檔: :doc:`gmt:grdclip`
+:官方文件: :doc:`gmt:grdclip`
 :簡介: 根據網格文件的Z值對網格進行裁剪
 
 語法

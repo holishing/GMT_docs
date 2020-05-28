@@ -4,7 +4,7 @@
 gmtlogo
 =======
 
-:官方文檔: :doc:`gmt:gmtlogo`
+:官方文件: :doc:`gmt:gmtlogo`
 :說明: 在圖上繪製GMT的圖形logo
 
 該模塊將GMT的圖形logo繪製在圖上。默認情況下，GMT的圖形logo默認寬2英寸，高1英寸，

@@ -4,7 +4,7 @@
 coupe
 =====
 
-:官方文檔: :doc:`gmt:supplements/seis/coupe`
+:官方文件: :doc:`gmt:supplements/seis/coupe`
 :簡介: 繪製震源機制解的剖面圖
 
 :doc:`meca` 在繪製震源球時，本質上是取了一個水平剖面，並將三維震源球的下半球
