@@ -12,7 +12,7 @@
 - ``$GMT_CACHEDIR`` 或 :term:`DIR_CACHE` 用於放置GMT模塊從GMT服務器上
   下載的臨時數據
 - ``$GMT_USERDIR`` 用戶放置自定義配置文件的地方，比如用戶自定義的 :file:`gmt.conf`
-  文件、自定義符號、CPT文件、數學宏、網格文件後綴文件等。若該變量未定義，則默認值爲
+  文件、自定義符號、CPT文件、數學宏、網格檔後綴文件等。若該變量未定義，則默認值爲
   :file:`${HOME}/.gmt` 。
 - ``$GMT_TMPDIR`` 臨時文件（比如 :file:`gmt.history` 和 :file:`gmt.conf` ）放置的
   目錄。若未設置，則默認爲當前目錄

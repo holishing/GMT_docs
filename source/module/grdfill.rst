@@ -26,7 +26,7 @@ grdfill
 --------
 
 *ingrid*
-    輸入網格文件
+    輸入網格檔
 
 .. _-A:
 
@@ -41,7 +41,7 @@ grdfill
 .. _-G:
 
 **-G**\ *outgrid*
-    輸出網格文件
+    輸出網格檔
 
 可選選項
 --------
@@ -72,19 +72,19 @@ grdfill
 示例
 ----
 
-檢測網格文件中所有包含NaN的區域，並列出這些矩形區域的邊界座標::
+檢測網格檔中所有包含NaN的區域，並列出這些矩形區域的邊界座標::
 
     gmt grdfill data.grd -L > wesn_listing.txt
 
-檢測網格文件中所有包含NaN的區域，並以多段文件的形式輸出這些矩形區域對應的閉合多邊形::
+檢測網格檔中所有包含NaN的區域，並以多段文件的形式輸出這些矩形區域對應的閉合多邊形::
 
     gmt grdfill data.grd -Lp > NaN_regions.txt
 
-將網格文件中所有NaN值替換爲999.0::
+將網格檔中所有NaN值替換爲999.0::
 
     gmt grdfill data.grd -Ac999 -Gno_NaNs_data.grd
 
-將網格文件中所有NaN值用最近的非NaN值替代::
+將網格檔中所有NaN值用最近的非NaN值替代::
 
     gmt grdfill data.grd -An -Gno_NaNs_NN_data.grd
 

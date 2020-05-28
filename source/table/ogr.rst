@@ -9,7 +9,7 @@
 - 光柵型數據格式不完整列表：http://www.gdal.org/formats_list.html
 - 矢量型數據格式不完整列表：http://www.gdal.org/ogr_formats.html
 
-簡單的說，在GMT中，netCDF格式的網格文件屬於光柵型地理空間數據，而一般的表數據則
+簡單的說，在GMT中，netCDF格式的網格檔屬於光柵型地理空間數據，而一般的表數據則
 屬於矢量型地理空間數據。
 
 `GDAL <http://www.gdal.org/>`_ 是一個可以實現多種光柵型或矢量型地理空間數據

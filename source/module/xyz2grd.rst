@@ -4,9 +4,9 @@ xyz2grd
 =======
 
 :官方文件: :doc:`gmt:xyz2grd`
-:簡介: 將XYZ數據或Z數據轉換成網格文件
+:簡介: 將XYZ數據或Z數據轉換成網格檔
 
-該命令讀取一個或多個Z數據或XYZ數據，並將其轉換成二進制網格文件。
+該命令讀取一個或多個Z數據或XYZ數據，並將其轉換成二進制網格檔。
 
 - 若某些節點沒有數據值，則這些節點會被賦值爲NaN
 - 若某個節點由多個數據值，則該節點的值爲所有數據點的平均值
@@ -23,7 +23,7 @@ xyz2grd
     XYZ數據不要求排序。如果只包含Z值，則必須使用 ``-Z`` 選項以便確定每一個Z值所屬的位置。
 
 ``-G<grdfile>``
-    生成的網格文件名
+    生成的網格檔名
 
 .. include:: explain_-I.rst_
 
@@ -53,7 +53,7 @@ xyz2grd
 
 ``-S[<zfile>]``
     對輸入的Z文件做字節序轉換並輸出到標準輸出或保存到文件 ``<zfile>`` 中。
-    該選項只做字節序轉換，不生成網格文件。該選項必須與 ``-Z`` 選項連用。
+    該選項只做字節序轉換，不生成網格檔。該選項必須與 ``-Z`` 選項連用。
 
 ``-Z[<flags>]``
     指定Z數據的格式。
@@ -98,7 +98,7 @@ xyz2grd
     gmt xyz2grd hawaii_grv.xyz -D+xdegree+ydegree+zGal+t"Hawaiian Gravity"+r"GRS-80 Ellipsoid used" \
         -Ghawaii_grv_new.nc -R198/208/18/25 -I5m -V
 
-將二進制格式的XYZ文件（單精度）轉換爲網格文件::
+將二進制格式的XYZ文件（單精度）轉換爲網格檔::
 
     gmt xyz2grd raw.b -D+xm+ym+zm -Graw.nc -R0/100/0/100 -I1 -V -Z -bi3f
 

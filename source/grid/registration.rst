@@ -3,7 +3,7 @@
 網格配準
 ========
 
-GMT中的2D網格文件，在確定了網格範圍和網格間隔後，網格線會出現在
+GMT中的2D網格檔，在確定了網格範圍和網格間隔後，網格線會出現在
 :math:`x = x_{min}, x_{min} + x_{inc}, x_{min} + 2 \cdot x_{inc}, \ldots, x_{max}`
 和 :math:`y = y_{min}, y_{min} + y_{inc}, y_{min} + 2 \cdot y_{inc}, \ldots, y_{max}` 處。
 而節點的位置有兩種選擇，即網格線配準（gridline registration）和像素配準（pixel registration）。
