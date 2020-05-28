@@ -1,0 +1,741 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>coast &mdash; GMT中文手册</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+    <link rel="canonical" href="https://docs.gmt-china.org/latest/module/coast.html"/>
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
+        <script async="async" type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="colorbar" href="colorbar.html" />
+    <link rel="prev" title="clip" href="clip.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+    
+    <a href="../index.html" class="icon icon-home"> GMT中文手册
+    
+
+    
+    </a>
+
+    
+    
+    
+    <div class="version">
+        <select onchange="location = this.options[this.selectedIndex].value;">
+            
+            <option value="/6.0/"  selected > v6.0 </option>
+            
+            <option value="/5.4/" > v5.4 </option>
+            
+        </select>
+    </div>
+    
+    
+
+    
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文件" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+    
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">目 錄</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">簡介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/index.html">安裝</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migrating/index.html">版本遷移</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">入門教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basis/index.html">GMT基礎</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../table/index.html">表數據</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grid/index.html">網格檔</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cpt/index.html">CPT文件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../option/index.html">標準選項</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../proj/index.html">地圖投影</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conf/index.html">配置參數</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dataset/index.html">地學數據集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chinese/index.html">中文支持</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">模塊手冊</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="basemap.html">basemap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="begin.html">begin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clear.html">clear</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clip.html">clip</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">coast</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">語法</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">必選選項</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">可選選項</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">示例</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#faq">FAQ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">相關模塊</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="colorbar.html">colorbar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coupe.html">coupe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs.html">docs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="end.html">end</a></li>
+<li class="toctree-l2"><a class="reference internal" href="figure.html">figure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filter1d.html">filter1d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fitcircle.html">fitcircle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gmt.html">gmt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gmt-config.html">gmt-config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gmtconnect.html">gmtconnect</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gmtdefaults.html">gmtdefaults</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gmtget.html">gmtget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gmtinfo.html">gmtinfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gmtlogo.html">gmtlogo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gmtselect.html">gmtselect</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gmtset.html">gmtset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gmtsimplify.html">gmtsimplify</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gmtwhich.html">gmtwhich</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grd2xyz.html">grd2xyz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdblend.html">grdblend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdclip.html">grdclip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdconvert.html">grdconvert</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdcut.html">grdcut</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdedit.html">grdedit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdfill.html">grdfill</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdimage.html">grdimage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdinfo.html">grdinfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdlandmask.html">grdlandmask</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdmask.html">grdmask</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdpaste.html">grdpaste</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdproject.html">grdproject</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdsample.html">grdsample</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdtrack.html">grdtrack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdtrend.html">grdtrend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdvector.html">grdvector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdvolume.html">grdvolume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="histogram.html">histogram</a></li>
+<li class="toctree-l2"><a class="reference internal" href="image.html">image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inset.html">inset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kml2gmt.html">kml2gmt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="legend.html">legend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="makecpt.html">makecpt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mapproject.html">mapproject</a></li>
+<li class="toctree-l2"><a class="reference internal" href="meca.html">meca</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot.html">plot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="polar.html">polar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="project.html">project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="psconvert.html">psconvert</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rose.html">rose</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sac.html">sac</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sample1d.html">sample1d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="solar.html">solar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spectrum1d.html">spectrum1d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="subplot.html">subplot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ternary.html">ternary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="text.html">text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="velo.html">velo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xyz2grd.html">xyz2grd</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery/index.html">繪圖示例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/index.html">附錄</a></li>
+</ul>
+
+            
+          
+
+    
+        <p class="caption">
+            <span class="caption-text">外部链接</span>
+        </p>
+        <ul>
+            
+                <li class="toctree-l1"><a href="https://docs.gmt-china.org/6.0/GMT_docs.pdf"><i class="fa fa-book fa-fw"></i> PDF下载</a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/gmt-china/GMT_Docs"><i class="fa fa-github fa-fw"></i> 源代码</a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/gmt-china/GMT_docs/blob/master/CONTRIBUTING.md"><i class="fa fa-edit fa-fw"></i> 贡献指南</a></li>
+            
+                <li class="toctree-l1"><a href="https://gmt-china.org"><i class="fa fa-globe fa-fw"></i> GMT中文社区</a></li>
+            
+                <li class="toctree-l1"><a href="mailto:admin@gmt-china.org"><i class="fa fa-envelope fa-fw"></i> 联系我们</a></li>
+            
+        </ul>
+    
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">GMT中文手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">首頁</a> &raquo;</li>
+        
+          <li><a href="index.html">模塊手冊</a> &raquo;</li>
+        
+      <li>coast</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/gmt-china/GMT_Docs/blob/master/source/module/coast.rst" class="fa fa-github"> 編輯本頁</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="coast">
+<span id="index-0"></span><h1>coast<a class="headerlink" href="#coast" title="永久链接至标题">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">官方文件:</th><td class="field-body"><a class="reference external" href="https://docs.generic-mapping-tools.org/6.0/coast.html" title="(在 GMT v6.0)"><span>coast</span></a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">簡介:</th><td class="field-body">在地圖上繪製海岸線、河流、國界線</td>
+</tr>
+</tbody>
+</table>
+<p><strong>coast</strong> 模塊利用 GMT 自帶的 <a class="reference internal" href="../dataset/gshhg.html"><span class="doc">GSHHG數據</span></a> 和
+<a class="reference internal" href="../dataset/dcw/index.html"><span class="doc">DCW數據</span></a> 繪製海岸線、河流、政治邊界，還可以裁剪陸地區域或水域，也可以將數據導出到文件中。</p>
+<div class="section" id="id1">
+<h2>語法<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p><strong>gmt coast</strong> <a class="reference internal" href="#j"><span> <strong>-J</strong></span></a></strong><em>parameters</em>
+<a class="reference internal" href="#r"><span> <strong>-R</strong></span></a></strong><em>region</em>
+[ <strong>-A</strong><em>min_area</em>[/<em>min_level</em>/<em>max_level</em>][<strong>+a</strong>[<strong>g</strong>|<strong>i</strong>][<strong>s</strong>|<strong>S</strong>]][<strong>+r</strong>|<strong>l</strong>][<strong>+p</strong><em>percent</em>] ]
+[ <a class="reference internal" href="#b"><span> <strong>-B</strong></span></a></strong><em>parameters</em> ]
+[ <a class="reference internal" href="#c"><span> <strong>-C</strong></span></a></strong><em>fill</em>[<strong>+l</strong>|<strong>+r</strong>] ]
+[ <a class="reference internal" href="#d"><span> <strong>-D</strong></span></a></strong><em>resolution</em>[<strong>+f</strong>] ]
+[ <a class="reference internal" href="#e"><span> <strong>-E</strong></span></a></strong><em>dcw</em> ]
+[ <a class="reference internal" href="#f"><span> <strong>-F</strong></span></a></strong><em>box</em> ]
+[ <a class="reference internal" href="#g"><span> <strong>-G</strong></span></a></strong><em>fill</em> ]
+[ <a class="reference internal" href="#i"><span> <strong>-I</strong></span></a></strong><em>river</em>[/<em>pen</em>] ]
+[ <a class="reference internal" href="#j"><span> <strong>-J</strong></span></a></strong><strong>z</strong>|<strong>Z</strong><em>parameters</em> ]
+[ <a class="reference internal" href="#l"><span> <strong>-L</strong></span></a></strong><em>scalebar</em> ]
+[ <a class="reference internal" href="#m"><span> <strong>-M</strong></span></a></strong> ]
+[ <a class="reference internal" href="#n"><span> <strong>-N</strong></span></a></strong><em>border</em>[/<em>pen</em>] ]
+[ <a class="reference internal" href="#q"><span> <strong>-Q</strong></span></a></strong> ]
+[ <a class="reference internal" href="#s"><span> <strong>-S</strong></span></a></strong><em>fill</em> ]
+[ <a class="reference internal" href="#t"><span> <strong>-T</strong></span></a></strong><em>rose</em> ]
+[ <a class="reference internal" href="#u"><span> <strong>-U</strong></span></a></strong>[<em>stamp</em>] ]
+[ <a class="reference internal" href="#v"><span> <strong>-V</strong></span></a></strong>[<em>level</em>] ]
+[ <a class="reference internal" href="#w"><span> <strong>-W</strong></span></a></strong>[<em>level</em>/]<em>pen</em> ]
+[ <a class="reference internal" href="#x"><span> <strong>-X</strong></span></a></strong>[<strong>a</strong>|<strong>c</strong>|<strong>f</strong>|<strong>r</strong>][<em>xshift</em>[<strong>u</strong>]] ]
+[ <a class="reference internal" href="#y"><span> <strong>-Y</strong></span></a></strong>[<strong>a</strong>|<strong>c</strong>|<strong>f</strong>|<strong>r</strong>][<em>xshift</em>[<strong>u</strong>]] ]
+[ <strong>-bo</strong><a class="reference internal" href="../option/binary.html"><span class="doc">binary</span></a> ]
+[ <strong>-p</strong><a class="reference internal" href="../option/perspective.html"><span class="doc">flags</span></a> ]
+[ <strong>-t</strong><a class="reference internal" href="../option/t.html"><span class="doc">transp</span></a> ]
+[ <strong>--PAR</strong>=<em>value</em> ]</p>
+</div>
+<div class="section" id="id2">
+<h2>必選選項<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<dl class="docutils" id="j">
+<dt><strong>-J</strong><em>projection</em> <a class="reference internal" href="../option/J.html"><span class="doc">(more …)</span></a></dt>
+<dd>设置地图投影方式。</dd>
+</dl>
+<dl class="docutils" id="r">
+<dt><strong>-R</strong><em>xmin</em>/<em>xmax</em>/<em>ymin</em>/<em>ymax</em>[<strong>+r</strong>][<strong>+u</strong><em>unit</em>] <a class="reference internal" href="../option/R.html"><span class="doc">(more …)</span></a></dt>
+<dd>指定数据范围</dd>
+</dl>
+<blockquote>
+<div>对于三维透视图 <strong>-p</strong>，可以加上 /<em>zmin</em>/<em>zmax</em> 指定Z轴的范围。</div></blockquote>
+</div>
+<div class="section" id="id3">
+<h2>可選選項<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<dl class="docutils" id="a">
+<dt><strong>-A</strong><em>min_area</em>[/<em>min_level</em>/<em>max_level</em>][<strong>+a</strong>[<strong>g</strong>|<strong>i</strong>][<strong>s</strong>|<strong>S</strong>]][<strong>+r</strong>|<strong>l</strong>][<strong>+p</strong><em>percent</em>]</dt>
+<dd><p class="first">不绘制面积过小的区域（湖泊或岛屿），或不绘制某个级别的湖泊边界。</p>
+<p>在绘制湖泊时，若不管湖泊的面积大小而把所有湖泊的边界都画上去，可能导致图看上去比较乱，该选项用于对湖泊进行筛选。面积小于 <em>min_area</em> 平方千米或者湖泊级别不在 [<em>min_level</em>,<em>max_level</em>] 范围的边界都不会被绘制。默认值为 <strong>0/0/4</strong>，即绘制所有湖泊边界，即绘制0到4级所有级别的面积大于0的湖泊。</p>
+<p>对于level=2，即湖岸线，包括常规的湖以及很宽的河流。加上 <strong>+r</strong> 则只绘制河流，加上 <strong>+l</strong> 则只绘制常规湖。</p>
+<p>对于南极洲而言，因为有冰层的存在，所以海岸线有多种处理方式：</p>
+<ul class="simple">
+<li><strong>+ai</strong> 用ice shell boundary作为南极洲的海岸线，默认值</li>
+<li><strong>+ag</strong> 以ice grounding line作为海岸线</li>
+<li><strong>+as</strong> 忽略南纬60度以南的海岸线，用户可以使用 <a class="reference internal" href="plot.html"><span class="doc">plot</span></a> 绘制自己的南极洲海岸线</li>
+<li><strong>+aS</strong> 忽略南纬60度以北的海岸线</li>
+</ul>
+<p class="last"><strong>+p</strong><em>precent</em>：一个多边形，降低精度后，边数减少，面积变化，当面积变化过大时再绘制这个多边形就不合适了，该子选项用于去除那些面积与最高精度面积之比小于 <em>percent</em> 的多边形。</p>
+</dd>
+</dl>
+<dl class="docutils" id="b">
+<dt><strong>-B</strong><em>parameters</em> <a class="reference internal" href="../option/B.html"><span class="doc">(more …)</span></a></dt>
+<dd>设置底图边框和轴属性</dd>
+</dl>
+<dl class="docutils" id="c">
+<dt><strong>-C</strong><em>fill</em>[<strong>+l</strong>|<strong>+r</strong>]</dt>
+<dd><p class="first">設置湖泊與河流湖的顏色。</p>
+<p class="last">默認情況下，湖泊與河流湖會被當做wet區域，直接使用 <strong>-S</strong> 指定的填充值。使用 <strong>+l</strong> 或 <strong>+r</strong> 可以爲湖泊或河流湖單獨指定顏色。</p>
+</dd>
+</dl>
+<dl class="docutils" id="d">
+<dt><strong>-D</strong><em>resolution</em>[<strong>+f</strong>]</dt>
+<dd><p class="first">選擇海岸線數據精度。</p>
+<p>GMT自帶的GSHHG海岸線數據有5個不同精度的版本，從高到低依次爲：full、high、intermediate、low和crude。GMT默認使用低精度數據。該選項可以指定要使用的數據精度，其中 <strong>f</strong>|<strong>h</strong>|<strong>i</strong>|<strong>l</strong>|<strong>c</strong>
+分別代表5種不同的數據精度。也可以用 <strong>-Da</strong> 選項，此時GMT會根據當前繪圖區域的大小自動選擇合適的數據精度 [默認使用 <strong>-Da</strong>]</p>
+<p class="last">默認情況下，若找不到指定精度的海岸線數據，程序會自動報錯退出。該選項中加上 <strong>+f</strong> 則命令在找不到當前指定的精度數據時，自動尋找更低精度的數據。</p>
+</dd>
+</dl>
+<dl class="docutils" id="e">
+<dt><strong>-E</strong><em>code1,code2,…</em>[<strong>+l</strong>|<strong>L</strong>][<strong>+g</strong><em>fill</em>][<strong>+p</strong><em>pen</em>][<strong>+r</strong>|<strong>R</strong>[<em>inc</em>]]</dt>
+<dd><p class="first">利用DCW數據繪製或導出行政區劃邊界（洲界、國界、省界）</p>
+<p>GMT自帶了DCW（Digital Chart of World）數據，即全球的行政區劃數據。其包含了全球各國國界和省界數據。該數據獨立於GSHHG數據，因而 <strong>-A</strong> 和 <strong>-D</strong>
+選項對該數據無效。關於DCW數據及其用法的詳細介紹見 <a class="reference internal" href="../dataset/dcw/index.html"><span class="doc">DCW: 世界數字圖表</span></a>。</p>
+<p>通過指定一個或多個以逗號分隔的區域代碼 <em>code</em> 即可指定一個或多個行政區域。
+<em>code</em> 可以取如下幾種形式：</p>
+<ul class="simple">
+<li>洲代碼前加上 <strong>=</strong> 則繪製整個洲內所有國家邊界。比如 <strong>=AS</strong> 會繪製所有亞洲國家的邊界</li>
+<li>直接使用國界代碼，則繪製國界邊界。比如 <strong>US</strong> 繪製美國邊界</li>
+<li>使用 <em>國家代碼</em>.*州代碼* 則繪製州（省）邊界。比如 <strong>US.TX</strong> 繪製美國Texas州的邊界</li>
+</ul>
+<p>可以使用如下子選項列出可使用的 <em>code</em>:</p>
+<ul class="simple">
+<li><strong>+l</strong> 僅列出所有國家及其對應代碼，不繪製邊界也不提取數據</li>
+<li><strong>+L</strong> 列出部分國界的省及其代碼</li>
+</ul>
+<p>通過加上子選項，可以進一步設置指定區域的邊界屬性或填充屬性：</p>
+<ul class="simple">
+<li><strong>+p</strong><em>pen</em> 表示繪製多邊形輪廓 [默認無輪廓]</li>
+<li><strong>+g</strong><em>fill</em> 表示設置多邊形的填充色 [默認無填充色]</li>
+</ul>
+<p>若想要不同的區域有不同的畫筆或填充屬性，則需要多次使用 <strong>-E</strong> 選項，每次指定不同的區域以及不同的畫筆或填充屬性。</p>
+<p class="last">若使用了 <strong>-E</strong> 但不指定 <strong>-J</strong> 和 <strong>-M</strong> 則會以 <strong>-R</strong><em>w/e/s/n</em> 的形式輸出對應行政區域的區域範圍。</p>
+</dd>
+</dl>
+<dl class="docutils" id="f">
+<dt><strong>-F</strong>[<strong>l</strong>|<strong>t</strong>][<strong>+c</strong><em>clearances</em>][<strong>+g</strong><em>fill</em>][<strong>+i</strong>[[<em>gap</em>/]<em>pen</em>]][<strong>+p</strong>[<em>pen</em>]][<strong>+r</strong>[<em>radius</em>]][<strong>+s</strong>[[<em>dx</em>/<em>dy</em>/][<em>shade</em>]]]</dt>
+<dd><p class="first">控制比例尺和玫瑰圖的背景邊框</p>
+<p>若只使用 <strong>-F</strong> 而不使用其它子選項，則會在比例尺或方向玫瑰的周圍繪製矩形邊框。下面簡單介紹各子選項，詳細用法見 <a class="reference internal" href="../basis/embellishment.html"><span class="doc">繪製修飾物</span></a></p>
+<ul class="simple">
+<li><strong>+p</strong><em>pen</em> 指定背景面板的畫筆屬性（默認畫筆屬性由 <a class="reference internal" href="../conf/map.html#term-map-frame-pen"><span class="xref std std-term">MAP_FRAME_PEN</span></a> 決定）</li>
+<li><strong>+g</strong><em>fill</em> 設置背景面板的填充色 [默認不填充]</li>
+<li><strong>+c</strong><em>clearances</em> 以設置不同方向的空白間隔</li>
+<li><strong>+i</strong><em>gap</em>/<em>pen</em> 在背景面板內部繪製一個額外的內邊框。<em>gap</em> 爲外邊框與內邊界之間的距離 [2p]，默認邊界屬性由 <a class="reference internal" href="../conf/map.html#term-map-default-pen"><span class="xref std std-term">MAP_DEFAULT_PEN</span></a> 控制</li>
+<li><strong>+r</strong><em>radius</em> 控制圓角矩形邊框，圓角矩形半徑 <em>radius</em> 默認爲 6p</li>
+<li><strong>+s</strong> 繪製背景面板陰影區。<em>dx</em>/<em>dy</em> 是陰影區相對於背景面板的偏移量 [4p/4p]。
+<em>shade</em> 爲陰影區的顏色 [gray50]。</li>
+</ul>
+<p class="last">該選項默認會同時控制比例尺和方向玫瑰的背景邊框。加上 <strong>l</strong>|<strong>t</strong> 則表示只控制 <strong>-L</strong>或 <strong>-T</strong> 選項繪製的特徵。</p>
+</dd>
+</dl>
+<dl class="docutils" id="g">
+<dt><strong>-G</strong><em>fill</em></dt>
+<dd><p class="first">設置dry區域的填充色或裁剪dry區域</p>
+<p class="last"><strong>-G</strong><em>fill</em> 設置dry區域（一般指陸地）的填充色。若不指定 <em>fill</em> 則會將dry區域裁剪出來，使得接下來的繪圖只有dry區域內的纔會被繪製。</p>
+</dd>
+</dl>
+<dl class="docutils" id="i">
+<dt><strong>-I</strong><em>river</em>[/<em>pen</em>]</dt>
+<dd><p class="first">繪製河流。</p>
+<p>河流 <em>river</em> 可以取：</p>
+<ul class="simple">
+<li>0 = Double-lined rivers (river-lakes)</li>
+<li>1 = Permanent major rivers</li>
+<li>2 = Additional major rivers</li>
+<li>3 = Additional rivers</li>
+<li>4 = Minor rivers</li>
+<li>5 = Intermittent rivers - major</li>
+<li>6 = Intermittent rivers - additional</li>
+<li>7 = Intermittent rivers - minor</li>
+<li>8 = Major canals</li>
+<li>9 = Minor canals</li>
+<li>10 = Irrigation canals</li>
+<li>a = All rivers and canals (0-10)</li>
+<li>A = All rivers and canals except river-lakes (1-10)</li>
+<li>r = All permanent rivers (0-4)</li>
+<li>R = All permanent rivers except river-lakes (1-4)</li>
+<li>i = All intermittent rivers (5-7)</li>
+<li>c = All canals (8-10)</li>
+</ul>
+<p class="last"><em>pen</em> 的默認值爲 <strong>default,black,solid</strong>，該選項可重複使用多次以分別指定不同等級河流的畫筆屬性。</p>
+</dd>
+</dl>
+<dl class="docutils" id="l">
+<dt><strong>-L</strong>[<strong>g</strong>|<strong>j</strong>|<strong>J</strong>|<strong>n</strong>|<strong>x</strong>]<em>refpoint</em><strong>+c</strong>[<em>slon</em>/]<em>slat</em><strong>+w</strong><em>length</em>[<strong>e</strong>|<strong>f</strong>|<strong>k</strong>|<strong>M</strong>|<strong>n</strong>|<strong>u</strong>][<strong>+a</strong><em>align</em>][<strong>+f</strong>][<strong>+j</strong><em>justify</em>][<strong>+l</strong>[<em>label</em>]][<strong>+o</strong><em>dx</em>[/<em>dy</em>]][<strong>+u</strong>][<strong>+v</strong>]</dt>
+<dd><p class="first">在地图上指定位置绘制比例尺</p>
+<p>简单介绍各子选项的含义，详情见 <a class="reference internal" href="../basis/embellishment.html"><span class="doc">繪製修飾物</span></a></p>
+<ul class="simple">
+<li><strong>g</strong>|<strong>j</strong>|<strong>J</strong>|<strong>n</strong>|<strong>x</strong>]<em>refpoint</em>指定地图上的参考点<ul>
+<li><strong>g</strong> 指定某地图坐标位参考点</li>
+<li><strong>j</strong>|<strong>J</strong> 通过2字母的对齐方式码指定矩形区域的某个锚点作为参考点</li>
+<li><strong>n</strong> 在归一化坐标系（即0-1）中指定参考点</li>
+<li><strong>x</strong> 在绘图坐标系下指定参考点</li>
+</ul>
+</li>
+<li><strong>+j</strong><em>justify</em> 指定比例尺上的锚点（默认锚点为比例尺的中心）</li>
+<li><strong>+o</strong><em>dx</em>/<em>dy</em> 在参考点的基础上设置比例尺的额外偏移量</li>
+<li><strong>+c</strong>[<em>slon</em>/]<em>slat</em> 要绘制哪一个点的比例尺，对于倾斜投影，<em>slon</em> 默认取中央经线</li>
+<li><strong>+w</strong><em>length</em>[<strong>e</strong>|<strong>f</strong>|<strong>k</strong>|<strong>M</strong>|<strong>n</strong>|<strong>u</strong>] 指定比例尺长度及其单位 [默认为km]</li>
+<li><strong>+a</strong><em>align</em> 修改比例尺标签的对齐方式。标签默认位于比例尺上方中部，可以取 <strong>l</strong>|<strong>r</strong>|<strong>t</strong>|<strong>b</strong>分别代表左右上下</li>
+<li><strong>+f</strong> 默认是简单的比例尺，使用该选项则绘制fancy比例尺，即黑白相间的火车轨道比例尺</li>
+<li><strong>+l</strong><em>label</em> 为比例尺添加标签；若不指定 <em>label</em>，默认的标签是比例尺所使用的长度单位</li>
+<li><strong>+u</strong> 比例尺的标注默认只有值没有单位，该选项会给所有标注加上单位</li>
+<li><strong>+v</strong> 垂直比例尺（仅限于笛卡尔坐标系）</li>
+</ul>
+<p>以下GMT配置参数可以控制比例尺的外观：</p>
+<ul class="last simple">
+<li><a class="reference external" href="https://docs.generic-mapping-tools.org/6.0/gmt.conf.html#font-label" title="(在 GMT v6.0)"><span class="xref std std-ref">FONT_LABEL</span></a> 控制比例尺的标签字体</li>
+<li><a class="reference external" href="https://docs.generic-mapping-tools.org/6.0/gmt.conf.html#font-annot-primary" title="(在 GMT v6.0)"><span class="xref std std-ref">FONT_ANNOT_PRIMARY</span></a> 控制比例尺的标注字体</li>
+<li><a class="reference external" href="https://docs.generic-mapping-tools.org/6.0/gmt.conf.html#map-scale-height" title="(在 GMT v6.0)"><span class="xref std std-ref">MAP_SCALE_HEIGHT</span></a> 控制比例尺的高度</li>
+<li><a class="reference external" href="https://docs.generic-mapping-tools.org/6.0/gmt.conf.html#map-tick-pen-primary" title="(在 GMT v6.0)"><span class="xref std std-ref">MAP_TICK_PEN_PRIMARY</span></a> 控制比例尺的线及刻度属性</li>
+</ul>
+</dd>
+</dl>
+<dl class="docutils" id="m">
+<dt><strong>-M</strong></dt>
+<dd><p class="first">將邊界數據以多段ASCII表或二進制表的形式導出到標準輸出</p>
+<p class="last">使用該選項，則只導出數據而不繪圖。該選項需要與 <strong>-E</strong>, <strong>-I</strong>, <strong>-N</strong> 或 <strong>-W</strong> 選項一起使用。</p>
+</dd>
+</dl>
+<dl class="docutils" id="n">
+<dt><strong>-N</strong><em>border</em>[/<em>pen</em>]</dt>
+<dd><p class="first">繪製政治邊界。</p>
+<p>該選項在某些地方與 <strong>-E</strong> 選項有重疊。邊界類型 <em>border</em> 可以取：</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">1</span></code> ：國界</li>
+<li><code class="docutils literal notranslate"><span class="pre">2</span></code> ：州界；（目前只有美國、加拿大、澳大利亞以及南美各國的數據）</li>
+<li><code class="docutils literal notranslate"><span class="pre">3</span></code> ：Marine boundaries</li>
+<li><code class="docutils literal notranslate"><span class="pre">a</span></code> ：1-3的全部邊界；</li>
+</ul>
+<p class="last"><em>pen</em> 的默認屬性爲 <strong>default,black,solid</strong>。該選項可重複多次使用，以指定不同級別邊界的不同畫筆屬性。</p>
+</dd>
+</dl>
+<dl class="docutils" id="q">
+<dt><strong>-Q</strong></dt>
+<dd><p class="first">關閉區域裁剪。</p>
+<p class="last">使用 <strong>-G</strong> 和 <strong>-S</strong> 可以分別裁剪出dry區域和wet區域，接下來的其他繪圖命令中只有在裁剪區域內的部分纔會被繪製。在繪圖結束後，需要關閉裁剪，就需要再次調用
+<strong>coast</strong>，並加上 <strong>-Q</strong> 選項。若在開啓裁剪後使用了 <strong>-X</strong> 和 <strong>-Y</strong> 選項，則在關閉時也要記得使用 <strong>-X</strong> 和  <strong>-Y</strong>。</p>
+</dd>
+</dl>
+<dl class="docutils" id="s">
+<dt><strong>-S</strong><em>fill</em></dt>
+<dd><p class="first">設置wet區域的填充色或裁剪wet區域</p>
+<p class="last"><strong>-S</strong><em>fill</em> 設置wet區域（一般指海洋或湖泊）的填充色。若不指定 <em>fill</em> 則將wet區域裁剪出來，使得接下來的繪圖只有wet區域內的纔會被繪製。</p>
+</dd>
+</dl>
+<dl class="docutils" id="t">
+<dt><strong>-Td</strong>[<strong>g</strong>|<strong>j</strong>|<strong>J</strong>|<strong>n</strong>|<strong>x</strong>]<em>refpoint</em><strong>+w</strong><em>width</em>[<strong>+f</strong>[<em>level</em>]][<strong>+j</strong><em>justify</em>][<strong>+l</strong><em>w,e,s,n</em>][<strong>+o</strong><em>dx</em>[/<em>dy</em>]]</dt>
+<dd><p class="first">在指定位置绘制方向玫瑰图</p>
+<p>简单介绍各子选项的含义，详情见 <a class="reference internal" href="../basis/embellishment.html"><span class="doc">繪製修飾物</span></a></p>
+<ul class="last simple">
+<li><strong>g</strong>|<strong>j</strong>|<strong>J</strong>|<strong>n</strong>|<strong>x</strong>]<em>refpoint</em>指定地图上的参考点<ul>
+<li><strong>g</strong> 指定某地图坐标位参考点</li>
+<li><strong>j</strong>|<strong>J</strong> 通过2字母的对齐方式码指定矩形区域的某个锚点作为参考点</li>
+<li><strong>n</strong> 在归一化坐标系（即0-1）中指定参考点</li>
+<li><strong>x</strong> 在绘图坐标系下指定参考点</li>
+</ul>
+</li>
+<li><strong>+j</strong><em>justify</em> 指定比例尺上的锚点 [<strong>MC</strong>]</li>
+<li><strong>+o</strong><em>dx</em>/<em>dy</em> 在参考点的基础上设置方向玫瑰图的额外偏移量</li>
+<li><strong>+w</strong><em>width</em> 玫瑰图宽度</li>
+<li><strong>+f</strong><em>level</em> 绘制fancy玫瑰图。<em>level</em> 取不同值代表不同类型的玫瑰图。
+<em>level</em> 可以取：<ul>
+<li><code class="docutils literal notranslate"><span class="pre">1</span></code> 绘制E-W和N-S四个方向</li>
+<li><code class="docutils literal notranslate"><span class="pre">2</span></code> 绘制8个方向</li>
+<li><code class="docutils literal notranslate"><span class="pre">3</span></code> 绘制16个方向</li>
+</ul>
+</li>
+<li><strong>+l</strong><em>w,e,s,n</em> 为四个方向分别指定标签。默认标签是四个方向的单字母代码（英文语言下是W、E、S、N），四个方向的标签之间用逗号分隔，若留空则表示不添加标签。比如 <code class="docutils literal notranslate"><span class="pre">+lw,e,s,n</span></code> 或 <code class="docutils literal notranslate"><span class="pre">+l&quot;,,Down,Up&quot;</span></code>。标签的文字属性由 <a class="reference external" href="https://docs.generic-mapping-tools.org/6.0/gmt.conf.html#font-title" title="(在 GMT v6.0)"><span class="xref std std-ref">FONT_TITLE</span></a> 控制</li>
+</ul>
+</dd>
+<dt><strong>-Tm</strong>[<strong>g</strong>|<strong>j</strong>|<strong>J</strong>|<strong>n</strong>|<strong>x</strong>]<em>refpoint</em><strong>+w</strong><em>width</em>[<strong>+d</strong><em>dec</em>[/<em>dlabel</em>]]][<strong>+i</strong><em>pen</em>][<strong>+j</strong><em>justify</em>][<strong>+l</strong><em>w,e,s,n</em>][<strong>+p</strong><em>pen</em>][<strong>+t</strong><em>ints</em>][<strong>+o</strong><em>dx</em>[/<em>dy</em>]]</dt>
+<dd><p class="first">在指定位置绘制磁场玫瑰图</p>
+<p>磁场玫瑰包括两个同心圆环，其中外环用于展示方向信息，内环用于显示磁场方向。</p>
+<p>简单介绍各子选项的含义，详情见 <a class="reference internal" href="../basis/embellishment.html"><span class="doc">繪製修飾物</span></a></p>
+<ul class="last simple">
+<li><strong>g</strong>|<strong>j</strong>|<strong>J</strong>|<strong>n</strong>|<strong>x</strong>]<em>refpoint</em>指定地图上的参考点<ul>
+<li><strong>g</strong> 指定某地图坐标位参考点</li>
+<li><strong>j</strong>|<strong>J</strong> 通过2字母的对齐方式码指定矩形区域的某个锚点作为参考点</li>
+<li><strong>n</strong> 在归一化坐标系（即0-1）中指定参考点</li>
+<li><strong>x</strong> 在绘图坐标系下指定参考点</li>
+</ul>
+</li>
+<li><strong>+j</strong><em>justify</em> 指定比例尺上的锚点 [<strong>MC</strong>]</li>
+<li><strong>+o</strong><em>dx</em>/<em>dy</em> 在参考点的基础上设置玫瑰图的额外偏移量</li>
+<li><strong>+w</strong><em>width</em> 玫瑰图宽度</li>
+<li><strong>+p</strong><em>pen</em> 绘制外环并设置其画笔属性</li>
+<li><strong>+i</strong><em>pen</em> 绘制内环并设置其画笔属性</li>
+<li><strong>+d</strong><em>dec</em>/<em>dlabel</em> 设置磁倾角以及罗盘指针上的磁倾角标签。若 <em>dlabel</em> 为空，则使用默认标签 <strong>d =</strong> <em>dec</em>；若 <em>dlabel</em> 为 <strong>-</strong>，则不绘制标签。当使用 <strong>+d</strong> 子选项时，会同时绘制地理方向和磁场方向</li>
+<li><strong>+l</strong><em>w,e,s,n</em> 为四个方向分别指定标签。默认标签是四个方向的单字母代码（英文语言下是W、E、S、N），四个方向的标签之间用逗号分隔，若留空则表示不添加标签；若 <em>n</em> 取值为 <strong>*</strong>，则会在北方向标签处绘制星代表北极星。比如 <code class="docutils literal notranslate"><span class="pre">+lw,e,s,n</span></code> 或 <code class="docutils literal notranslate"><span class="pre">+l&quot;,,Down,Up&quot;</span></code>或 <code class="docutils literal notranslate"><span class="pre">+l,,,*</span></code>。标签的文字属性由 <a class="reference external" href="https://docs.generic-mapping-tools.org/6.0/gmt.conf.html#font-title" title="(在 GMT v6.0)"><span class="xref std std-ref">FONT_TITLE</span></a> 控制</li>
+<li>内外环都可以设置标注、刻度和网格的间隔。内外环的间隔默认值都是 <code class="docutils literal notranslate"><span class="pre">30/5/1</span></code>。可以使用 <strong>+t</strong><em>ints</em> 选项，后面接6个斜杠分隔的值，以分别指定两个圆环的
+3种刻度值，其中前三个值控制内环属性，后三个值控制外环属性</li>
+</ul>
+</dd>
+</dl>
+<dl class="docutils" id="u">
+<dt><strong>-U</strong>[<em>label</em>][<strong>+c</strong>][<strong>+j</strong><em>just</em>][<strong>+o</strong><em>dx</em>/<em>dy</em>] <a class="reference internal" href="../option/U.html"><span class="doc">(more …)</span></a></dt>
+<dd>在图上绘制GMT时间戳logo</dd>
+</dl>
+<dl class="docutils" id="v">
+<dt><strong>-V</strong>[<em>level</em>] <a class="reference internal" href="../option/V.html"><span class="doc">(more …)</span></a></dt>
+<dd>设置 verbose 等级 [c]</dd>
+</dl>
+<dl class="docutils" id="w">
+<dt><strong>-W</strong>[<em>level</em>/]<em>pen</em></dt>
+<dd><p class="first">繪製岸線（shoreline）</p>
+<p>shore指水與陸地交界的“岸”（如：海岸、湖岸、河岸等），是一個較爲籠統的說法。</p>
+<p>GMT中岸線分成四個等級（<em>level</em> 取1-4）：</p>
+<ol class="arabic simple">
+<li>coastline：海岸線</li>
+<li>lakeshore：湖泊與陸地的岸線</li>
+<li>island-in-lake shore：首先要有陸地，陸地中有個湖，湖裏有個島。即島的岸線</li>
+<li>lake-in-island-in-lake shore：首先有陸地，陸地中有個湖，湖中有個島，島裏又有個湖。這裏指的是湖的岸線</li>
+</ol>
+<p>使用時需要注意：</p>
+<ul class="last simple">
+<li>不使用 <strong>-W</strong> 選項，則不繪製任何shore</li>
+<li>使用 <strong>-W</strong> ，給定畫筆屬性 <em>pen</em>，但不給出 <em>level</em>，則繪製四個level的shore</li>
+<li>在同一個命令中可以多次使用 <strong>-W</strong>，以指定不同 <em>level</em> 的shore的畫筆屬性</li>
+<li><strong>-W</strong> 選項中 <em>level</em> 是可選的，而 <em>pen</em> 是必須的！因而 <strong>-W2</strong>
+會被解釋爲所有level的畫筆屬性，而不是level 2</li>
+</ul>
+</dd>
+</dl>
+<p id="y"><span id="x"></span><strong>-X</strong>[<strong>a</strong>|<strong>c</strong>|<strong>f</strong>|<strong>r</strong>][<em>xshift</em>[<strong>u</strong>]]</p>
+<dl class="docutils">
+<dt><strong>-Y</strong>[<strong>a</strong>|<strong>c</strong>|<strong>f</strong>|<strong>r</strong>][<em>yshift</em>[<strong>u</strong>]] <a class="reference internal" href="../option/XY.html"><span class="doc">(more …)</span></a></dt>
+<dd>移动绘图原点</dd>
+</dl>
+<dl class="docutils">
+<dt><strong>-bo</strong>[<em>ncols</em>][<em>type</em>] <a class="reference internal" href="../option/binary.html"><span class="doc">(more …)</span></a></dt>
+<dd>设置二进制输出的数据格式</dd>
+</dl>
+<dl class="docutils">
+<dt><strong>-p</strong>[<strong>x</strong>|<strong>y</strong>|<strong>z</strong>]<em>azim</em>[/<em>elev</em>[/<em>zlevel</em>]][<strong>+w</strong><em>lon0</em>/<em>lat0</em>[/<em>z0</em>]][<strong>+v</strong><em>x0</em>/<em>y0</em>] <a class="reference internal" href="../option/perspective.html"><span class="doc">(more …)</span></a></dt>
+<dd>设置3D透视视角</dd>
+</dl>
+<dl class="docutils">
+<dt><strong>-t</strong>[<em>transp</em>] <a class="reference internal" href="../option/t.html"><span class="doc">(more …)</span></a></dt>
+<dd>设置图层透明度（百分比）。取值范围为0（不透明）到100（全透明）</dd>
+</dl>
+<dl class="docutils">
+<dt><strong>-^</strong> 或 <strong>-</strong></dt>
+<dd>显示简短的帮助信息，包括模块简介和基本语法信息（Windows下只能使用 <strong>-</strong>）</dd>
+<dt><strong>-+</strong> 或 <strong>+</strong></dt>
+<dd>显示帮助信息，包括模块简介、基本语法以及模块特有选项的说明</dd>
+<dt><strong>-?</strong> 或无参数</dt>
+<dd>显示完整的帮助信息，包括模块简介、基本语法以及所有选项的说明</dd>
+<dt><strong>--PAR</strong>=<em>value</em></dt>
+<dd>临时修改GMT参数的值，可重复多次使用。参数列表见 <a class="reference external" href="https://docs.generic-mapping-tools.org/6.0/gmt.conf.html" title="(在 GMT v6.0)"><span class="xref std std-doc">gmt.conf</span></a></dd>
+</dl>
+</div>
+<div class="section" id="id4">
+<h2>示例<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<p>在入門教程 <a class="reference internal" href="../tutorial/coastline.html"><span class="doc">繪製海岸線</span></a> 和 <a class="reference internal" href="../dataset/gshhg.html"><span class="doc">GSHHG: 全球高分辨率海岸線數據</span></a> 均提供了一些 <strong>coast</strong> 的使用實例。</p>
+<p>繪製非洲地圖，並繪製河流、國界，以及設置不同的填充色:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt coast -R-30/30/-40/40 -Jm0.1i -B5 -I1/1p,blue -N1/0.25p,- <span class="se">\</span>
+        -I2/0.25p,blue -W0.25p,white -Ggreen -Sblue -png africa
+</pre></div>
+</div>
+<p>繪製Iceland地圖，使用pattern #28做填充:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt coast -RIS+r1 -Jm1c -B -Wthin -Gp28+r100 -pdf iceland
+</pre></div>
+</div>
+<p>將非洲區域裁剪出來，並在其中的陸地部分繪製地形:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt begin map png
+    gmt coast -R-30/30/-40/40 -Jm0.1i -B -G
+    gmt grdimage @earth_relief_05m
+    gmt coast -Q
+gmt end show
+</pre></div>
+</div>
+<p>繪製部分國家的國界線:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt coast -JM6i -Baf -EGB,IT,FR+gblue+p0.25p,red -EES,PT,GR+gyellow -pdf map
+</pre></div>
+</div>
+<p>提取冰島的高精度海岸線數據:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt coast -RIS -Dh -W -M &gt; iceland.txt
+</pre></div>
+</div>
+</div>
+<div class="section" id="faq">
+<h2>FAQ<a class="headerlink" href="#faq" title="永久链接至标题">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">錯誤消息:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>coast: low resolution shoreline data base not installed.
+</pre></div>
+</div>
+<p>出現該錯誤的原因有如下幾種：</p>
+<ol class="arabic simple">
+<li>未安裝GSHHG海岸線數據</li>
+<li>安裝了但路徑不正確（建議的做法是把所有GSHHG的文件放在 <code class="docutils literal notranslate"><span class="pre">$GMTHOME/share/coast</span></code> 目錄下）</li>
+<li>安裝的netCDF版本號爲3.x而不是4.x</li>
+<li>自行編譯了netCDF 4.x，且編譯時使用了 <code class="docutils literal notranslate"><span class="pre">--disbale-netcdf4</span></code> 選項</li>
+</ol>
+</li>
+</ol>
+</div>
+<div class="section" id="id5">
+<h2>相關模塊<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<p><a class="reference internal" href="grdlandmask.html"><span class="doc">grdlandmask</span></a>,
+<a class="reference internal" href="basemap.html"><span class="doc">basemap</span></a></p>
+</div>
+</div>
+
+
+           </div>
+           
+           <div class="articleComments">
+            
+
+<!-- gitalk 脚本-->
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'b2dfca9a4bfad764aa2b',
+    clientSecret: '4ae5ddcd25c6b6d6bc07ac39201ea417054a530a',
+    owner: 'gmt-china',
+    repo: 'gitalk',
+    admin: ['zhaozhiyuan1989','cehui07226','NothingIsBig','seisman','SeisPider','wangliang1989','sqdeng'],
+    id: md5(location.pathname),
+    body: location.href,
+  });
+gitalk.render('gitalk-container');
+</script>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="colorbar.html" class="btn btn-neutral float-right" title="colorbar" accesskey="n" rel="next">下頁 <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="clip.html" class="btn btn-neutral float-left" title="clip" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> 上頁</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014 - 2020, GMT中文社区.
+      <span class="lastupdated">
+        最后更新于 2020年05月29日.
+      </span>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

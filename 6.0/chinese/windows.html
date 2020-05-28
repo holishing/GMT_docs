@@ -1,0 +1,418 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Windows 下的 GMT 中文支持 &mdash; GMT中文手册</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+    <link rel="canonical" href="https://docs.gmt-china.org/latest/chinese/windows.html"/>
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
+        <script async="async" type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="GMT中文效果演示" href="showcase.html" />
+    <link rel="prev" title="macOS 下的 GMT 中文支持" href="macOS.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+    
+    <a href="../index.html" class="icon icon-home"> GMT中文手册
+    
+
+    
+    </a>
+
+    
+    
+    
+    <div class="version">
+        <select onchange="location = this.options[this.selectedIndex].value;">
+            
+            <option value="/6.0/"  selected > v6.0 </option>
+            
+            <option value="/5.4/" > v5.4 </option>
+            
+        </select>
+    </div>
+    
+    
+
+    
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文件" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+    
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">目 錄</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">簡介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/index.html">安裝</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migrating/index.html">版本遷移</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">入門教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basis/index.html">GMT基礎</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../table/index.html">表數據</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grid/index.html">網格檔</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cpt/index.html">CPT文件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../option/index.html">標準選項</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../proj/index.html">地圖投影</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conf/index.html">配置參數</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dataset/index.html">地學數據集</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">中文支持</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="linux.html">Linux 下的 GMT 中文支持</a></li>
+<li class="toctree-l2"><a class="reference internal" href="macOS.html">macOS 下的 GMT 中文支持</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Windows 下的 GMT 中文支持</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ghostscript">ghostscript 的中文支持</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">配置Ghostscript環境變量</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gsview">gsview 的中文支持</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gmt">GMT 的中文支持</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">GMT 中文測試</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="showcase.html">GMT中文效果演示</a></li>
+<li class="toctree-l2"><a class="reference internal" href="custom-fonts.html">自定義字體原理</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../module/index.html">模塊手冊</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery/index.html">繪圖示例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/index.html">附錄</a></li>
+</ul>
+
+            
+          
+
+    
+        <p class="caption">
+            <span class="caption-text">外部链接</span>
+        </p>
+        <ul>
+            
+                <li class="toctree-l1"><a href="https://docs.gmt-china.org/6.0/GMT_docs.pdf"><i class="fa fa-book fa-fw"></i> PDF下载</a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/gmt-china/GMT_Docs"><i class="fa fa-github fa-fw"></i> 源代码</a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/gmt-china/GMT_docs/blob/master/CONTRIBUTING.md"><i class="fa fa-edit fa-fw"></i> 贡献指南</a></li>
+            
+                <li class="toctree-l1"><a href="https://gmt-china.org"><i class="fa fa-globe fa-fw"></i> GMT中文社区</a></li>
+            
+                <li class="toctree-l1"><a href="mailto:admin@gmt-china.org"><i class="fa fa-envelope fa-fw"></i> 联系我们</a></li>
+            
+        </ul>
+    
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">GMT中文手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">首頁</a> &raquo;</li>
+        
+          <li><a href="index.html">中文支持</a> &raquo;</li>
+        
+      <li>Windows 下的 GMT 中文支持</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/gmt-china/GMT_Docs/blob/master/source/chinese/windows.rst" class="fa fa-github"> 編輯本頁</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="windows-gmt">
+<h1>Windows 下的 GMT 中文支持<a class="headerlink" href="#windows-gmt" title="永久链接至标题">¶</a></h1>
+<div class="section" id="ghostscript">
+<h2>ghostscript 的中文支持<a class="headerlink" href="#ghostscript" title="永久链接至标题">¶</a></h2>
+<p>通常，在 <code class="docutils literal notranslate"><span class="pre">C:\Program</span> <span class="pre">Files\gs\gs9.26\examples\cjk</span></code> 目錄下可以找到文件 <code class="docutils literal notranslate"><span class="pre">gscjk_ag.ps</span></code>。</p>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">如果找不到該文件，請嘗試重新安裝ghostscript。在安裝的過程中，會有一個生成
+cidmap 的選項，選中該選項則表示會爲當前系統自動生成中文所需的 cidmap 文件。默認該選項是被選中的，一定 <strong>不要</strong> 將該選項取消；</p>
+</div>
+<p>啓動 cmd，鍵入如下命令:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> <span class="s2">&quot;C:\Program Files\gs\gs9.26\bin&quot;</span>
+gswin64.exe ..<span class="se">\e</span>xamples<span class="se">\c</span>jk<span class="se">\g</span>scjk_ag.ps
+</pre></div>
+</div>
+<p>該命令用命令行版本的 <code class="docutils literal notranslate"><span class="pre">gswin64c</span></code> 打開 <code class="docutils literal notranslate"><span class="pre">gscjk_ag.ps</span></code>，若能看到中文，則說明
+ghostscript 是可以正常支持中文的。</p>
+</div>
+<div class="section" id="id1">
+<h2>配置Ghostscript環境變量<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p>爲了能夠在將PS文件轉換爲其他圖片格式時也支持中文，需要設置環境變量 <code class="docutils literal notranslate"><span class="pre">GS_FONTPATH</span></code>。具體步驟如下：</p>
+<ol class="arabic simple">
+<li>點擊“計算機”-&gt;“屬性”-&gt;“高級系統設置”-&gt;“環境變量”打開“環境變量”編輯工具</li>
+<li>在“系統變量”部分中，新建變量 <code class="docutils literal notranslate"><span class="pre">GS_FONTPATH</span></code> 並設置其值爲 <code class="docutils literal notranslate"><span class="pre">C:\Windows\fonts</span></code></li>
+</ol>
+</div>
+<div class="section" id="gsview">
+<h2>gsview 的中文支持<a class="headerlink" href="#gsview" title="永久链接至标题">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">如果你需要用gsview查看PS文件，則需要爲gsview配置中文顯示。否則，則可以跳過這一部分。</p>
+</div>
+<p>安裝好 gsview 之後，PS 格式會自動與 gsview 關聯。一般情況下，直接雙擊 PS 文件，就會用 gsview 打開該 PS 文件。</p>
+<p>雙擊打開 <code class="docutils literal notranslate"><span class="pre">gscjk_ag.ps</span></code>，一般情況下不會正確顯示漢字。這是因爲 gsview 在打開
+PS 文件時沒有找到漢字所對應的字體文件。</p>
+<p>在 gsview 的 “選項”-&gt;“高級配置” 中，將 Ghostscript Options 由
+<code class="docutils literal notranslate"><span class="pre">-dNOPLATFONTS</span> <span class="pre">-sFONTPATH=&quot;c:\psfonts&quot;</span></code>
+改成 <code class="docutils literal notranslate"><span class="pre">-dNOPLATFONTS</span> <span class="pre">-sFONTPATH=&quot;C:\Windows\Fonts&quot;</span></code>，此時 gsview 在調用 gswin64 時會將選項傳遞給 gswin64，gswin64 則會在 <code class="docutils literal notranslate"><span class="pre">FONTPATH</span></code>
+中搜索字體。</p>
+<p>配置完畢後，重新打開 <code class="docutils literal notranslate"><span class="pre">gscjk_ag.ps</span></code>，若中文正常顯示，則表示 gsview 已支持中文。</p>
+</div>
+<div class="section" id="gmt">
+<h2>GMT 的中文支持<a class="headerlink" href="#gmt" title="永久链接至标题">¶</a></h2>
+<p>新建GMT自定義字體配置文件 <code class="docutils literal notranslate"><span class="pre">C:\Users\用戶名\.gmt\PSL_custom_fonts.txt</span></code>
+（若不存在 <code class="docutils literal notranslate"><span class="pre">C:\Users\用戶名\.gmt</span></code> 目錄則需新建該目錄。Windows的文件管理器無法新建以 <strong>.</strong> 開頭的文件夾，因而需要打開CMD，然後執行命令 <code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">.gmt</span></code> 以創建該文件夾）。</p>
+<p>向 GMT自定義字體配置文件 <code class="docutils literal notranslate"><span class="pre">C:\Users\用戶名\.gmt\PSL_custom_fonts.txt</span></code> 中加入如下語句:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>STSong-Light--GB-EUC-H  <span class="m">0</span>.700    <span class="m">1</span>
+STFangsong-Light--GB-EUC-H  <span class="m">0</span>.700    <span class="m">1</span>
+STHeiti-Regular--GB-EUC-H   <span class="m">0</span>.700   <span class="m">1</span>
+STKaiti-Regular--GB-EUC-H   <span class="m">0</span>.700   <span class="m">1</span>
+STSong-Light--GB-EUC-V  <span class="m">0</span>.700    <span class="m">1</span>
+STFangsong-Light--GB-EUC-V  <span class="m">0</span>.700    <span class="m">1</span>
+STHeiti-Regular--GB-EUC-V   <span class="m">0</span>.700   <span class="m">1</span>
+STKaiti-Regular--GB-EUC-V   <span class="m">0</span>.700   <span class="m">1</span>
+</pre></div>
+</div>
+<p>用 <code class="docutils literal notranslate"><span class="pre">gmt</span> <span class="pre">text</span> <span class="pre">-L</span></code> 查看 GMT 字體:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ gmt text -L
+Font <span class="c1">#  Font Name</span>
+------------------------------------
+<span class="m">0</span>   Helvetica
+<span class="m">1</span>   Helvetica-Bold
+...    ......
+<span class="m">39</span> STSong-Light--GB-EUC-H
+<span class="m">40</span> STFangsong-Light--GB-EUC-H
+<span class="m">41</span> STHeiti-Regular--GB-EUC-H
+<span class="m">42</span> STKaiti-Regular--GB-EUC-H
+<span class="m">43</span> STSong-Light--GB-EUC-V
+<span class="m">44</span> STFangsong-Light--GB-EUC-V
+<span class="m">45</span> STHeiti-Regular--GB-EUC-V
+<span class="m">46</span> STKaiti-Regular--GB-EUC-V
+</pre></div>
+</div>
+<p>可以看到，新添加的四種中文字體對應的字體編號爲 39 到 46。其中 <code class="docutils literal notranslate"><span class="pre">STSong-Light-GB-EUC-H</span></code> 即爲宋體，<code class="docutils literal notranslate"><span class="pre">GB-EUC</span></code> 是文字編碼方式，
+<code class="docutils literal notranslate"><span class="pre">H</span></code> 表示文字水平排列，<code class="docutils literal notranslate"><span class="pre">V</span></code> 表示豎排文字。強烈建議在執行測試腳本前確認自己的中文字體編號。</p>
+</div>
+<div class="section" id="id2">
+<h2>GMT 中文測試<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">請自行確認你的中文字體編號。如果編號不是39到46，請自行修改以下測試腳本。</p>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt begin map pdf,png
+REM GMT在Windows下处理中文存在一些已知BUG
+REM 需要设置 PS_CHAR_ENCODING 为 Standard+ 以绕过这一BUG
+gmt <span class="nb">set</span> PS_CHAR_ENCODING Standard+
+gmt <span class="nb">set</span> FONT_TITLE 25p,41,black
+gmt <span class="nb">set</span> FONT_LABEL 15p,39,black
+
+<span class="nb">echo</span> <span class="m">2</span> <span class="m">3</span>.5 25p,39,black 中文宋体  &gt; tmp
+<span class="nb">echo</span> <span class="m">2</span> <span class="m">2</span>.5 25p,40,blue  中文仿宋 &gt;&gt; tmp
+<span class="nb">echo</span> <span class="m">2</span> <span class="m">1</span>.5 25p,41,red   中文黑体 &gt;&gt; tmp
+<span class="nb">echo</span> <span class="m">2</span> <span class="m">0</span>.5 25p,42,green 中文楷体 &gt;&gt; tmp
+<span class="nb">echo</span> <span class="m">4</span> <span class="m">3</span>.5 25p,43,black 中文宋体 &gt;&gt; tmp
+<span class="nb">echo</span> <span class="m">5</span> <span class="m">3</span>.5 25p,44,blue  中文仿宋 &gt;&gt; tmp
+<span class="nb">echo</span> <span class="m">6</span> <span class="m">3</span>.5 25p,45,red   中文黑体 &gt;&gt; tmp
+<span class="nb">echo</span> <span class="m">7</span> <span class="m">3</span>.5 25p,46,green 中文楷体 &gt;&gt; tmp
+
+gmt text tmp -R0/8/0/4 -JX12c/4c -Bxaf+l<span class="s2">&quot;X轴&quot;</span> -Byaf+l<span class="s2">&quot;Y轴&quot;</span> -BWSen+t<span class="s2">&quot;中文标题&quot;</span> -F+f
+del tmp
+gmt end
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>GMT 6.x 目前在Windows下處理中文時存在BUG，可能會出現某些中文正常顯示，某些不正常顯示的情況。使用:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt <span class="nb">set</span> PS_CHAR_ENCODING Standard+
+</pre></div>
+</div>
+<p class="last">可臨時避免這一BUG。</p>
+</div>
+<p>成圖效果如下：</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/GMT_Chinese.png"><img alt="../_images/GMT_Chinese.png" src="../_images/GMT_Chinese.png" style="width: 100%;" /></a>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">若使用記事本編輯 bat 文件，則保存時應注意編碼方式爲 ANSI、Unicode 或
+Unicode big endian，若使用 UTF-8 編碼則會出現亂碼；另外，很多編輯器默認將文本文件以 UTF-8 編碼保存，需要將編輯器的默認編碼修改爲 GB-2321、ANSI或GB-EUC。</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+           <div class="articleComments">
+            
+
+<!-- gitalk 脚本-->
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'b2dfca9a4bfad764aa2b',
+    clientSecret: '4ae5ddcd25c6b6d6bc07ac39201ea417054a530a',
+    owner: 'gmt-china',
+    repo: 'gitalk',
+    admin: ['zhaozhiyuan1989','cehui07226','NothingIsBig','seisman','SeisPider','wangliang1989','sqdeng'],
+    id: md5(location.pathname),
+    body: location.href,
+  });
+gitalk.render('gitalk-container');
+</script>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="showcase.html" class="btn btn-neutral float-right" title="GMT中文效果演示" accesskey="n" rel="next">下頁 <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="macOS.html" class="btn btn-neutral float-left" title="macOS 下的 GMT 中文支持" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> 上頁</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014 - 2020, GMT中文社区.
+      <span class="lastupdated">
+        最后更新于 2020年05月29日.
+      </span>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

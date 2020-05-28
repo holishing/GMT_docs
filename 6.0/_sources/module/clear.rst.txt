@@ -4,34 +4,34 @@
 clear
 =====
 
-:官方文档: :doc:`gmt:clear`
-:简介: 删除缓存目录、数据目录或会话目录，以及当前配置文件
+:官方文件: :doc:`gmt:clear`
+:簡介: 刪除緩存目錄、數據目錄或會話目錄，以及當前配置文件
 
-语法
+語法
 ----
 
 **gmt clear**
 **all** | **cache** | **data** | **sessions** | **settings**
 [ |SYN_OPT-V| ]
 
-可选选项
+可選選項
 --------
 
 **all**
-    删除所有项目，包括缓存目录（\ **~/.gmt/cache**\ ）、数据目录（\ **~/.gmt/server**\ ）、会话目录（\ **~/.gmt/sessions**\ ）以及当前配置文件
+    刪除所有項目，包括緩存目錄（\ **~/.gmt/cache**\ ）、數據目錄（\ **~/.gmt/server**\ ）、會話目錄（\ **~/.gmt/sessions**\ ）以及當前配置文件
 
 **cache**
-    删除GMT缓存目录（默认为\ **~/.gmt/cache**\ ）及其内容
+    刪除GMT緩存目錄（默認爲\ **~/.gmt/cache**\ ）及其內容
 
 **data**
-    删除GMT数据目录（默认为\ **~/.gmt/server**\ ）及其内容
+    刪除GMT數據目錄（默認爲\ **~/.gmt/server**\ ）及其內容
 
 **sessions**
-    删除GMT会话目录（默认为\ **~/.gmt/sessions**\ ）及其内容
+    刪除GMT會話目錄（默認爲\ **~/.gmt/sessions**\ ）及其內容
 
 **settings**
-    现代模式下删除当前会话的GMT配置参数文件（即 gmt.conf），
-    使得所有参数回到GMT系统默认值。
+    現代模式下刪除當前會話的GMT配置參數文件（即 gmt.conf），
+    使得所有參數回到GMT系統默認值。
 
 .. include:: explain_-V.rst_
 
@@ -40,15 +40,15 @@ clear
 示例
 ----
 
-清空GMT缓存目录::
+清空GMT緩存目錄::
 
     gmt clear cache
 
-删除现代模式会话下的当前配置参数文件::
+刪除現代模式會話下的當前配置參數文件::
 
     gmt clear settings
 
-相关模块
+相關模塊
 --------
 
 :doc:`begin`,

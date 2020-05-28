@@ -3,27 +3,27 @@
 fitcircle
 =========
 
-:官方文档: :doc:`gmt:fitcircle`
-:简介: 拟合球面上数据点的平均位置及圆弧
+:官方文件: :doc:`gmt:fitcircle`
+:簡介: 擬合球面上數據點的平均位置及圓弧
 
-该命令从输入数据的前两列读取经纬度数据，将其转换为单位球面上的笛卡尔三维矢量，
-然后计算输入坐标数据的平均位置以及可以拟合这些坐标点的大圆路径的pole。
+該命令從輸入數據的前兩列讀取經緯度數據，將其轉換爲單位球面上的笛卡爾三維矢量，
+然後計算輸入座標數據的平均位置以及可以擬合這些座標點的大圓路徑的pole。
 
-必选选项
+必選選項
 --------
 
 ``<table>``
-    输入数据
+    輸入數據
 
 ``-L<norm>``
 
     - ``-L1`` 解法1
     - ``-L2`` 解法2
-    - ``-L`` 或 ``-L3`` 同时输出解法1和解法2的结果
+    - ``-L`` 或 ``-L3`` 同時輸出解法1和解法2的結果
 
-    在计算输入坐标的均值和大圆弧pole时有两种计算方法，分别用 ``-L1`` 和 ``-L2``
-    表示。当数据沿着某个大圆弧且距离接近时，两组解结果相似。若数据较分散，
-    则大圆弧的pole要比均值不精确得多。此时可以比较两组结果以作为相互的验证。
+    在計算輸入座標的均值和大圓弧pole時有兩種計算方法，分別用 ``-L1`` 和 ``-L2``
+    表示。當數據沿着某個大圓弧且距離接近時，兩組解結果相似。若數據較分散，
+    則大圓弧的pole要比均值不精確得多。此時可以比較兩組結果以作爲相互的驗證。
 
     The **-L1** solution is so called because it approximates the
     minimization of the sum of absolute values of cosines of angular
@@ -42,14 +42,14 @@ fitcircle
     corresponding to the smallest eigenvalue; it is the least-well
     represented factor in the data and is not easily estimated by either method.
 
-选项
+選項
 ----
 
 ``-Ff|m|n|s|c``
-    控制输出格式。
+    控制輸出格式。
 
-    正常情况下，该命令会将计算结果以较复杂的形式输出。使用 ``-F`` 选项，则只
-    返回简单的坐标。 ``-F`` 后可以加上其他修饰符以指定要返回的坐标：
+    正常情況下，該命令會將計算結果以較複雜的形式輸出。使用 ``-F`` 選項，則只
+    返回簡單的座標。 ``-F`` 後可以加上其他修飾符以指定要返回的座標：
 
     - ``f`` Flat Earth mean location
     - ``m`` mean location
@@ -58,7 +58,7 @@ fitcircle
     - ``c`` pole of small circle and its colatitude, which requires ``-S``
 
 ``-S[<lat>]``
-    拟合小圆弧而不是大圆弧
+    擬合小圓弧而不是大圓弧
 
     The pole will be constrained to lie on the great circle connecting the pole
     of the best-fit great circle and the mean location of the data.
@@ -68,8 +68,8 @@ fitcircle
 示例
 ----
 
-如下命令，用两种计算方法拟合了数据的大圆弧路径和小圆弧路径，并借助 :doc:`project`
-生成路径坐标。
+如下命令，用兩種計算方法擬合了數據的大圓弧路徑和小圓弧路徑，並藉助 :doc:`project`
+生成路徑座標。
 
 .. gmtplot:: /scripts/fitcircle_ex1.sh
 

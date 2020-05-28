@@ -1,0 +1,565 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>grdedit &mdash; GMT中文手册</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+    <link rel="canonical" href="https://docs.gmt-china.org/latest/module/grdedit.html"/>
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
+        <script async="async" type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="grdfill" href="grdfill.html" />
+    <link rel="prev" title="grdcut" href="grdcut.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+    
+    <a href="../index.html" class="icon icon-home"> GMT中文手册
+    
+
+    
+    </a>
+
+    
+    
+    
+    <div class="version">
+        <select onchange="location = this.options[this.selectedIndex].value;">
+            
+            <option value="/6.0/"  selected > v6.0 </option>
+            
+            <option value="/5.4/" > v5.4 </option>
+            
+        </select>
+    </div>
+    
+    
+
+    
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文件" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+    
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">目 錄</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">簡介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/index.html">安裝</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migrating/index.html">版本遷移</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">入門教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basis/index.html">GMT基礎</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../table/index.html">表數據</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grid/index.html">網格檔</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cpt/index.html">CPT文件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../option/index.html">標準選項</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../proj/index.html">地圖投影</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conf/index.html">配置參數</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dataset/index.html">地學數據集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chinese/index.html">中文支持</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">模塊手冊</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="basemap.html">basemap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="begin.html">begin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clear.html">clear</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clip.html">clip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coast.html">coast</a></li>
+<li class="toctree-l2"><a class="reference internal" href="colorbar.html">colorbar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coupe.html">coupe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs.html">docs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="end.html">end</a></li>
+<li class="toctree-l2"><a class="reference internal" href="figure.html">figure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filter1d.html">filter1d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fitcircle.html">fitcircle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gmt.html">gmt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gmt-config.html">gmt-config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gmtconnect.html">gmtconnect</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gmtdefaults.html">gmtdefaults</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gmtget.html">gmtget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gmtinfo.html">gmtinfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gmtlogo.html">gmtlogo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gmtselect.html">gmtselect</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gmtset.html">gmtset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gmtsimplify.html">gmtsimplify</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gmtwhich.html">gmtwhich</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grd2xyz.html">grd2xyz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdblend.html">grdblend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdclip.html">grdclip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdconvert.html">grdconvert</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdcut.html">grdcut</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">grdedit</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">語法</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">必須選項</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">可選選項</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">示例</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">相關模塊</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="grdfill.html">grdfill</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdimage.html">grdimage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdinfo.html">grdinfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdlandmask.html">grdlandmask</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdmask.html">grdmask</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdpaste.html">grdpaste</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdproject.html">grdproject</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdsample.html">grdsample</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdtrack.html">grdtrack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdtrend.html">grdtrend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdvector.html">grdvector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdvolume.html">grdvolume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="histogram.html">histogram</a></li>
+<li class="toctree-l2"><a class="reference internal" href="image.html">image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inset.html">inset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kml2gmt.html">kml2gmt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="legend.html">legend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="makecpt.html">makecpt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mapproject.html">mapproject</a></li>
+<li class="toctree-l2"><a class="reference internal" href="meca.html">meca</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot.html">plot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="polar.html">polar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="project.html">project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="psconvert.html">psconvert</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rose.html">rose</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sac.html">sac</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sample1d.html">sample1d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="solar.html">solar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spectrum1d.html">spectrum1d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="subplot.html">subplot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ternary.html">ternary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="text.html">text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="velo.html">velo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xyz2grd.html">xyz2grd</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery/index.html">繪圖示例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/index.html">附錄</a></li>
+</ul>
+
+            
+          
+
+    
+        <p class="caption">
+            <span class="caption-text">外部链接</span>
+        </p>
+        <ul>
+            
+                <li class="toctree-l1"><a href="https://docs.gmt-china.org/6.0/GMT_docs.pdf"><i class="fa fa-book fa-fw"></i> PDF下载</a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/gmt-china/GMT_Docs"><i class="fa fa-github fa-fw"></i> 源代码</a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/gmt-china/GMT_docs/blob/master/CONTRIBUTING.md"><i class="fa fa-edit fa-fw"></i> 贡献指南</a></li>
+            
+                <li class="toctree-l1"><a href="https://gmt-china.org"><i class="fa fa-globe fa-fw"></i> GMT中文社区</a></li>
+            
+                <li class="toctree-l1"><a href="mailto:admin@gmt-china.org"><i class="fa fa-envelope fa-fw"></i> 联系我们</a></li>
+            
+        </ul>
+    
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">GMT中文手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">首頁</a> &raquo;</li>
+        
+          <li><a href="index.html">模塊手冊</a> &raquo;</li>
+        
+      <li>grdedit</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/gmt-china/GMT_Docs/blob/master/source/module/grdedit.rst" class="fa fa-github"> 編輯本頁</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="grdedit">
+<span id="index-0"></span><h1>grdedit<a class="headerlink" href="#grdedit" title="永久链接至标题">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">官方文件:</th><td class="field-body"><a class="reference external" href="https://docs.generic-mapping-tools.org/6.0/grdedit.html" title="(在 GMT v6.0)"><span>grdedit</span></a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">簡介:</th><td class="field-body">修改網格檔的頭段或內容</td>
+</tr>
+</tbody>
+</table>
+<p><strong>grdedit</strong> 模塊具有如下功能：</p>
+<ul class="simple">
+<li>從2D網格檔中讀入頭段信息，並使用命令行中的值替換頭段信息</li>
+<li>對全球地理網格檔沿着東西方向旋轉</li>
+<li>可以用 <em>x y z</em> 值替換網格檔中特定節點的值</li>
+</ul>
+<div class="section" id="id1">
+<h2>語法<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p><strong>gmt grdedit</strong> <em>grid</em> [ <a class="reference internal" href="#a"><span> <strong>-A</strong></span></a></strong> ] [ <a class="reference internal" href="#c"><span> <strong>-C</strong></span></a></strong> ]
+[ <a class="reference internal" href="#d"><span> <strong>-D</strong></span></a></strong>[<strong>+x</strong><em>xname</em>][<strong>+y</strong><em>yname</em>][<strong>+z</strong><em>zname</em>][<strong>+s</strong><em>scale</em>][<strong>+o</strong><em>offset</em>][<strong>+n</strong><em>invalid</em>][<strong>+t</strong><em>title</em>][<strong>+r</strong><em>remark</em>] ]
+[ <a class="reference internal" href="#e"><span> <strong>-E</strong></span></a></strong>[<strong>a</strong>|<strong>h</strong>|<strong>l</strong>|<strong>r</strong>|<strong>t</strong>|<strong>v</strong>] ]
+[ <a class="reference internal" href="#g"><span> <strong>-G</strong></span></a></strong><em>outgrid</em> ]
+[ <a class="reference internal" href="#j"><span> <strong>-J</strong></span></a></strong><em>parameters</em> ]
+[ <a class="reference internal" href="#l"><span> <strong>-L</strong></span></a></strong>[<strong>+n</strong>|<strong>p</strong>] ]
+[ <a class="reference internal" href="#n"><span> <strong>-N</strong></span></a></strong><em>table</em> ]
+[ <a class="reference internal" href="#r"><span> <strong>-R</strong></span></a></strong><em>region</em> ]
+[ <a class="reference internal" href="#s"><span> <strong>-S</strong></span></a></strong> ] [ <a class="reference internal" href="#t"><span> <strong>-T</strong></span></a></strong> ]
+[ <a class="reference internal" href="#v"><span> <strong>-V</strong></span></a></strong>[<em>level</em>] ]
+[ <strong>-bi</strong><a class="reference internal" href="../option/binary.html"><span class="doc">binary</span></a> ]
+[ <strong>-di</strong><a class="reference internal" href="../option/d.html"><span class="doc">nodata</span></a> ]
+[ <strong>-e</strong><a class="reference internal" href="../option/e.html"><span class="doc">regexp</span></a> ]
+[ <strong>-f</strong><a class="reference internal" href="../option/f.html"><span class="doc">flags</span></a> ]
+[ <strong>-h</strong><a class="reference internal" href="../option/h.html"><span class="doc">headers</span></a> ]
+[ <strong>-i</strong><a class="reference internal" href="../option/io.html"><span class="doc">flags</span></a> ]
+[ <strong>-:</strong>[<strong>i</strong>|<strong>o</strong>] ]
+[ <strong>--PAR</strong>=<em>value</em> ]</p>
+</div>
+<div class="section" id="id2">
+<h2>必須選項<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<dl class="docutils">
+<dt><em>grid</em></dt>
+<dd>要修改的2D網格檔</dd>
+</dl>
+</div>
+<div class="section" id="id3">
+<h2>可選選項<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<dl class="docutils" id="a">
+<dt><strong>-A</strong></dt>
+<dd>如有必要，則對網格間隔做微調使得其與數據的範圍相兼容。僅用於處理 GMT 3.1
+之前版本生成的網格檔。</dd>
+</dl>
+<dl class="docutils" id="c">
+<dt><strong>-C</strong></dt>
+<dd>清除網格檔頭段區中生成該網格所使用的命令歷史</dd>
+</dl>
+<dl class="docutils" id="d">
+<dt><strong>-D</strong>[<strong>+x</strong><em>xname</em>][<strong>+y</strong><em>yname</em>][<strong>+z</strong><em>zname</em>][<strong>+s</strong><em>scale</em>][<strong>+o</strong><em>offset</em>][<strong>+n</strong><em>invalid</em>][<strong>+t</strong><em>title</em>][<strong>+r</strong><em>remark</em>]</dt>
+<dd><p class="first">给定网格文件头段中的基本信息：</p>
+<ul class="simple">
+<li><strong>+x</strong><em>xname</em> X变量名及其单位，格式为 <em>varname</em> [<em>unit</em>]，比如 “distance [km]”</li>
+<li><strong>+s</strong><em>scale</em> 读入网格数据后要乘以的因子，默认值为 1</li>
+<li><strong>+o</strong><em>offset</em> 读入数据后并乘以因子后要加的常数，默认值为 0</li>
+<li><strong>+n</strong><em>invalid</em> 指定值 <em>invalid</em> 用于表示该节点处无有效值，默认为NaN</li>
+<li><strong>+t</strong><em>title</em> 网格文件的标题</li>
+<li><strong>+r</strong><em>remark</em> 网格文件的注释信息</li>
+</ul>
+<p>其它说明：</p>
+<ol class="last arabic simple">
+<li>未指定的项其值保持不变</li>
+<li>可以给一个空值以重置某一项，比如使用 <strong>+t</strong> 而不指定标题则设置标题为空</li>
+<li>若字符串中包含空格则需要用引号括起来</li>
+<li>若字符串中包含加号 <strong>+</strong>，需要使用 <strong>+</strong> 对其进行转义。或者可以使用单引号套双引号的方式，例如 ‘“title with + inside”’</li>
+<li>若字符串中使用了shell变量，且变量值中包含加号，则需要使用 <code class="docutils literal notranslate"><span class="pre">${variable/+/\\+}</span></code></li>
+<li>对于地理数据（比如 <strong>-fg</strong> ），<em>xname</em> 和 <em>yname</em> 会自动设置</li>
+</ol>
+</dd>
+</dl>
+<dl class="docutils" id="e">
+<dt><strong>-E</strong>[<strong>a</strong>|<strong>h</strong>|<strong>l</strong>|<strong>r</strong>|<strong>t</strong>|<strong>v</strong>]</dt>
+<dd><p class="first">對網格做變換。該選項與除 <strong>-G</strong> 外的其它選項不兼容</p>
+<ul class="simple">
+<li><strong>-Ea</strong> 旋轉180度</li>
+<li><strong>-Eh</strong> 水平翻轉網格（從左到右）</li>
+<li><strong>-Ev</strong> 垂直旋轉網格（從上到下）</li>
+<li><strong>-El</strong> 逆時針將網格旋轉90度</li>
+<li><strong>-Er</strong> 順時針將網格旋轉90度</li>
+<li><strong>-Et</strong> 對網格進行轉置（想象成一個二維矩陣），默認使用該變換</li>
+</ul>
+<p>下圖展示了不同變換的具體效果：</p>
+<p><a class="reference download internal" download="" href="../_downloads/36cd9dd8fdd5d00f9bba627eb8bd0fc9/grdedit-gmtplot-0.sh"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">Code</span></code></a></p>
+<div class="last figure align-center">
+<img alt="../_images/grdedit-gmtplot-0.png" src="../_images/grdedit-gmtplot-0.png" />
+</div>
+</dd>
+</dl>
+<dl class="docutils" id="g">
+<dt><strong>-G</strong><em>outgrid</em></dt>
+<dd>默認情況下，<strong>grdedit</strong> 模塊會直接修改並覆蓋原始網格檔。使用該選項則將修改後的網格寫到新的文件中。</dd>
+</dl>
+<dl class="docutils" id="j">
+<dt><strong>-J</strong><em>projection</em> <a class="reference internal" href="../option/J.html"><span class="doc">(more …)</span></a></dt>
+<dd>设置地图投影方式。</dd>
+</dl>
+<blockquote>
+<div>使用 <strong>-J</strong> 選項則將地理相關信息以 CF-1 兼容的元數據形式（可被GDAL識別）保存到 netCDF 文件中。</div></blockquote>
+<dl class="docutils" id="l">
+<dt><strong>-L</strong>[<strong>+n</strong>|<strong>p</strong>]</dt>
+<dd><p class="first">調整地理網格檔的經度</p>
+<p class="last">默認情況下會調整 <em>west</em> 和 <em>east</em> 使得 <em>west</em>&gt;=-180 或 <em>east</em> &lt;= 180。
+<strong>+n</strong> 則強制經度爲負值，<strong>+p</strong> 則強制經度爲正值。</p>
+</dd>
+</dl>
+<dl class="docutils" id="n">
+<dt><strong>-N</strong><em>table</em></dt>
+<dd>從文件 <em>table</em> 中讀入XYZ數據，並用這些XYZ數據替換網格中對應節點的值。</dd>
+</dl>
+<dl class="docutils" id="r">
+<dt><strong>-R</strong><em>xmin</em>/<em>xmax</em>/<em>ymin</em>/<em>ymax</em>[<strong>+r</strong>][<strong>+u</strong><em>unit</em>] <a class="reference internal" href="../option/R.html"><span class="doc">(more …)</span></a></dt>
+<dd>指定数据范围</dd>
+</dl>
+<blockquote>
+<div>修改網格檔的範圍。同時，網格間隔會做相應修改。</div></blockquote>
+<dl class="docutils" id="s">
+<dt><strong>-S</strong></dt>
+<dd><p class="first">將網格沿着經度範圍整體偏移，使得其滿足 <strong>-R</strong> 定義的新範圍。僅用於全球地理網格數據。</p>
+<p>例如，原數據範圍是 <strong>0/360/-72/72</strong>，現將數據整體偏移180度使得數據範圍是
+<strong>-180/180/-72/72</strong>:</p>
+<div class="last highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt grdedit world.nc -R-180/180/-72/72 -S
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="docutils" id="t">
+<dt><strong>-T</strong></dt>
+<dd><p class="first">將一個網格線配準的文件變成像素配準的文件，或反之。</p>
+<p class="last">使用該選項後，網格線配準的數據的範圍將在四個方向上擴大半個網格間隔，像素點配置的數據的範圍將在四個方向上縮小半個網格間隔。</p>
+</dd>
+</dl>
+<dl class="docutils" id="v">
+<dt><strong>-V</strong>[<em>level</em>] <a class="reference internal" href="../option/V.html"><span class="doc">(more …)</span></a></dt>
+<dd>设置 verbose 等级 [c]</dd>
+</dl>
+<dl class="docutils">
+<dt><strong>-bi</strong>[<em>ncols</em>][<strong>t</strong>] <a class="reference internal" href="../option/binary.html"><span class="doc">(more …)</span></a></dt>
+<dd>设置二进制输入数据的格式</dd>
+</dl>
+<dl class="docutils">
+<dt><strong>-di</strong><em>nodata</em> <a class="reference internal" href="../option/d.html"><span class="doc">(more …)</span></a></dt>
+<dd>将输入数据中值为 <em>nodata</em> 的列替换为 NaN</dd>
+</dl>
+<dl class="docutils">
+<dt><strong>-e</strong>[<strong>~</strong>]<em>”pattern”</em> | <strong>-e</strong>[<strong>~</strong>]/<em>regexp</em>/[<strong>i</strong>] <a class="reference internal" href="../option/e.html"><span class="doc">(more …)</span></a></dt>
+<dd>只接受匹配指定模式的数据记录</dd>
+</dl>
+<dl class="docutils">
+<dt><strong>-f</strong>[<strong>i</strong>|<strong>o</strong>]<em>colinfo</em> <a class="reference internal" href="../option/f.html"><span class="doc">(more …)</span></a></dt>
+<dd>指定输入或输出列的数据类型</dd>
+</dl>
+<dl class="docutils" id="h">
+<dt><strong>-h</strong>[<strong>i</strong>|<strong>o</strong>][<em>n</em>][<strong>+c</strong>][<strong>+d</strong>][<strong>+r</strong><em>remark</em>][<strong>+r</strong><em>title</em>] <a class="reference internal" href="../option/h.html"><span class="doc">(more …)</span></a></dt>
+<dd>跳过或生成指定数目的头段记录</dd>
+</dl>
+<dl class="docutils">
+<dt><strong>-i</strong><em>cols</em>[<strong>+l</strong>][<strong>+s</strong><em>scale</em>][<strong>+o</strong><em>offset</em>][,<em>…</em>][,<strong>t</strong>[<em>word</em>]] <a class="reference internal" href="../option/io.html"><span class="doc">(more …)</span></a></dt>
+<dd>设置输入数据列及简单变换（0表示第一列，<strong>t</strong> 表示文本列）</dd>
+</dl>
+<dl class="docutils">
+<dt><strong>-^</strong> 或 <strong>-</strong></dt>
+<dd>显示简短的帮助信息，包括模块简介和基本语法信息（Windows下只能使用 <strong>-</strong>）</dd>
+<dt><strong>-+</strong> 或 <strong>+</strong></dt>
+<dd>显示帮助信息，包括模块简介、基本语法以及模块特有选项的说明</dd>
+<dt><strong>-?</strong> 或无参数</dt>
+<dd>显示完整的帮助信息，包括模块简介、基本语法以及所有选项的说明</dd>
+<dt><strong>--PAR</strong>=<em>value</em></dt>
+<dd>临时修改GMT参数的值，可重复多次使用。参数列表见 <a class="reference external" href="https://docs.generic-mapping-tools.org/6.0/gmt.conf.html" title="(在 GMT v6.0)"><span class="xref std std-doc">gmt.conf</span></a></dd>
+</dl>
+</div>
+<div class="section" id="id4">
+<h2>示例<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<p>假定數據文件data.nc的範圍爲300/310/10/30。下面的命令修改了其數據範圍並修改了標題:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt grdedit data.nc -R-60/-50/10/30 -D+t<span class="s2">&quot;Gravity Anomalies&quot;</span>
+</pre></div>
+</div>
+<p>數據文件 world.nc 的範圍爲 0/360/-72/72，下面的命令對數據做了移動，使得數據範圍爲
+-180/180/-72/72:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt grdedit world.nc -R-180/180/-72/72 -S
+</pre></div>
+</div>
+<p>GMT 4.1.3 之前的網格檔不包含足夠的信息表明某個網格檔是地理網格。爲了添加這一信息，可以使用:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt grdedit junk.nc -fg
+</pre></div>
+</div>
+<p>將網格檔 oblique.nc 逆時針旋轉90度，並輸出到新文件:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt grdedit oblique.nc -El -Goblique_rot.nc
+</pre></div>
+</div>
+<p>爲了確保文件 depths.nc 的經度始終爲正值:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt grdedit depths.nc -L+p
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>相關模塊<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<p><a class="reference internal" href="grd2xyz.html"><span class="doc">grd2xyz</span></a>,
+<a class="reference internal" href="grdfill.html"><span class="doc">grdfill</span></a>,
+<a class="reference internal" href="grdinfo.html"><span class="doc">grdinfo</span></a>
+<a class="reference internal" href="xyz2grd.html"><span class="doc">xyz2grd</span></a></p>
+</div>
+</div>
+
+
+           </div>
+           
+           <div class="articleComments">
+            
+
+<!-- gitalk 脚本-->
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'b2dfca9a4bfad764aa2b',
+    clientSecret: '4ae5ddcd25c6b6d6bc07ac39201ea417054a530a',
+    owner: 'gmt-china',
+    repo: 'gitalk',
+    admin: ['zhaozhiyuan1989','cehui07226','NothingIsBig','seisman','SeisPider','wangliang1989','sqdeng'],
+    id: md5(location.pathname),
+    body: location.href,
+  });
+gitalk.render('gitalk-container');
+</script>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="grdfill.html" class="btn btn-neutral float-right" title="grdfill" accesskey="n" rel="next">下頁 <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="grdcut.html" class="btn btn-neutral float-left" title="grdcut" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> 上頁</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014 - 2020, GMT中文社区.
+      <span class="lastupdated">
+        最后更新于 2020年05月29日.
+      </span>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

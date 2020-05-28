@@ -1,77 +1,77 @@
-PS参数
+PS參數
 ======
 
-本节列出所有与PS相关的参数，参数的默认值在中括号内列出。
+本節列出所有與PS相關的參數，參數的默認值在中括號內列出。
 
 .. glossary::
 
     **PS_CHAR_ENCODING**
-        字符集编码方式 [``ISOLatin1+|Standard+``]
+        字符集編碼方式 [``ISOLatin1+|Standard+``]
 
-        GMT使用的字符集编码方式。可选值包括：
+        GMT使用的字符集編碼方式。可選值包括：
 
         - ``Standard``
         - ``Standard+``
         - ``ISOLatin1``
         - ``ISOLatin1+``
-        - ``ISO-8859-x``\ （x取值为1-10或13-15）
+        - ``ISO-8859-x``\ （x取值爲1-10或13-15）
 
-        若安装GMT时使用SI单位制，则默认值为ISOLatin1+编码；否则使用Standard+编码。
+        若安裝GMT時使用SI單位制，則默認值爲ISOLatin1+編碼；否則使用Standard+編碼。
 
     **PS_COLOR_MODEL**
-        生成PS代码时颜色所使用的色彩模型 [``rgb``]
+        生成PS代碼時顏色所使用的色彩模型 [``rgb``]
 
-        可以取RGB、HSV、CMYK或GRAY。若设置为HSV，其不会影响绘图过程中使用RGB指定的颜色；
-        若设置为GRAY，则所有的颜色都将使用YIQ方法转换成灰度。
+        可以取RGB、HSV、CMYK或GRAY。若設置爲HSV，其不會影響繪圖過程中使用RGB指定的顏色；
+        若設置爲GRAY，則所有的顏色都將使用YIQ方法轉換成灰度。
 
     **PS_COMMENTS**
-        生成的PS代码中是否包含注释信息 [false]
+        生成的PS代碼中是否包含註釋信息 [false]
 
-        若为 ``true``\ ，则生成的PS文件中会包含注释，用于解释文件中操作的逻辑，
-        当你需要手动编辑PS文件时比较有用。默认情况下，其值为 ``false``\ ，即PS文件中
-        不会包含注释，此时生成的PS文件更小。
+        若爲 ``true``\ ，則生成的PS文件中會包含註釋，用於解釋文件中操作的邏輯，
+        當你需要手動編輯PS文件時比較有用。默認情況下，其值爲 ``false``\ ，即PS文件中
+        不會包含註釋，此時生成的PS文件更小。
 
     **PS_LINE_CAP**
-        控制线段的\ **端点**\ 的绘制方式 [``butt``]
+        控制線段的\ **端點**\ 的繪製方式 [``butt``]
 
         可以取如下值：
 
-        - ``butt``\ ：不对端点做特殊处理，即端点是矩形（默认值）
-        - ``round``\ ：端点处为直径与线宽相等的半圆弧
-        - ``square``\ ：端点处为边长与线宽相等的半个正方形
+        - ``butt``\ ：不對端點做特殊處理，即端點是矩形（默認值）
+        - ``round``\ ：端點處爲直徑與線寬相等的半圓弧
+        - ``square``\ ：端點處爲邊長與線寬相等的半個正方形
 
-        下图展示了该参数取不同值时线段端点的区别。需要注意，图中三条线段的
-        长度是相同的，但因参数设置不同而导致线段看上去长度不同。
+        下圖展示了該參數取不同值時線段端點的區別。需要注意，圖中三條線段的
+        長度是相同的，但因參數設置不同而導致線段看上去長度不同。
 
         .. gmtplot:: ps_line_cap.sh
             :show-code: false
-            :caption: ``PS_LINE_CAP`` 控制线段端点绘图效果
+            :caption: ``PS_LINE_CAP`` 控制線段端點繪圖效果
 
     **PS_LINE_JOIN**
-        控制线段拐点的绘制方式 [``miter``]
+        控制線段拐點的繪製方式 [``miter``]
 
         可以取 ``miter``\ 、\ ``round``\ 、\ ``bevel``
 
-        下图展示了 ``PS_LINE_JOIN`` 取不同值时线段拐点的绘图效果。当线宽较小时，几乎
-        看不出来区别，这里为了显示的效果，将线宽设置为 ``20p``\ 。
+        下圖展示了 ``PS_LINE_JOIN`` 取不同值時線段拐點的繪圖效果。當線寬較小時，幾乎
+        看不出來區別，這裏爲了顯示的效果，將線寬設置爲 ``20p``\ 。
 
         .. gmtplot:: ps_line_join.sh
             :show-code: false
-            :caption: ``PS_LINE_JOIN`` 控制线段拐点绘制效果
+            :caption: ``PS_LINE_JOIN`` 控制線段拐點繪製效果
 
     **PS_MITER_LIMIT**
-        设置mitered拐点的角度阈值 [35]
+        設置mitered拐點的角度閾值 [35]
 
-        当两个相交的线段之间的夹角小于该阈值时，则该拐角会被bevelled而不是被mitered。
-        该参数的取值范围为0到180。若设置为0，则使用PS的默认值（11度），若设置为180，
-        则所有拐角都会被beveled。
+        當兩個相交的線段之間的夾角小於該閾值時，則該拐角會被bevelled而不是被mitered。
+        該參數的取值範圍爲0到180。若設置爲0，則使用PS的默認值（11度），若設置爲180，
+        則所有拐角都會被beveled。
 
     **PS_MEDIA**
-        设置当前纸张的尺寸 [a4|letter]
+        設置當前紙張的尺寸 [a4|letter]
 
-        下表列出了GMT预定义的若干种纸张尺寸及其对应的宽度和高度（单位为points）。
+        下表列出了GMT預定義的若干種紙張尺寸及其對應的寬度和高度（單位爲points）。
 
-        .. table:: GMT预定义纸张大小
+        .. table:: GMT預定義紙張大小
             :align: center
 
             +------------+-----------+-----------+------------+-----------+-----------+
@@ -112,58 +112,58 @@ PS参数
             |    B5      |    501    |    709    |            |           |           |
             +------------+-----------+-----------+------------+-----------+-----------+
 
-        用户还可以用 ``WxH`` 的格式完全自定义纸张尺寸，其中 ``W`` 和 ``H`` 分别为
-        纸张的宽度和高度。比如 ``12cx12c`` 表示纸张为宽度和高度都为12厘米。
+        用戶還可以用 ``WxH`` 的格式完全自定義紙張尺寸，其中 ``W`` 和 ``H`` 分別爲
+        紙張的寬度和高度。比如 ``12cx12c`` 表示紙張爲寬度和高度都爲12釐米。
 
-        若某些尺寸经常使用，用户还可以自定义纸张格式，只需要新建或编辑
-        ``~/.gmt/gmt_custom_media.conf`` 即可，文件格式也很简单::
+        若某些尺寸經常使用，用戶還可以自定義紙張格式，只需要新建或編輯
+        ``~/.gmt/gmt_custom_media.conf`` 即可，文件格式也很簡單::
 
-            # 纸张格式名  宽度  高度
+            # 紙張格式名  寬度  高度
             paper1        2000  3000
             paper2        3000  0
 
-        纸张高度为0，表示纸张可以向上无限延展。
+        紙張高度爲0，表示紙張可以向上無限延展。
 
     **PS_PAGE_COLOR**
-        设置纸张的背景色 [``white``]
+        設置紙張的背景色 [``white``]
 
     **PS_PAGE_ORIENTATION**
-        设置纸张方向 [``landscape``]
+        設置紙張方向 [``landscape``]
 
         .. note::
 
-            仅GMT经典模式下有效，现代模式下纸张始终是 protrait 模式。
+            僅GMT經典模式下有效，現代模式下紙張始終是 protrait 模式。
 
         可以取 ``portrait`` 或 ``landscape``\ 。
 
     **PS_SCALE_X**
-        绘图时X方向的全局比例 [1.0]
+        繪圖時X方向的全局比例 [1.0]
 
-        用于实现图像的整体缩放。
+        用於實現圖像的整體縮放。
 
     **PS_SCALE_Y**
-        绘图时Y方向的全局比例 [1.0]
+        繪圖時Y方向的全局比例 [1.0]
 
-        用于实现图像的整体缩放。
+        用於實現圖像的整體縮放。
 
     **PS_TRANSPARENCY**
-        设置生成PS文件所使用的透明模式 [Normal]
+        設置生成PS文件所使用的透明模式 [Normal]
 
         可取值包括Color、ColorBurn、ColorDodge、Darken、Difference、Exclusion、
         HardLight、Hue、Lighten、Luminosity、Multiply、Normal、Overlay、Saturation、
         SoftLight、Screen
 
     **PS_CONVERT**
-        现在模式下在执行 ``gmt end`` 命令时GMT会自动调用 :doc:`/module/psconvert`
-        生成用户指定格式的图片。该选项用于控制调用 ``psconvert`` 是的默认参数，
-        多个参数之间以逗号分隔 [``A,P``]
+        現在模式下在執行 ``gmt end`` 命令時GMT會自動調用 :doc:`/module/psconvert`
+        生成用戶指定格式的圖片。該選項用於控制調用 ``psconvert`` 是的默認參數，
+        多個參數之間以逗號分隔 [``A,P``]
 
     **PS_IMAGE_COMPRESS**
-        设置PS中的图像压缩算法 [deflate,5]
+        設置PS中的圖像壓縮算法 [deflate,5]
 
-        可以取值为：
+        可以取值爲：
 
         - ``rle``\ ：Run-Length Encoding scheme
         - ``lzw``\ ：Lempel-Ziv-Welch compression
         - ``deflate[,level]``\ ：DEFLATE compression，\ ``level`` 可以取1到9；
-        - ``none``\ ：不压缩，相当于 ``deflate,5`` 。
+        - ``none``\ ：不壓縮，相當於 ``deflate,5`` 。

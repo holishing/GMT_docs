@@ -1,0 +1,445 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>GMT簡介 &mdash; GMT中文手册</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+    <link rel="canonical" href="https://docs.gmt-china.org/latest/intro/overview.html"/>
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
+        <script async="async" type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="GMT版本" href="versions.html" />
+    <link rel="prev" title="簡介" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+    
+    <a href="../index.html" class="icon icon-home"> GMT中文手册
+    
+
+    
+    </a>
+
+    
+    
+    
+    <div class="version">
+        <select onchange="location = this.options[this.selectedIndex].value;">
+            
+            <option value="/6.0/"  selected > v6.0 </option>
+            
+            <option value="/5.4/" > v5.4 </option>
+            
+        </select>
+    </div>
+    
+    
+
+    
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文件" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+    
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">目 錄</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">簡介</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">GMT簡介</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">GMT是什麼</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">GMT的歷史</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">GMT開發者</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">GMT的特點</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">其它製圖軟體</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="versions.html">GMT版本</a></li>
+<li class="toctree-l2"><a class="reference internal" href="citation.html">引用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html">學習資源</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../install/index.html">安裝</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migrating/index.html">版本遷移</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">入門教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basis/index.html">GMT基礎</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../table/index.html">表數據</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grid/index.html">網格檔</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cpt/index.html">CPT文件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../option/index.html">標準選項</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../proj/index.html">地圖投影</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conf/index.html">配置參數</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dataset/index.html">地學數據集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chinese/index.html">中文支持</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../module/index.html">模塊手冊</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery/index.html">繪圖示例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/index.html">附錄</a></li>
+</ul>
+
+            
+          
+
+    
+        <p class="caption">
+            <span class="caption-text">外部链接</span>
+        </p>
+        <ul>
+            
+                <li class="toctree-l1"><a href="https://docs.gmt-china.org/6.0/GMT_docs.pdf"><i class="fa fa-book fa-fw"></i> PDF下载</a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/gmt-china/GMT_Docs"><i class="fa fa-github fa-fw"></i> 源代码</a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/gmt-china/GMT_docs/blob/master/CONTRIBUTING.md"><i class="fa fa-edit fa-fw"></i> 贡献指南</a></li>
+            
+                <li class="toctree-l1"><a href="https://gmt-china.org"><i class="fa fa-globe fa-fw"></i> GMT中文社区</a></li>
+            
+                <li class="toctree-l1"><a href="mailto:admin@gmt-china.org"><i class="fa fa-envelope fa-fw"></i> 联系我们</a></li>
+            
+        </ul>
+    
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">GMT中文手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">首頁</a> &raquo;</li>
+        
+          <li><a href="index.html">簡介</a> &raquo;</li>
+        
+      <li>GMT簡介</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/gmt-china/GMT_Docs/blob/master/source/intro/overview.rst" class="fa fa-github"> 編輯本頁</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="gmt">
+<h1>GMT簡介<a class="headerlink" href="#gmt" title="永久链接至标题">¶</a></h1>
+<div class="section" id="id1">
+<h2>GMT是什麼<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p>GMT，全稱Generic Mapping Tools，中文一般譯爲“通用製圖工具”，是地球科學最廣泛使用的製圖軟體之一。</p>
+<p>GMT具有強大的繪圖功能和數據處理功能。</p>
+<p>繪圖方面，GMT支持繪製多種類型的底圖：除30多種地圖投影外，還有笛卡爾線性座標軸、對數軸、指數軸、極座標系；支持繪製統計直方圖、等值線圖、2D網格圖以及3D視角圖等；也支持繪製線段、海岸線、國界、多種符號、圖例、色標、文字等。</p>
+<p>數據處理方面，GMT具有數據篩選、重採樣、時間序列濾波、二維網格濾波、三維網格插值、多項式擬合、線性迴歸分析等功能。</p>
+</div>
+<div class="section" id="id2">
+<h2>GMT的歷史<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li>1988年，Paul Wessel 和 Walter H.F. Smith 開發了GMT的最原始版本GMT 1.0；</li>
+<li>1991年8月10日，GMT 2.0發佈；</li>
+<li>1998年11月8日，GMT 3.x的第一個正式版發佈；</li>
+<li>2005年10月1日，GMT 4.x的第一個正式版發佈；GMT4.x系列的最後一個版本是GMT 4.5.18，發佈於2018年7月1日；</li>
+<li>2013年11月5日，GMT 5.x的第一個正式版發佈；GMT5.x系列的最後一個版本是GMT 5.4.5，發佈於 2019年1月4日；</li>
+<li>2019年11月1日，GMT 6.x的第一個正式版發佈；目前最新版本 GMT 6.0.0 發佈於 2019年11月1日。</li>
+</ul>
+<p>想了解更多關於GMT的歷史故事，可以觀看/收聽下面的視頻/音頻：</p>
+<ul class="simple">
+<li>Don’t Panic Geocast 對 Paul Wessel 和 Leonardo Uieda 的採訪 <a class="reference external" href="http://www.dontpanicgeocast.com/?p=638">http://www.dontpanicgeocast.com/?p=638</a></li>
+<li>Don’t Panic Geocast 對 Walter Smith 的採訪 <a class="reference external" href="https://www.dontpanicgeocast.com/?p=742">https://www.dontpanicgeocast.com/?p=742</a></li>
+<li>Paul Wessel 在 GMT 20 週年的演講 <a class="reference external" href="https://av.tib.eu/media/19869">https://av.tib.eu/media/19869</a></li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h2>GMT開發者<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>GMT的核心開發者有7位，分別是
+<a class="reference external" href="http://www.soest.hawaii.edu/wessel/">Paul Wessel</a>、
+<a class="reference external" href="https://www.star.nesdis.noaa.gov/star/Smith_WHF.php">Walter H. F. Smith</a>、
+<a class="reference external" href="https://www.researchgate.net/profile/Remko_Scharroo">Remko Scharroo</a>、
+<a class="reference external" href="http://w3.ualg.pt/~jluis/">Joaquim F. Luis</a>、
+<a class="reference external" href="https://www.leouieda.com">Leonardo Uieda</a>、Florian Wobbe 和
+<a class="reference external" href="https://msu.edu/~tiandong/">Dongdong Tian</a>。GMT的開發在 <a class="reference external" href="https://github.com/GenericMappingTools/gmt">GitHub</a> 上進行，任何用戶均可通過多種方式向GMT做貢獻。</p>
+<div class="figure align-center" id="id15">
+<a class="reference internal image-reference" href="../_images/GMT6_Summit_2019.jpg"><img alt="../_images/GMT6_Summit_2019.jpg" src="../_images/GMT6_Summit_2019.jpg" style="width: 80%;" /></a>
+<p class="caption"><span class="caption-text">GMT核心開發者及指導委員會部分成員</span></p>
+<div class="legend">
+從左至右依次爲Dongdong Tian、David Sandwell（指導委員會主席）、Walter H.F. Smith、Paul Wessel、Joaquim Luis、Leonardo Uieda 和 Dave Caress（指導委員會成員）。照片拍攝於2019年7月29日至8月2日在加州La Jolla舉辦的GMT開發者峯會。</div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>GMT的特點<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<p>爲什麼選擇GMT作爲繪圖軟體呢？因爲GMT有如下特點：</p>
+<ol class="arabic">
+<li><p class="first">開源免費</p>
+<p>GMT是免費的開源軟體，其源碼遵循 <a class="reference external" href="https://zh.wikipedia.org/zh-cn/GNU寬通用公共許可證">GNU LGPL</a>
+協議。任何人均可自由複製、分發、修改其源代碼，也可用於盈利。修改後的代碼必須開源但可以使用其它開源協議。</p>
+</li>
+<li><p class="first">跨平臺</p>
+<p>GMT源碼由高度可移植的C語言寫成，其完全兼容於POSIX標準，可以運行在Linux、macOS等類UNIX系統及Windows上。GMT不僅公開了軟體源代碼，還提供了 Windows
+和 macOS 下的二進制安裝包，各大Linux發行版中也提供了預編譯的二進制包。</p>
+</li>
+<li><p class="first">模塊化</p>
+<p>GMT遵循UNIX的模塊化設計思想，將不同的繪圖功能和數據處理功能劃分到不同的模塊中。這樣的模塊化設計有很多優點：</p>
+<ul class="simple">
+<li>只需要少量的模塊</li>
+<li>各個模塊之間相互獨立且代碼量少，易於更新和維護</li>
+<li>每一步均獨立於之前的步驟以及具體的數據類型，因而可以用於不同的應用中</li>
+<li>可以在腳本中調用一系列程序，或通過管道連接起來，進而繪製複雜圖件</li>
+</ul>
+</li>
+<li><p class="first">支持多種格式的高精度矢量圖和位圖</p>
+<p>GMT支持多種高精度的矢量圖片格式和位圖圖片格式。矢量圖片格式，如PDF、PS和EPS，具有任意放大縮小而不失真的特性，可直接投稿到學術期刊；位圖圖片格式，如BMP、JPG、PNG、PPM和TIFF格式，可用於日常的文件及演示。</p>
+</li>
+</ol>
+</div>
+<div class="section" id="id5">
+<h2>其它製圖軟體<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<p>除了GMT之外，還有很多其它軟體也可以用於製圖。以下僅列出一些地學常用的製圖軟體。其中 <strong>√</strong> 和 <strong>X</strong> 用於表示是否支持某一功能。</p>
+<table border="1" class="docutils align-center" id="id16">
+<caption><span class="caption-text">地球科學常用繪圖軟體比較</span><a class="headerlink" href="#id16" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col width="35%" />
+<col width="14%" />
+<col width="19%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">軟體名稱</th>
+<th class="head">二維圖</th>
+<th class="head">三維圖</th>
+<th class="head">地圖</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><a class="reference external" href="https://www.generic-mapping-tools.org/">GMT</a></td>
+<td>√</td>
+<td>√ <a class="footnote-reference" href="#id11" id="id6">[1]</a></td>
+<td>√</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="https://matplotlib.org/">Matplotlib</a></td>
+<td>√</td>
+<td>√</td>
+<td>√ <a class="footnote-reference" href="#id12" id="id7">[2]</a></td>
+</tr>
+<tr class="row-even"><td>Microsoft Excel</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="https://www.originlab.com/">Origin</a></td>
+<td>√</td>
+<td>√</td>
+<td>X</td>
+</tr>
+<tr class="row-even"><td>Matlab</td>
+<td>√</td>
+<td>√</td>
+<td>√ <a class="footnote-reference" href="#id13" id="id8">[3]</a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="https://ggplot2.tidyverse.org/">ggplot2</a></td>
+<td>√</td>
+<td>X</td>
+<td>√ <a class="footnote-reference" href="#id14" id="id9">[4]</a></td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="http://www.gnuplot.info/">gnuplot</a></td>
+<td>√</td>
+<td>√</td>
+<td>X</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id11" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id6">[1]</a></td><td>GMT對三維圖的支持很有限</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id12" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id7">[2]</a></td><td>需要額外安裝 <a class="reference external" href="https://scitools.org.uk/cartopy/">Cartopy</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id13" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id8">[3]</a></td><td>需要額外安裝 <a class="reference external" href="https://www.eoas.ubc.ca/~rich/map.html">M_Map</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id14" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id9">[4]</a></td><td>需要額外安裝 <a class="reference external" href="https://github.com/dkahle/ggmap">ggmap</a></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           
+           <div class="articleComments">
+            
+
+<!-- gitalk 脚本-->
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'b2dfca9a4bfad764aa2b',
+    clientSecret: '4ae5ddcd25c6b6d6bc07ac39201ea417054a530a',
+    owner: 'gmt-china',
+    repo: 'gitalk',
+    admin: ['zhaozhiyuan1989','cehui07226','NothingIsBig','seisman','SeisPider','wangliang1989','sqdeng'],
+    id: md5(location.pathname),
+    body: location.href,
+  });
+gitalk.render('gitalk-container');
+</script>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="versions.html" class="btn btn-neutral float-right" title="GMT版本" accesskey="n" rel="next">下頁 <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="簡介" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> 上頁</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014 - 2020, GMT中文社区.
+      <span class="lastupdated">
+        最后更新于 2020年05月29日.
+      </span>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

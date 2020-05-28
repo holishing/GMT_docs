@@ -4,11 +4,11 @@ GMT中文效果演示
 中文文字
 --------
 
-本例中展示了如何在绘图时使用中文标签和中文标题，以及如何打印横排和竖排的中文。
+本例中展示瞭如何在繪圖時使用中文標籤和中文標題，以及如何打印橫排和豎排的中文。
 
-- 左图中Y轴标签与纵轴平行
-- 中图中Y轴标签与X轴平行
-- 右图中Y轴标签单独绘制并使用了竖排中文字体。
+- 左圖中Y軸標籤與縱軸平行
+- 中圖中Y軸標籤與X軸平行
+- 右圖中Y軸標籤單獨繪製並使用了豎排中文字體。
 
 .. literalinclude:: chinese-texts.sh
 
@@ -21,17 +21,17 @@ GMT中文效果演示
 
 .. note::
 
-    GMT中文语言文件是GMT安装目录下的文件 ``share/localization/gmt_cn1.locale``\ 。
-    该中文语言文件默认为GB2312编码方式。对于Linux和macOS用户，需要人工将其修改为
-    UTF8 编码才能正常显示中文的月份和星期。Windows用户则不需要对其进行处理。
+    GMT中文語言文件是GMT安裝目錄下的文件 ``share/localization/gmt_cn1.locale``\ 。
+    該中文語言文件默認爲GB2312編碼方式。對於Linux和macOS用戶，需要人工將其修改爲
+    UTF8 編碼才能正常顯示中文的月份和星期。Windows用戶則不需要對其進行處理。
 
-    修改文件编码方式的方式有很多，请自行查找。我使用的是
-    `enca <https://github.com/nijel/enca>`_ 的如下命令修改编码::
+    修改文件編碼方式的方式有很多，請自行查找。我使用的是
+    `enca <https://github.com/nijel/enca>`_ 的如下命令修改編碼::
 
         enca -L zh_CN -x UTF-8 gmt_cn1.locale
 
-GMT支持中文的月份。要想使用中文表示月份，需要设置 :term:`GMT_LANGUAGE` 为中文，
-即 ``cn1``\ ，并设置标注的字体为中文。
+GMT支持中文的月份。要想使用中文表示月份，需要設置 :term:`GMT_LANGUAGE` 爲中文，
+即 ``cn1``\ ，並設置標註的字體爲中文。
 
 .. literalinclude:: chinese-months.sh
 
@@ -42,8 +42,8 @@ GMT支持中文的月份。要想使用中文表示月份，需要设置 :term:`
 中文星期
 --------
 
-GMT支持中文的星期。要想使用中文表示星期几，需要设置 :term:`GMT_LANGUAGE` 为中文，
-即 ``cn1``\ ，并设置标注的字体为中文。
+GMT支持中文的星期。要想使用中文表示星期幾，需要設置 :term:`GMT_LANGUAGE` 爲中文，
+即 ``cn1``\ ，並設置標註的字體爲中文。
 
 .. literalinclude:: chinese-weeks.sh
 

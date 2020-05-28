@@ -1,0 +1,328 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>GMT4 → GMT5 &mdash; GMT中文手册</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+    <link rel="canonical" href="https://docs.gmt-china.org/latest/migrating/4to5.html"/>
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
+        <script async="async" type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="GMT5 → GMT6" href="5to6.html" />
+    <link rel="prev" title="版本遷移" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+    
+    <a href="../index.html" class="icon icon-home"> GMT中文手册
+    
+
+    
+    </a>
+
+    
+    
+    
+    <div class="version">
+        <select onchange="location = this.options[this.selectedIndex].value;">
+            
+            <option value="/6.0/"  selected > v6.0 </option>
+            
+            <option value="/5.4/" > v5.4 </option>
+            
+        </select>
+    </div>
+    
+    
+
+    
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文件" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+    
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">目 錄</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">簡介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/index.html">安裝</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">版本遷移</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">GMT4 → GMT5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5to6.html">GMT5 → GMT6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classic2modern.html">經典模式 → 現代模式</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">入門教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basis/index.html">GMT基礎</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../table/index.html">表數據</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grid/index.html">網格檔</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cpt/index.html">CPT文件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../option/index.html">標準選項</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../proj/index.html">地圖投影</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conf/index.html">配置參數</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dataset/index.html">地學數據集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chinese/index.html">中文支持</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../module/index.html">模塊手冊</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery/index.html">繪圖示例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/index.html">附錄</a></li>
+</ul>
+
+            
+          
+
+    
+        <p class="caption">
+            <span class="caption-text">外部链接</span>
+        </p>
+        <ul>
+            
+                <li class="toctree-l1"><a href="https://docs.gmt-china.org/6.0/GMT_docs.pdf"><i class="fa fa-book fa-fw"></i> PDF下载</a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/gmt-china/GMT_Docs"><i class="fa fa-github fa-fw"></i> 源代码</a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/gmt-china/GMT_docs/blob/master/CONTRIBUTING.md"><i class="fa fa-edit fa-fw"></i> 贡献指南</a></li>
+            
+                <li class="toctree-l1"><a href="https://gmt-china.org"><i class="fa fa-globe fa-fw"></i> GMT中文社区</a></li>
+            
+                <li class="toctree-l1"><a href="mailto:admin@gmt-china.org"><i class="fa fa-envelope fa-fw"></i> 联系我们</a></li>
+            
+        </ul>
+    
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">GMT中文手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">首頁</a> &raquo;</li>
+        
+          <li><a href="index.html">版本遷移</a> &raquo;</li>
+        
+      <li>GMT4 → GMT5</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/gmt-china/GMT_Docs/blob/master/source/migrating/4to5.rst" class="fa fa-github"> 編輯本頁</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="gmt4-gmt5">
+<h1>GMT4 → GMT5<a class="headerlink" href="#gmt4-gmt5" title="永久链接至标题">¶</a></h1>
+<p>GMT5相對於GMT4有很多功能上的更新以及語法上的改進。最大的變化在於，GMT5中所有GMT命令必須以 <strong>gmt</strong> 開頭。</p>
+<p>GMT4中使用 <strong>psbasemap</strong> 命令繪製底圖、使用 <strong>pscoast</strong> 繪製海岸線。
+<strong>psbasemap</strong> 和 <strong>pscoast</strong> 都是GMT4提供的命令，每個命令均對應一個可執行文件。GMT4總共提供了上百個命令，這帶來一個命名空間污染（namespace pollution）的問題。即不同的軟體提供了相同名字的命令，導致不同命令之間出現衝突，使得用戶難以確認自己執行的 <strong>pscoast</strong> 命令是由GMT提供的還是其它軟體包提供的。</p>
+<p>爲了解決這個問題，GMT5對源碼做了大量改寫。GMT5中只提供 <strong>gmt</strong> 這一個命令/可執行文件。GMT4中的所有<strong>命令</strong>在GMT5中都變成了 <strong>gmt</strong> 命令的<strong>模塊</strong>。所有模塊都以 <strong>gmt</strong> <em>module</em> <em>options</em> 的形式進行調用。例如，GMT4中的命令 <strong>psbasemap</strong> 在GMT5中應寫爲 <strong>gmt psbasemap</strong>。</p>
+<p>因而，將GMT4腳本遷移到GMT5下，只需要遵循如下步驟：</p>
+<ol class="arabic simple">
+<li>將所有GMT4命令前加上 <strong>gmt</strong>，即 <strong>psbasemap</strong> 改成 <strong>gmt psbasemap</strong></li>
+<li>保存並執行腳本。若出現報錯，則找到最早的報錯信息並查詢當前GMT版本對應的文件，檢查是否語法存在變化，並進一步更正。</li>
+</ol>
+<p>GMT提供了腳本 <strong>gmt5syntax</strong>，可以自動在GMT4命令前加上 <strong>gmt</strong>，該腳本位於
+GMT的 <code class="file docutils literal notranslate"><span class="pre">share/tools</span></code> 目錄下。該腳本的使用方法也很簡單:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt5syntax old_script.sh &gt; new_script.sh
+</pre></div>
+</div>
+<p>如果不願意修改原腳本，GMT還爲舊命令提供了軟鏈接，使得依然可以直接使用 <strong>psbasemap</strong> 等命令，但極其不推薦這一方法。爲舊命令生成軟鏈接有多種方法，用戶可任選其一即可：</p>
+<ol class="arabic">
+<li><p class="first">如果你是自行編譯GMT源碼並安裝，則可以在 <code class="file docutils literal notranslate"><span class="pre">cmake/ConfigUser.cmake</span></code> 中加上
+<code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">(GMT_INSTALL_MODULE_LINKS</span> <span class="pre">TRUE)</span></code> 再進行編譯安裝</p>
+</li>
+<li><p class="first">對於已經安裝GMT的用戶，可以執行:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="k">$(</span>gmt --show-sharedir<span class="k">)</span>/tools/gmt_links.sh create
+</pre></div>
+</div>
+<p>該腳本會自動爲所有舊命令創建軟鏈接。</p>
+</li>
+<li><p class="first">對於Bash用戶，可以直接在Bash腳本、終端或者Bash配置文件中加入如下語句:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> <span class="k">$(</span>gmt --show-sharedir<span class="k">)</span>/tools/gmt_functions.sh
+</pre></div>
+</div>
+<p>該腳本會爲所有舊命令構建一個等效的bash函數。</p>
+</li>
+<li><p class="first">對於csh用戶，可以直接在csh腳本、終端或者csh配置文件中加入如下語句:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> <span class="sb">`</span>gmt --show-sharedir<span class="sb">`</span>/tools/gmt_aliases.csh
+</pre></div>
+</div>
+<p>該腳本會爲所有舊命令構建一個等效的csh別名。</p>
+</li>
+</ol>
+</div>
+
+
+           </div>
+           
+           <div class="articleComments">
+            
+
+<!-- gitalk 脚本-->
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'b2dfca9a4bfad764aa2b',
+    clientSecret: '4ae5ddcd25c6b6d6bc07ac39201ea417054a530a',
+    owner: 'gmt-china',
+    repo: 'gitalk',
+    admin: ['zhaozhiyuan1989','cehui07226','NothingIsBig','seisman','SeisPider','wangliang1989','sqdeng'],
+    id: md5(location.pathname),
+    body: location.href,
+  });
+gitalk.render('gitalk-container');
+</script>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="5to6.html" class="btn btn-neutral float-right" title="GMT5 → GMT6" accesskey="n" rel="next">下頁 <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="版本遷移" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> 上頁</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014 - 2020, GMT中文社区.
+      <span class="lastupdated">
+        最后更新于 2020年05月29日.
+      </span>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -4,10 +4,10 @@
 gmtget
 ======
 
-:官方文档: :doc:`gmt:gmtget`
-:简介: 列出单个或多个GMT配置参数的当前值
+:官方文件: :doc:`gmt:gmtget`
+:簡介: 列出單個或多個GMT配置參數的當前值
 
-语法
+語法
 ----
 
 **gmt get**
@@ -15,58 +15,58 @@ gmtget
 [ |-L| ]
 *PARAMETER1* [ *PARAMETER2* *PARAMETER3* ... ]
 
-必选选项
+必選選項
 --------
 
 *PARAMETER*
-    要查看的GMT配置参数名。GMT中配置参数列表见 :doc:`/conf/index`
+    要查看的GMT配置參數名。GMT中配置參數列表見 :doc:`/conf/index`
 
-可选选项
+可選選項
 --------
 
 .. _-G:
 
 **-G**\ *defaultsfile*
-    读取指定的GMT配置文件
+    讀取指定的GMT配置文件
 
-    默认情况下，该模块会依次在如下目录中寻找配置文件 **gmt.conf** 直到找到位置：
+    默認情況下，該模塊會依次在如下目錄中尋找配置文件 **gmt.conf** 直到找到位置：
 
-    - 当前目录
-    - 家目录
-    - ``~/.gmt`` 目录
-    - ``~/.gmt/server`` 目录
-    - ``~/.gmt/cache`` 目录
-    - 系统默认配置
+    - 當前目錄
+    - 家目錄
+    - ``~/.gmt`` 目錄
+    - ``~/.gmt/server`` 目錄
+    - ``~/.gmt/cache`` 目錄
+    - 系統默認配置
 
 .. _-L:
 
 **-L**
-    输出时一行只输出一个返回值
+    輸出時一行只輸出一個返回值
 
-    一次指定多个参数名时，默认会将所有返回值输出在一行，各值之间以空格分隔。
-    该选项会一行只输出一个返回值。
+    一次指定多個參數名時，默認會將所有返回值輸出在一行，各值之間以空格分隔。
+    該選項會一行只輸出一個返回值。
 
 示例
 ----
 
-列出一个参数的当前值::
+列出一個參數的當前值::
 
     $ gmt get MAP_FRAME_TYPE
     fancy
 
-列出多个参数的当前值::
+列出多個參數的當前值::
 
     $ gmt get MAP_GRID_CROSS_SIZE_PRIMARY MAP_GRID_CROSS_SIZE_SECONDARY
     24p,Helvetica,black 16p,Helvetica,black
 
-使用 **-L** 选项一行显示一个参数值::
+使用 **-L** 選項一行顯示一個參數值::
 
     $ gmt get FONT_TITLE FONT_LABEL MAP_FRAME_TYPE -L
     24p,Helvetica,black
     16p,Helvetica,black
     fancy
 
-相关模块
+相關模塊
 --------
 
 :doc:`gmt.conf`,

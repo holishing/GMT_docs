@@ -1,0 +1,432 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>繪製符號 &mdash; GMT中文手册</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+    <link rel="canonical" href="https://docs.gmt-china.org/latest/tutorial/symbols.html"/>
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
+        <script async="async" type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="添加文字" href="texts.html" />
+    <link rel="prev" title="繪製線段和多邊形" href="lines.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+    
+    <a href="../index.html" class="icon icon-home"> GMT中文手册
+    
+
+    
+    </a>
+
+    
+    
+    
+    <div class="version">
+        <select onchange="location = this.options[this.selectedIndex].value;">
+            
+            <option value="/6.0/"  selected > v6.0 </option>
+            
+            <option value="/5.4/" > v5.4 </option>
+            
+        </select>
+    </div>
+    
+    
+
+    
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文件" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+    
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">目 錄</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">簡介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/index.html">安裝</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migrating/index.html">版本遷移</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">入門教程</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="get-started/index.html">GMT初探</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commands.html">命令初探</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scripting.html">腳本編程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basemap.html">繪製底圖</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coastline.html">繪製海岸線</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lines.html">繪製線段和多邊形</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">繪製符號</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">符號一覽</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">繪製簡單符號</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">大小變化的符號</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">顏色變化的符號</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">繪製不同的符號</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">大小、顏色和符號類型都變化的符號</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="texts.html">添加文字</a></li>
+<li class="toctree-l2"><a class="reference internal" href="legend.html">添加圖例</a></li>
+<li class="toctree-l2"><a class="reference internal" href="earth-relief.html">繪製地形起伏</a></li>
+<li class="toctree-l2"><a class="reference internal" href="layers.html">理解圖層</a></li>
+<li class="toctree-l2"><a class="reference internal" href="histogram/index.html">繪製直方圖</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oneliner.html">GMT單行模式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inset.html">GMT圖中圖模式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="subplot.html">GMT子圖模式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multifig.html">GMT多圖模式</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../basis/index.html">GMT基礎</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../table/index.html">表數據</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grid/index.html">網格檔</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cpt/index.html">CPT文件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../option/index.html">標準選項</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../proj/index.html">地圖投影</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conf/index.html">配置參數</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dataset/index.html">地學數據集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chinese/index.html">中文支持</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../module/index.html">模塊手冊</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery/index.html">繪圖示例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/index.html">附錄</a></li>
+</ul>
+
+            
+          
+
+    
+        <p class="caption">
+            <span class="caption-text">外部链接</span>
+        </p>
+        <ul>
+            
+                <li class="toctree-l1"><a href="https://docs.gmt-china.org/6.0/GMT_docs.pdf"><i class="fa fa-book fa-fw"></i> PDF下载</a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/gmt-china/GMT_Docs"><i class="fa fa-github fa-fw"></i> 源代码</a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/gmt-china/GMT_docs/blob/master/CONTRIBUTING.md"><i class="fa fa-edit fa-fw"></i> 贡献指南</a></li>
+            
+                <li class="toctree-l1"><a href="https://gmt-china.org"><i class="fa fa-globe fa-fw"></i> GMT中文社区</a></li>
+            
+                <li class="toctree-l1"><a href="mailto:admin@gmt-china.org"><i class="fa fa-envelope fa-fw"></i> 联系我们</a></li>
+            
+        </ul>
+    
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">GMT中文手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">首頁</a> &raquo;</li>
+        
+          <li><a href="index.html">入門教程</a> &raquo;</li>
+        
+      <li>繪製符號</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/gmt-china/GMT_Docs/blob/master/source/tutorial/symbols.rst" class="fa fa-github"> 編輯本頁</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>繪製符號<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<p>繪製各種類型的符號也是常見的繪圖需求之一。GMT支持繪製十幾種常見的符號類型，還支持自定義複雜的符號類型，足以滿足日常的科研繪圖需求。這一節將介紹如何使用 <a class="reference internal" href="../module/plot.html"><span class="doc">plot</span></a> 模塊繪製多樣的符號。</p>
+<div class="section" id="id2">
+<h2>符號一覽<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p><strong>plot</strong> 模塊繪製符號需要使用 <strong>-S</strong> 選項。<strong>-S</strong> 選項後面緊跟着符號類型代碼，以及符號大小。GMT中常見的十幾種簡單符號及其對應的符號類型代碼如下圖所示。比如 <strong>c</strong> 代表圓（<strong>c</strong>ircle），<strong>t</strong> 代表三角形（<strong>t</strong>riangle）。</p>
+<p><a class="reference download internal" download="" href="../_downloads/9a780f2208f4da482285cfc2a5c76cbb/symbols-gmtplot-0.sh"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">Code</span></code></a></p>
+<div class="figure align-center">
+<img alt="../_images/symbols-gmtplot-0.png" src="../_images/symbols-gmtplot-0.png" />
+</div>
+</div>
+<div class="section" id="id3">
+<h2>繪製簡單符號<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>以繪製圓圈爲例，通過查詢文件或者看上圖可知，圓圈對應的符號類型代碼爲 <strong>c</strong>。
+<strong>-Sc0.5c</strong> 則表示繪製直徑爲0.5釐米的圓圈。爲了繪製圓圈，我們需要給定圓圈的位置，因而輸入數據中需要提供圓圈的X和Y座標。</p>
+<p>下面的示例中在(2,3)、(5,6)、(8,2) 三個點繪製了三個直徑爲0.5釐米的圓圈。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt begin symbols png,pdf
+gmt plot -R0/10/0/10 -JX10c/10c -Baf -Sc0.5c <span class="s">&lt;&lt; EOF</span>
+<span class="s">2 3</span>
+<span class="s">5 6</span>
+<span class="s">8 2</span>
+<span class="s">EOF</span>
+gmt end show
+</pre></div>
+</div>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/symbols-gmtplot-1.png"><img alt="../_images/symbols-gmtplot-1.png" src="../_images/symbols-gmtplot-1.png" style="width: 60%;" /></a>
+</div>
+<p>與繪製線段和多邊形類似，我們可以使用 <strong>-W</strong> 選項控制符號輪廓的畫筆屬性，使用 <strong>-G</strong> 選項爲符號設置填充色。下面的命令就繪製了三個黑邊紅色圓圈。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt begin symbols png,pdf
+gmt plot -R0/10/0/10 -JX10c/10c -Baf -Sc0.5c -W1p,black -Gred <span class="s">&lt;&lt; EOF</span>
+<span class="s">2 3</span>
+<span class="s">5 6</span>
+<span class="s">8 2</span>
+<span class="s">EOF</span>
+gmt end show
+</pre></div>
+</div>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/symbols-gmtplot-2.png"><img alt="../_images/symbols-gmtplot-2.png" src="../_images/symbols-gmtplot-2.png" style="width: 60%;" /></a>
+</div>
+<p>若想要繪製其它符號，則只需要使用對應的符號類型代碼即可。例如，將 <strong>-Sc0.5c</strong>
+改成 <strong>-St0.5c</strong> 則會繪製三角形。</p>
+<p>當然，某些符號類型可能需要額外的輸入數據。比如 <strong>-Sr</strong> 表示繪製長方形，此時輸入數據中除了需要長方形的X和Y座標之外，還需要長方形的寬和高，因而輸入數據需要四列。對於這些輸入數據稍複雜的符號，可以閱讀文件以瞭解其輸入數據的格式。</p>
+</div>
+<div class="section" id="id4">
+<h2>大小變化的符號<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<p>若想要繪製大小變化的符號，則需要在輸入數據中額外加上一列以控制每個符號的大小，同時，在 <strong>-S</strong> 選項中則不再需要指定符號大小。</p>
+<p>下面的示例中，<strong>-Sc</strong> 中沒有指定圓圈大小，此時輸入數據的第三列控制圓圈大小。由此，我們即得到了大小變化的符號。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt begin symbols png,pdf
+gmt plot -R0/10/0/10 -JX10c/10c -Baf -Sc -W1p,black -Gred <span class="s">&lt;&lt; EOF</span>
+<span class="s">2 3 0.3</span>
+<span class="s">5 6 0.8</span>
+<span class="s">8 2 0.5</span>
+<span class="s">EOF</span>
+gmt end show
+</pre></div>
+</div>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/symbols-gmtplot-3.png"><img alt="../_images/symbols-gmtplot-3.png" src="../_images/symbols-gmtplot-3.png" style="width: 60%;" /></a>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>顏色變化的符號<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<p>前面提到，使用 <strong>-G</strong> 選項可以爲符號填充顏色，但其只能同時爲所有符號指定單一的顏色。如果想要讓符號的顏色根據某個數值的不同而使用不同的顏色，則需要使用 <strong>-C</strong> 選項。
+<strong>-C</strong> 選項表示符號的填充色由某個數值以及CPT顏色表所控制。CPT顏色表給出了數值與顏色之間的對應關係。因而對於任意一個符號，我們都可以給其一個數值，GMT會根據該數值從CPT顏色表中找到對應的顏色作爲該符號的填充色。因而，在輸入數據中，我們需要在
+X和Y座標的基礎上額外加一列Z值，用於控制符號的填充色。</p>
+<p>下面的示例中，我們首先使用 <strong>makecpt</strong> 模塊，以GMT內置CPT顏色表 <strong>hot</strong> 爲基礎，生成了一個新的CPT顏色表。關於CPT顏色表的具體細節在後面會介紹到。此處，讀者只需要知道，我們製作了一個CPT文件供後面的命令使用。該CPT顏色表爲0到3之內的每個數值都對應了一個顏色。</p>
+<p>同時，對於輸入數據，我們額外增加一列（通常稱這一列爲Z值），該列的值決定了符號的填充色。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt begin symbols png,pdf
+gmt makecpt -Chot -T0/3/1
+gmt plot -R0/10/0/10 -JX10c/10c -Baf -Sc0.5c -W1p,black -C <span class="s">&lt;&lt; EOF</span>
+<span class="s">2   3   0</span>
+<span class="s">5   6   1</span>
+<span class="s">8   2   2</span>
+<span class="s">EOF</span>
+gmt end show
+</pre></div>
+</div>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/symbols-gmtplot-4.png"><img alt="../_images/symbols-gmtplot-4.png" src="../_images/symbols-gmtplot-4.png" style="width: 60%;" /></a>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>繪製不同的符號<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<p>前面說到，<strong>-S</strong> 選項中指定不同的符號類型代碼則代表繪製不同的符號，但每次只能指定一種符號類型代碼。如果想要不同的數據使用不同的符號繪製，則可以只指定符號大小而不指定符號類型代碼，並在輸入數據的最後一列指定符號類型代碼。</p>
+<p>下面的示例中，我們使用 <strong>-S0.5c</strong> 指定了符號的大小，但是沒有指定符號類型。輸入數據的最後一列中 <strong>c</strong>、<strong>t</strong>和 <strong>i</strong> 則分別爲三個數據指定了各自的符號類型。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt begin symbols png,pdf
+gmt basemap -R0/10/0/10 -JX10c/10c -Baf
+gmt plot -S0.5c -W1p,black -Gred <span class="s">&lt;&lt; EOF</span>
+<span class="s">2 3 c</span>
+<span class="s">5 6 t</span>
+<span class="s">8 2 i</span>
+<span class="s">EOF</span>
+gmt end show
+</pre></div>
+</div>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/symbols-gmtplot-5.png"><img alt="../_images/symbols-gmtplot-5.png" src="../_images/symbols-gmtplot-5.png" style="width: 60%;" /></a>
+</div>
+</div>
+<div class="section" id="id7">
+<h2>大小、顏色和符號類型都變化的符號<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
+<p>前面介紹瞭如何繪製大小變化或顏色變化或符號類型變化的符號。那麼如何實現顏色、大小以及符號三者都變化的符號呢？可以使用 <strong>-S</strong> 但不指定符號類型以及符號大小，同時使用 <strong>-C</strong> 選項。</p>
+<p>關鍵問題在於，此時的數據數據格式是怎樣的。根據GMT的規定，此時輸入數據的格式爲:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>X   Y   Z   size    symbol
+</pre></div>
+</div>
+<p>即第三列控制符號填充色，第四列爲符號大小，最後一列爲符號類型代碼。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt begin symbols png,pdf
+gmt makecpt -Chot -T0/3/1
+gmt plot -R0/10/0/10 -JX10c/10c -Baf -S -W1p,black -C <span class="s">&lt;&lt; EOF</span>
+<span class="s">2   3   0   0.3 c</span>
+<span class="s">5   6   1   0.8 t</span>
+<span class="s">8   2   2   0.5 i</span>
+<span class="s">EOF</span>
+gmt end show
+</pre></div>
+</div>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/symbols-gmtplot-6.png"><img alt="../_images/symbols-gmtplot-6.png" src="../_images/symbols-gmtplot-6.png" style="width: 60%;" /></a>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+           <div class="articleComments">
+            
+
+<!-- gitalk 脚本-->
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'b2dfca9a4bfad764aa2b',
+    clientSecret: '4ae5ddcd25c6b6d6bc07ac39201ea417054a530a',
+    owner: 'gmt-china',
+    repo: 'gitalk',
+    admin: ['zhaozhiyuan1989','cehui07226','NothingIsBig','seisman','SeisPider','wangliang1989','sqdeng'],
+    id: md5(location.pathname),
+    body: location.href,
+  });
+gitalk.render('gitalk-container');
+</script>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="texts.html" class="btn btn-neutral float-right" title="添加文字" accesskey="n" rel="next">下頁 <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="lines.html" class="btn btn-neutral float-left" title="繪製線段和多邊形" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> 上頁</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014 - 2020, GMT中文社区.
+      <span class="lastupdated">
+        最后更新于 2020年05月29日.
+      </span>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,20 +1,20 @@
--Jy：圆柱等面积投影
+-Jy：圓柱等面積投影
 ===================
 
-维基链接：https://en.wikipedia.org/wiki/Cylindrical_equal-area_projection
+維基鏈接：https://en.wikipedia.org/wiki/Cylindrical_equal-area_projection
 
-选择不同的标准纬线，则对应不同的圆柱投影。所有的这些圆柱投影都是等面积且不保角的。
-所有经线和纬线都是直线。在高纬度处畸变很大。
+選擇不同的標準緯線，則對應不同的圓柱投影。所有的這些圓柱投影都是等面積且不保角的。
+所有經線和緯線都是直線。在高緯度處畸變很大。
 
-该投影的参数为：
+該投影的參數爲：
 
 **-JY**\ *lon*/*lat*/*width*
 或
 **-Jy**\ *lon*/*lat*/*scale*
 
-*lon* 是中心经线，\ *lat* 是标准纬线。
+*lon* 是中心經線，\ *lat* 是標準緯線。
 
-标准纬线可以取任意值，下面列出了一些比较流行的标准纬线的选择：
+標準緯線可以取任意值，下面列出了一些比較流行的標準緯線的選擇：
 
 .. table::
    :align: center
@@ -37,7 +37,7 @@
    +-------------------+---------------------+
 
 .. gmtplot::
-    :caption: 使用Behrman圆柱等面积投影绘制地图
+    :caption: 使用Behrman圓柱等面積投影繪製地圖
     :width: 85%
 
     gmt coast -R-145/215/-90/90 -JY35/30/4.5i -B45g45 -Dc -A10000 -Sdodgerblue -Wthinnest -png GMT_general_cyl

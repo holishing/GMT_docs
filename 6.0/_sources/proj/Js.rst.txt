@@ -1,41 +1,41 @@
--Js：立体等角投影
+-Js：立體等角投影
 =================
 
-维基链接：https://en.wikipedia.org/wiki/Stereographic_projection
+維基鏈接：https://en.wikipedia.org/wiki/Stereographic_projection
 
-此投影是保角方位投影，主要用于绘制南北极区域。在两极，所有经线都是直线，纬线则是圆弧。
+此投影是保角方位投影，主要用於繪製南北極區域。在兩極，所有經線都是直線，緯線則是圓弧。
 
-该投影的参数：
+該投影的參數：
 
 **-JS**\ *lon*/*lat*\ [/*distance*]/*width*
 或
 **-Js**\ *lon*/*lat*\ [/*distance*]/*scale*
 
-- *lon*/*lat* 投影中心的经纬度
-- *distance* 地图边界到投影中心的角度，默认值为90度
+- *lon*/*lat* 投影中心的經緯度
+- *distance* 地圖邊界到投影中心的角度，默認值爲90度
 - *scale* 可以是 1:*xxxx* 也可以是 *radius*/*latitude*
-  （\ *radius* 是投影中心到纬线 *latitude* 在图上的距离），
-  还可以是 *slat*/1:*xxxx*\ （指定在标准纬线 *slat* 处的比例尺）
+  （\ *radius* 是投影中心到緯線 *latitude* 在圖上的距離），
+  還可以是 *slat*/1:*xxxx*\ （指定在標準緯線 *slat* 處的比例尺）
 
-极区立体地图
+極區立體地圖
 ------------
 
-下面的示例中，投影中心为北极，地图边界与经线和纬线完全重合。
+下面的示例中，投影中心爲北極，地圖邊界與經線和緯線完全重合。
 
 .. gmtplot::
-    :caption: 极区立体保角投影
+    :caption: 極區立體保角投影
     :width: 85%
 
     gmt coast -R-30/30/60/72 -Js0/90/4.5i/60 -B10g -Dl -A250 -Groyalblue \
                 -Sseashell -png GMT_stereographic_polar
 
-矩形立体地图
+矩形立體地圖
 ------------
 
-与Lambert方位等面积投影类似，也可以通过指定地图区域左下角和右上角的坐标来绘制一个矩形区域。
+與Lambert方位等面積投影類似，也可以通過指定地圖區域左下角和右上角的座標來繪製一個矩形區域。
 
 .. gmtplot::
-    :caption: 矩形边界下的极区立体保角投影
+    :caption: 矩形邊界下的極區立體保角投影
     :width: 75%
 
     gmt begin GMT_stereographic_rect pdf,png
@@ -43,11 +43,11 @@
     gmt coast -R-25/59/70/72r -JS10/90/11c -B20g -Dl -A250 -Gdarkbrown -Wthinnest -Slightgray
     gmt end
 
-一般立体地图
+一般立體地圖
 ------------
 
 .. gmtplot::
-    :caption: 一般立体投影
+    :caption: 一般立體投影
     :width: 75%
 
     gmt begin GMT_stereographic_general pdf,png

@@ -1,24 +1,24 @@
--Jd：等距圆锥投影
+-Jd：等距圓錐投影
 =================
 
-维基链接：https://en.wikipedia.org/wiki/Equidistant_conic_projection
+維基鏈接：https://en.wikipedia.org/wiki/Equidistant_conic_projection
 
-等距圆锥投影由希腊哲学家Claudius Ptolemy于公元150年提出。其既不是保角也不是
-等面积，而是两种的折衷。在所有经线以及标准纬线上比例尺没有畸变。
+等距圓錐投影由希臘哲學家Claudius Ptolemy於公元150年提出。其既不是保角也不是
+等面積，而是兩種的折衷。在所有經線以及標準緯線上比例尺沒有畸變。
 
-该投影的参数为：
+該投影的參數爲：
 
 **-JD**\ *lon0*/*lat0*/*lat1*/*lat2*/*width*
 或
 **-Jd**\ *lon0*/*lat0*/*lat1*/*lat2*/*scale*
 
 - *lon*/*lat* 投影中心位置
-- *lat1*/*lat2* 两条标准纬线
+- *lat1*/*lat2* 兩條標準緯線
 
-等距圆锥投影常用于绘制小国家的地图集。
+等距圓錐投影常用於繪製小國家的地圖集。
 
 .. gmtplot::
-    :caption: 等距圆锥地图投影
+    :caption: 等距圓錐地圖投影
     :width: 85%
 
     gmt begin GMT_equidistant_conic pdf,png

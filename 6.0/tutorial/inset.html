@@ -1,0 +1,350 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>GMT圖中圖模式 &mdash; GMT中文手册</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+    <link rel="canonical" href="https://docs.gmt-china.org/latest/tutorial/inset.html"/>
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
+        <script async="async" type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="GMT子圖模式" href="subplot.html" />
+    <link rel="prev" title="GMT單行模式" href="oneliner.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+    
+    <a href="../index.html" class="icon icon-home"> GMT中文手册
+    
+
+    
+    </a>
+
+    
+    
+    
+    <div class="version">
+        <select onchange="location = this.options[this.selectedIndex].value;">
+            
+            <option value="/6.0/"  selected > v6.0 </option>
+            
+            <option value="/5.4/" > v5.4 </option>
+            
+        </select>
+    </div>
+    
+    
+
+    
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文件" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+    
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">目 錄</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">簡介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/index.html">安裝</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migrating/index.html">版本遷移</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">入門教程</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="get-started/index.html">GMT初探</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commands.html">命令初探</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scripting.html">腳本編程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basemap.html">繪製底圖</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coastline.html">繪製海岸線</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lines.html">繪製線段和多邊形</a></li>
+<li class="toctree-l2"><a class="reference internal" href="symbols.html">繪製符號</a></li>
+<li class="toctree-l2"><a class="reference internal" href="texts.html">添加文字</a></li>
+<li class="toctree-l2"><a class="reference internal" href="legend.html">添加圖例</a></li>
+<li class="toctree-l2"><a class="reference internal" href="earth-relief.html">繪製地形起伏</a></li>
+<li class="toctree-l2"><a class="reference internal" href="layers.html">理解圖層</a></li>
+<li class="toctree-l2"><a class="reference internal" href="histogram/index.html">繪製直方圖</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oneliner.html">GMT單行模式</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">GMT圖中圖模式</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">用矩形框標記研究區域</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">用顏色標記研究區域</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="subplot.html">GMT子圖模式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multifig.html">GMT多圖模式</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../basis/index.html">GMT基礎</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../table/index.html">表數據</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grid/index.html">網格檔</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cpt/index.html">CPT文件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../option/index.html">標準選項</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../proj/index.html">地圖投影</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conf/index.html">配置參數</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dataset/index.html">地學數據集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chinese/index.html">中文支持</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../module/index.html">模塊手冊</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery/index.html">繪圖示例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/index.html">附錄</a></li>
+</ul>
+
+            
+          
+
+    
+        <p class="caption">
+            <span class="caption-text">外部链接</span>
+        </p>
+        <ul>
+            
+                <li class="toctree-l1"><a href="https://docs.gmt-china.org/6.0/GMT_docs.pdf"><i class="fa fa-book fa-fw"></i> PDF下载</a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/gmt-china/GMT_Docs"><i class="fa fa-github fa-fw"></i> 源代码</a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/gmt-china/GMT_docs/blob/master/CONTRIBUTING.md"><i class="fa fa-edit fa-fw"></i> 贡献指南</a></li>
+            
+                <li class="toctree-l1"><a href="https://gmt-china.org"><i class="fa fa-globe fa-fw"></i> GMT中文社区</a></li>
+            
+                <li class="toctree-l1"><a href="mailto:admin@gmt-china.org"><i class="fa fa-envelope fa-fw"></i> 联系我们</a></li>
+            
+        </ul>
+    
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">GMT中文手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">首頁</a> &raquo;</li>
+        
+          <li><a href="index.html">入門教程</a> &raquo;</li>
+        
+      <li>GMT圖中圖模式</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/gmt-china/GMT_Docs/blob/master/source/tutorial/inset.rst" class="fa fa-github"> 編輯本頁</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="gmt">
+<h1>GMT圖中圖模式<a class="headerlink" href="#gmt" title="永久链接至标题">¶</a></h1>
+<p>在繪製區域地圖時，爲了更清晰地顯示研究區域的地理位置，通常會額外繪製一個更大區域範圍的地圖，並在大區域地圖中標記出研究區域的位置。這種圖稱之爲 inset map。中文沒有統一的翻譯，大家一般稱之爲圖中圖、小圖或者插頁圖。</p>
+<p>GMT 中 <a class="reference internal" href="../module/inset.html"><span class="doc">inset</span></a> 模塊用於管理圖中圖模式。圖中圖模式以 <strong>inset begin</strong>
+開始，並以 <strong>inset end</strong> 結束。</p>
+<p>使用 <strong>inset begin</strong> 進入圖中圖模式，其作用是在紙張上規劃出一個矩形區域，並將繪圖原點移動到該矩形區域的左下角。接下來的所有繪圖命令均只在該區域內進行操作。當使用 <strong>inset end</strong> 結束圖中圖模式時，繪圖原點會自動恢復到圖中圖模式之前的位置，且所有設置參數都將回到之前的狀態。</p>
+<div class="section" id="id1">
+<h2>用矩形框標記研究區域<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p>下面的示例中研究區域爲日本東京周圍的一個小區域。爲了展示其地理位置，我們在大圖的左下角的小圖中繪製了日本全圖，同時在小圖中用矩形框出了大圖中的研究區域範圍。</p>
+<p><strong>inset begin</strong> 定義了小圖的位置位於大圖左下角（<strong>-DjBL</strong>），小圖區域的寬度爲3釐米，高度爲3.6釐米（<strong>+w3c/3.6c</strong>），並且相對大圖左下角偏移0.1釐米（<strong>+o0.1c</strong>）。同時還設置了小圖區域的背景色爲白色（<strong>+gwhite</strong>），並繪製了小圖區域的邊框（<strong>+p1p</strong>）。</p>
+<p>在小圖區域內，我們使用 <strong>coast</strong> 模塊繪製了日本全圖，小圖投影參數爲 <strong>-JM?</strong>，其中 <strong>?</strong> 表示根據 <strong>inset begin</strong> 中 <strong>-D</strong> 選項指定的寬度自動決定小圖寬度。同時我們使用 <strong>plot</strong> 模塊的 <strong>-Sr+s</strong> 選項在小圖中繪製了一個對應於大圖區域的矩形框，該命令需要輸入矩形區域的兩個對角頂點的經緯度。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env bash</span>
+gmt begin inset-map png,pdf
+    gmt coast -R139.2/140.5/34.8/36 -JM12c -Baf -BWSne -W2p -A1000 -Glightbrown -Sazure1 --FORMAT_GEO_MAP<span class="o">=</span>dddF
+    gmt inset begin -DjBL+w3c/3.6c+o0.1c -F+gwhite+p1p
+        gmt coast -R129/146/30/46 -JM? -EJP+glightbrown+p0.2p -A10000
+        <span class="c1"># 使用 -Sr+s 绘制矩形区域</span>
+        <span class="nb">echo</span> <span class="m">139</span>.2 <span class="m">34</span>.8 <span class="m">140</span>.5 <span class="m">36</span> <span class="p">|</span> gmt plot -Sr+s -W1p,blue
+    gmt inset end
+gmt end show
+</pre></div>
+</div>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/inset-gmtplot-01.png"><img alt="../_images/inset-gmtplot-01.png" src="../_images/inset-gmtplot-01.png" style="width: 60%;" /></a>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>用顏色標記研究區域<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>下面的示例中研究區域爲澳大利亞。爲了展示其地理位置，我們在大圖的右上角區域繪製了全球地圖，並用特殊的顏色將澳大利亞區域標記出來。</p>
+<p><strong>inset begin</strong> 定義了小圖的位置位於大圖右上角（<strong>-DjTR</strong>），小圖區域寬度爲
+1.5英寸（<strong>+w1.5i</strong>）。同樣的，在小圖內部我們在需要指定地圖寬度的地方使用了
+<strong>?</strong> 讓GMT自動幫我們決定小圖的寬度。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env bash</span>
+gmt begin inset-example png,pdf
+    gmt coast -R110E/170E/44S/9S -JM6i -B -BWSne -Wfaint -N2/1p -Gbrown -EAU+gbisque
+    gmt inset begin -DjTR+w1.5i+o0.15i/0.1i -F+gwhite+p1p+c0.1c
+        gmt coast -JG120/30S/? -Rg -Bg -Wfaint -Gbrown -EAU+gbisque -A5000
+    gmt inset end
+gmt end show
+</pre></div>
+</div>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/inset-gmtplot-11.png"><img alt="../_images/inset-gmtplot-11.png" src="../_images/inset-gmtplot-11.png" style="width: 60%;" /></a>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+           <div class="articleComments">
+            
+
+<!-- gitalk 脚本-->
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'b2dfca9a4bfad764aa2b',
+    clientSecret: '4ae5ddcd25c6b6d6bc07ac39201ea417054a530a',
+    owner: 'gmt-china',
+    repo: 'gitalk',
+    admin: ['zhaozhiyuan1989','cehui07226','NothingIsBig','seisman','SeisPider','wangliang1989','sqdeng'],
+    id: md5(location.pathname),
+    body: location.href,
+  });
+gitalk.render('gitalk-container');
+</script>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="subplot.html" class="btn btn-neutral float-right" title="GMT子圖模式" accesskey="n" rel="next">下頁 <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="oneliner.html" class="btn btn-neutral float-left" title="GMT單行模式" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> 上頁</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014 - 2020, GMT中文社区.
+      <span class="lastupdated">
+        最后更新于 2020年05月29日.
+      </span>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

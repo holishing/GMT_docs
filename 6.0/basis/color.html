@@ -1,0 +1,415 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>顏色 &mdash; GMT中文手册</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+    <link rel="canonical" href="https://docs.gmt-china.org/latest/basis/color.html"/>
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
+        <script async="async" type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="畫筆" href="pen.html" />
+    <link rel="prev" title="單位" href="unit.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+    
+    <a href="../index.html" class="icon icon-home"> GMT中文手册
+    
+
+    
+    </a>
+
+    
+    
+    
+    <div class="version">
+        <select onchange="location = this.options[this.selectedIndex].value;">
+            
+            <option value="/6.0/"  selected > v6.0 </option>
+            
+            <option value="/5.4/" > v5.4 </option>
+            
+        </select>
+    </div>
+    
+    
+
+    
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文件" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+    
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">目 錄</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">簡介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/index.html">安裝</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migrating/index.html">版本遷移</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">入門教程</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">GMT基礎</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="paper.html">畫布</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unit.html">單位</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">顏色</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">顏色名</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rgb">RGB</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hsv">HSV</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cmyk">CMYK</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">灰色</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">透明色</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">顏色小結</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">小練習</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pen.html">畫筆</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fill.html">填充</a></li>
+<li class="toctree-l2"><a class="reference internal" href="text.html">文字</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special-character.html">特殊字符</a></li>
+<li class="toctree-l2"><a class="reference internal" href="escape-character.html">轉義序列</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vector.html">繪製矢量/箭頭</a></li>
+<li class="toctree-l2"><a class="reference internal" href="line.html">線條屬性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="anchor.html">錨點</a></li>
+<li class="toctree-l2"><a class="reference internal" href="embellishment.html">繪製修飾物</a></li>
+<li class="toctree-l2"><a class="reference internal" href="io-format.html">數據類型</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../table/index.html">表數據</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grid/index.html">網格檔</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cpt/index.html">CPT文件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../option/index.html">標準選項</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../proj/index.html">地圖投影</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conf/index.html">配置參數</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dataset/index.html">地學數據集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chinese/index.html">中文支持</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../module/index.html">模塊手冊</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery/index.html">繪圖示例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/index.html">附錄</a></li>
+</ul>
+
+            
+          
+
+    
+        <p class="caption">
+            <span class="caption-text">外部链接</span>
+        </p>
+        <ul>
+            
+                <li class="toctree-l1"><a href="https://docs.gmt-china.org/6.0/GMT_docs.pdf"><i class="fa fa-book fa-fw"></i> PDF下载</a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/gmt-china/GMT_Docs"><i class="fa fa-github fa-fw"></i> 源代码</a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/gmt-china/GMT_docs/blob/master/CONTRIBUTING.md"><i class="fa fa-edit fa-fw"></i> 贡献指南</a></li>
+            
+                <li class="toctree-l1"><a href="https://gmt-china.org"><i class="fa fa-globe fa-fw"></i> GMT中文社区</a></li>
+            
+                <li class="toctree-l1"><a href="mailto:admin@gmt-china.org"><i class="fa fa-envelope fa-fw"></i> 联系我们</a></li>
+            
+        </ul>
+    
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">GMT中文手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">首頁</a> &raquo;</li>
+        
+          <li><a href="index.html">GMT基礎</a> &raquo;</li>
+        
+      <li>顏色</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/gmt-china/GMT_Docs/blob/master/source/basis/color.rst" class="fa fa-github"> 編輯本頁</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="index-0">
+<span id="id1"></span><h1>顏色<a class="headerlink" href="#index-0" title="永久链接至标题">¶</a></h1>
+<p>既然是繪圖，豐富的顏色是必須的。GMT中可以通過五種不同的方式來指定顏色，即：</p>
+<ol class="arabic simple">
+<li>顏色名</li>
+<li>RGB 值</li>
+<li>HSV 值</li>
+<li>CMYK 值</li>
+<li>灰度值</li>
+</ol>
+<div class="section" id="id2">
+<h2>顏色名<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>通過顏色名指定顏色是最直觀的方式了。常見的顏色如 <strong>white</strong>、
+<strong>black</strong>、<strong>red</strong>、<strong>orange</strong>、<strong>yellow</strong>、<strong>green</strong>、
+<strong>cyan</strong>、<strong>blue</strong>、<strong>magenta</strong>、<strong>gray</strong> （或<strong>grey</strong>）和 <strong>brown</strong> 等。除 <strong>white</strong> 和 <strong>black</strong> 之外，其餘的幾種常見顏色名還可以加上前綴 <strong>light</strong>
+或 <strong>dark</strong>，以表示淺色和深色。比如 <strong>lightblue</strong>、<strong>blue</strong>、<strong>darkblue</strong>
+分別表示淺藍、藍色和深藍。</p>
+<p>所有的顏色名都是不區分大小寫的，所以 <strong>lightblue</strong>、<strong>LIGHTBLUE</strong>
+或者 <strong>LightBlue</strong> 都是合法的顏色名。</p>
+<p>GMT 支持通過顏色名指定663種顏色。下圖中列出了GMT支持的所有顏色名及其對應的RGB值。</p>
+<div class="figure align-center" id="color-list">
+<a class="reference internal image-reference" href="../_images/GMT_RGBchart_a4.png"><img alt="../_images/GMT_RGBchart_a4.png" src="../_images/GMT_RGBchart_a4.png" style="width: 100%;" /></a>
+</div>
+<p><strong>GMT顏色表下載：</strong>
+<a class="reference download internal" download="" href="../_downloads/1dcfb00771fe57b44f399c65c4fcdf95/GMT_RGBchart_a4.png"><code class="xref download docutils literal notranslate"><span class="pre">A4</span> <span class="pre">PNG格式</span></code></a> |
+<a class="reference download internal" download="" href="../_downloads/d97cff4ee7314759056e5d2c2eb16d0f/GMT_RGBchart_a4.pdf"><code class="xref download docutils literal notranslate"><span class="pre">A4</span> <span class="pre">PDF格式</span></code></a> |
+<a class="reference download internal" download="" href="../_downloads/794f07131a0be0ce59ea3760f49a38be/GMT_RGBchart_letter.png"><code class="xref download docutils literal notranslate"><span class="pre">USLetter</span> <span class="pre">PNG格式</span></code></a> |
+<a class="reference download internal" download="" href="../_downloads/ec0efe115d13df073d402d64fd1d422c/GMT_RGBchart_letter.pdf"><code class="xref download docutils literal notranslate"><span class="pre">USLetter</span> <span class="pre">PDF格式</span></code></a></p>
+</div>
+<div class="section" id="rgb">
+<h2>RGB<a class="headerlink" href="#rgb" title="永久链接至标题">¶</a></h2>
+<p>即三原色光模型，或又稱RGB顏色模型，是一種加色模型，將紅（<strong>R</strong>ed）、綠（<strong>G</strong>reen）、藍（<strong>B</strong>lue）三原色的色光以不同的比例相加，以產生多種多樣的色光。</p>
+<p>GMT中可以通過 <em>r</em>/<em>g</em>/<em>b</em> 的格式來指定RGB顏色，其中 <em>r</em>、<em>g</em>、<em>b</em>
+的取值範圍都是0到255，三者用反斜線 <strong>/</strong> 分開。</p>
+<p>RGB顏色示例：</p>
+<ul class="simple">
+<li><strong>0/0/0</strong>：黑色；</li>
+<li><strong>255/255/255</strong>：白色；</li>
+<li><strong>255/0/0</strong>：紅色；</li>
+<li><strong>0/255/0</strong>：綠色；</li>
+<li><strong>0/0/255</strong>：藍色；</li>
+</ul>
+<p>RGB顏色除了可以用上面的表示法之外，還可以用HTML中常用的表示法 <strong>#</strong><em>RRGGBB</em>，即分別用兩位的十六進制數字表示每個顏色通道，0對應的16進制是 <strong>00</strong>，255對應的16進制是 <strong>FF</strong>。例如 <strong>#000000</strong> 即黑色，<strong>#FF0000</strong> 即紅色。十六進制數用大小寫表示均可。</p>
+</div>
+<div class="section" id="hsv">
+<h2>HSV<a class="headerlink" href="#hsv" title="永久链接至标题">¶</a></h2>
+<p>通過 <em>h</em>-<em>s</em>-<em>v</em> 格式指定顏色，其中HSV分別代表色相（<strong>H</strong>ue）、飽和度（<strong>S</strong>aturation）和明度（<strong>V</strong>alue），三者之間用破折號 <strong>-</strong> 分開。</p>
+<ul class="simple">
+<li>色相（<strong>H</strong>）是色彩的基本屬性，就是平常所說的顏色名稱（如紅色、黃色等），取值範圍爲0到360。</li>
+<li>飽和度（<strong>S</strong>）是指色彩的純度，越高色彩越純，低則逐漸變灰，取值範圍爲0到1。</li>
+<li>明度（<strong>V</strong>）是色彩的亮度，取值範圍爲0（dark）到1（light）。</li>
+</ul>
+<p>例如 <strong>200-0.1-0.1</strong>。</p>
+</div>
+<div class="section" id="cmyk">
+<h2>CMYK<a class="headerlink" href="#cmyk" title="永久链接至标题">¶</a></h2>
+<p>印刷四分色模式，是彩色印刷時採用的一種套色模式，利用色料的三原色混色原理，加上黑色油墨，共計四種顏色混合疊加，形成所謂“全綵印刷”。四種標準顏色是：</p>
+<ul class="simple">
+<li><strong>C</strong>yan：青色，又稱爲天藍色或是湛藍</li>
+<li><strong>M</strong>agenta：品紅色，又稱爲洋紅色</li>
+<li><strong>Y</strong>ellow：黃色</li>
+<li>blac<strong>K</strong>：定位套版色（黑色）</li>
+</ul>
+<p>GMT中可以通過 <em>c</em>/<em>m</em>/<em>y</em>/<em>k</em>的方式指定CMYK格式的顏色。<em>c</em>、<em>m</em>、<em>y</em>、
+<em>k</em> 的取值範圍均爲0到1，用反斜線 <strong>/</strong> 分開，例如 <strong>0.2/0.3/0.4/0.4</strong>。</p>
+</div>
+<div class="section" id="id3">
+<h2>灰色<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>灰色是常見的一種顏色，而灰色又可以根據灰的不同程度細分爲不同的灰色。指定灰色的辦法很簡單，用一個數值表示灰度即可，其取值範圍爲0到255。例如 0 表示黑色，255 表示白色，128 表示灰色。</p>
+<p>除了用灰度表示之外，灰色還可以用前面提到的幾種形式表示：</p>
+<ol class="arabic">
+<li><p class="first">用RGB表示灰度</p>
+<p>灰色本質上就是 <em>R</em>=<em>G</em>=<em>B</em> 的一種顏色。因而 <strong>128/128/128</strong> 代表灰度爲 128 ，<strong>200/200/200</strong> 代表灰度是 200。</p>
+</li>
+<li><p class="first">用GMT顏色名錶示灰度</p>
+<p>GMT自定義了多個顏色名來表示不同程度的灰色。除了前面說過的 <strong>gray</strong>、<strong>lightgray</strong> 和 <strong>darkgray</strong> 之外，還有 <strong>gray0</strong>、<strong>gray1</strong> 一直到 <strong>gray100</strong>。其中 <strong>gray0</strong> 即黑色，<strong>gray100</strong> 即白色。</p>
+</li>
+</ol>
+</div>
+<div class="section" id="id4">
+<h2>透明色<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<p>每一種顏色，都可以額外指定其透明度。</p>
+<p>GMT中可以通過在顏色後加上 <strong>&#64;</strong> 再加上透明度來得到不同程度的透明色。透明度的取值範圍是0到100，0表示不透明，100表示全透明。</p>
+<p>例如：<strong>red&#64;25</strong>、<strong>30/25/128&#64;60</strong>。</p>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">PS格式不支持透明色。</p>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>顏色小結<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<p>GMT中可以用五種方法指定顏色，分別是：</p>
+<ul class="simple">
+<li>顏色名：<strong>red</strong></li>
+<li>RGB值：<strong>30/25/128</strong> 或 <strong>#00FA84</strong></li>
+<li>HSV值：<strong>200-0.1-0.1</strong></li>
+<li>CMYK值：<strong>0.2/0.3/0.4/0.5</strong></li>
+<li>灰度：<strong>30</strong></li>
+</ul>
+</div>
+<div class="section" id="id6">
+<h2>小練習<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<p>下面的命令在底圖中心繪製了一個紅色圓圈，試着將 <code class="docutils literal notranslate"><span class="pre">-Gred</span></code> 中的 <strong>red</strong> 改爲其它顏色:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="m">5</span> <span class="m">5</span> <span class="p">|</span> gmt plot -JX10c/10c -R0/10/0/10 -Baf -Sc3c -Gred -pdf colors
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+           <div class="articleComments">
+            
+
+<!-- gitalk 脚本-->
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'b2dfca9a4bfad764aa2b',
+    clientSecret: '4ae5ddcd25c6b6d6bc07ac39201ea417054a530a',
+    owner: 'gmt-china',
+    repo: 'gitalk',
+    admin: ['zhaozhiyuan1989','cehui07226','NothingIsBig','seisman','SeisPider','wangliang1989','sqdeng'],
+    id: md5(location.pathname),
+    body: location.href,
+  });
+gitalk.render('gitalk-container');
+</script>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="pen.html" class="btn btn-neutral float-right" title="畫筆" accesskey="n" rel="next">下頁 <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="unit.html" class="btn btn-neutral float-left" title="單位" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> 上頁</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014 - 2020, GMT中文社区.
+      <span class="lastupdated">
+        最后更新于 2020年05月29日.
+      </span>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

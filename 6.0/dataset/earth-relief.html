@@ -1,0 +1,472 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>earth_relief: 全球地形起伏數據 &mdash; GMT中文手册</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+    <link rel="canonical" href="https://docs.gmt-china.org/latest/dataset/earth-relief.html"/>
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
+        <script async="async" type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="GADM: 全球行政區劃數據庫" href="gadm/index.html" />
+    <link rel="prev" title="DCW: 世界數字圖表" href="dcw/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+    
+    <a href="../index.html" class="icon icon-home"> GMT中文手册
+    
+
+    
+    </a>
+
+    
+    
+    
+    <div class="version">
+        <select onchange="location = this.options[this.selectedIndex].value;">
+            
+            <option value="/6.0/"  selected > v6.0 </option>
+            
+            <option value="/5.4/" > v5.4 </option>
+            
+        </select>
+    </div>
+    
+    
+
+    
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文件" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+    
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">目 錄</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">簡介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/index.html">安裝</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migrating/index.html">版本遷移</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">入門教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basis/index.html">GMT基礎</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../table/index.html">表數據</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grid/index.html">網格檔</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cpt/index.html">CPT文件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../option/index.html">標準選項</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../proj/index.html">地圖投影</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conf/index.html">配置參數</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">地學數據集</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="overview.html">地學數據集</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gshhg.html">GSHHG: 全球高分辨率海岸線數據</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dcw/index.html">DCW: 世界數字圖表</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">earth_relief: 全球地形起伏數據</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">地形起伏數據簡介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">數據下載</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">使用方法</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">緩存空間問題</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">技術細節</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">數據來源及引用</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="gadm/index.html">GADM: 全球行政區劃數據庫</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PB2002/index.html">PB2002: 全球板塊邊界數據</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../chinese/index.html">中文支持</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../module/index.html">模塊手冊</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery/index.html">繪圖示例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/index.html">附錄</a></li>
+</ul>
+
+            
+          
+
+    
+        <p class="caption">
+            <span class="caption-text">外部链接</span>
+        </p>
+        <ul>
+            
+                <li class="toctree-l1"><a href="https://docs.gmt-china.org/6.0/GMT_docs.pdf"><i class="fa fa-book fa-fw"></i> PDF下载</a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/gmt-china/GMT_Docs"><i class="fa fa-github fa-fw"></i> 源代码</a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/gmt-china/GMT_docs/blob/master/CONTRIBUTING.md"><i class="fa fa-edit fa-fw"></i> 贡献指南</a></li>
+            
+                <li class="toctree-l1"><a href="https://gmt-china.org"><i class="fa fa-globe fa-fw"></i> GMT中文社区</a></li>
+            
+                <li class="toctree-l1"><a href="mailto:admin@gmt-china.org"><i class="fa fa-envelope fa-fw"></i> 联系我们</a></li>
+            
+        </ul>
+    
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">GMT中文手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">首頁</a> &raquo;</li>
+        
+          <li><a href="index.html">地學數據集</a> &raquo;</li>
+        
+      <li>earth_relief: 全球地形起伏數據</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/gmt-china/GMT_Docs/blob/master/source/dataset/earth-relief.rst" class="fa fa-github"> 編輯本頁</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="earth-relief">
+<h1>earth_relief: 全球地形起伏數據<a class="headerlink" href="#earth-relief" title="永久链接至标题">¶</a></h1>
+<p><a class="reference download internal" download="" href="../_downloads/d4174908fdf0a93d376269ce352a0a94/earth-relief-gmtplot-0.sh"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">Code</span></code></a></p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/earth-relief-gmtplot-0.png"><img alt="../_images/earth-relief-gmtplot-0.png" src="../_images/earth-relief-gmtplot-0.png" style="width: 75%;" /></a>
+</div>
+<div class="section" id="id1">
+<h2>地形起伏數據簡介<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p>GMT對公開的全球地形起伏數據進行預處理，並提供了從1弧秒到1弧度的多種不同分辨率的全球地形起伏網格數據供GMT用戶使用。下表列出了GMT提供的地形數據的名稱、分辨率以及文件大小。</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="56%" />
+<col width="23%" />
+<col width="21%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">地形數據名稱</th>
+<th class="head">分辨率</th>
+<th class="head">大小</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">earth_relief_01d</span></code></td>
+<td>1 弧度</td>
+<td>112 KB</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">earth_relief_30m</span></code></td>
+<td>30 弧分</td>
+<td>377 KB</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">earth_relief_20m</span></code></td>
+<td>20 弧分</td>
+<td>783 KB</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">earth_relief_15m</span></code></td>
+<td>15 弧分</td>
+<td>1.4 MB</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">earth_relief_10m</span></code></td>
+<td>10 弧分</td>
+<td>2.9 MB</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">earth_relief_06m</span></code></td>
+<td>6 弧分</td>
+<td>7.5 MB</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">earth_relief_05m</span></code></td>
+<td>5 弧分</td>
+<td>11 MB</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">earth_relief_04m</span></code></td>
+<td>4 弧分</td>
+<td>16 MB</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">earth_relief_03m</span></code></td>
+<td>3 弧分</td>
+<td>28 MB</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">earth_relief_02m</span></code></td>
+<td>2 弧分</td>
+<td>58 MB</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">earth_relief_01m</span></code></td>
+<td>1 弧分</td>
+<td>214 MB</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">earth_relief_30s</span></code></td>
+<td>30 弧秒</td>
+<td>778 MB</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">earth_relief_15s</span></code></td>
+<td>15 弧秒</td>
+<td>2.6 GB</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">earth_relief_03s</span></code></td>
+<td>3 弧秒</td>
+<td>6.8 GB</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">earth_relief_01s</span></code></td>
+<td>1 弧秒</td>
+<td>41 GB</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">srtm_relief_03s</span></code></td>
+<td>3 弧秒</td>
+<td>6.8 GB</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">srtm_relief_01s</span></code></td>
+<td>1 弧秒</td>
+<td>41 GB</td>
+</tr>
+</tbody>
+</table>
+<p>這些地形起伏數據保存在GMT的服務器上。當用戶<strong>第一次</strong>使用某個分辨率的地形起伏數據時，GMT會自動從服務器上下載該數據文件，並保存到GMT的緩存文件夾下（由 <a class="reference internal" href="../conf/dir.html#term-dir-cache"><span class="xref std std-term">DIR_CACHE</span></a> 控制，默認爲 <strong>~/.gmt/server</strong> 目錄），然後再讀取該文件。以後再使用該數據時，GMT會自動從緩存文件夾下讀取該數據文件，而無需再次從服務器下載。</p>
+</div>
+<div class="section" id="id2">
+<h2>數據下載<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>當用戶第一次使用地形數據時，GMT需要從服務器下載數據，這通常很耗時。因而，建議用戶在閒置時提前將分辨率爲15弧秒到1弧分的地形數據下載到自己的計算機上。</p>
+<p>Bash用戶可以直接使用GMT提供的數據下載腳本（注意，下面命令開始處的 <code class="docutils literal notranslate"><span class="pre">$</span></code> 符號不是命令提示符，執行時必須加上）:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="k">$(</span>gmt --show-sharedir<span class="k">)</span>/tools/gmt_getremote.sh data
+</pre></div>
+</div>
+<p>Windows下Batch用戶可以直接複製如下命令並在CMD中執行:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt which -Gu @earth_relief_01d
+gmt which -Gu @earth_relief_30m
+gmt which -Gu @earth_relief_20m
+gmt which -Gu @earth_relief_15m
+gmt which -Gu @earth_relief_10m
+gmt which -Gu @earth_relief_06m
+gmt which -Gu @earth_relief_05m
+gmt which -Gu @earth_relief_04m
+gmt which -Gu @earth_relief_03m
+gmt which -Gu @earth_relief_02m
+gmt which -Gu @earth_relief_01m
+gmt which -Gu @earth_relief_30s
+gmt which -Gu @earth_relief_15s
+</pre></div>
+</div>
+<p>對於國內用戶，由於GMT服務器位於國外，下載通常很慢且容易由於網絡原因出現中斷。建議手動從中科大鏡像手動下載：</p>
+<ol class="arabic simple">
+<li>訪問中科大GMT鏡像的data目錄 <a class="reference external" href="http://mirrors.ustc.edu.cn/gmt/data/">http://mirrors.ustc.edu.cn/gmt/data/</a></li>
+<li>下載網頁顯示的所有數據文件</li>
+<li>Linux或macOS用戶將數據文件放在目錄 <code class="docutils literal notranslate"><span class="pre">~/.gmt/server</span></code> 下（若目錄不存在則新建）</li>
+<li>Windows 用戶將數據文件放在 <code class="docutils literal notranslate"><span class="pre">C:\Users\用戶名\.gmt\server</span></code> 目錄下（若目錄不存在則新建）</li>
+</ol>
+<p>不建議提前下載1弧秒和3弧秒的地形數據，主要原因在於，這兩套數據佔據硬盤空間太大。基於同樣的理由，GMT服務器上這兩套數據不是以單個文件的形式存放，而是被分成了多個小塊，當用戶需要繪製某個區域的高分辨率地形時，GMT會自動下載該區域的所有區塊的地形數據，然後合併成單個網格數據供用戶使用。</p>
+</div>
+<div class="section" id="id3">
+<h2>使用方法<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>當需要使用地形數據時，可以直接通過 <strong>&#64;earth_relief_</strong><em>res</em> 的形式調用這些地形起伏數據，其中 <em>res</em> 表示網格檔的分辨率。如果命令中使用了 <strong>-R</strong> 選項，則只會讀取該區域內的地形起伏數據。例如：</p>
+<p>查看60弧分的地形數據的信息:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt grdinfo @earth_relief_60m
+</pre></div>
+</div>
+<p>使用15弧分地形起伏數據繪製全球地形圖:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt grdimage -JH15c @earth_relief_15m -pdf map
+</pre></div>
+</div>
+<p>使用2弧分地形起伏數據繪製一個區域的地形圖:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt grdimage -JH15c -R90/120/20/60 @earth_relief_02m -pdf map
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>緩存空間問題<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<p>你可以使用多種方式來控制你的緩存目錄所佔用的空間大小：</p>
+<ol class="arabic simple">
+<li>通過參數 <a class="reference internal" href="../conf/misc.html#term-gmt-data-server-limit"><span class="xref std std-term">GMT_DATA_SERVER_LIMIT</span></a> 設置允許下載的單個文件的大小上限，默認無限制；</li>
+<li>可以通過 <strong>gmt clear data</strong> 命令清空整個數據緩存目錄</li>
+</ol>
+</div>
+<div class="section" id="id5">
+<h2>技術細節<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li>15弧秒的數據來源於 SRTM15+ [<a class="reference external" href="http://dx.doi.org/10.1029/2019EA000658">http://dx.doi.org/10.1029/2019EA000658</a>]</li>
+<li>30弧秒及更低分辨率的全球地形數據均是SRTM15+ 的衍生產品。GMT利用笛卡爾高斯濾波對其進行重採樣以防止混疊現象，並保留了原始15弧秒數據的緯度依賴的分辨率信息。可以使用 <a class="reference internal" href="../module/grdinfo.html"><span class="doc">grdinfo</span></a> 查看生成網格檔所使用的濾波命令。</li>
+<li>3弧秒和1弧秒的數據來自於NASA提供的SRTM數據。數據被劃爲爲1度x1度的區塊。在使用時，GMT會根據 <strong>-R</strong> 選項指定的區域範圍只下載區域內的地形數據。</li>
+<li>原始的SRTM3和SRTM1數據只在北緯60度到南緯60度的陸地上有數據。當使用 <strong>&#64;earth_relief_01s</strong> 或 <strong>&#64;earth_relief_03s</strong> 時，GMT會自動對
+<strong>&#64;earth_relief_15s</strong> 數據對增採樣以填充缺失的海洋部分。</li>
+<li>如果想使用最原始的只包含陸地的SRTM地形數據，則可以使用 <strong>&#64;srtm_relief_03s</strong>
+或 <strong>srtm_relief_01s</strong>。</li>
+<li>所有的網格檔都是網格線配準的。網格檔採用了更高效的文件格式，使得其文件大小遠小於原始文件的大小，且完全保持數據分辨率。對於3弧秒和1弧秒的數據，是以JPEG2000
+圖片格式保存在GMT服務器上的，一旦數據下載到本地目錄中，則會被轉換爲壓縮的netCDF4
+格式，這一步通過GDAL來實現，且要求GDAL支持openjpeg。</li>
+</ul>
+</div>
+<div class="section" id="id6">
+<h2>數據來源及引用<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<ol class="arabic simple">
+<li>SRTM15 [<a class="reference external" href="http://dx.doi.org/10.1029/2019EA000658">http://dx.doi.org/10.1029/2019EA000658</a>]</li>
+<li>SRTMGL3數據: <a class="reference external" href="https://lpdaac.usgs.gov/dataset_discovery/measures/measures_products_table/srtmgl3_v003">https://lpdaac.usgs.gov/dataset_discovery/measures/measures_products_table/srtmgl3_v003</a></li>
+<li>SRTMGL1數據: <a class="reference external" href="https://lpdaac.usgs.gov/dataset_discovery/measures/measures_products_table/srtmgl1_v003">https://lpdaac.usgs.gov/dataset_discovery/measures/measures_products_table/srtmgl1_v003</a></li>
+</ol>
+</div>
+</div>
+
+
+           </div>
+           
+           <div class="articleComments">
+            
+
+<!-- gitalk 脚本-->
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'b2dfca9a4bfad764aa2b',
+    clientSecret: '4ae5ddcd25c6b6d6bc07ac39201ea417054a530a',
+    owner: 'gmt-china',
+    repo: 'gitalk',
+    admin: ['zhaozhiyuan1989','cehui07226','NothingIsBig','seisman','SeisPider','wangliang1989','sqdeng'],
+    id: md5(location.pathname),
+    body: location.href,
+  });
+gitalk.render('gitalk-container');
+</script>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="gadm/index.html" class="btn btn-neutral float-right" title="GADM: 全球行政區劃數據庫" accesskey="n" rel="next">下頁 <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="dcw/index.html" class="btn btn-neutral float-left" title="DCW: 世界數字圖表" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> 上頁</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014 - 2020, GMT中文社区.
+      <span class="lastupdated">
+        最后更新于 2020年05月29日.
+      </span>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

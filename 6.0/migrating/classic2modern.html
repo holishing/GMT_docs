@@ -1,0 +1,367 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>經典模式 → 現代模式 &mdash; GMT中文手册</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+    <link rel="canonical" href="https://docs.gmt-china.org/latest/migrating/classic2modern.html"/>
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
+        <script async="async" type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="入門教程" href="../tutorial/index.html" />
+    <link rel="prev" title="GMT5 → GMT6" href="5to6.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+    
+    <a href="../index.html" class="icon icon-home"> GMT中文手册
+    
+
+    
+    </a>
+
+    
+    
+    
+    <div class="version">
+        <select onchange="location = this.options[this.selectedIndex].value;">
+            
+            <option value="/6.0/"  selected > v6.0 </option>
+            
+            <option value="/5.4/" > v5.4 </option>
+            
+        </select>
+    </div>
+    
+    
+
+    
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文件" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+    
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">目 錄</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">簡介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/index.html">安裝</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">版本遷移</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="4to5.html">GMT4 → GMT5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5to6.html">GMT5 → GMT6</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">經典模式 → 現代模式</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">經典模式的問題</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">現代模式的優點</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">從經典到現代</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">入門教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basis/index.html">GMT基礎</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../table/index.html">表數據</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grid/index.html">網格檔</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cpt/index.html">CPT文件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../option/index.html">標準選項</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../proj/index.html">地圖投影</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conf/index.html">配置參數</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dataset/index.html">地學數據集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chinese/index.html">中文支持</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../module/index.html">模塊手冊</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery/index.html">繪圖示例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/index.html">附錄</a></li>
+</ul>
+
+            
+          
+
+    
+        <p class="caption">
+            <span class="caption-text">外部链接</span>
+        </p>
+        <ul>
+            
+                <li class="toctree-l1"><a href="https://docs.gmt-china.org/6.0/GMT_docs.pdf"><i class="fa fa-book fa-fw"></i> PDF下载</a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/gmt-china/GMT_Docs"><i class="fa fa-github fa-fw"></i> 源代码</a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/gmt-china/GMT_docs/blob/master/CONTRIBUTING.md"><i class="fa fa-edit fa-fw"></i> 贡献指南</a></li>
+            
+                <li class="toctree-l1"><a href="https://gmt-china.org"><i class="fa fa-globe fa-fw"></i> GMT中文社区</a></li>
+            
+                <li class="toctree-l1"><a href="mailto:admin@gmt-china.org"><i class="fa fa-envelope fa-fw"></i> 联系我们</a></li>
+            
+        </ul>
+    
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">GMT中文手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">首頁</a> &raquo;</li>
+        
+          <li><a href="index.html">版本遷移</a> &raquo;</li>
+        
+      <li>經典模式 → 現代模式</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/gmt-china/GMT_Docs/blob/master/source/migrating/classic2modern.rst" class="fa fa-github"> 編輯本頁</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>經典模式 → 現代模式<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<p>GMT6引入了一種全新的繪圖命令執行模式，稱之爲現代模式。GMT5及之前版本的命令風格稱之爲經典模式。GMT6既支持傳統的經典模式，也支持全新的現代模式。因而GMT5的經典模式腳本不做任何修改即可直接在GMT6中執行。</p>
+<div class="section" id="id2">
+<h2>經典模式的問題<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>下面給出了一個經典模式下常見的繪圖腳本:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt makecpt -Chot -T-1000/1000 &gt; mydata.cpt
+gmt grdimage globe.nc -JQ15c -Rg -Cmydata.cpt -I -P -K &gt; map.ps
+gmt pscoast -J -R -Baf -Gred -K -O &gt;&gt; map.ps
+gmt psxy cities.txt -J -R -Sc0.2c -Gblue -K -O &gt;&gt; map.ps
+gmt pstext labels.txt -J -R -F+f12p -O &gt;&gt; map.ps
+gmt psconvert -A -P -Tf map.ps
+rm gmt.conf gmt.history mydata.cpt
+</pre></div>
+</div>
+<p>上面的示例腳本以及實際使用中會發現GMT經典模式存在一些明顯的缺點或問題：</p>
+<ol class="arabic simple">
+<li>默認紙張大小爲A4紙。如果不夠大，則需要自行設定紙張大小</li>
+<li>需要使用 <strong>-P</strong> 選項決定畫布的擺放方式（橫着放或豎着放）</li>
+<li>需要使用 <strong>-K</strong> 和 <strong>-O</strong> 選項，極易出錯</li>
+<li>每個繪圖命令都需要使用重定向符號 <strong>&gt;</strong> 或 <strong>&gt;&gt;</strong></li>
+<li>每個繪圖命令中都需要給定PS文件的名字</li>
+<li>每個繪圖命令都需要重複使用 <strong>-J</strong> 和 <strong>-R</strong> 選項</li>
+<li>繪圖結束時需要使用 <strong>psconvert</strong> 將生成的PS文件轉換爲PDF、JPG等格式</li>
+<li>繪圖結束時要刪除 <code class="file docutils literal notranslate"><span class="pre">gmt.conf</span></code> 和 <code class="file docutils literal notranslate"><span class="pre">gmt.history</span></code> 文件以免影響接下來的繪圖結果</li>
+</ol>
+</div>
+<div class="section" id="id3">
+<h2>現代模式的優點<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>上面的經典模式示例可以改成爲更簡單的現代模式:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt begin map
+    gmt makecpt -Chot -T-1000/1000
+    gmt grdimage globe.nc -JQ15c -Rg -C -I
+    gmt coast -Baf -Gred
+    gmt plot cities.txt -Sc0.2c -Gblue
+    gmt text labels.txt -F+f12p
+gmt end show
+</pre></div>
+</div>
+<p>很顯然，現代模式下的GMT繪圖腳本更加簡潔。與經典模式相比，現代模式具有如下優點：</p>
+<ol class="arabic simple">
+<li>默認紙張無窮大，不需要再擔心繪圖超過紙張範圍</li>
+<li>不再需要使用 <strong>-P</strong> 選項確定畫布的擺放方式（因爲紙張無窮大）</li>
+<li>不再需要考慮如何使用 <strong>-K</strong>, <strong>-O</strong> 選項</li>
+<li>不再需要使用重定向符號 <strong>&gt;</strong> 或 <strong>&gt;&gt;</strong>，也無需爲每個繪圖命令都指定PS文件名</li>
+<li>不再需要爲每個繪圖命令都使用 <strong>-R</strong> 和 <strong>-J</strong> 選項</li>
+<li>繪圖結束時會自動生成PDF等格式的圖片，無需調用 <strong>psconvert</strong> 做轉換</li>
+<li>生成的圖片會自動進行裁剪去除白邊</li>
+<li>整個繪圖過程在獨立的臨時文件下，多個腳本可以同時執行而不互相干擾，用戶完全不需要意識到 PS 文件的存在，不需要再手動清理 <code class="file docutils literal notranslate"><span class="pre">gmt.conf</span></code> 和
+<code class="file docutils literal notranslate"><span class="pre">gmt.history</span></code> 等臨時文件</li>
+</ol>
+<p>除了上面列出的優點外，GMT現代模式還提供了更多的模塊/功能以簡化代碼，包括：</p>
+<ul class="simple">
+<li><a class="reference internal" href="../module/subplot.html"><span class="doc">subplot</span></a> 模塊：極大簡化了多子圖的繪製</li>
+<li><a class="reference internal" href="../module/inset.html"><span class="doc">inset</span></a> 模塊：極大簡化了圖中圖的繪製</li>
+<li><a class="reference external" href="https://docs.generic-mapping-tools.org/6.0/movie.html" title="(在 GMT v6.0)"><span>movie</span></a> 模塊：極大簡化了動畫的製作</li>
+<li><a class="reference internal" href="../option/l.html"><span class="doc">-l 選項</span></a>：極大簡化了圖例的設置與繪製</li>
+<li>提供了“當前CPT”的功能，多數情況下無須生成CPT到文件中</li>
+</ul>
+<p>這些更方便的功能會在後面的文件中更詳細地介紹。</p>
+</div>
+<div class="section" id="id4">
+<h2>從經典到現代<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<p>將經典模式的腳本改成現代模式的腳本，基本可以遵循如下幾點：</p>
+<ol class="arabic simple">
+<li>繪圖腳本以 <strong>gmt begin</strong> <em>figure</em> 開頭，以 <strong>gmt end show</strong> 結束</li>
+<li>去掉 <strong>-K</strong>, <strong>-O</strong>, <strong>-P</strong>, 重定向符號以及PS文件名</li>
+<li>去掉多餘的 <strong>-J</strong>, <strong>-R</strong> 選項</li>
+<li>某些模塊重新命名。經典模式下以 <strong>ps</strong> 開頭的模塊省略 <strong>ps</strong>，比如 <strong>pscoast</strong> → <strong>coast</strong>、<strong>psbasemap</strong> → <strong>basemap</strong>。個別幾個模塊是例外，<strong>psxy</strong> → <strong>plot</strong>,<strong>psxyz</strong> → <strong>plot3d</strong>,
+<strong>psscale</strong> → <strong>colorbar</strong></li>
+<li>在需要繪製多子圖、圖中圖時，考慮使用 <strong>inset</strong> 和 <strong>subplot</strong> 改寫</li>
+<li>現代模式下 <strong>makecpt</strong> 和 <strong>grd2cpt</strong> 默認將生成的CPT作爲當前CPT，而不輸出到文件中。這一特性在後面會具體介紹。如果需要生成CPT到文件中，需要額外使用 <strong>-H</strong> 選項。</li>
+</ol>
+</div>
+</div>
+
+
+           </div>
+           
+           <div class="articleComments">
+            
+
+<!-- gitalk 脚本-->
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'b2dfca9a4bfad764aa2b',
+    clientSecret: '4ae5ddcd25c6b6d6bc07ac39201ea417054a530a',
+    owner: 'gmt-china',
+    repo: 'gitalk',
+    admin: ['zhaozhiyuan1989','cehui07226','NothingIsBig','seisman','SeisPider','wangliang1989','sqdeng'],
+    id: md5(location.pathname),
+    body: location.href,
+  });
+gitalk.render('gitalk-container');
+</script>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../tutorial/index.html" class="btn btn-neutral float-right" title="入門教程" accesskey="n" rel="next">下頁 <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="5to6.html" class="btn btn-neutral float-left" title="GMT5 → GMT6" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> 上頁</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014 - 2020, GMT中文社区.
+      <span class="lastupdated">
+        最后更新于 2020年05月29日.
+      </span>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

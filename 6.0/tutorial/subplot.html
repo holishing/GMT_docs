@@ -1,0 +1,447 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>GMT子圖模式 &mdash; GMT中文手册</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+    <link rel="canonical" href="https://docs.gmt-china.org/latest/tutorial/subplot.html"/>
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
+        <script async="async" type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="GMT多圖模式" href="multifig.html" />
+    <link rel="prev" title="GMT圖中圖模式" href="inset.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+    
+    <a href="../index.html" class="icon icon-home"> GMT中文手册
+    
+
+    
+    </a>
+
+    
+    
+    
+    <div class="version">
+        <select onchange="location = this.options[this.selectedIndex].value;">
+            
+            <option value="/6.0/"  selected > v6.0 </option>
+            
+            <option value="/5.4/" > v5.4 </option>
+            
+        </select>
+    </div>
+    
+    
+
+    
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文件" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+    
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">目 錄</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">簡介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/index.html">安裝</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migrating/index.html">版本遷移</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">入門教程</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="get-started/index.html">GMT初探</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commands.html">命令初探</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scripting.html">腳本編程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basemap.html">繪製底圖</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coastline.html">繪製海岸線</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lines.html">繪製線段和多邊形</a></li>
+<li class="toctree-l2"><a class="reference internal" href="symbols.html">繪製符號</a></li>
+<li class="toctree-l2"><a class="reference internal" href="texts.html">添加文字</a></li>
+<li class="toctree-l2"><a class="reference internal" href="legend.html">添加圖例</a></li>
+<li class="toctree-l2"><a class="reference internal" href="earth-relief.html">繪製地形起伏</a></li>
+<li class="toctree-l2"><a class="reference internal" href="layers.html">理解圖層</a></li>
+<li class="toctree-l2"><a class="reference internal" href="histogram/index.html">繪製直方圖</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oneliner.html">GMT單行模式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inset.html">GMT圖中圖模式</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">GMT子圖模式</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">子圖佈局</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">第一張子圖</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#x-y">共用X/Y軸</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">複雜佈局</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="multifig.html">GMT多圖模式</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../basis/index.html">GMT基礎</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../table/index.html">表數據</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grid/index.html">網格檔</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cpt/index.html">CPT文件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../option/index.html">標準選項</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../proj/index.html">地圖投影</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conf/index.html">配置參數</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dataset/index.html">地學數據集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chinese/index.html">中文支持</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../module/index.html">模塊手冊</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery/index.html">繪圖示例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/index.html">附錄</a></li>
+</ul>
+
+            
+          
+
+    
+        <p class="caption">
+            <span class="caption-text">外部链接</span>
+        </p>
+        <ul>
+            
+                <li class="toctree-l1"><a href="https://docs.gmt-china.org/6.0/GMT_docs.pdf"><i class="fa fa-book fa-fw"></i> PDF下载</a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/gmt-china/GMT_Docs"><i class="fa fa-github fa-fw"></i> 源代码</a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/gmt-china/GMT_docs/blob/master/CONTRIBUTING.md"><i class="fa fa-edit fa-fw"></i> 贡献指南</a></li>
+            
+                <li class="toctree-l1"><a href="https://gmt-china.org"><i class="fa fa-globe fa-fw"></i> GMT中文社区</a></li>
+            
+                <li class="toctree-l1"><a href="mailto:admin@gmt-china.org"><i class="fa fa-envelope fa-fw"></i> 联系我们</a></li>
+            
+        </ul>
+    
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">GMT中文手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">首頁</a> &raquo;</li>
+        
+          <li><a href="index.html">入門教程</a> &raquo;</li>
+        
+      <li>GMT子圖模式</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/gmt-china/GMT_Docs/blob/master/source/tutorial/subplot.rst" class="fa fa-github"> 編輯本頁</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="gmt">
+<h1>GMT子圖模式<a class="headerlink" href="#gmt" title="永久链接至标题">¶</a></h1>
+<p>有些時候，尤其是發表文章時，需要將多張獨立的圖放在一張圖中，並編號abcd，一般稱這些獨立的圖爲子圖。</p>
+<p>GMT中有兩種方式可以繪製多子圖：</p>
+<ul class="simple">
+<li>常規方式：在繪圖時使用 <a class="reference internal" href="../option/XY.html"><span class="doc">-X 和 -Y 選項</span></a> 手動移動每個子圖的原點</li>
+<li>現代方式：使用 <a class="reference internal" href="../module/subplot.html"><span class="doc">subplot</span></a> 模塊提供的子圖模式來佈局和管理多子圖</li>
+</ul>
+<p>現代方式更加簡潔易用，建議使用現代方式。僅當圖片非常複雜或不規則時，才推薦使用常規方式。</p>
+<div class="section" id="id1">
+<h2>子圖佈局<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p><a class="reference internal" href="../module/subplot.html"><span class="doc">subplot</span></a> 模塊提供的子圖模式可以非常方便地繪製多子圖。</p>
+<p><strong>subplot begin</strong> 用於設計子圖的佈局、尺寸以及其它屬性。其將整張畫布劃分爲
+N行M列的規則網格區域，每個網格區域內都可以包含一張獨立的子圖。例如:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt subplot begin 2x3 -Fs5c/3c
+</pre></div>
+</div>
+<p>定義了一個2行3列的子圖佈局。<strong>-Fs5c/3c</strong> 則指定了每個子圖區域的寬度爲5釐米，高度爲3釐米。相鄰子圖之間的間隔則可以用 <strong>-M</strong> 選項控制。最終得到的子圖佈局如下圖所示：</p>
+<p><a class="reference download internal" download="" href="../_downloads/15c53cbb80f1d987d6a40d9bb9e8f4a8/subplot-gmtplot-0.sh"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">Code</span></code></a></p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/subplot-gmtplot-01.png"><img alt="../_images/subplot-gmtplot-01.png" src="../_images/subplot-gmtplot-01.png" style="width: 80%;" /></a>
+</div>
+<p><strong>subplot set</strong> 用於激活指定的子圖，接下來的所有繪圖命令都將在該子圖內進行繪製。爲了指定某個子圖，則需要知道每個子圖的編號。GMT中可以通過 <strong>行號,列號</strong> 或者
+<strong>索引號</strong> （即第幾個子圖）的方式來指定子圖。</p>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">行號、列號和索引號，均從0開始起算。因而對於一個N行M列的子圖佈局而言，行號爲0到N-1，列號爲0到M-1，索引號爲0到N*M-1。</p>
+</div>
+<p>上圖中同樣給出了每個子圖的編號，圖中紅色數字爲子圖的行列號，而括號中的藍色數字則是子圖的索引號。因而，你可以使用如下命令中的任意一個來激活第三個子圖，接下來的所有繪圖命令均只在第三個子圖內進行:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt subplot <span class="nb">set</span> <span class="m">1</span>,0
+
+gmt subplot <span class="nb">set</span> <span class="m">3</span>
+</pre></div>
+</div>
+<p>最後記得使用 <strong>subplot end</strong> 退出子圖模式:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt subplot end
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>第一張子圖<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>下面就利用上面學到的知識繪製一張2行2列的子圖。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt begin map png,pdf
+  gmt <span class="nb">set</span> FONT_TAG 15p FONT_HEADING 20p MAP_HEADING_OFFSET 0p
+  gmt subplot begin 2x2 -Fs5c/3c -A -M0.2c/0.1c -T<span class="s2">&quot;My Subplot Heading&quot;</span>
+    gmt subplot <span class="nb">set</span> <span class="m">0</span>
+    gmt basemap -R0/10/0/10 -JX? -Baf -BWSen
+
+    gmt subplot <span class="nb">set</span> <span class="m">1</span>
+    gmt basemap -R0/20/0/10 -JX? -Baf -BWSen
+
+    gmt subplot <span class="nb">set</span> <span class="m">2</span>
+    gmt basemap -R0/10/0/20 -JX? -Baf -BWSen
+
+    gmt subplot <span class="nb">set</span> <span class="m">3</span>
+    gmt basemap -R0/20/0/20 -JX? -Baf -BWSen
+  gmt subplot end
+gmt end show
+</pre></div>
+</div>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/subplot-gmtplot-11.png"><img alt="../_images/subplot-gmtplot-11.png" src="../_images/subplot-gmtplot-11.png" style="width: 60%;" /></a>
+</div>
+<p>在這個例子中，我們用 <strong>subplot begin</strong> 定義了一個2行2列（<strong>2x2</strong>）的子圖佈局，每個子圖區域寬5釐米高3釐米（<strong>-Fs5c/3c</strong>）。除此之外，我們還使用了一些可選選項對圖的細節進行微調：</p>
+<ul class="simple">
+<li><strong>-A</strong>: 對每個子圖進行自動編號abcd</li>
+<li><strong>-M0.2c/0.1c</strong>: 調整相鄰子圖之間的空白距離，X方向間隔爲0.2釐米，Y方向間隔爲0.1釐米</li>
+<li><strong>-T”My Subplot Heading”</strong>: 爲整張圖加上一個總標題</li>
+<li>調整子圖編號的大小（<a class="reference internal" href="../conf/font.html#term-font-tag"><span class="xref std std-term">FONT_TAG</span></a>）、總標題文字大小（<a class="reference internal" href="../conf/font.html#term-font-heading"><span class="xref std std-term">FONT_HEADING</span></a>）以及總標題相對於底圖的偏移量（<a class="reference internal" href="../conf/map.html#term-map-heading-offset"><span class="xref std std-term">MAP_HEADING_OFFSET</span></a>）</li>
+</ul>
+<p>在子圖模式內，我們使用 <strong>subplot set 0</strong> 的方式依次激活每個子圖。在每個子圖內繪圖時，我們使用了線性投影方式 <strong>-JX?</strong>。通常我們需要指定圖片的寬度或高度，這裏我們使用了
+<strong>?</strong> 讓GMT根據子圖區域的大小自動幫我們選擇最合適的子圖寬度。</p>
+<div class="admonition tip">
+<p class="first admonition-title">小技巧</p>
+<p>本示例中使用瞭如下命令來依次激活四個子圖:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt subplot <span class="nb">set</span> <span class="m">0</span>
+gmt subplot <span class="nb">set</span> <span class="m">1</span>
+gmt subplot <span class="nb">set</span> <span class="m">2</span>
+gmt subplot <span class="nb">set</span> <span class="m">3</span>
+</pre></div>
+</div>
+<p class="last">實際上，我們可以直接使用 <strong>subplot set</strong> 而不指定子圖編號，GMT會自動爲我們激活“下一個”子圖。</p>
+</div>
+</div>
+<div class="section" id="x-y">
+<h2>共用X/Y軸<a class="headerlink" href="#x-y" title="永久链接至标题">¶</a></h2>
+<p>上面示例中的四張子圖，每行的兩張子圖有相同的Y軸範圍，每列的兩張子圖有相同的
+X軸範圍。此時可以使用 <strong>-S</strong> 選項設置各子圖之間共用X或Y軸。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt begin map png,pdf
+  gmt <span class="nb">set</span> FONT_TAG 15p FONT_HEADING 20p MAP_HEADING_OFFSET 10p
+  gmt subplot begin 2x2 -Fs5c/3c -A -M0.2c/0.2c -T<span class="s2">&quot;My Subplot Heading&quot;</span> -SRl -SCb -BWSrt
+    gmt basemap -R0/10/0/10 -JX? -c
+    gmt basemap -R0/20/0/10 -JX? -c
+    gmt basemap -R0/10/0/20 -JX? -c
+    gmt basemap -R0/20/0/20 -JX? -c
+  gmt subplot end
+gmt end show
+</pre></div>
+</div>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/subplot-gmtplot-21.png"><img alt="../_images/subplot-gmtplot-21.png" src="../_images/subplot-gmtplot-21.png" style="width: 60%;" /></a>
+</div>
+<p><strong>-SRl</strong> 表示一行內（<strong>R</strong>ow）的子圖共用Y軸，且只在左邊（<strong>l</strong>）軸顯示標註，
+<strong>-SCb</strong> 表示一列內（<strong>C</strong>olumn）的子圖共用X軸，且只在底部（<strong>b</strong>）軸顯示標註。</p>
+<p>當然你也可以不使用 <strong>-S</strong> 選項，而是在每個子圖中使用不同的 <strong>-B</strong> 選項分別爲每個子圖設置不同的軸屬性。</p>
+</div>
+<div class="section" id="id3">
+<h2>複雜佈局<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p><strong>subplot</strong> 目前尚不支持嵌套。如果想要使用更復雜的子圖佈局，則需要更多的人工調整。</p>
+<p>下面的例子在一個2行2列的子圖佈局中繪製了三張子圖，其中第一張子圖佔據了第一行。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt begin complex-subplot png,pdf
+  gmt subplot begin 2x2 -Fs5c/3c -A
+    gmt subplot <span class="nb">set</span> <span class="m">0</span> -A<span class="s1">&#39;(a)&#39;</span>
+    gmt basemap -R0/10/0/10 -JX11.75c/3c -Baf -BWSen
+    <span class="nb">echo</span> <span class="m">5</span> <span class="m">5</span> TEXT <span class="p">|</span> gmt text -JX11.75c/3c
+    gmt subplot <span class="nb">set</span> <span class="m">2</span> -A<span class="s1">&#39;(b)&#39;</span>
+    gmt basemap -R0/5/0/5 -JX? -Baf -BWSen
+    gmt subplot <span class="nb">set</span> <span class="m">3</span> -A<span class="s1">&#39;(c)&#39;</span>
+    gmt basemap -R0/5/0/5 -JX? -Baf -BWSen
+  gmt subplot end
+gmt end show
+</pre></div>
+</div>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/subplot-gmtplot-3.png"><img alt="../_images/subplot-gmtplot-3.png" src="../_images/subplot-gmtplot-3.png" style="width: 75%;" /></a>
+</div>
+<p>在繪製三個底圖時，後兩個底圖均使用了 <strong>-JX?</strong>，因而GMT會自動根據子圖區域的大小確定子圖的尺寸；而爲了使得第一張子圖佔據兩個子圖區域的空間，我們使用了
+<strong>-JX11.75c/3c</strong> 來人工指定其子圖寬度，其中子圖寬度11.75釐米是需要人工調整的。</p>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>以上示例存在尚未修復的BUG。</p>
+<p>子圖模式下每張子圖的大小是由 <strong>subplot begin</strong> 的 <strong>-F</strong> 選項控制。用戶可以使用 <strong>-J</strong> 指定某個子圖的尺寸，但該尺寸不會被記住，接下來的命令若不指定 <strong>-J</strong> 則會使用子圖模式默認的尺寸，繼而出錯。</p>
+<p class="last">目前的解決辦法是，在該子圖內的所有命令中均使用相同的 <strong>-J</strong> 選項。例如，子圖a強行指定了子圖大小爲 <strong>-JX11.75c/3c</strong>，則該子圖內的其餘命令（如 <strong>text</strong> 命令）必須也使用 <strong>-JX11.75c/3c</strong>。若省去，則圖會出錯。</p>
+</div>
+<p>由於我們跳過了第二個子圖區域，自動標籤功能會將三個子圖依次編號爲a、c、d，這顯然不是我們想要的，因而我們使用了 <strong>-A’(a)’</strong> 選項手動設置子圖編號。需要注意的是，由於小括號在Bash中有特殊含義，所以這裏 <strong>(a)</strong> 兩邊加了單引號以避免Bash對小括號進行解釋。</p>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">對於Windows Batch用戶，不可使用單引號。可以使用雙引號，或者不使用引號。</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+           <div class="articleComments">
+            
+
+<!-- gitalk 脚本-->
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'b2dfca9a4bfad764aa2b',
+    clientSecret: '4ae5ddcd25c6b6d6bc07ac39201ea417054a530a',
+    owner: 'gmt-china',
+    repo: 'gitalk',
+    admin: ['zhaozhiyuan1989','cehui07226','NothingIsBig','seisman','SeisPider','wangliang1989','sqdeng'],
+    id: md5(location.pathname),
+    body: location.href,
+  });
+gitalk.render('gitalk-container');
+</script>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="multifig.html" class="btn btn-neutral float-right" title="GMT多圖模式" accesskey="n" rel="next">下頁 <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="inset.html" class="btn btn-neutral float-left" title="GMT圖中圖模式" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> 上頁</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014 - 2020, GMT中文社区.
+      <span class="lastupdated">
+        最后更新于 2020年05月29日.
+      </span>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

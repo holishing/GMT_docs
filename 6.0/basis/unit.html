@@ -1,0 +1,370 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>單位 &mdash; GMT中文手册</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+    <link rel="canonical" href="https://docs.gmt-china.org/latest/basis/unit.html"/>
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
+        <script async="async" type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="顏色" href="color.html" />
+    <link rel="prev" title="畫布" href="paper.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+    
+    <a href="../index.html" class="icon icon-home"> GMT中文手册
+    
+
+    
+    </a>
+
+    
+    
+    
+    <div class="version">
+        <select onchange="location = this.options[this.selectedIndex].value;">
+            
+            <option value="/6.0/"  selected > v6.0 </option>
+            
+            <option value="/5.4/" > v5.4 </option>
+            
+        </select>
+    </div>
+    
+    
+
+    
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文件" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+    
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">目 錄</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">簡介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/index.html">安裝</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migrating/index.html">版本遷移</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">入門教程</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">GMT基礎</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="paper.html">畫布</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">單位</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">長度單位</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">距離單位</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">小練習</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="color.html">顏色</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pen.html">畫筆</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fill.html">填充</a></li>
+<li class="toctree-l2"><a class="reference internal" href="text.html">文字</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special-character.html">特殊字符</a></li>
+<li class="toctree-l2"><a class="reference internal" href="escape-character.html">轉義序列</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vector.html">繪製矢量/箭頭</a></li>
+<li class="toctree-l2"><a class="reference internal" href="line.html">線條屬性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="anchor.html">錨點</a></li>
+<li class="toctree-l2"><a class="reference internal" href="embellishment.html">繪製修飾物</a></li>
+<li class="toctree-l2"><a class="reference internal" href="io-format.html">數據類型</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../table/index.html">表數據</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grid/index.html">網格檔</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cpt/index.html">CPT文件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../option/index.html">標準選項</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../proj/index.html">地圖投影</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conf/index.html">配置參數</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dataset/index.html">地學數據集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chinese/index.html">中文支持</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../module/index.html">模塊手冊</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery/index.html">繪圖示例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/index.html">附錄</a></li>
+</ul>
+
+            
+          
+
+    
+        <p class="caption">
+            <span class="caption-text">外部链接</span>
+        </p>
+        <ul>
+            
+                <li class="toctree-l1"><a href="https://docs.gmt-china.org/6.0/GMT_docs.pdf"><i class="fa fa-book fa-fw"></i> PDF下载</a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/gmt-china/GMT_Docs"><i class="fa fa-github fa-fw"></i> 源代码</a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/gmt-china/GMT_docs/blob/master/CONTRIBUTING.md"><i class="fa fa-edit fa-fw"></i> 贡献指南</a></li>
+            
+                <li class="toctree-l1"><a href="https://gmt-china.org"><i class="fa fa-globe fa-fw"></i> GMT中文社区</a></li>
+            
+                <li class="toctree-l1"><a href="mailto:admin@gmt-china.org"><i class="fa fa-envelope fa-fw"></i> 联系我们</a></li>
+            
+        </ul>
+    
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">GMT中文手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">首頁</a> &raquo;</li>
+        
+          <li><a href="index.html">GMT基礎</a> &raquo;</li>
+        
+      <li>單位</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/gmt-china/GMT_Docs/blob/master/source/basis/unit.rst" class="fa fa-github"> 編輯本頁</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>單位<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<p>GMT 中的單位有兩類：長度單位和距離單位。</p>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">本手冊中，長度單位專用於度量紙張上的距離，而距離單位則用於度量真實地球上的距離。</p>
+</div>
+<div class="section" id="id2">
+<h2>長度單位<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>GMT 中的長度量（如寬度、偏移量、符號大小等）可以使用釐米（<strong>c</strong>m）、英寸（<strong>i</strong>nch）或點（<strong>p</strong>oint）爲單位。它們之間的關係如下:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="m">1</span> <span class="nv">inch</span> <span class="o">=</span> <span class="m">2</span>.54 <span class="nv">cm</span> <span class="o">=</span> <span class="m">72</span> point
+</pre></div>
+</div>
+<p>釐米、英寸和點，在 GMT 中分別用 <strong>c</strong>、<strong>i</strong> 和 <strong>p</strong> 表示。例如 <strong>5c</strong>
+表示5釐米，<strong>3i</strong> 表示3英寸，<strong>2p</strong> 表示2點。</p>
+<p>GMT 有兩種方式可以指定長度量的單位，即顯式指定單位和隱式指定單位。</p>
+<dl class="docutils">
+<dt>顯式指定單位</dt>
+<dd>在長度量後直接加上單位以顯式地指定當前長度量的單位。比如 <strong>-X4c</strong> 意味着傳給 <strong>-X</strong> 選項的長度量是4釐米</dd>
+<dt>隱式指定單位</dt>
+<dd>若長度量後沒有給定長度單位，則 GMT 會根據參數 <a class="reference internal" href="../conf/proj.html#term-proj-length-unit"><span class="xref std std-term">PROJ_LENGTH_UNIT</span></a>
+所指定的默認長度單位對該長度量進行解釋。比如 <strong>-X4</strong> 中的長度量 4 會根據 <a class="reference internal" href="../conf/proj.html#term-proj-length-unit"><span class="xref std std-term">PROJ_LENGTH_UNIT</span></a>
+取值的不同而被解釋爲4釐米、4英寸或4點。</dd>
+</dl>
+<div class="admonition tip">
+<p class="first admonition-title">小技巧</p>
+<p>使用長度單位時，建議遵循如下幾條：</p>
+<ul class="last simple">
+<li>始終顯式指定長度量的單位，不依賴於 <a class="reference internal" href="../conf/proj.html#term-proj-length-unit"><span class="xref std std-term">PROJ_LENGTH_UNIT</span></a> 的值，以免導致同一腳本在不同機器上由於GMT參數配置的差異而導致結果不同</li>
+<li>長度單位 <strong>p</strong> 用於指定較小的長度量，比如線寬、文字大小等</li>
+<li>長度單位 <strong>c</strong> 和 <strong>i</strong> 用於指定較大的長度量，比如底圖寬度、圓圈大小等</li>
+<li>儘量使用 SI 單位制（<strong>c</strong>）而不用 US 單位制（<strong>i</strong>），因爲國人對於1釐米要比1英寸更有概念</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>距離單位<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>對於真實地球上的距離量而言，常用單位包括：</p>
+<ul class="simple">
+<li><strong>d</strong>：弧度（<strong>d</strong>egree of arc）</li>
+<li><strong>m</strong>：弧分（<strong>m</strong>inute of arc）</li>
+<li><strong>s</strong>：弧秒（<strong>s</strong>econd of arc）</li>
+<li><strong>k</strong>：千米（<strong>k</strong>ilometer）</li>
+<li><strong>e</strong>：米（m<strong>e</strong>ter） <strong>默認單位</strong></li>
+</ul>
+<p>還有幾個不常用的單位：</p>
+<ul class="simple">
+<li><strong>f</strong>：英尺（<strong>f</strong>oot）</li>
+<li><strong>M</strong>：Statute mile</li>
+<li><strong>n</strong>：Nautical mile</li>
+<li><strong>u</strong>：US Survey foot</li>
+</ul>
+<p>對於一個距離量而言，若不指定單位，則默認其單位爲 <strong>e</strong> （即“米”）。當然還是建議爲每個距離量顯式指定其單位，使得命令更加清晰。比如在地球上以某點爲中心畫一個特定半徑的圓，半徑取 30 等效於 <strong>30e</strong> 表示30米，半徑取 <strong>30k</strong> 則表示30千米。</p>
+</div>
+<div class="section" id="id4">
+<h2>小練習<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">執行命令 <code class="docutils literal notranslate"><span class="pre">gmt</span> <span class="pre">get</span> <span class="pre">PROJ_LENGTH_UNIT</span></code> 查看 GMT 的默認長度單位。</p>
+</li>
+<li><p class="first">如下命令在一個長寬均爲10釐米（由 <code class="docutils literal notranslate"><span class="pre">-JX10c/10c</span></code> 控制）的矩形底圖中心，繪製了一個直徑爲3釐米（由 <code class="docutils literal notranslate"><span class="pre">-Sc3c</span></code> 控制）的圓:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="m">5</span> <span class="m">5</span> <span class="p">|</span> gmt plot -JX10c/10c -R0/10/0/10 -Baf -Sc3c -W1p -pdf units
+</pre></div>
+</div>
+<p>將 <code class="docutils literal notranslate"><span class="pre">-Sc3c</span></code> 改成 <code class="docutils literal notranslate"><span class="pre">-Sc3i</span></code> 或 <code class="docutils literal notranslate"><span class="pre">-Sc3</span></code> 並繪圖比較圓圈的大小差異。</p>
+</li>
+</ol>
+</div>
+</div>
+
+
+           </div>
+           
+           <div class="articleComments">
+            
+
+<!-- gitalk 脚本-->
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'b2dfca9a4bfad764aa2b',
+    clientSecret: '4ae5ddcd25c6b6d6bc07ac39201ea417054a530a',
+    owner: 'gmt-china',
+    repo: 'gitalk',
+    admin: ['zhaozhiyuan1989','cehui07226','NothingIsBig','seisman','SeisPider','wangliang1989','sqdeng'],
+    id: md5(location.pathname),
+    body: location.href,
+  });
+gitalk.render('gitalk-container');
+</script>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="color.html" class="btn btn-neutral float-right" title="顏色" accesskey="n" rel="next">下頁 <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="paper.html" class="btn btn-neutral float-left" title="畫布" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> 上頁</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014 - 2020, GMT中文社区.
+      <span class="lastupdated">
+        最后更新于 2020年05月29日.
+      </span>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

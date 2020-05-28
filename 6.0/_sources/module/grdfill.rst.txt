@@ -4,13 +4,13 @@
 grdfill
 =======
 
-:官方文档: :doc:`gmt:grdfill`
-:简介:
+:官方文件: :doc:`gmt:grdfill`
+:簡介:
 
-**grdfill** 模块读入一个文件数据，并向数据中的“洞”填充数据。
-“洞”通常指值为NaN的节点，但用户也可以使用其它准则指定“洞”。
+**grdfill** 模塊讀入一個文件數據，並向數據中的“洞”填充數據。
+“洞”通常指值爲NaN的節點，但用戶也可以使用其它準則指定“洞”。
 
-语法
+語法
 ----
 
 **gmt grdfill** *ingrid*
@@ -22,46 +22,46 @@ grdfill
 [ |SYN_OPT-f| ]
 [ |SYN_OPT--| ]
 
-必须选项
+必須選項
 --------
 
 *ingrid*
-    输入网格文件
+    輸入網格檔
 
 .. _-A:
 
 **-A**\ *mode*\ [*arg*]
     填充“洞”所使用的算法
 
-    目前支持两种算法：
+    目前支持兩種算法：
 
-    - **c**\ *value* 使用某个常数填充
-    - **n**\ [*radius*] 使用nearest neighbor算法，\ *radius* 为搜索半径（单位是节点数）
+    - **c**\ *value* 使用某個常數填充
+    - **n**\ [*radius*] 使用nearest neighbor算法，\ *radius* 爲搜索半徑（單位是節點數）
 
 .. _-G:
 
 **-G**\ *outgrid*
-    输出网格文件
+    輸出網格檔
 
-可选选项
+可選選項
 --------
 
 .. _-N:
 
 **-N**\ [*nodata*]
-    所有值等于 *nodata* 的节点都被认为为“hole”，默认值为NaN
+    所有值等於 *nodata* 的節點都被認爲爲“hole”，默認值爲NaN
 
 .. include:: explain_-R.rst_
 ..
 
-   该选项定义了要处理了子区域范围。
+   該選項定義了要處理了子區域範圍。
 
 .. _-L:
 
 **-L**\ [**p**]
-    不填充“洞”，仅列出每个“洞”所处的子区域的范围
+    不填充“洞”，僅列出每個“洞”所處的子區域的範圍
 
-    **-G** 选项会被忽略。\ **-Lp** 表示输出每个子区域对应的闭合多边形。
+    **-G** 選項會被忽略。\ **-Lp** 表示輸出每個子區域對應的閉合多邊形。
 
 .. include:: explain_-V.rst_
 
@@ -72,23 +72,23 @@ grdfill
 示例
 ----
 
-检测网格文件中所有包含NaN的区域，并列出这些矩形区域的边界坐标::
+檢測網格檔中所有包含NaN的區域，並列出這些矩形區域的邊界座標::
 
     gmt grdfill data.grd -L > wesn_listing.txt
 
-检测网格文件中所有包含NaN的区域，并以多段文件的形式输出这些矩形区域对应的闭合多边形::
+檢測網格檔中所有包含NaN的區域，並以多段文件的形式輸出這些矩形區域對應的閉合多邊形::
 
     gmt grdfill data.grd -Lp > NaN_regions.txt
 
-将网格文件中所有NaN值替换为999.0::
+將網格檔中所有NaN值替換爲999.0::
 
     gmt grdfill data.grd -Ac999 -Gno_NaNs_data.grd
 
-将网格文件中所有NaN值用最近的非NaN值替代::
+將網格檔中所有NaN值用最近的非NaN值替代::
 
     gmt grdfill data.grd -An -Gno_NaNs_NN_data.grd
 
-相关模块
+相關模塊
 --------
 
 :doc:`grdcut`,

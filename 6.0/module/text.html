@@ -1,0 +1,573 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>text &mdash; GMT中文手册</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+    <link rel="canonical" href="https://docs.gmt-china.org/latest/module/text.html"/>
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
+        <script async="async" type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="velo" href="velo.html" />
+    <link rel="prev" title="ternary" href="ternary.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+    
+    <a href="../index.html" class="icon icon-home"> GMT中文手册
+    
+
+    
+    </a>
+
+    
+    
+    
+    <div class="version">
+        <select onchange="location = this.options[this.selectedIndex].value;">
+            
+            <option value="/6.0/"  selected > v6.0 </option>
+            
+            <option value="/5.4/" > v5.4 </option>
+            
+        </select>
+    </div>
+    
+    
+
+    
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文件" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+    
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">目 錄</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">簡介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/index.html">安裝</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migrating/index.html">版本遷移</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">入門教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basis/index.html">GMT基礎</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../table/index.html">表數據</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grid/index.html">網格檔</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cpt/index.html">CPT文件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../option/index.html">標準選項</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../proj/index.html">地圖投影</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conf/index.html">配置參數</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dataset/index.html">地學數據集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chinese/index.html">中文支持</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">模塊手冊</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="basemap.html">basemap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="begin.html">begin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clear.html">clear</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clip.html">clip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coast.html">coast</a></li>
+<li class="toctree-l2"><a class="reference internal" href="colorbar.html">colorbar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coupe.html">coupe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs.html">docs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="end.html">end</a></li>
+<li class="toctree-l2"><a class="reference internal" href="figure.html">figure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filter1d.html">filter1d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fitcircle.html">fitcircle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gmt.html">gmt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gmt-config.html">gmt-config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gmtconnect.html">gmtconnect</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gmtdefaults.html">gmtdefaults</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gmtget.html">gmtget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gmtinfo.html">gmtinfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gmtlogo.html">gmtlogo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gmtselect.html">gmtselect</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gmtset.html">gmtset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gmtsimplify.html">gmtsimplify</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gmtwhich.html">gmtwhich</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grd2xyz.html">grd2xyz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdblend.html">grdblend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdclip.html">grdclip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdconvert.html">grdconvert</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdcut.html">grdcut</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdedit.html">grdedit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdfill.html">grdfill</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdimage.html">grdimage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdinfo.html">grdinfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdlandmask.html">grdlandmask</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdmask.html">grdmask</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdpaste.html">grdpaste</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdproject.html">grdproject</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdsample.html">grdsample</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdtrack.html">grdtrack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdtrend.html">grdtrend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdvector.html">grdvector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdvolume.html">grdvolume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="histogram.html">histogram</a></li>
+<li class="toctree-l2"><a class="reference internal" href="image.html">image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inset.html">inset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kml2gmt.html">kml2gmt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="legend.html">legend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="makecpt.html">makecpt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mapproject.html">mapproject</a></li>
+<li class="toctree-l2"><a class="reference internal" href="meca.html">meca</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot.html">plot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="polar.html">polar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="project.html">project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="psconvert.html">psconvert</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rose.html">rose</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sac.html">sac</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sample1d.html">sample1d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="solar.html">solar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spectrum1d.html">spectrum1d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="subplot.html">subplot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ternary.html">ternary</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">text</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">必選選項</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">可選選項</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">示例</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="velo.html">velo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xyz2grd.html">xyz2grd</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery/index.html">繪圖示例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/index.html">附錄</a></li>
+</ul>
+
+            
+          
+
+    
+        <p class="caption">
+            <span class="caption-text">外部链接</span>
+        </p>
+        <ul>
+            
+                <li class="toctree-l1"><a href="https://docs.gmt-china.org/6.0/GMT_docs.pdf"><i class="fa fa-book fa-fw"></i> PDF下载</a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/gmt-china/GMT_Docs"><i class="fa fa-github fa-fw"></i> 源代码</a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/gmt-china/GMT_docs/blob/master/CONTRIBUTING.md"><i class="fa fa-edit fa-fw"></i> 贡献指南</a></li>
+            
+                <li class="toctree-l1"><a href="https://gmt-china.org"><i class="fa fa-globe fa-fw"></i> GMT中文社区</a></li>
+            
+                <li class="toctree-l1"><a href="mailto:admin@gmt-china.org"><i class="fa fa-envelope fa-fw"></i> 联系我们</a></li>
+            
+        </ul>
+    
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">GMT中文手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">首頁</a> &raquo;</li>
+        
+          <li><a href="index.html">模塊手冊</a> &raquo;</li>
+        
+      <li>text</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/gmt-china/GMT_Docs/blob/master/source/module/text.rst" class="fa fa-github"> 編輯本頁</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="text">
+<span id="index-0"></span><h1>text<a class="headerlink" href="#text" title="永久链接至标题">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">官方文件:</th><td class="field-body"><a class="reference external" href="https://docs.generic-mapping-tools.org/6.0/text.html" title="(在 GMT v6.0)"><span>text</span></a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">簡介:</th><td class="field-body">在圖上寫文本</td>
+</tr>
+</tbody>
+</table>
+<p>該命令用於在圖上添加文本，可以自由控制文本的大小、顏色、字體、角度。</p>
+<p>除了可以添加鍵盤上可直接輸入的字符外，還可以通過使用轉義字符、特殊字體以及八進制碼實現希臘字母、上下標等功能，詳見 <a class="reference internal" href="../basis/text.html"><span class="doc">文字</span></a>、<a class="reference internal" href="../basis/escape-character.html"><span class="doc">轉義序列</span></a>、
+<a class="reference internal" href="../basis/special-character.html"><span class="doc">特殊字符</span></a>。</p>
+<div class="section" id="id1">
+<h2>必選選項<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<dl class="docutils">
+<dt><code class="docutils literal notranslate"><span class="pre">&lt;textfiles&gt;</span></code></dt>
+<dd><p class="first">輸入文件。最簡單的情況下，輸入數據包括三列，其格式爲:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>X  Y  text
+</pre></div>
+</div>
+<p>示例:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="m">2</span> <span class="m">2</span> SHOW TEXTS <span class="p">|</span> gmt text -JX10c -R0/5/0/5 -Ba -pdf <span class="nb">test</span>
+</pre></div>
+</div>
+<p>若使用了 <code class="docutils literal notranslate"><span class="pre">-F</span></code> 選項，則輸入數據的格式爲:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>x  y  <span class="o">[</span>font  angle  justify<span class="o">]</span>  text
+</pre></div>
+</div>
+<p class="last">其中，括號內的三項是否存在以及三項的順序由 <code class="docutils literal notranslate"><span class="pre">-F</span></code> 選項決定。</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="id2">
+<h2>可選選項<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<dl class="docutils">
+<dt><code class="docutils literal notranslate"><span class="pre">-A</span></code></dt>
+<dd>默認情況下， 輸入數據中 <code class="docutils literal notranslate"><span class="pre">angle</span></code> 是指沿水平方向逆時針旋轉的角度。
+<code class="docutils literal notranslate"><span class="pre">-A</span></code> 選項表明 <code class="docutils literal notranslate"><span class="pre">angle</span></code> 是方位角，即相對於北向順時針旋轉的角度。</dd>
+</dl>
+<dl class="docutils" id="c">
+<dt><strong>-C</strong>[<em>dx/dy</em>][<strong>+to</strong>|<strong>O</strong>|<strong>c</strong>|<strong>C</strong>]</dt>
+<dd><p class="first">設置文本框與文本之間的空白區域，默認值爲字體大小的15%。該選項僅當指定了 <strong>-W</strong> 或 <strong>-G</strong> 選項時纔有效。
+<em>dx</em> 可以是具體的距離值也可以接 <strong>%</strong> 表示空白與當前字號的百分比。例如 <strong>-C1c/1c</strong> 或 <strong>-C20%/30%</strong>。</p>
+<p><strong>+t</strong> 可以用於進一步控制文本框的形狀</p>
+<ul class="simple">
+<li><strong>+to</strong>: 直角矩形 [默認值]</li>
+<li><strong>+tO</strong>: 圓角矩形</li>
+<li><strong>+Tc</strong>: 凹矩形（與 <strong>-M</strong> 選項一起使用）</li>
+<li><strong>-TC</strong>：凸矩形（與 <strong>-M</strong> 選項一起使用）</li>
+</ul>
+<p>下圖展示了 <strong>-C</strong> 選項的作用。</p>
+<p><a class="reference download internal" download="" href="../_downloads/016a19f5b2a19e0ac546bdaed1559384/text-gmtplot-0.sh"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">Code</span></code></a></p>
+<div class="last figure align-center">
+<a class="reference internal image-reference" href="../_images/text-gmtplot-01.png"><img alt="../_images/text-gmtplot-01.png" src="../_images/text-gmtplot-01.png" style="width: 80%;" /></a>
+</div>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">-D[j|J]&lt;dx&gt;[/&lt;dy&gt;][+v[&lt;pen&gt;]]</span></code></dt>
+<dd><p class="first">文本在指定座標的基礎上偏移 <code class="docutils literal notranslate"><span class="pre">&lt;dx&gt;/&lt;dy&gt;</span></code> ，默認值爲 <code class="docutils literal notranslate"><span class="pre">0/0</span></code> 即不偏移。</p>
+<p>使用text經常遇到的情況是在臺站處標記臺站名，此時傳遞給text的位置參數通常是臺站座標，因而text會將文本置於臺站座標處，該選擇用於將文本稍稍偏離臺站座標位置以避免文本擋住臺站處的符號。</p>
+<ol class="last arabic simple">
+<li>若不指定 <code class="docutils literal notranslate"><span class="pre">&lt;dy&gt;</span></code> ，則默認 <code class="docutils literal notranslate"><span class="pre">&lt;dy&gt;=&lt;dx&gt;</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">-Dj&lt;dx&gt;/&lt;dy&gt;</span></code> 表示沿着 <code class="docutils literal notranslate"><span class="pre">&lt;justify&gt;</span></code> 所指定的方向偏移</li>
+<li><code class="docutils literal notranslate"><span class="pre">-DJ&lt;dx&gt;/&lt;dy&gt;</span></code> 表示shorten diagonal offsets at corners by sqrt(2)</li>
+<li>偏移量後加上 <code class="docutils literal notranslate"><span class="pre">+v</span></code> 表示繪製一條連接初始位置與偏移後位置的直線</li>
+<li><code class="docutils literal notranslate"><span class="pre">+v&lt;pen&gt;</span></code> 控制連線的畫筆屬性</li>
+</ol>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">-F[+a|+A[angle]][+c[justify]][+f[font]][+j[justify]][+h|+l|+r[&lt;first&gt;]|+t&lt;text&gt;|+z&lt;format&gt;]</span></code></dt>
+<dd><p class="first">控制文本的角度、對齊方式和字體等屬性。</p>
+<ol class="arabic simple">
+<li><code class="docutils literal notranslate"><span class="pre">+f&lt;font&gt;</span></code> 設置文本的字體， 見 <a class="reference internal" href="../basis/text.html"><span class="doc">文字</span></a></li>
+<li><code class="docutils literal notranslate"><span class="pre">+a&lt;angle&gt;</span></code> 文本相對於水平方向逆時針旋轉的角度</li>
+<li><code class="docutils literal notranslate"><span class="pre">+A&lt;angle&gt;</span></code> force text-baselines to convert into the -90/+90 range</li>
+<li><code class="docutils literal notranslate"><span class="pre">+j&lt;justify&gt;</span></code> 文本對齊方式，見 <a class="reference internal" href="../basis/anchor.html"><span class="doc">錨點</span></a></li>
+</ol>
+<p>下面的命令中，統一設置了所有文本的字號爲30p，4號字體，紅色，文本旋轉45度，且以左上角對齊:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt text -R0/10/0/10 -JX10c/10c -B1g1 -F+f30p,4,red+a45+jTL -pdf text <span class="s">&lt;&lt; EOF</span>
+<span class="s">3 4 Text1</span>
+<span class="s">6 8 Text2</span>
+<span class="s">EOF</span>
+</pre></div>
+</div>
+<p>若使用了 <code class="docutils literal notranslate"><span class="pre">+f</span></code> 子選項，但是未給定 <code class="docutils literal notranslate"><span class="pre">&lt;font&gt;</span></code> ，則意味着輸入數據的每一行需要自定義本行的字體屬性，因爲輸入數據的格式要發生變化。例如 <code class="docutils literal notranslate"><span class="pre">-F+f</span></code> 選項要求的輸入數據的格式爲:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>x   y   font    text
+</pre></div>
+</div>
+<p>對於 <code class="docutils literal notranslate"><span class="pre">+a</span></code> 和 <code class="docutils literal notranslate"><span class="pre">+j</span></code> 同理。若 <code class="docutils literal notranslate"><span class="pre">+f</span></code> 、 <code class="docutils literal notranslate"><span class="pre">+a</span></code> 、 <code class="docutils literal notranslate"><span class="pre">+j</span></code> 中有兩個以上未在命令行中指定參數，則輸入數據中要增加多列，每列的順序由這三個子選項的相對順序決定。比如 <code class="docutils literal notranslate"><span class="pre">-F+f+a</span></code> 的輸入數據格式是:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>x   y   font   angle  text
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">-F+a+f</span></code> 的輸入數據格式爲:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>x   y   angle  font   text
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">-F+f+j+a</span></code> 表示所有數據都需要單獨指定字體、對齊方式和角度，此時輸入數據的格式爲:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>x   y   font    justification   angle    text
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">-F+a+j+f</span></code> 與前一個例子類似，唯一的區別在於子選項的順序不同，而輸入數據的格式要與子選項的順序相匹配，此時輸入數據的格式爲:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>x   y   angle   justification   font    text
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">-F+f12p,Helvetica-Bold,red+j+a</span></code> 爲所有行設置了統一的字體，但每一行需要單獨指定對齊方式和角度，此時輸入數據的格式爲:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>x   y   justification   angle   text
+</pre></div>
+</div>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">+c&lt;justify&gt;</span></code> 選項，則輸入數據中不需要XY座標，只需要文本即可，該選項直接從 <code class="docutils literal notranslate"><span class="pre">-R</span></code> 選項中提取出範圍信息，並由對齊方式決定文本的座標位置。比如 <code class="docutils literal notranslate"><span class="pre">-F+cTL</span></code> 表示將文本放在底圖的左上角，在加上合適的偏移量即可放在任意位置。例如:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="s1">&#39;(a)&#39;</span> <span class="p">|</span> gmt text -R0/10/0/10 -JX10c/10c -B1 -F+cTL -Dj0.2c/0.2c -pdf text
+</pre></div>
+</div>
+<p>通常來說，要繪製的文本都來自於輸入數據的某一列。對於多段數據而言，還可以使用其他子選項來設置文本的來源：</p>
+<ul class="last">
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">+h</span></code> 會直接從多段數據的段頭記錄中提取文本:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt text -R0/10/0/10 -JX10c/10c -B1 -F+h -pdf text <span class="s">&lt;&lt; EOF</span>
+<span class="s">&gt; TEXT1</span>
+<span class="s">2  2</span>
+<span class="s">&gt; TEXT2</span>
+<span class="s">5  5</span>
+<span class="s">EOF</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">+l</span></code> 會直接從多段數據的段頭記錄裏的 <code class="docutils literal notranslate"><span class="pre">-L&lt;label&gt;</span></code> 中提取信息:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt text -R0/10/0/10 -JX10c/10c -B1 -F+l -pdf text <span class="s">&lt;&lt; EOF</span>
+<span class="s">&gt; -LTEXT1</span>
+<span class="s">2  2</span>
+<span class="s">&gt; -LTEXT2</span>
+<span class="s">5  5</span>
+<span class="s">EOF</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">+r&lt;first&gt;</span></code> 會使用記錄號作爲文本（記錄號從 <code class="docutils literal notranslate"><span class="pre">&lt;first&gt;</span></code> 起算）</p>
+</li>
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">+t&lt;text&gt;</span></code> 設置使用一個固定的字符串</p>
+</li>
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">+z&lt;format&gt;</span></code> 將 Z 值以特定的格式輸出爲字符串，默認格式由 FORMAT_FLOAT_MAP 控制</p>
+</li>
+</ul>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">-G</span></code></dt>
+<dd><p class="first">設置文本框的填充色。</p>
+<p class="last">除了設置填充色之外， <code class="docutils literal notranslate"><span class="pre">-G</span></code> 選項還有兩個高級用法，即 <code class="docutils literal notranslate"><span class="pre">-Gc</span></code> 和 <code class="docutils literal notranslate"><span class="pre">-GC</span></code> 。其中， <code class="docutils literal notranslate"><span class="pre">-Gc</span></code> 表示先繪製文本，然後將文本框裁剪出來，並打開裁剪選項，之後的繪圖命令都不會覆蓋文本所在區域，最後需要使用 <a class="reference internal" href="clip.html"><span class="doc">clip</span></a> 的 <code class="docutils literal notranslate"><span class="pre">-C</span></code> 選項關閉裁剪。若不想要繪製文本只想要激活裁剪選項，可以使用 <code class="docutils literal notranslate"><span class="pre">-GC</span></code> 選項。</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">-L</span></code></dt>
+<dd><p class="first">用於列出GMT所支持的所有字體名及其對應的字號:</p>
+<div class="last highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt text -L
+</pre></div>
+</div>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">-M</span></code></dt>
+<dd><p class="first">段落模式，用於輸入大量文本。</p>
+<p>輸入文件必須是多段數據。數據段頭記錄的格式爲:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; X Y <span class="o">[</span>font angle justify<span class="o">]</span> linespace parwidth parjust
+</pre></div>
+</div>
+<ol class="arabic simple">
+<li>第一個字符是數據段開始標識符，默認爲 <code class="docutils literal notranslate"><span class="pre">&gt;</span></code></li>
+<li>從第三列開始，包含了本段文本的設置信息</li>
+<li><code class="docutils literal notranslate"><span class="pre">font</span> <span class="pre">angle</span> <span class="pre">justify</span></code> 是可選的，由 <code class="docutils literal notranslate"><span class="pre">-F</span></code> 選項控制</li>
+<li><code class="docutils literal notranslate"><span class="pre">linespace</span></code> 行間距</li>
+<li><code class="docutils literal notranslate"><span class="pre">parwidth</span></code> 段落寬度</li>
+<li><code class="docutils literal notranslate"><span class="pre">parjust</span></code> 段落對齊方式，可以取爲 <code class="docutils literal notranslate"><span class="pre">l</span></code> （左對齊）、 <code class="docutils literal notranslate"><span class="pre">c</span></code> （居中對齊）、
+<code class="docutils literal notranslate"><span class="pre">r</span></code> （右對齊）、 <code class="docutils literal notranslate"><span class="pre">j</span></code> （分散對齊）</li>
+</ol>
+<p>段頭記錄後即爲要顯示在圖上的文本，每段數據之間用空行分隔。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+gmt begin text_-M png,pdf
+gmt text -R0/3/0/5 -JX3i -F+f+a+j -B1 -M -N <span class="s">&lt;&lt; EOF</span>
+<span class="s">&gt; 0 -0.5 12p,black 0 LT 13p 3i j</span>
+<span class="s">@%5%Figure 1.@%% This illustration shows nothing useful, but it still needs</span>
+<span class="s">a figure caption. Highlighted in @;255/0/0;red@;; you can see the locations</span>
+<span class="s">of cities where it is @_impossible@_ to get any good Thai food; these are to be avoided.</span>
+<span class="s">EOF</span>
+gmt end
+</pre></div>
+</div>
+<div class="last figure align-center" id="id4">
+<img alt="../_images/text-gmtplot-11.png" src="../_images/text-gmtplot-11.png" />
+<p class="caption"><span class="caption-text">段落模式示意圖</span></p>
+</div>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">-N</span></code></dt>
+<dd><p class="first">位於地圖邊界外的文本也被繪製。</p>
+<p class="last">默認情況下，若文本超過了底圖邊框，則不顯示該文本，即文本被裁剪掉了。使用 <code class="docutils literal notranslate"><span class="pre">-N</span></code> 選項，即便文本超出了底圖邊框的範圍，也依然會顯示。</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">-Ql|u</span></code></dt>
+<dd>所有文本以小寫（lower case）或大寫（upper case）顯示</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">-W&lt;pen&gt;</span></code></dt>
+<dd>設置文本框的邊框屬性，默認值爲 <code class="docutils literal notranslate"><span class="pre">default,black,solid</span></code></dd>
+<dt><code class="docutils literal notranslate"><span class="pre">-Z</span></code></dt>
+<dd><p class="first">3D投影中，需要在數據的第三列指定文本的Z位置，數據格式爲:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>X   Y   Z   Text
+</pre></div>
+</div>
+<p class="last">此時強制使用 <code class="docutils literal notranslate"><span class="pre">-N</span></code> 選項。</p>
+</dd>
+</dl>
+<dl class="docutils" id="u">
+<dt><strong>-U</strong>[<em>label</em>][<strong>+c</strong>][<strong>+j</strong><em>just</em>][<strong>+o</strong><em>dx</em>/<em>dy</em>] <a class="reference internal" href="../option/U.html"><span class="doc">(more …)</span></a></dt>
+<dd>在图上绘制GMT时间戳logo</dd>
+</dl>
+<dl class="docutils">
+<dt><strong>-t</strong>[<em>transp</em>] <a class="reference internal" href="../option/t.html"><span class="doc">(more …)</span></a></dt>
+<dd>设置图层透明度（百分比）。取值范围为0（不透明）到100（全透明）</dd>
+</dl>
+</div>
+<div class="section" id="id3">
+<h2>示例<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>下面的例子中設置文本框的相關屬性：藍色邊框、淡藍填充色、圓角矩形，空白爲 <code class="docutils literal notranslate"><span class="pre">100%/100%</span></code></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt text -R0/10/0/5 -JX10c/5c -B1 -Wblue -Glightblue -TO -C100%/100% -pdf text <span class="s">&lt;&lt; EOF</span>
+<span class="s">3   1   Text1</span>
+<span class="s">6   3   Text2</span>
+<span class="s">EOF</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+           <div class="articleComments">
+            
+
+<!-- gitalk 脚本-->
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'b2dfca9a4bfad764aa2b',
+    clientSecret: '4ae5ddcd25c6b6d6bc07ac39201ea417054a530a',
+    owner: 'gmt-china',
+    repo: 'gitalk',
+    admin: ['zhaozhiyuan1989','cehui07226','NothingIsBig','seisman','SeisPider','wangliang1989','sqdeng'],
+    id: md5(location.pathname),
+    body: location.href,
+  });
+gitalk.render('gitalk-container');
+</script>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="velo.html" class="btn btn-neutral float-right" title="velo" accesskey="n" rel="next">下頁 <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="ternary.html" class="btn btn-neutral float-left" title="ternary" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> 上頁</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014 - 2020, GMT中文社区.
+      <span class="lastupdated">
+        最后更新于 2020年05月29日.
+      </span>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>绘制直方图 &mdash; GMT中文手册</title>
+  <title>繪製直方圖 &mdash; GMT中文手册</title>
   
 
   
@@ -40,10 +40,10 @@
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
-    <link rel="index" title="索引" href="../../genindex/" />
-    <link rel="search" title="搜索" href="../../search/" />
-    <link rel="next" title="GMT单行模式" href="../oneliner/" />
-    <link rel="prev" title="理解图层" href="../layers/" /> 
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+    <link rel="next" title="GMT單行模式" href="../oneliner.html" />
+    <link rel="prev" title="理解圖層" href="../layers.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -56,7 +56,7 @@
         <div class="wy-side-nav-search" >
           
     
-    <a href="../../" class="icon icon-home"> GMT中文手册
+    <a href="../../index.html" class="icon icon-home"> GMT中文手册
     
 
     
@@ -79,8 +79,8 @@
 
     
 <div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
-    <input type="text" name="q" placeholder="搜索文档" />
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文件" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -96,49 +96,49 @@
               
             
             
-              <p class="caption"><span class="caption-text">目 录</span></p>
+              <p class="caption"><span class="caption-text">目 錄</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../intro/">简介</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../install/">安装</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../migrating/">版本迁移</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../">入门教程</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../get-started/">GMT初探</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../commands/">命令初探</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../scripting/">脚本编程</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../basemap/">绘制底图</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../coastline/">绘制海岸线</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lines/">绘制线段和多边形</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../symbols/">绘制符号</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../texts/">添加文字</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../legend/">添加图例</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../earth-relief/">绘制地形起伏</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../layers/">理解图层</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">绘制直方图</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id2">垂直直方图</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">增加修饰</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">水平直方图</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id5">百分比直方图</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../intro/index.html">簡介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install/index.html">安裝</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../migrating/index.html">版本遷移</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">入門教程</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../get-started/index.html">GMT初探</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../commands.html">命令初探</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../scripting.html">腳本編程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basemap.html">繪製底圖</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../coastline.html">繪製海岸線</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lines.html">繪製線段和多邊形</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../symbols.html">繪製符號</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../texts.html">添加文字</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../legend.html">添加圖例</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../earth-relief.html">繪製地形起伏</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../layers.html">理解圖層</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">繪製直方圖</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">垂直直方圖</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">增加修飾</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">水平直方圖</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">百分比直方圖</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../oneliner/">GMT单行模式</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../inset/">GMT图中图模式</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../subplot/">GMT子图模式</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../multifig/">GMT多图模式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../oneliner.html">GMT單行模式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inset.html">GMT圖中圖模式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../subplot.html">GMT子圖模式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../multifig.html">GMT多圖模式</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../basis/">GMT基础</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../table/">表数据</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../grid/">网格文件</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../cpt/">CPT文件</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../option/">标准选项</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../proj/">地图投影</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../conf/">配置参数</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../dataset/">地学数据集</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../chinese/">中文支持</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../module/">模块手册</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../gallery/">绘图示例</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../api/">API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../appendix/">附录</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basis/index.html">GMT基礎</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../table/index.html">表數據</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../grid/index.html">網格檔</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cpt/index.html">CPT文件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../option/index.html">標準選項</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../proj/index.html">地圖投影</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../conf/index.html">配置參數</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dataset/index.html">地學數據集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../chinese/index.html">中文支持</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../module/index.html">模塊手冊</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gallery/index.html">繪圖示例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../appendix/index.html">附錄</a></li>
 </ul>
 
             
@@ -173,7 +173,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../">GMT中文手册</a>
+          <a href="../../index.html">GMT中文手册</a>
         
       </nav>
 
@@ -202,18 +202,18 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../">首页</a> &raquo;</li>
+      <li><a href="../../index.html">首頁</a> &raquo;</li>
         
-          <li><a href="../">入门教程</a> &raquo;</li>
+          <li><a href="../index.html">入門教程</a> &raquo;</li>
         
-      <li>绘制直方图</li>
+      <li>繪製直方圖</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
             
-              <a href="https://github.com/gmt-china/GMT_Docs/blob/master/source/tutorial/histogram/index.rst" class="fa fa-github"> 编辑本页</a>
+              <a href="https://github.com/gmt-china/GMT_Docs/blob/master/source/tutorial/histogram/index.rst" class="fa fa-github"> 編輯本頁</a>
             
           
         
@@ -228,80 +228,80 @@
            <div itemprop="articleBody">
             
   <div class="section" id="id1">
-<h1>绘制直方图<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
-<p>GMT 中 <a class="reference internal" href="../../module/histogram/"><span class="doc">histogram</span></a> 模块用于统计并绘制直方图。直方图可以直观地展现样本的分布情况。一个直方的宽度表示它的数据范围，长度表示位于该范围内的样本的数量或者比例。</p>
-<p>这一节中，我们通过绘制地震震源深度直方图来介绍直方图的绘制。以下示例使用的数据为  <a class="reference download internal" download="" href="../../_downloads/37b97c4b8ba2615d0ceafaad3181bbc7/eq.dat"><code class="xref download docutils literal notranslate"><span class="pre">eq.dat</span></code></a>，数据包含了三列，分别是地震的经度、纬度和深度。</p>
-<p>直方图根据直方的方向可以分为垂直直方图和水平直方图，也可以根据直方的长度的意义不同分为计数直方图和百分比直方图。</p>
+<h1>繪製直方圖<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<p>GMT 中 <a class="reference internal" href="../../module/histogram.html"><span class="doc">histogram</span></a> 模塊用於統計並繪製直方圖。直方圖可以直觀地展現樣本的分佈情況。一個直方的寬度表示它的數據範圍，長度表示位於該範圍內的樣本的數量或者比例。</p>
+<p>這一節中，我們通過繪製地震震源深度直方圖來介紹直方圖的繪製。以下示例使用的數據爲  <a class="reference download internal" download="" href="../../_downloads/9e2e003d04604a0ed393fd47498cb256/eq.dat"><code class="xref download docutils literal notranslate"><span class="pre">eq.dat</span></code></a>，數據包含了三列，分別是地震的經度、緯度和深度。</p>
+<p>直方圖根據直方的方向可以分爲垂直直方圖和水平直方圖，也可以根據直方的長度的意義不同分爲計數直方圖和百分比直方圖。</p>
 <div class="section" id="id2">
-<h2>垂直直方图<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
-<p>GMT中默认绘制垂直直方图。绘制直方图只需要一列数据，而上面的示例数据有三列。我们需要使用 <strong>-i2</strong> 选项将输入数据的第三列（GMT中列号从0开始）传递给 <strong>histogram</strong>。</p>
+<h2>垂直直方圖<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>GMT中默認繪製垂直直方圖。繪製直方圖只需要一列數據，而上面的示例數據有三列。我們需要使用 <strong>-i2</strong> 選項將輸入數據的第三列（GMT中列號從0開始）傳遞給 <strong>histogram</strong>。</p>
 <p>直接使用下面的命令:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt histogram eq.dat -i2 -png map
 </pre></div>
 </div>
-<p>会得到如下报错信息:</p>
+<p>會得到如下報錯信息:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>histogram <span class="o">[</span>ERROR<span class="o">]</span>: Required argument <span class="k">for</span> bin width not <span class="nb">set</span>
 histogram <span class="o">[</span>ERROR<span class="o">]</span>: Option -T: Must specify bin width
 histogram <span class="o">[</span>ERROR<span class="o">]</span>: Must specify either fill <span class="o">(</span>-G<span class="o">)</span> or lookup colors <span class="o">(</span>-C<span class="o">)</span>, outline pen attributes <span class="o">(</span>-W<span class="o">)</span>, or both.
 </pre></div>
 </div>
-<p>报错信息告诉我们，<strong>histogram</strong> 需要使用 <strong>-T</strong> 选项指定直方的宽度。同时还需要使用 <strong>-G</strong> 指定直方的填充色，或使用 <strong>-W</strong> 指定直方边框的画笔属性。根据错误信息，我们向上面的命令增加了几个额外的选项：</p>
+<p>報錯信息告訴我們，<strong>histogram</strong> 需要使用 <strong>-T</strong> 選項指定直方的寬度。同時還需要使用 <strong>-G</strong> 指定直方的填充色，或使用 <strong>-W</strong> 指定直方邊框的畫筆屬性。根據錯誤信息，我們向上面的命令增加了幾個額外的選項：</p>
 <ul class="simple">
-<li><strong>-T5</strong> 设置了统计时每一个直方的宽度是5。该选项还可以更灵活地设置直方的最大最小值等属性，详见 <a class="reference internal" href="../../module/histogram/"><span class="doc">histogram</span></a> 模块文档</li>
-<li><strong>-W1p</strong> 设置直方的边框宽度为1p</li>
-<li><strong>-Baf</strong> 则为整张图加了一个自动的边框</li>
+<li><strong>-T5</strong> 設置了統計時每一個直方的寬度是5。該選項還可以更靈活地設置直方的最大最小值等屬性，詳見 <a class="reference internal" href="../../module/histogram.html"><span class="doc">histogram</span></a> 模塊文件</li>
+<li><strong>-W1p</strong> 設置直方的邊框寬度爲1p</li>
+<li><strong>-Baf</strong> 則爲整張圖加了一個自動的邊框</li>
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt histogram eq.dat -Baf -T5 -W1p -i2 -png hist1
 </pre></div>
 </div>
 <div class="figure align-center" id="id6">
-<a class="reference internal image-reference" href="../../_images/index-gmtplot-03.png"><img alt="../../_images/index-gmtplot-03.png" src="../../_images/index-gmtplot-03.png" style="width: 50%;" /></a>
-<p class="caption"><span class="caption-text">垂直直方图</span></p>
+<a class="reference internal image-reference" href="../../_images/index-gmtplot-02.png"><img alt="../../_images/index-gmtplot-02.png" src="../../_images/index-gmtplot-02.png" style="width: 50%;" /></a>
+<p class="caption"><span class="caption-text">垂直直方圖</span></p>
 </div>
-<p>由此，我们得到了一张非常简单的直方图。从直方图中我们对数据也有了基本的认识。直方图中横轴表示数据中地震深度范围集中在0-40千米。</p>
+<p>由此，我們得到了一張非常簡單的直方圖。從直方圖中我們對數據也有了基本的認識。直方圖中橫軸表示數據中地震深度範圍集中在0-40千米。</p>
 </div>
 <div class="section" id="id3">
-<h2>增加修饰<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
-<p>为了让图形更加的美观，我们可以添加一些选项：</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt histogram eq.dat -JX15c/9c -R0/40/0/600 -Bxaf+l<span class="s1">&#39;Depth&#39;</span> -Byaf+l<span class="s1">&#39;Counts&#39;</span> -BWSen -D -W1p -Gred -T5 -i2 -png hist2
+<h2>增加修飾<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>爲了讓圖形更加的美觀，我們可以添加一些選項：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt histogram eq.dat -JX15c/9c -R0/40/0/600 -Bxaf+l<span class="s2">&quot;Depth&quot;</span> -Byaf+l<span class="s2">&quot;Counts&quot;</span> -BWSen -D -W1p -Gred -T5 -i2 -png hist2
 </pre></div>
 </div>
 <div class="figure align-center" id="id7">
 <a class="reference internal image-reference" href="../../_images/index-gmtplot-11.png"><img alt="../../_images/index-gmtplot-11.png" src="../../_images/index-gmtplot-11.png" style="width: 75%;" /></a>
-<p class="caption"><span class="caption-text">添加选项的垂直直方图</span></p>
+<p class="caption"><span class="caption-text">添加選項的垂直直方圖</span></p>
 </div>
 <ul class="simple">
-<li><strong>-JX15c/9c</strong> 指定了整张直方图的宽度和高度。若不指定，GMT会自动指定一个合适的值</li>
-<li><strong>-R0/40/0/600</strong> 设置了直方图的数据范围。若不指定，<strong>histogram</strong> 会自动确定最适合的数据范围。这里我们根据前图的统计结果指定了新的 <strong>-R</strong> 范围</li>
-<li><strong>-B</strong> 选项用于指定底图边框和坐标轴属性</li>
-<li><strong>-Gred</strong> 表示为直方填充红色</li>
-<li><strong>-D</strong> 会在每个直方的上方标注该直方中的数量。该选项还可以接更多的子选项以控制标注的位置、字体和角度等</li>
+<li><strong>-JX15c/9c</strong> 指定了整張直方圖的寬度和高度。若不指定，GMT會自動指定一個合適的值</li>
+<li><strong>-R0/40/0/600</strong> 設置了直方圖的數據範圍。若不指定，<strong>histogram</strong> 會自動確定最適合的數據範圍。這裏我們根據前圖的統計結果指定了新的 <strong>-R</strong> 範圍</li>
+<li><strong>-B</strong> 選項用於指定底圖邊框和座標軸屬性</li>
+<li><strong>-Gred</strong> 表示爲直方填充紅色</li>
+<li><strong>-D</strong> 會在每個直方的上方標註該直方中的數量。該選項還可以接更多的子選項以控制標註的位置、字體和角度等</li>
 </ul>
 </div>
 <div class="section" id="id4">
-<h2>水平直方图<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
-<p>如果想要绘制水平直方图，只需要增加 <strong>-A</strong> 选项。需要注意的是，尽管水平直方图中横轴是地震数量，纵轴是地震深度，<strong>-R</strong> 选项中依然是深度在前、统计值在后，即与垂直直方图时保持一致。</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt histogram eq.dat -JX15c/9c -R0/40/0/600 -Bxaf+l<span class="s1">&#39;Depth&#39;</span> -Byaf+l<span class="s1">&#39;Counts&#39;</span> -BWSen -A -D -W1p -Gred -T5 -i2 -png hist3
+<h2>水平直方圖<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<p>如果想要繪製水平直方圖，只需要增加 <strong>-A</strong> 選項。需要注意的是，儘管水平直方圖中橫軸是地震數量，縱軸是地震深度，<strong>-R</strong> 選項中依然是深度在前、統計值在後，即與垂直直方圖時保持一致。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt histogram eq.dat -JX15c/9c -R0/40/0/600 -Bxaf+l<span class="s2">&quot;Depth&quot;</span> -Byaf+l<span class="s2">&quot;Counts&quot;</span> -BWSen -A -D -W1p -Gred -T5 -i2 -png hist3
 </pre></div>
 </div>
 <div class="figure align-center" id="id8">
 <a class="reference internal image-reference" href="../../_images/index-gmtplot-21.png"><img alt="../../_images/index-gmtplot-21.png" src="../../_images/index-gmtplot-21.png" style="width: 75%;" /></a>
-<p class="caption"><span class="caption-text">水平直方图</span></p>
+<p class="caption"><span class="caption-text">水平直方圖</span></p>
 </div>
 </div>
 <div class="section" id="id5">
-<h2>百分比直方图<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
-<p><strong>histogram</strong> 的 <strong>-Z</strong> 选项可以进一步控制统计图的类型。默认纵轴为统计数目。
-<strong>-Z1</strong> 表示绘制百分比直方图。</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt histogram eq.dat -JX15c/9c -Bxaf+l<span class="s1">&#39;Depth&#39;</span> -Byaf+l<span class="s1">&#39;Counts&#39;</span>+u<span class="s1">&#39;%&#39;</span> -BWSen -Z1 -W1p -Gred -T5 -i2 -png hist4
+<h2>百分比直方圖<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<p><strong>histogram</strong> 的 <strong>-Z</strong> 選項可以進一步控制統計圖的類型。默認縱軸爲統計數目。
+<strong>-Z1</strong> 表示繪製百分比直方圖。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt histogram eq.dat -JX15c/9c -Bxaf+l<span class="s2">&quot;Depth&quot;</span> -Byaf+l<span class="s2">&quot;Counts&quot;</span>+u<span class="s2">&quot;%&quot;</span> -BWSen -Z1 -W1p -Gred -T5 -i2 -png hist4
 </pre></div>
 </div>
 <div class="figure align-center" id="id9">
 <a class="reference internal image-reference" href="../../_images/index-gmtplot-3.png"><img alt="../../_images/index-gmtplot-3.png" src="../../_images/index-gmtplot-3.png" style="width: 75%;" /></a>
-<p class="caption"><span class="caption-text">添加选项的垂直直方图</span></p>
+<p class="caption"><span class="caption-text">添加選項的垂直直方圖</span></p>
 </div>
-<p>这个命令中，由于纵轴的含义变了，之前的 <strong>-R</strong> 选项就不再合适了，因而我们去除了
-<strong>-R</strong> 选项让GMT自动确定最佳数据范围。</p>
+<p>這個命令中，由於縱軸的含義變了，之前的 <strong>-R</strong> 選項就不再合適了，因而我們去除了
+<strong>-R</strong> 選項讓GMT自動確定最佳數據範圍。</p>
 </div>
 </div>
 
@@ -336,10 +336,10 @@ gitalk.render('gitalk-container');
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../oneliner/" class="btn btn-neutral float-right" title="GMT单行模式" accesskey="n" rel="next">下页 <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../oneliner.html" class="btn btn-neutral float-right" title="GMT單行模式" accesskey="n" rel="next">下頁 <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../layers/" class="btn btn-neutral float-left" title="理解图层" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> 上页</a>
+        <a href="../layers.html" class="btn btn-neutral float-left" title="理解圖層" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> 上頁</a>
       
     </div>
   
@@ -350,7 +350,7 @@ gitalk.render('gitalk-container');
     <p>
         &copy; Copyright 2014 - 2020, GMT中文社区.
       <span class="lastupdated">
-        最后更新于 2020年05月08日.
+        最后更新于 2020年05月29日.
       </span>
 
     </p>

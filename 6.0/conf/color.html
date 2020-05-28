@@ -1,0 +1,339 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>COLOR參數 &mdash; GMT中文手册</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+    <link rel="canonical" href="https://docs.gmt-china.org/latest/conf/color.html"/>
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
+        <script async="async" type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="DIR參數" href="dir.html" />
+    <link rel="prev" title="MAP參數" href="map.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+    
+    <a href="../index.html" class="icon icon-home"> GMT中文手册
+    
+
+    
+    </a>
+
+    
+    
+    
+    <div class="version">
+        <select onchange="location = this.options[this.selectedIndex].value;">
+            
+            <option value="/6.0/"  selected > v6.0 </option>
+            
+            <option value="/5.4/" > v5.4 </option>
+            
+        </select>
+    </div>
+    
+    
+
+    
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文件" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+    
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">目 錄</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">簡介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/index.html">安裝</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migrating/index.html">版本遷移</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">入門教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basis/index.html">GMT基礎</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../table/index.html">表數據</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grid/index.html">網格檔</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cpt/index.html">CPT文件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../option/index.html">標準選項</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../proj/index.html">地圖投影</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">配置參數</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="overview.html">配置參數簡介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="showcase.html">配置參數示例</a></li>
+<li class="toctree-l2"><a class="reference internal" href="font.html">FONT參數</a></li>
+<li class="toctree-l2"><a class="reference internal" href="map.html">MAP參數</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">COLOR參數</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cpt">CPT相關參數</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">光照相關參數</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dir.html">DIR參數</a></li>
+<li class="toctree-l2"><a class="reference internal" href="format.html">FORMAT參數</a></li>
+<li class="toctree-l2"><a class="reference internal" href="io.html">IO參數</a></li>
+<li class="toctree-l2"><a class="reference internal" href="proj.html">PROJ參數</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ps.html">PS參數</a></li>
+<li class="toctree-l2"><a class="reference internal" href="time.html">TIME參數</a></li>
+<li class="toctree-l2"><a class="reference internal" href="misc.html">其他參數</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../dataset/index.html">地學數據集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chinese/index.html">中文支持</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../module/index.html">模塊手冊</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery/index.html">繪圖示例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/index.html">附錄</a></li>
+</ul>
+
+            
+          
+
+    
+        <p class="caption">
+            <span class="caption-text">外部链接</span>
+        </p>
+        <ul>
+            
+                <li class="toctree-l1"><a href="https://docs.gmt-china.org/6.0/GMT_docs.pdf"><i class="fa fa-book fa-fw"></i> PDF下载</a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/gmt-china/GMT_Docs"><i class="fa fa-github fa-fw"></i> 源代码</a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/gmt-china/GMT_docs/blob/master/CONTRIBUTING.md"><i class="fa fa-edit fa-fw"></i> 贡献指南</a></li>
+            
+                <li class="toctree-l1"><a href="https://gmt-china.org"><i class="fa fa-globe fa-fw"></i> GMT中文社区</a></li>
+            
+                <li class="toctree-l1"><a href="mailto:admin@gmt-china.org"><i class="fa fa-envelope fa-fw"></i> 联系我们</a></li>
+            
+        </ul>
+    
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">GMT中文手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">首頁</a> &raquo;</li>
+        
+          <li><a href="index.html">配置參數</a> &raquo;</li>
+        
+      <li>COLOR參數</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/gmt-china/GMT_Docs/blob/master/source/conf/color.rst" class="fa fa-github"> 編輯本頁</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="color">
+<h1>COLOR參數<a class="headerlink" href="#color" title="永久链接至标题">¶</a></h1>
+<p>這一節列出所有與顏色相關的配置參數，參數的默認值在中括號內列出。</p>
+<div class="section" id="cpt">
+<h2>CPT相關參數<a class="headerlink" href="#cpt" title="永久链接至标题">¶</a></h2>
+<dl class="glossary docutils">
+<dt id="term-color-background"><strong>COLOR_BACKGROUND</strong></dt>
+<dd>數據Z值小於CPT文件中最小值時使用的背景色 [<code class="docutils literal notranslate"><span class="pre">black</span></code>]</dd>
+<dt id="term-color-foreground"><strong>COLOR_FOREGROUND</strong></dt>
+<dd>數據Z值大於CPT文件中最大值時使用的前景色 [<code class="docutils literal notranslate"><span class="pre">white</span></code>]</dd>
+<dt id="term-color-nan"><strong>COLOR_NAN</strong></dt>
+<dd>數值Z值爲 NaN 時使用的顏色 [<code class="docutils literal notranslate"><span class="pre">127.5</span></code>]</dd>
+<dt id="term-color-model"><strong>COLOR_MODEL</strong></dt>
+<dd><p class="first">對CPT文件做插值生成新CPT時所使用的色彩模型 [<code class="docutils literal notranslate"><span class="pre">none</span></code>]</p>
+<p>可以取如下值：</p>
+<ul class="last simple">
+<li><code class="docutils literal notranslate"><span class="pre">none</span></code>：使用CPT文件中指定的 <code class="docutils literal notranslate"><span class="pre">COLOR_MODEL</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">rgb</span></code>：在RGB色彩空間中插值</li>
+<li><code class="docutils literal notranslate"><span class="pre">hsv</span></code>：在HSV色彩空間中插值</li>
+<li><code class="docutils literal notranslate"><span class="pre">cmyk</span></code>：假定顏色是CMYK色彩空間，但在RGB空間內插值</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="id1">
+<h2>光照相關參數<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p>某些繪圖模塊（如 <a class="reference internal" href="../module/grdimage.html"><span class="doc">grdimage</span></a>、<a class="reference internal" href="../module/colorbar.html"><span class="doc">colorbar</span></a>）可以利用強度文件模擬光照效果。光照效果的實現，本質上是先將任意顏色轉換成HSV模型，然後根據強度的正負，增大/減小HSV模型中的S（飽和度）和V（明度），以達到模擬光照的效果。下面的四個參數控制了模擬光照過程中S和V變化的極限值，以避免模擬的光照過亮或過暗。</p>
+<dl class="glossary docutils">
+<dt id="term-color-hsv-min-s"><strong>COLOR_HSV_MIN_S</strong></dt>
+<dd>負強度最小值對應的S值，取值範圍0到1 [1.0]</dd>
+<dt id="term-color-hsv-max-s"><strong>COLOR_HSV_MAX_S</strong></dt>
+<dd>正強度最大值對應的S值，取值範圍0到1 [0.1]</dd>
+<dt id="term-color-hsv-min-v"><strong>COLOR_HSV_MIN_V</strong></dt>
+<dd>負強度最小值對應的V值，取值範圍0到1 [0.3]</dd>
+<dt id="term-color-hsv-max-v"><strong>COLOR_HSV_MAX_V</strong></dt>
+<dd>正強度最大值對應的V值，取值範圍0到1 [1.0]</dd>
+</dl>
+</div>
+</div>
+
+
+           </div>
+           
+           <div class="articleComments">
+            
+
+<!-- gitalk 脚本-->
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'b2dfca9a4bfad764aa2b',
+    clientSecret: '4ae5ddcd25c6b6d6bc07ac39201ea417054a530a',
+    owner: 'gmt-china',
+    repo: 'gitalk',
+    admin: ['zhaozhiyuan1989','cehui07226','NothingIsBig','seisman','SeisPider','wangliang1989','sqdeng'],
+    id: md5(location.pathname),
+    body: location.href,
+  });
+gitalk.render('gitalk-container');
+</script>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="dir.html" class="btn btn-neutral float-right" title="DIR參數" accesskey="n" rel="next">下頁 <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="map.html" class="btn btn-neutral float-left" title="MAP參數" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> 上頁</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014 - 2020, GMT中文社区.
+      <span class="lastupdated">
+        最后更新于 2020年05月29日.
+      </span>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

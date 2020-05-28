@@ -1,0 +1,402 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>網格檔格式 &mdash; GMT中文手册</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+    <link rel="canonical" href="https://docs.gmt-china.org/latest/grid/format.html"/>
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
+        <script async="async" type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="讀netCDF文件" href="read.html" />
+    <link rel="prev" title="網格檔" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+    
+    <a href="../index.html" class="icon icon-home"> GMT中文手册
+    
+
+    
+    </a>
+
+    
+    
+    
+    <div class="version">
+        <select onchange="location = this.options[this.selectedIndex].value;">
+            
+            <option value="/6.0/"  selected > v6.0 </option>
+            
+            <option value="/5.4/" > v5.4 </option>
+            
+        </select>
+    </div>
+    
+    
+
+    
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文件" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+    
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">目 錄</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">簡介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/index.html">安裝</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migrating/index.html">版本遷移</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">入門教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basis/index.html">GMT基礎</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../table/index.html">表數據</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">網格檔</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">網格檔格式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="read.html">讀netCDF文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="write.html">寫netCDF文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="registration.html">網格配準</a></li>
+<li class="toctree-l2"><a class="reference internal" href="boundary-condition.html">邊界條件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="viewer.html">查看netCDF文件</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../cpt/index.html">CPT文件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../option/index.html">標準選項</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../proj/index.html">地圖投影</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conf/index.html">配置參數</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dataset/index.html">地學數據集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chinese/index.html">中文支持</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../module/index.html">模塊手冊</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery/index.html">繪圖示例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/index.html">附錄</a></li>
+</ul>
+
+            
+          
+
+    
+        <p class="caption">
+            <span class="caption-text">外部链接</span>
+        </p>
+        <ul>
+            
+                <li class="toctree-l1"><a href="https://docs.gmt-china.org/6.0/GMT_docs.pdf"><i class="fa fa-book fa-fw"></i> PDF下载</a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/gmt-china/GMT_Docs"><i class="fa fa-github fa-fw"></i> 源代码</a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/gmt-china/GMT_docs/blob/master/CONTRIBUTING.md"><i class="fa fa-edit fa-fw"></i> 贡献指南</a></li>
+            
+                <li class="toctree-l1"><a href="https://gmt-china.org"><i class="fa fa-globe fa-fw"></i> GMT中文社区</a></li>
+            
+                <li class="toctree-l1"><a href="mailto:admin@gmt-china.org"><i class="fa fa-envelope fa-fw"></i> 联系我们</a></li>
+            
+        </ul>
+    
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">GMT中文手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">首頁</a> &raquo;</li>
+        
+          <li><a href="index.html">網格檔</a> &raquo;</li>
+        
+      <li>網格檔格式</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/gmt-china/GMT_Docs/blob/master/source/grid/format.rst" class="fa fa-github"> 編輯本頁</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>網格檔格式<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<p>GMT可以處理並繪製2D網格數據。通常，2D網格檔的X方向代表經度、Y方向代表緯度，Z值可以表示高程、重力值、溫度、速度等。</p>
+<p>GMT支持的網格數據格式主要分爲四大類：</p>
+<ol class="arabic simple">
+<li>netCDF4標準網格檔格式</li>
+<li>netCDf3“舊”網格檔格式</li>
+<li>GMT自定義的二進制文件格式</li>
+<li>其他軟體自定義的網格檔格式</li>
+</ol>
+<p>其中最常見也最推薦使用的網格數據格式是netCDF4標準網格檔格式。GMT默認使用該格式，一般以 <code class="docutils literal notranslate"><span class="pre">.nc</span></code> 或 <code class="docutils literal notranslate"><span class="pre">.grd</span></code> 作爲文件後綴。本章的介紹也將只針對netCDF格式。</p>
+<p>四大類網格檔格式進一步可細分爲更多的數據格式。GMT所支持的所有網格檔格式在下表列出，每種網格檔格式均對應一個兩字符ID。</p>
+<table border="1" class="docutils align-center" id="id2">
+<caption><span class="caption-text">GMT支持的網格檔格式</span><a class="headerlink" href="#id2" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col width="12%" />
+<col width="88%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">ID</th>
+<th class="head">說明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>&#160;</td>
+<td><em>GMT netCDF4標準格式</em></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">nb</span></code></td>
+<td>GMT netCDF format (8-bit integer, COARDS, CF-1.5)</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">ns</span></code></td>
+<td>GMT netCDF format (16-bit integer, COARDS, CF-1.5)</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">ni</span></code></td>
+<td>GMT netCDF format (32-bit integer, COARDS, CF-1.5)</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">nf</span></code></td>
+<td>GMT netCDF format (32-bit float, COARDS, CF-1.5)</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">nd</span></code></td>
+<td>GMT netCDF format (64-bit float, COARDS, CF-1.5)</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td><em>GMT netCDF3 “舊”格式</em></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">cb</span></code></td>
+<td>GMT netCDF format (8-bit integer, depreciated)</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">cs</span></code></td>
+<td>GMT netCDF format (16-bit integer, depreciated)</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">ci</span></code></td>
+<td>GMT netCDF format (32-bit integer, depreciated)</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">cf</span></code></td>
+<td>GMT netCDF format (32-bit float, depreciated)</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">cd</span></code></td>
+<td>GMT netCDF format (64-bit float, depreciated)</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td><em>GMT自定義二進制格式</em></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">bm</span></code></td>
+<td>GMT native, C-binary format (bit-mask)</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">bb</span></code></td>
+<td>GMT native, C-binary format (8-bit integer)</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">bs</span></code></td>
+<td>GMT native, C-binary format (16-bit integer)</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">bi</span></code></td>
+<td>GMT native, C-binary format (32-bit integer)</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">bf</span></code></td>
+<td>GMT native, C-binary format (32-bit float)</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">bd</span></code></td>
+<td>GMT native, C-binary format (64-bit float)</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td><em>其他網格檔格式</em></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">rb</span></code></td>
+<td>SUN raster file format (8-bit standard)</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">rf</span></code></td>
+<td>GEODAS grid format GRD98 (NGDC)</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">sf</span></code></td>
+<td>Golden Software Surfer format 6 (32-bit float)</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">sd</span></code></td>
+<td>Golden Software Surfer format 7 (64-bit float)</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">af</span></code></td>
+<td>Atlantic Geoscience Center AGC (32-bit float)</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">ei</span></code></td>
+<td>ESRI Arc/Info ASCII Grid Interchange format (ASCII integer)</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">ef</span></code></td>
+<td>ESRI Arc/Info ASCII Grid Interchange format (ASCII float)</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">gd</span></code></td>
+<td>Import/export via GDAL</td>
+</tr>
+</tbody>
+</table>
+<p>除了上面列出的網格檔格式之外，有C編程經驗的高級用戶還可以自己自定義網格檔格式，並將讀寫該格式的子程序鏈接到GMT函數庫中，使得GMT可以支持自定義網格檔格式的讀取。詳情見GMT源碼中的 <code class="docutils literal notranslate"><span class="pre">gmt_customio.c</span></code>。</p>
+</div>
+
+
+           </div>
+           
+           <div class="articleComments">
+            
+
+<!-- gitalk 脚本-->
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'b2dfca9a4bfad764aa2b',
+    clientSecret: '4ae5ddcd25c6b6d6bc07ac39201ea417054a530a',
+    owner: 'gmt-china',
+    repo: 'gitalk',
+    admin: ['zhaozhiyuan1989','cehui07226','NothingIsBig','seisman','SeisPider','wangliang1989','sqdeng'],
+    id: md5(location.pathname),
+    body: location.href,
+  });
+gitalk.render('gitalk-container');
+</script>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="read.html" class="btn btn-neutral float-right" title="讀netCDF文件" accesskey="n" rel="next">下頁 <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="網格檔" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> 上頁</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014 - 2020, GMT中文社区.
+      <span class="lastupdated">
+        最后更新于 2020年05月29日.
+      </span>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

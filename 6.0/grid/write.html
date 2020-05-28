@@ -1,0 +1,321 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>寫netCDF文件 &mdash; GMT中文手册</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+    <link rel="canonical" href="https://docs.gmt-china.org/latest/grid/write.html"/>
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
+        <script async="async" type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="網格配準" href="registration.html" />
+    <link rel="prev" title="讀netCDF文件" href="read.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+    
+    <a href="../index.html" class="icon icon-home"> GMT中文手册
+    
+
+    
+    </a>
+
+    
+    
+    
+    <div class="version">
+        <select onchange="location = this.options[this.selectedIndex].value;">
+            
+            <option value="/6.0/"  selected > v6.0 </option>
+            
+            <option value="/5.4/" > v5.4 </option>
+            
+        </select>
+    </div>
+    
+    
+
+    
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文件" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+    
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">目 錄</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">簡介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/index.html">安裝</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migrating/index.html">版本遷移</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">入門教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basis/index.html">GMT基礎</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../table/index.html">表數據</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">網格檔</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="format.html">網格檔格式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="read.html">讀netCDF文件</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">寫netCDF文件</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">文件名格式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">分塊與壓縮</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="registration.html">網格配準</a></li>
+<li class="toctree-l2"><a class="reference internal" href="boundary-condition.html">邊界條件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="viewer.html">查看netCDF文件</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../cpt/index.html">CPT文件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../option/index.html">標準選項</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../proj/index.html">地圖投影</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conf/index.html">配置參數</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dataset/index.html">地學數據集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chinese/index.html">中文支持</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../module/index.html">模塊手冊</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery/index.html">繪圖示例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/index.html">附錄</a></li>
+</ul>
+
+            
+          
+
+    
+        <p class="caption">
+            <span class="caption-text">外部链接</span>
+        </p>
+        <ul>
+            
+                <li class="toctree-l1"><a href="https://docs.gmt-china.org/6.0/GMT_docs.pdf"><i class="fa fa-book fa-fw"></i> PDF下载</a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/gmt-china/GMT_Docs"><i class="fa fa-github fa-fw"></i> 源代码</a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/gmt-china/GMT_docs/blob/master/CONTRIBUTING.md"><i class="fa fa-edit fa-fw"></i> 贡献指南</a></li>
+            
+                <li class="toctree-l1"><a href="https://gmt-china.org"><i class="fa fa-globe fa-fw"></i> GMT中文社区</a></li>
+            
+                <li class="toctree-l1"><a href="mailto:admin@gmt-china.org"><i class="fa fa-envelope fa-fw"></i> 联系我们</a></li>
+            
+        </ul>
+    
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">GMT中文手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">首頁</a> &raquo;</li>
+        
+          <li><a href="index.html">網格檔</a> &raquo;</li>
+        
+      <li>寫netCDF文件</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/gmt-china/GMT_Docs/blob/master/source/grid/write.rst" class="fa fa-github"> 編輯本頁</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="netcdf">
+<h1>寫netCDF文件<a class="headerlink" href="#netcdf" title="永久链接至标题">¶</a></h1>
+<div class="section" id="id1">
+<h2>文件名格式<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p>GMT生成網格數據時默認使用 <code class="docutils literal notranslate"><span class="pre">nf</span></code> 格式（默認網格檔格式由GMT參數
+<a class="reference internal" href="../conf/io.html#term-io-gridfile-format"><span class="xref std std-term">IO_GRIDFILE_FORMAT</span></a> 控制）。可以通過在網格檔名後加上額外的信息以指定網格檔的格式。網格檔的文件名格式爲:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&lt;name&gt;<span class="o">[=</span>&lt;ID&gt;<span class="o">][</span>+s&lt;scale&gt;<span class="o">][</span>+o&lt;offset&gt;<span class="o">][</span>+n&lt;nan&gt;<span class="o">]</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code> 是網格檔名</li>
+<li><code class="docutils literal notranslate"><span class="pre">&lt;ID&gt;</span></code> 是寫網格檔時要使用的網格檔格式</li>
+<li><code class="docutils literal notranslate"><span class="pre">&lt;offset&gt;</span></code> 將數據加上一個常數 <code class="docutils literal notranslate"><span class="pre">&lt;offset&gt;</span></code>，默認值爲0</li>
+<li><code class="docutils literal notranslate"><span class="pre">&lt;scale&gt;</span></code> 將數據乘以比例因子 <code class="docutils literal notranslate"><span class="pre">&lt;scale&gt;</span></code>，默認值爲1</li>
+<li><code class="docutils literal notranslate"><span class="pre">&lt;nan&gt;</span></code> 表明將文件中值爲 <code class="docutils literal notranslate"><span class="pre">&lt;nan&gt;</span></code> 認爲是NaN</li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;scale&gt;</span></code> 和 <code class="docutils literal notranslate"><span class="pre">&lt;offset&gt;</span></code> 都可以取爲 <code class="docutils literal notranslate"><span class="pre">a</span></code>，表明由程序自動決定比例因子和偏移量的值。在寫網格檔時，會先加上偏移量，再乘以比例因子。</p>
+</div>
+<div class="section" id="id2">
+<h2>分塊與壓縮<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>出於性能的考慮，GMT在輸出超過16384個網格單元的網格檔時，會啓用分塊功能。所謂分塊，即數據不是按照一行一行序列存儲的，而是將整個網格分成若干個區塊，然後依次存儲每個區塊的數據。</p>
+<p>在讀取數據時，若只需要讀取數據的一部分，netCDF只需要讀取相應的區塊即可，無需讀取整個數據。</p>
+<p>由於數據的壓縮和解壓比磁盤IO要快，因而可以對netCDF數據進行壓縮，使得磁盤佔用更少，IO負載更少。netCDF的壓縮可以分爲若干等級，壓縮級別越高，文件越小，讀寫數據越快，但壓縮/解壓越耗時。通常，壓縮級別取1到3效果比較好。</p>
+<p>GMT參數 <a class="reference internal" href="../conf/io.html#term-io-nc4-chunk-size"><span class="xref std std-term">IO_NC4_CHUNK_SIZE</span></a> 可以控制分塊的大小，
+<a class="reference internal" href="../conf/io.html#term-io-nc4-deflation-level"><span class="xref std std-term">IO_NC4_DEFLATION_LEVEL</span></a> 可以控制壓縮等級。</p>
+</div>
+</div>
+
+
+           </div>
+           
+           <div class="articleComments">
+            
+
+<!-- gitalk 脚本-->
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'b2dfca9a4bfad764aa2b',
+    clientSecret: '4ae5ddcd25c6b6d6bc07ac39201ea417054a530a',
+    owner: 'gmt-china',
+    repo: 'gitalk',
+    admin: ['zhaozhiyuan1989','cehui07226','NothingIsBig','seisman','SeisPider','wangliang1989','sqdeng'],
+    id: md5(location.pathname),
+    body: location.href,
+  });
+gitalk.render('gitalk-container');
+</script>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="registration.html" class="btn btn-neutral float-right" title="網格配準" accesskey="n" rel="next">下頁 <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="read.html" class="btn btn-neutral float-left" title="讀netCDF文件" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> 上頁</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014 - 2020, GMT中文社区.
+      <span class="lastupdated">
+        最后更新于 2020年05月29日.
+      </span>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,58 +1,58 @@
 Linux 下的 GMT 中文支持
 =======================
 
-本文介绍如何让 GMT 在 Linux 下支持中文。
+本文介紹如何讓 GMT 在 Linux 下支持中文。
 
 .. warning::
 
-    据用户反映，按照本文的步骤操作可能会导致ghostscript无法正常使用。
+    據用戶反映，按照本文的步驟操作可能會導致ghostscript無法正常使用。
 
-    若出现该问题，可以执行 ``sudo perl cjk-gs-integrate.pl --remove`` 命令
-    撤销 cjk-gs-integrate.pl 脚本的操作。
+    若出現該問題，可以執行 ``sudo perl cjk-gs-integrate.pl --remove`` 命令
+    撤銷 cjk-gs-integrate.pl 腳本的操作。
 
-    若需要GMT中文支持，请转向 :doc:`custom-fonts` 一文。
+    若需要GMT中文支持，請轉向 :doc:`custom-fonts` 一文。
 
 ghostscript的中文支持
 ---------------------
 
-Linux 的中文字体较少，这里使用 Windows 下提供的四个基本字体：宋体、仿宋、黑体和楷体。
-对于 Windows 下的其他中文字体、Linux 的其他中文字体甚至日韩字体来说，方法类似。
+Linux 的中文字體較少，這裏使用 Windows 下提供的四個基本字體：宋體、仿宋、黑體和楷體。
+對於 Windows 下的其他中文字體、Linux 的其他中文字體甚至日韓字體來說，方法類似。
 
 可以使用 `cjk-gs-support <https://github.com/texjporg/cjk-gs-support>`_
-项目提供的脚本 `cjk-gs-integrate.pl`_ 来实现ghostscript的中文支持。
+項目提供的腳本 `cjk-gs-integrate.pl`_ 來實現ghostscript的中文支持。
 
-1.  从Windows下获取四种基本字体的字体文件（文件名类似于 ``simsun.ttc``\ ）并复制到
-    ``/usr/share/fonts/winfonts/`` 目录下
-2.  下载脚本 `cjk-gs-integrate.pl`_
-3.  ``cjk-gs-integrate.pl`` 脚本的执行依赖于命令 ``kpsewhich``\ ，该命令由 TeXLive 提供。
-    执行 ``kpsewhich --version`` 检查 ``kpsewhich`` 这个命令是否存在。若不存在，则
-    需要单独安装。
+1.  從Windows下獲取四種基本字體的字體文件（文件名類似於 ``simsun.ttc``\ ）並複製到
+    ``/usr/share/fonts/winfonts/`` 目錄下
+2.  下載腳本 `cjk-gs-integrate.pl`_
+3.  ``cjk-gs-integrate.pl`` 腳本的執行依賴於命令 ``kpsewhich``\ ，該命令由 TeXLive 提供。
+    執行 ``kpsewhich --version`` 檢查 ``kpsewhich`` 這個命令是否存在。若不存在，則
+    需要單獨安裝。
 
-    对于Ubuntu/Debian用户，执行::
+    對於Ubuntu/Debian用戶，執行::
 
         sudo apt-get install texlive-binaries
 
-    对于CentOS/RHEL/Fedora用户，执行::
+    對於CentOS/RHEL/Fedora用戶，執行::
 
         sudo yum install texlive-kpathsea-bin
 
-4.  执行脚本::
+4.  執行腳本::
 
         $ sudo perl cjk-gs-integrate.pl
 
-    该脚本会自动搜索系统中自带的中文字体，并生成gs支持中文所需的配置文件。
+    該腳本會自動搜索系統中自帶的中文字體，並生成gs支持中文所需的配置文件。
 
 .. _cjk-gs-integrate.pl: https://raw.githubusercontent.com/texjporg/cjk-gs-support/master/cjk-gs-integrate.pl
 
 GMT的中文支持
 -------------
 
-在 ``~/.gmt``\ （若无该文件夹，请自行新建）下创建字体配置文件::
+在 ``~/.gmt``\ （若無該文件夾，請自行新建）下創建字體配置文件::
 
     $ touch ~/.gmt/PSL_custom_fonts.txt
     $ gedit ~/.gmt/PSL_custom_fonts.txt
 
-打开 GMT 字体配置文件，在文件中加入如下语句::
+打開 GMT 字體配置文件，在文件中加入如下語句::
 
     STSong-Light--UniGB-UTF8-H  0.700    1
     STFangsong-Light--UniGB-UTF8-H  0.700    1
@@ -63,9 +63,9 @@ GMT的中文支持
     STHeiti-Regular--UniGB-UTF8-V   0.700   1
     STKaiti-Regular--UniGB-UTF8-V   0.700   1
 
-这几句话分别添加了宋体、仿宋、黑体和楷体四种字体的横排和竖排两种方式。
+這幾句話分別添加了宋體、仿宋、黑體和楷體四種字體的橫排和豎排兩種方式。
 
-用 ``gmt text -L`` 命令查看 GMT 当前的字体配置::
+用 ``gmt text -L`` 命令查看 GMT 當前的字體配置::
 
     $ gmt text -L
     Font #  Font Name
@@ -82,19 +82,19 @@ GMT的中文支持
     45 STHeiti-Regular--UniGB-UTF8-V
     46 STKaiti-Regular--UniGB-UTF8-V
 
-其中 39-46 号字体为新添加的中文字体。
-以后要用中文字体时，需要用这些编号来指定字体，也许你的机器上的编号和这里不同。
+其中 39-46 號字體爲新添加的中文字體。
+以後要用中文字體時，需要用這些編號來指定字體，也許你的機器上的編號和這裏不同。
 
-GMT 中文测试
+GMT 中文測試
 ------------
 
 .. note::
 
-   请自行确认你的中文字体编号。如果编号不是39到46，请自行修改以下测试脚本。
+   請自行確認你的中文字體編號。如果編號不是39到46，請自行修改以下測試腳本。
 
 .. literalinclude:: GMT_Chinese.sh
 
-成图效果如下：
+成圖效果如下：
 
 .. figure:: GMT_Chinese.*
    :width: 100%

@@ -1,0 +1,396 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>CPT類型 &mdash; GMT中文手册</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+    <link rel="canonical" href="https://docs.gmt-china.org/latest/cpt/format.html"/>
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
+        <script async="async" type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="內置CPT" href="builtin-cpt.html" />
+    <link rel="prev" title="CPT文件" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+    
+    <a href="../index.html" class="icon icon-home"> GMT中文手册
+    
+
+    
+    </a>
+
+    
+    
+    
+    <div class="version">
+        <select onchange="location = this.options[this.selectedIndex].value;">
+            
+            <option value="/6.0/"  selected > v6.0 </option>
+            
+            <option value="/5.4/" > v5.4 </option>
+            
+        </select>
+    </div>
+    
+    
+
+    
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文件" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+    
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">目 錄</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">簡介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/index.html">安裝</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migrating/index.html">版本遷移</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">入門教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basis/index.html">GMT基礎</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../table/index.html">表數據</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grid/index.html">網格檔</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">CPT文件</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">CPT類型</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">分類CPT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">常規CPT</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="builtin-cpt.html">內置CPT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="makecpt.html">製作CPT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html">使用CPT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="current-cpt.html">當前CPT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html">CPT資源</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../option/index.html">標準選項</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../proj/index.html">地圖投影</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conf/index.html">配置參數</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dataset/index.html">地學數據集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chinese/index.html">中文支持</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../module/index.html">模塊手冊</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery/index.html">繪圖示例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/index.html">附錄</a></li>
+</ul>
+
+            
+          
+
+    
+        <p class="caption">
+            <span class="caption-text">外部链接</span>
+        </p>
+        <ul>
+            
+                <li class="toctree-l1"><a href="https://docs.gmt-china.org/6.0/GMT_docs.pdf"><i class="fa fa-book fa-fw"></i> PDF下载</a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/gmt-china/GMT_Docs"><i class="fa fa-github fa-fw"></i> 源代码</a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/gmt-china/GMT_docs/blob/master/CONTRIBUTING.md"><i class="fa fa-edit fa-fw"></i> 贡献指南</a></li>
+            
+                <li class="toctree-l1"><a href="https://gmt-china.org"><i class="fa fa-globe fa-fw"></i> GMT中文社区</a></li>
+            
+                <li class="toctree-l1"><a href="mailto:admin@gmt-china.org"><i class="fa fa-envelope fa-fw"></i> 联系我们</a></li>
+            
+        </ul>
+    
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">GMT中文手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">首頁</a> &raquo;</li>
+        
+          <li><a href="index.html">CPT文件</a> &raquo;</li>
+        
+      <li>CPT類型</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/gmt-china/GMT_Docs/blob/master/source/cpt/format.rst" class="fa fa-github"> 編輯本頁</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="cpt">
+<h1>CPT類型<a class="headerlink" href="#cpt" title="永久链接至标题">¶</a></h1>
+<p>CPT文件可以分成兩類，一種適用於分類數據，一種適用於常規數據。下面會逐一介紹兩種類型的CPT文件的格式，以及其如何實現數值與顏色之間的映射。</p>
+<div class="section" id="id1">
+<h2>分類CPT<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p>分類CPT文件適用於分類數據。所謂分類數據，是指數據只能取有限個離散的值。比如將陸地分爲不同的類型：沙漠、森林、冰川等等。定義1代表沙漠，2代表森林，3代表冰川。顯然值取1.5是沒有意義的。</p>
+<p>分類CPT文件的格式爲:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&lt;key1&gt;      &lt;fill1&gt;     <span class="o">[</span><span class="p">;</span>&lt;label1&gt;<span class="o">]</span>
+&lt;key2&gt;      &lt;fill2&gt;     <span class="o">[</span><span class="p">;</span>&lt;label2&gt;<span class="o">]</span>
+...
+&lt;keyn&gt;      &lt;filln&gt;     <span class="o">[</span><span class="p">;</span>&lt;labeln&gt;<span class="o">]</span>
+B   &lt;fill_background&gt;
+F   &lt;fill_foreground&gt;
+N   &lt;fill_nan&gt;
+</pre></div>
+</div>
+<p>其中：</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">&lt;key&gt;</span></code> 是分類數據的可能取值。<code class="docutils literal notranslate"><span class="pre">&lt;key&gt;</span></code> 必須單調遞增但可不連續</li>
+<li><code class="docutils literal notranslate"><span class="pre">&lt;fill&gt;</span></code> 是相應數據的填充色。可以是顏色，也可以是圖案，見 <a class="reference internal" href="../basis/fill.html"><span class="doc">填充</span></a></li>
+<li><code class="docutils literal notranslate"><span class="pre">&lt;label&gt;</span></code> 則是數據的標籤（可選）。通常設置爲類型名，其主要有兩個用途：讓用戶知道每一個可能取值代表的具體類型；在使用 <a class="reference internal" href="../module/colorbar.html"><span class="doc">colorbar</span></a> 繪製色標時可以將標籤顯示到色標旁邊。</li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;key&gt;</span></code> 還可以取以下特殊值：</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">B</span></code>：定義小於 <code class="docutils literal notranslate"><span class="pre">&lt;key1&gt;</span></code> 的值的填充色，即背景色，默認值由 <a class="reference internal" href="../conf/color.html#term-color-background"><span class="xref std std-term">COLOR_BACKGROUND</span></a> 控制</li>
+<li><code class="docutils literal notranslate"><span class="pre">F</span></code>：定義大於 <code class="docutils literal notranslate"><span class="pre">&lt;keyn&gt;</span></code> 的值的填充色，即前景色，默認值由 <a class="reference internal" href="../conf/color.html#term-color-foreground"><span class="xref std std-term">COLOR_FOREGROUND</span></a> 控制</li>
+<li><code class="docutils literal notranslate"><span class="pre">N</span></code>：定義值爲 NaN 時使用的填充色，默認值由 <a class="reference internal" href="../conf/color.html#term-color-nan"><span class="xref std std-term">COLOR_NAN</span></a> 控制</li>
+</ul>
+<p>下面是一個分類CPT文件的示例:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="m">0</span>  yellow  <span class="p">;</span>desert
+<span class="m">1</span>  green   <span class="p">;</span>forest
+<span class="m">2</span>  red     <span class="p">;</span>iceland
+</pre></div>
+</div>
+<p>從中可以看出CPT文件是如何完成數據與顏色之間的映射：</p>
+<ul class="simple">
+<li>當數據值爲0時，其填充色爲黃色，代表沙漠</li>
+<li>當數據值爲1時，其填充色爲綠色，代表森林</li>
+<li>當數據值爲2時，其填充色爲紅色，代表冰川</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h2>常規CPT<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>常規CPT文件適用於連續變化的數據。對於連續變化的數據，無法爲每個可能的數據值都指定顏色，通常的做法是爲某些特定值指定顏色，其它值的顏色則通過插值得到。</p>
+<p>常規CPT文件的格式爲:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&lt;z0&gt;     &lt;color_min_1&gt;  &lt;z1&gt;   &lt;color_max_1&gt;    <span class="o">[</span>L<span class="p">|</span>U<span class="p">|</span>B<span class="o">]</span>    <span class="o">[</span><span class="p">;</span>&lt;label&gt;<span class="o">]</span>
+&lt;z1&gt;     &lt;color_min_2&gt;  &lt;z2&gt;   &lt;color_max_2&gt;    <span class="o">[</span>L<span class="p">|</span>U<span class="p">|</span>B<span class="o">]</span>    <span class="o">[</span><span class="p">;</span>&lt;label&gt;<span class="o">]</span>
+...
+&lt;zn-1&gt;   &lt;color_min_n&gt;  &lt;zn&gt;   &lt;color_max_n&gt;    <span class="o">[</span>L<span class="p">|</span>U<span class="p">|</span>B<span class="o">]</span>    <span class="o">[</span><span class="p">;</span>&lt;label&gt;<span class="o">]</span>
+B   &lt;fill_background&gt;
+F   &lt;fill_foreground&gt;
+N   &lt;fill_nan&gt;
+</pre></div>
+</div>
+<p>常規CPT文件中的每一行均定義了一個Z值範圍所對應的顏色範圍。以第一行爲例，其定義了數據值爲 <code class="docutils literal notranslate"><span class="pre">&lt;z0&gt;</span></code> 時的顏色爲 <code class="docutils literal notranslate"><span class="pre">&lt;color_min_1&gt;</span></code>，數據值爲 <code class="docutils literal notranslate"><span class="pre">&lt;z1&gt;</span></code> 時的顏色爲 <code class="docutils literal notranslate"><span class="pre">&lt;color_max_1&gt;</span></code>，而數據值位於 <code class="docutils literal notranslate"><span class="pre">&lt;z0&gt;</span></code> 到
+<code class="docutils literal notranslate"><span class="pre">&lt;z1&gt;</span></code> 之間時顏色則通過對 <code class="docutils literal notranslate"><span class="pre">&lt;color_min_1&gt;</span></code> 和 <code class="docutils literal notranslate"><span class="pre">&lt;color_max_1&gt;</span></code> 線性或非線性插值得到。由此即定義了任意數值與顏色之間的映射關係。</p>
+<p>在每一行後面，還可以加上兩個可選項：</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">;&lt;label&gt;</span></code> 是Z值範圍所對應的標籤，使用 <a class="reference internal" href="../module/colorbar.html"><span class="doc">colorbar</span></a> 模塊繪製色標時加上 <code class="docutils literal notranslate"><span class="pre">-L</span></code> 選項則會將 <code class="docutils literal notranslate"><span class="pre">&lt;label&gt;</span></code> 作爲色標的標註</li>
+<li><code class="docutils literal notranslate"><span class="pre">L|U|B</span></code> 用於控制繪製色標時標註的放置位置。<code class="docutils literal notranslate"><span class="pre">L</span></code>、<code class="docutils literal notranslate"><span class="pre">U</span></code>、<code class="docutils literal notranslate"><span class="pre">B</span></code>分別標註每個Z值範圍的下限、上限或者同時標註Z值上下限</li>
+</ul>
+<p>Z值還可以取以下特殊值：</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">B</span></code>：定義小於 <code class="docutils literal notranslate"><span class="pre">&lt;z0&gt;</span></code> 的值的填充色，即背景色，默認值由 <a class="reference internal" href="../conf/color.html#term-color-background"><span class="xref std std-term">COLOR_BACKGROUND</span></a> 控制</li>
+<li><code class="docutils literal notranslate"><span class="pre">F</span></code>：定義大於 <code class="docutils literal notranslate"><span class="pre">&lt;zn&gt;</span></code> 的值的填充色，即前景色，默認值由 <a class="reference internal" href="../conf/color.html#term-color-foreground"><span class="xref std std-term">COLOR_FOREGROUND</span></a> 控制</li>
+<li><code class="docutils literal notranslate"><span class="pre">N</span></code>：定義值爲 NaN 時使用的填充色，默認值由 <a class="reference internal" href="../conf/color.html#term-color-nan"><span class="xref std std-term">COLOR_NAN</span></a> 控制</li>
+</ul>
+<p>GMT對於常規CPT文件的格式由如下要求：</p>
+<ol class="arabic simple">
+<li>Z值必須單調遞增</li>
+<li>Z值不能存在間斷，即每行的最大Z值必須與下一行的最小Z值相同</li>
+<li><code class="docutils literal notranslate"><span class="pre">B|F|N</span></code> 語句要放在CPT文件的開頭或結尾</li>
+<li>可以指定顏色也可以指定填充圖案，若 <code class="docutils literal notranslate"><span class="pre">&lt;color_min_1&gt;</span></code> 指定了填充圖案，則
+<code class="docutils literal notranslate"><span class="pre">&lt;color_max_1&gt;</span></code> 必須設置爲 <code class="docutils literal notranslate"><span class="pre">-</span></code></li>
+</ol>
+<p>常規CPT文件的格式是相對比較靈活的，其又可以進一步細分爲連續型CPT和間斷性CPT：</p>
+<dl class="docutils">
+<dt>連續型CPT</dt>
+<dd><p class="first">當一行的最大Z值與下一行的最小Z值對應同一個顏色</p>
+<p>例如，下面的示例CPT文件中在Z取0.5處顏色是連續的:</p>
+<div class="last highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="m">0</span>       black   <span class="m">0</span>.5     red
+<span class="m">0</span>.5     red         <span class="m">1</span>   yellow
+</pre></div>
+</div>
+</dd>
+<dt>間斷型CPT</dt>
+<dd><p class="first">即某一行的最大Z值與下一行的最小Z值對應不同的顏色。</p>
+<p>例如，下面的示例CPT文件中，第一行表明Z取0.5時爲紅色，第二行表明Z取0.5時爲藍色，即在Z取0.5處顏色存在間斷:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="m">0</span>       black   <span class="m">0</span>.5     red
+<span class="m">0</span>.5     blue    <span class="m">1</span>       yellow
+</pre></div>
+</div>
+<p>進一步，當某一行內最小Z值和最大Z值對應相同的顏色時則構成了單色間斷型CPT。例如，下面的示例CPT文件中，第一行指定了Z取0和0.5均定義爲黑色，意味着Z取0到
+0.5之間的任意數值均爲黑色。第二行則指定了Z取0.5到1之間的任意數值均爲紅色:</p>
+<div class="last highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="m">0</span>       black   <span class="m">0</span>.5     black
+<span class="m">0</span>.5     red     <span class="m">1</span>       red
+</pre></div>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+
+
+           </div>
+           
+           <div class="articleComments">
+            
+
+<!-- gitalk 脚本-->
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'b2dfca9a4bfad764aa2b',
+    clientSecret: '4ae5ddcd25c6b6d6bc07ac39201ea417054a530a',
+    owner: 'gmt-china',
+    repo: 'gitalk',
+    admin: ['zhaozhiyuan1989','cehui07226','NothingIsBig','seisman','SeisPider','wangliang1989','sqdeng'],
+    id: md5(location.pathname),
+    body: location.href,
+  });
+gitalk.render('gitalk-container');
+</script>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="builtin-cpt.html" class="btn btn-neutral float-right" title="內置CPT" accesskey="n" rel="next">下頁 <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="CPT文件" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> 上頁</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014 - 2020, GMT中文社区.
+      <span class="lastupdated">
+        最后更新于 2020年05月29日.
+      </span>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

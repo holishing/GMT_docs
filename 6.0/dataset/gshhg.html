@@ -1,0 +1,418 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>GSHHG: 全球高分辨率海岸線數據 &mdash; GMT中文手册</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+    <link rel="canonical" href="https://docs.gmt-china.org/latest/dataset/gshhg.html"/>
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
+        <script async="async" type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="DCW: 世界數字圖表" href="dcw/index.html" />
+    <link rel="prev" title="地學數據集" href="overview.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+    
+    <a href="../index.html" class="icon icon-home"> GMT中文手册
+    
+
+    
+    </a>
+
+    
+    
+    
+    <div class="version">
+        <select onchange="location = this.options[this.selectedIndex].value;">
+            
+            <option value="/6.0/"  selected > v6.0 </option>
+            
+            <option value="/5.4/" > v5.4 </option>
+            
+        </select>
+    </div>
+    
+    
+
+    
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文件" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+    
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">目 錄</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">簡介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/index.html">安裝</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migrating/index.html">版本遷移</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">入門教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basis/index.html">GMT基礎</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../table/index.html">表數據</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grid/index.html">網格檔</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cpt/index.html">CPT文件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../option/index.html">標準選項</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../proj/index.html">地圖投影</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conf/index.html">配置參數</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">地學數據集</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="overview.html">地學數據集</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">GSHHG: 全球高分辨率海岸線數據</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">數據分辨率</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">數據內容</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id3">海岸線</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">河流</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">國界線</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">使用示例</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dcw/index.html">DCW: 世界數字圖表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="earth-relief.html">earth_relief: 全球地形起伏數據</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gadm/index.html">GADM: 全球行政區劃數據庫</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PB2002/index.html">PB2002: 全球板塊邊界數據</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../chinese/index.html">中文支持</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../module/index.html">模塊手冊</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery/index.html">繪圖示例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/index.html">附錄</a></li>
+</ul>
+
+            
+          
+
+    
+        <p class="caption">
+            <span class="caption-text">外部链接</span>
+        </p>
+        <ul>
+            
+                <li class="toctree-l1"><a href="https://docs.gmt-china.org/6.0/GMT_docs.pdf"><i class="fa fa-book fa-fw"></i> PDF下载</a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/gmt-china/GMT_Docs"><i class="fa fa-github fa-fw"></i> 源代码</a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/gmt-china/GMT_docs/blob/master/CONTRIBUTING.md"><i class="fa fa-edit fa-fw"></i> 贡献指南</a></li>
+            
+                <li class="toctree-l1"><a href="https://gmt-china.org"><i class="fa fa-globe fa-fw"></i> GMT中文社区</a></li>
+            
+                <li class="toctree-l1"><a href="mailto:admin@gmt-china.org"><i class="fa fa-envelope fa-fw"></i> 联系我们</a></li>
+            
+        </ul>
+    
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">GMT中文手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">首頁</a> &raquo;</li>
+        
+          <li><a href="index.html">地學數據集</a> &raquo;</li>
+        
+      <li>GSHHG: 全球高分辨率海岸線數據</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/gmt-china/GMT_Docs/blob/master/source/dataset/gshhg.rst" class="fa fa-github"> 編輯本頁</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="gshhg">
+<h1>GSHHG: 全球高分辨率海岸線數據<a class="headerlink" href="#gshhg" title="永久链接至标题">¶</a></h1>
+<div class="figure align-center" id="id7">
+<a class="reference internal image-reference" href="../_images/gshhg.jpg"><img alt="../_images/gshhg.jpg" src="../_images/gshhg.jpg" style="width: 75%;" /></a>
+<p class="caption"><span class="caption-text">GSHHG: 全球高分辨率海岸線數據</span></p>
+</div>
+<p><strong>GSHHG數據主頁</strong>： <a class="reference external" href="http://www.soest.hawaii.edu/wessel/gshhg/">http://www.soest.hawaii.edu/wessel/gshhg/</a></p>
+<p>GSHHG，全稱爲 A Global Self-consistent, Hierarchical, High-resolution Geography Database。GMT提供的GSHHG數據中包含了海岸線、河流和國界等數據。</p>
+<div class="admonition warning">
+<p class="first admonition-title">警告</p>
+<p class="last">GSHHG提供的中國國界數據不符合中國的領土主張，在正式刊物中發表使用此類國界數據的圖件時都可能存在問題。</p>
+</div>
+<p>GMT的 <a class="reference internal" href="../module/coast.html"><span class="doc">coast</span></a> 模塊可以直接繪製GSHHG中的數據，也可以使用
+<a class="reference internal" href="../module/coast.html"><span class="doc">coast</span></a> 的 <strong>-M</strong> 選項將數據導出爲純文本文件供其它程序使用。這一節將利用 <a class="reference internal" href="../module/coast.html"><span class="doc">coast</span></a> 模塊介紹GSHHG數據。關於 <a class="reference internal" href="../module/coast.html"><span class="doc">coast</span></a> 模塊的詳細用法，見 <a class="reference internal" href="../module/coast.html"><span class="doc">coast</span></a> 模塊的說明文件。</p>
+<div class="section" id="id1">
+<h2>數據分辨率<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p>GSHHG提供了五種不同分辨率的數據，以滿足不同的需求。五種分辨率從高到低分別爲：</p>
+<p><strong>f</strong>ull &gt; <strong>h</strong>igh &gt; <strong>i</strong>ntermediate &gt; <strong>l</strong>ow &gt; <strong>c</strong>rude</p>
+<p><a class="reference internal" href="../module/coast.html"><span class="doc">coast</span></a> 模塊的 <strong>-D</strong> 選項加上每種分辨率的單詞首字母即可指定使用何種分辨率的數據。在繪製全球地圖時，可以用 <strong>-Dc</strong> 指定使用最低分辨率的數據，以避免繪製了大量細節而導致繪圖速度慢且文件太大；在繪製幾度範圍的小區域地圖時，則可以使用 <strong>-Df</strong> 指定使用最高分辨率的數據。GMT現代模式下，默認使用 <strong>-Da</strong> 選項，<strong>a</strong> 表示 <strong>a</strong>uto，即GMT會根據當前繪圖區域的大小自動選擇合適的數據分辨率。</p>
+<p>下面的示例繪製了一個小區域的海岸線邊界，可以看到 <strong>-D</strong> 取不同分辨率時邊界精細程度的差異:</p>
+<p><a class="reference download internal" download="" href="../_downloads/fd308869a499ed5bb4443be7166d6795/gshhg-gmtplot-0.sh"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">Code</span></code></a></p>
+<div class="figure align-center">
+<img alt="../_images/gshhg-gmtplot-0.png" src="../_images/gshhg-gmtplot-0.png" />
+</div>
+</div>
+<div class="section" id="id2">
+<h2>數據內容<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>GSHHG數據中包含了海岸線數據、河流數據和國界數據。</p>
+<div class="section" id="id3">
+<h3>海岸線<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
+<p>海岸線數據可以進一步細分爲4個不同的等級：</p>
+<ul class="simple">
+<li>1: 陸地和海洋的分界線，即真正意義上的海岸線</li>
+<li>2: 陸地與湖泊的分界線</li>
+<li>3: 湖泊中的島嶼與湖泊的分界線</li>
+<li>4: 湖泊中的島嶼裏的池塘與島嶼的分界線</li>
+</ul>
+<p><a class="reference internal" href="../module/coast.html"><span class="doc">coast</span></a> 模塊中有如下幾個與海岸線相關的選項：</p>
+<ul class="simple">
+<li><strong>-W</strong>[<em>level</em>/]<em>pen</em> 繪製不同等級的海岸線</li>
+<li><strong>-G</strong><em>fill</em> 設置陸地、島嶼等陸區的填充色</li>
+<li><strong>-S</strong><em>fill</em> 設置海洋、湖泊等水區的填充色</li>
+<li><strong>-Cl</strong>/<em>fill</em> 設置湖泊的填充色</li>
+<li><strong>-Cr</strong>/<em>fill</em> 設置河流湖的填充色</li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h3>河流<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
+<p>河流進一步可以細分爲10個等級：</p>
+<ul class="simple">
+<li>0: Double-lined rivers (river-lakes).</li>
+<li>1: Permanent major rivers.</li>
+<li>2: Additional major rivers.</li>
+<li>3: Additional rivers.</li>
+<li>4: Minor rivers.</li>
+<li>5: Intermittent rivers - major.</li>
+<li>6: Intermittent rivers - additional.</li>
+<li>7: Intermittent rivers - minor.</li>
+<li>8: Major canals.</li>
+<li>9: Minor canals.</li>
+<li>10: Irrigation canals.</li>
+</ul>
+<p><a class="reference internal" href="../module/coast.html"><span class="doc">coast</span></a> 模塊的 <strong>-I</strong> 選項可以用於繪製不同等級的河流，其基本語法爲 <strong>-I</strong><em>level</em>/<em>pen</em>。其中 <em>level</em> 除了可以取1至10之外，還可以取：</p>
+<ul class="simple">
+<li><strong>a</strong>: 所有河流和運河，即包含0-10等級的所有河流</li>
+<li><strong>A</strong>: 除了河流湖之外的所有河流和運河，即包含1-10等級的河流</li>
+<li><strong>r</strong>: 所有永久河流，即0-4等級</li>
+<li><strong>R</strong>: 除了河流湖之外的永久河流，即1-4等級</li>
+<li><strong>i</strong>: 所有間歇性河流，即5-7等級</li>
+<li><strong>c</strong>: 所有運河，即8-10等級</li>
+</ul>
+<p>該選項可以重複多次使用，爲不同等級的河流設置不同的畫筆屬性。</p>
+</div>
+<div class="section" id="id5">
+<h3>國界線<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<p>國界線進一步細分爲三個等級</p>
+<ul class="simple">
+<li>1: 國界</li>
+<li>2: 美國州界</li>
+<li>3: 海洋邊界</li>
+</ul>
+<p><a class="reference internal" href="../module/coast.html"><span class="doc">coast</span></a> 模塊的 <strong>-N</strong> 選項可以用於繪製不同等級的國界線，其基本語法爲 <strong>-N</strong><em>level</em>/<em>pen</em>。其中 <em>level</em> 可以取1至3，也可以取 <strong>a</strong> （表示所有邊界）。該選項可以重複多次使用，爲不同等級的國界設置不同的畫筆屬性。</p>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>使用示例<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<p>繪製1級海岸線：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt coast -R-130/-70/24/52 -JL-100/35/33/45/15c -Ba -A1000 -W1/0.5p -png map
+</pre></div>
+</div>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/gshhg-gmtplot-1.png"><img alt="../_images/gshhg-gmtplot-1.png" src="../_images/gshhg-gmtplot-1.png" style="width: 75%;" /></a>
+</div>
+<p>同時繪製1-3級海岸線，黑色的爲1級海岸線，紅色的爲2級湖泊線（圖中的大面積紅色區域爲五大湖），藍色的爲3級島嶼線（即五大湖內部的島嶼）：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt coast -R-130/-70/24/52 -JL-100/35/33/45/15c -Ba -A1000 -W1/0.5p -W2/0.3p,red -W3/0.2p,blue -png map
+</pre></div>
+</div>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/gshhg-gmtplot-2.png"><img alt="../_images/gshhg-gmtplot-2.png" src="../_images/gshhg-gmtplot-2.png" style="width: 75%;" /></a>
+</div>
+<p>繪製1-3級海岸線，併爲陸地、還有、湖泊填充不同的顏色：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt coast -R-130/-70/24/52 -JL-100/35/33/45/15c -Ba -A1000 -W1/0.5p -W2/0.3p,red -W3/0.2p,blue <span class="se">\</span>
+     -Gtan -Slightblue -Cl/royalblue -png map
+</pre></div>
+</div>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/gshhg-gmtplot-3.png"><img alt="../_images/gshhg-gmtplot-3.png" src="../_images/gshhg-gmtplot-3.png" style="width: 75%;" /></a>
+</div>
+<p>繪製海岸線、國界和美國州界：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt coast -R-130/-70/24/52 -JL-100/35/33/45/15c -Ba -Dh -A1000 -W1/0.5p -N1/thick,red -N2/thinner <span class="se">\</span>
+    -Gtan -Slightblue -Cl/royalblue -png map
+</pre></div>
+</div>
+<div class="figure align-center">
+<img alt="../_images/gshhg-gmtplot-4.png" src="../_images/gshhg-gmtplot-4.png" />
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+           <div class="articleComments">
+            
+
+<!-- gitalk 脚本-->
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'b2dfca9a4bfad764aa2b',
+    clientSecret: '4ae5ddcd25c6b6d6bc07ac39201ea417054a530a',
+    owner: 'gmt-china',
+    repo: 'gitalk',
+    admin: ['zhaozhiyuan1989','cehui07226','NothingIsBig','seisman','SeisPider','wangliang1989','sqdeng'],
+    id: md5(location.pathname),
+    body: location.href,
+  });
+gitalk.render('gitalk-container');
+</script>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="dcw/index.html" class="btn btn-neutral float-right" title="DCW: 世界數字圖表" accesskey="n" rel="next">下頁 <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="overview.html" class="btn btn-neutral float-left" title="地學數據集" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> 上頁</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014 - 2020, GMT中文社区.
+      <span class="lastupdated">
+        最后更新于 2020年05月29日.
+      </span>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

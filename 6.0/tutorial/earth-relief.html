@@ -1,0 +1,417 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>繪製地形起伏 &mdash; GMT中文手册</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+    <link rel="canonical" href="https://docs.gmt-china.org/latest/tutorial/earth-relief.html"/>
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
+        <script async="async" type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="理解圖層" href="layers.html" />
+    <link rel="prev" title="添加圖例" href="legend.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+    
+    <a href="../index.html" class="icon icon-home"> GMT中文手册
+    
+
+    
+    </a>
+
+    
+    
+    
+    <div class="version">
+        <select onchange="location = this.options[this.selectedIndex].value;">
+            
+            <option value="/6.0/"  selected > v6.0 </option>
+            
+            <option value="/5.4/" > v5.4 </option>
+            
+        </select>
+    </div>
+    
+    
+
+    
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文件" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+    
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">目 錄</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">簡介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/index.html">安裝</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migrating/index.html">版本遷移</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">入門教程</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="get-started/index.html">GMT初探</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commands.html">命令初探</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scripting.html">腳本編程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basemap.html">繪製底圖</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coastline.html">繪製海岸線</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lines.html">繪製線段和多邊形</a></li>
+<li class="toctree-l2"><a class="reference internal" href="symbols.html">繪製符號</a></li>
+<li class="toctree-l2"><a class="reference internal" href="texts.html">添加文字</a></li>
+<li class="toctree-l2"><a class="reference internal" href="legend.html">添加圖例</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">繪製地形起伏</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">全球地形起伏數據</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">繪製全球地形起伏圖</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">繪圖區域地形起伏圖</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">增加光照效果</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">添加色標</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cpt">製作CPT文件</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="layers.html">理解圖層</a></li>
+<li class="toctree-l2"><a class="reference internal" href="histogram/index.html">繪製直方圖</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oneliner.html">GMT單行模式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inset.html">GMT圖中圖模式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="subplot.html">GMT子圖模式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multifig.html">GMT多圖模式</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../basis/index.html">GMT基礎</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../table/index.html">表數據</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grid/index.html">網格檔</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cpt/index.html">CPT文件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../option/index.html">標準選項</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../proj/index.html">地圖投影</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conf/index.html">配置參數</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dataset/index.html">地學數據集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chinese/index.html">中文支持</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../module/index.html">模塊手冊</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery/index.html">繪圖示例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/index.html">附錄</a></li>
+</ul>
+
+            
+          
+
+    
+        <p class="caption">
+            <span class="caption-text">外部链接</span>
+        </p>
+        <ul>
+            
+                <li class="toctree-l1"><a href="https://docs.gmt-china.org/6.0/GMT_docs.pdf"><i class="fa fa-book fa-fw"></i> PDF下载</a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/gmt-china/GMT_Docs"><i class="fa fa-github fa-fw"></i> 源代码</a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/gmt-china/GMT_docs/blob/master/CONTRIBUTING.md"><i class="fa fa-edit fa-fw"></i> 贡献指南</a></li>
+            
+                <li class="toctree-l1"><a href="https://gmt-china.org"><i class="fa fa-globe fa-fw"></i> GMT中文社区</a></li>
+            
+                <li class="toctree-l1"><a href="mailto:admin@gmt-china.org"><i class="fa fa-envelope fa-fw"></i> 联系我们</a></li>
+            
+        </ul>
+    
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">GMT中文手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">首頁</a> &raquo;</li>
+        
+          <li><a href="index.html">入門教程</a> &raquo;</li>
+        
+      <li>繪製地形起伏</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/gmt-china/GMT_Docs/blob/master/source/tutorial/earth-relief.rst" class="fa fa-github"> 編輯本頁</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>繪製地形起伏<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<p>繪製地圖時另一個常見的需求是繪製全球或者區域的地形起伏作爲底圖。</p>
+<p>GMT中 <a class="reference internal" href="../module/grdimage.html"><span class="doc">grdimage</span></a> 模塊可以繪製二維網格，其原理是建立Z值與顏色之間的映射關係，每個座標點不同的Z值用不同的顏色表徵。地形起伏，即不同經緯度處的高程或海深數據，也是一種二維數據，因而我們可以使用
+<strong>grdimage</strong> 模塊繪製地形起伏。</p>
+<div class="section" id="id2">
+<h2>全球地形起伏數據<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>要繪製全球或區域地形起伏圖，首先需要擁有地形起伏數據，即不同經緯度處的高程或海深數據。GMT收集整理並提供了一套全球地形起伏數據，供用戶直接使用。這套地形起伏數據分爲包含了從60弧分到1弧秒的多種不同精度的全球地形起伏數據，以滿足不同的繪圖區域大小的需求。</p>
+<p>GMT用戶可以通過給定文件名 <code class="file docutils literal notranslate"><span class="pre">&#64;earth_relief_xxx</span></code> 的方式來指定要使用某個精度的地形。<em>xxx</em> 用於指定數據精度，例如 <strong>15m</strong>、<strong>01m</strong>和 <strong>15s</strong> 分別表示數據分辨率爲15弧分、1弧分和15弧秒。</p>
+<p>文件名前的 <strong>&#64;</strong> 表示該數據是由GMT官方提供並維護的數據，當第一次使用該文件時，GMT會自動從服務器下載該數據並保存到本地的GMT數據目錄中，當以後再使用該文件時，則直接讀取本地文件，而無需重新下載該數據。</p>
+<p>關於全球地形起伏數據的詳細介紹見 <a class="reference internal" href="../dataset/earth-relief.html"><span class="doc">earth_relief: 全球地形起伏數據</span></a>。</p>
+</div>
+<div class="section" id="id3">
+<h2>繪製全球地形起伏圖<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>下面我們將使用 <strong>grdimage</strong> 模塊繪製5弧分精度的全球地形起伏數據（<code class="file docutils literal notranslate"><span class="pre">&#64;earth_relief_05m</span></code>）。不同的高程用不同的顏色表示，從中我們很容易看出不同地區的地形變化。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt begin global_relief png,pdf
+gmt grdimage @earth_relief_05m -JH180/10c
+gmt end show
+</pre></div>
+</div>
+<div class="figure align-center" id="id7">
+<a class="reference internal image-reference" href="../_images/earth-relief-gmtplot-01.png"><img alt="../_images/earth-relief-gmtplot-01.png" src="../_images/earth-relief-gmtplot-01.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-text">全球地形起伏圖</span></p>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>繪圖區域地形起伏圖<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<p>想要繪製區域地形起伏？只需要在 <strong>grdimage</strong> 模塊中使用 <strong>-R</strong> 選項指定區域經緯度範圍即可。這裏我們設置了繪圖區域爲118°E至125°E、20°N至26°N。由於繪圖區域比較小，所以我們選用了更高精度的 30 弧秒的地形起伏數據。</p>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">30弧秒的地形起伏數據大小約爲800Mb。第一次使用該數據時GMT會自動從服務器下載該文件，因而會很耗時，請耐心等待。</p>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt begin taiwan_relief png,pdf
+gmt grdimage @earth_relief_30s -JM15c -R118/125/20/26 -Baf -BWSen
+gmt end show
+</pre></div>
+</div>
+<div class="figure align-center" id="id8">
+<a class="reference internal image-reference" href="../_images/earth-relief-gmtplot-1.png"><img alt="../_images/earth-relief-gmtplot-1.png" src="../_images/earth-relief-gmtplot-1.png" style="width: 70%;" /></a>
+<p class="caption"><span class="caption-text">臺灣區域地形圖</span></p>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>增加光照效果<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<p>爲了讓地形起伏圖更加立體，我們可以爲圖幅加上光照效果。我們可以指定光照的方向、強度等參數，也可以直接使用 <strong>-I+d</strong> 以使用默認的光照效果。</p>
+<p>下面的示例中，我們加上了 <strong>-I+d</strong> 以增加光照效果。跟上圖比一比，是否圖片更加立體也更加美觀了呢？</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt begin taiwan_relief png,pdf
+gmt grdimage @earth_relief_30s -JM15c -R118/125/20/26 -Baf -BWSen -I+d
+gmt end show
+</pre></div>
+</div>
+<div class="figure align-center" id="id9">
+<a class="reference internal image-reference" href="../_images/earth-relief-gmtplot-2.png"><img alt="../_images/earth-relief-gmtplot-2.png" src="../_images/earth-relief-gmtplot-2.png" style="width: 70%;" /></a>
+<p class="caption"><span class="caption-text">帶光照效果的臺灣區域地形圖</span></p>
+</div>
+<p>增加光照效果本質上是計算了每個點沿着某個方位角的方向梯度，然後根據每個點的方向梯度的正負以及振幅調節該點顏色的亮度值。對於向陽處，其方向梯度爲正值，則增加該點顏色的亮度；對於背陰處，其方向梯度爲負值，則降低該點顏色的亮度。由此達到增加光照效果、增強立體感的目的。</p>
+</div>
+<div class="section" id="id6">
+<h2>添加色標<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<p>前面提到，<strong>grdimage</strong> 繪製地形起伏數據本質上就是將高程的數值與顏色之間對應起來。二者之間的對應關係由色標文件（即CPT文件）決定。那麼，上圖使用的是怎麼樣的CPT呢？高程數值與顏色之間的對應關係又是怎樣的呢？不同的顏色代表的具體數值又是多少呢？這就需要用 <a class="reference internal" href="../module/colorbar.html"><span class="doc">colorbar</span></a> 向圖中添加色標。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt begin taiwan_relief png,pdf
+gmt grdimage @earth_relief_30s -JM15c -R118/125/20/26 -Baf -BWSen -I+d
+gmt colorbar
+gmt end show
+</pre></div>
+</div>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/earth-relief-gmtplot-3.png"><img alt="../_images/earth-relief-gmtplot-3.png" src="../_images/earth-relief-gmtplot-3.png" style="width: 70%;" /></a>
+</div>
+<p>上面的腳本中 <strong>colorbar</strong> 命令在地形圖的下方添加了一個色標，但是色標下面的有一團很亂的標註，這顯示不是我們想要的。我們可以使用 <strong>-B</strong> 選項設置色標的標註間隔，併爲色標添加一個標籤。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt begin taiwan_relief png,pdf
+gmt grdimage @earth_relief_30s -JM15c -R118/125/20/26 -Baf -BWSen -I+d
+gmt colorbar -Bxaf+l<span class="s2">&quot;Elevation (m)&quot;</span>
+gmt end show
+</pre></div>
+</div>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/earth-relief-gmtplot-4.png"><img alt="../_images/earth-relief-gmtplot-4.png" src="../_images/earth-relief-gmtplot-4.png" style="width: 70%;" /></a>
+</div>
+<p>當然，我們還可以更進一步調整色標的位置、長度等屬性。下面的腳本中，我們使用了
+<strong>-D</strong> 選項將色標放在了地形起伏圖的右側中間（<strong>JMR</strong>）向右偏移1.5釐米，色標長度爲10釐米，並將標籤放在了色標左側（<strong>+ml</strong>）。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt begin taiwan_relief png,pdf
+gmt grdimage @earth_relief_30s -JM15c -R118/125/20/26 -Baf -BWSen -I+d
+gmt colorbar -DJMR+w10c+o1.5c/0c+ml -Bxa1000f -By+l<span class="s2">&quot;m&quot;</span>
+gmt end show
+</pre></div>
+</div>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/earth-relief-gmtplot-5.png"><img alt="../_images/earth-relief-gmtplot-5.png" src="../_images/earth-relief-gmtplot-5.png" style="width: 70%;" /></a>
+</div>
+</div>
+<div class="section" id="cpt">
+<h2>製作CPT文件<a class="headerlink" href="#cpt" title="永久链接至标题">¶</a></h2>
+<p>上面的示例中使用的是GMT的默認CPT文件。用戶也可以使用 <a class="reference internal" href="../module/makecpt.html"><span class="doc">makecpt</span></a> 或
+<a class="reference external" href="https://docs.generic-mapping-tools.org/6.0/grd2cpt.html" title="(在 GMT v6.0)"><span>grd2cpt</span></a> 製作CPT文件。</p>
+<p>下面的示例中，我們使用 <a class="reference internal" href="../module/makecpt.html"><span class="doc">makecpt</span></a> 模塊在GMT內置CPT <strong>globe</strong> 的基礎上生成了一個-8000到8000範圍內的新CPT文件。生成的CPT文件將作爲當前CPT文件，供接下來的 <strong>grdimage</strong> 和 <strong>colorbar</strong> 命令使用。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt begin taiwan_relief png,pdf
+gmt basemap -JM15c -R118/125/20/26 -Baf -BWSen
+gmt makecpt -Cglobe -T-8000/8000
+gmt grdimage @earth_relief_30s -I+d
+gmt colorbar -Bxa2000 -B+l<span class="s2">&quot;m&quot;</span>
+gmt end show
+</pre></div>
+</div>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/earth-relief-gmtplot-6.png"><img alt="../_images/earth-relief-gmtplot-6.png" src="../_images/earth-relief-gmtplot-6.png" style="width: 70%;" /></a>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+           <div class="articleComments">
+            
+
+<!-- gitalk 脚本-->
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'b2dfca9a4bfad764aa2b',
+    clientSecret: '4ae5ddcd25c6b6d6bc07ac39201ea417054a530a',
+    owner: 'gmt-china',
+    repo: 'gitalk',
+    admin: ['zhaozhiyuan1989','cehui07226','NothingIsBig','seisman','SeisPider','wangliang1989','sqdeng'],
+    id: md5(location.pathname),
+    body: location.href,
+  });
+gitalk.render('gitalk-container');
+</script>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="layers.html" class="btn btn-neutral float-right" title="理解圖層" accesskey="n" rel="next">下頁 <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="legend.html" class="btn btn-neutral float-left" title="添加圖例" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> 上頁</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014 - 2020, GMT中文社区.
+      <span class="lastupdated">
+        最后更新于 2020年05月29日.
+      </span>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

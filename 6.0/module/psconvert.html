@@ -1,0 +1,572 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>psconvert &mdash; GMT中文手册</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+    <link rel="canonical" href="https://docs.gmt-china.org/latest/module/psconvert.html"/>
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
+        <script async="async" type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="rose" href="rose.html" />
+    <link rel="prev" title="project" href="project.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+    
+    <a href="../index.html" class="icon icon-home"> GMT中文手册
+    
+
+    
+    </a>
+
+    
+    
+    
+    <div class="version">
+        <select onchange="location = this.options[this.selectedIndex].value;">
+            
+            <option value="/6.0/"  selected > v6.0 </option>
+            
+            <option value="/5.4/" > v5.4 </option>
+            
+        </select>
+    </div>
+    
+    
+
+    
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文件" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+    
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">目 錄</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">簡介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/index.html">安裝</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migrating/index.html">版本遷移</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">入門教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basis/index.html">GMT基礎</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../table/index.html">表數據</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grid/index.html">網格檔</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cpt/index.html">CPT文件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../option/index.html">標準選項</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../proj/index.html">地圖投影</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conf/index.html">配置參數</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dataset/index.html">地學數據集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chinese/index.html">中文支持</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">模塊手冊</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="basemap.html">basemap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="begin.html">begin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clear.html">clear</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clip.html">clip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coast.html">coast</a></li>
+<li class="toctree-l2"><a class="reference internal" href="colorbar.html">colorbar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coupe.html">coupe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs.html">docs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="end.html">end</a></li>
+<li class="toctree-l2"><a class="reference internal" href="figure.html">figure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filter1d.html">filter1d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fitcircle.html">fitcircle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gmt.html">gmt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gmt-config.html">gmt-config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gmtconnect.html">gmtconnect</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gmtdefaults.html">gmtdefaults</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gmtget.html">gmtget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gmtinfo.html">gmtinfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gmtlogo.html">gmtlogo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gmtselect.html">gmtselect</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gmtset.html">gmtset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gmtsimplify.html">gmtsimplify</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gmtwhich.html">gmtwhich</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grd2xyz.html">grd2xyz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdblend.html">grdblend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdclip.html">grdclip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdconvert.html">grdconvert</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdcut.html">grdcut</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdedit.html">grdedit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdfill.html">grdfill</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdimage.html">grdimage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdinfo.html">grdinfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdlandmask.html">grdlandmask</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdmask.html">grdmask</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdpaste.html">grdpaste</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdproject.html">grdproject</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdsample.html">grdsample</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdtrack.html">grdtrack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdtrend.html">grdtrend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdvector.html">grdvector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdvolume.html">grdvolume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="histogram.html">histogram</a></li>
+<li class="toctree-l2"><a class="reference internal" href="image.html">image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inset.html">inset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kml2gmt.html">kml2gmt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="legend.html">legend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="makecpt.html">makecpt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mapproject.html">mapproject</a></li>
+<li class="toctree-l2"><a class="reference internal" href="meca.html">meca</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot.html">plot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="polar.html">polar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="project.html">project</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">psconvert</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">語法</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">必須選項</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">可選選項</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="rose.html">rose</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sac.html">sac</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sample1d.html">sample1d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="solar.html">solar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spectrum1d.html">spectrum1d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="subplot.html">subplot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ternary.html">ternary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="text.html">text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="velo.html">velo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xyz2grd.html">xyz2grd</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery/index.html">繪圖示例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/index.html">附錄</a></li>
+</ul>
+
+            
+          
+
+    
+        <p class="caption">
+            <span class="caption-text">外部链接</span>
+        </p>
+        <ul>
+            
+                <li class="toctree-l1"><a href="https://docs.gmt-china.org/6.0/GMT_docs.pdf"><i class="fa fa-book fa-fw"></i> PDF下载</a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/gmt-china/GMT_Docs"><i class="fa fa-github fa-fw"></i> 源代码</a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/gmt-china/GMT_docs/blob/master/CONTRIBUTING.md"><i class="fa fa-edit fa-fw"></i> 贡献指南</a></li>
+            
+                <li class="toctree-l1"><a href="https://gmt-china.org"><i class="fa fa-globe fa-fw"></i> GMT中文社区</a></li>
+            
+                <li class="toctree-l1"><a href="mailto:admin@gmt-china.org"><i class="fa fa-envelope fa-fw"></i> 联系我们</a></li>
+            
+        </ul>
+    
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">GMT中文手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">首頁</a> &raquo;</li>
+        
+          <li><a href="index.html">模塊手冊</a> &raquo;</li>
+        
+      <li>psconvert</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/gmt-china/GMT_Docs/blob/master/source/module/psconvert.rst" class="fa fa-github"> 編輯本頁</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="psconvert">
+<span id="index-0"></span><h1>psconvert<a class="headerlink" href="#psconvert" title="永久链接至标题">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">官方文件:</th><td class="field-body"><a class="reference external" href="https://docs.generic-mapping-tools.org/6.0/psconvert.html" title="(在 GMT v6.0)"><span>psconvert</span></a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">簡介:</th><td class="field-body">將 GMT 生成的 PS/EPS 文件轉換爲其它圖片格式</td>
+</tr>
+</tbody>
+</table>
+<p><strong>psconvert</strong> 模塊通過調用 Ghostscript 將 PS/EPS 文件轉換爲其它圖片格式，包括BMP、EPS、JPEG、PDF、PNG、PPM、SVG、TIFF 格式。</p>
+<div class="section" id="id1">
+<h2>語法<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p><strong>gmt psconvert</strong> <em>psfile(s)</em>
+[ <a class="reference internal" href="#a"><span> <strong>-A</strong></span></a></strong><em>params</em> ]
+[ <a class="reference internal" href="#c"><span> <strong>-C</strong></span></a></strong><em>gs_option</em> ]
+[ <a class="reference internal" href="#d"><span> <strong>-D</strong></span></a></strong><em>outdir</em> ]
+[ <a class="reference internal" href="#e"><span> <strong>-E</strong></span></a></strong><em>resolution</em> ]
+[ <a class="reference internal" href="#f"><span> <strong>-F</strong></span></a></strong><em>out_name</em> ]
+[ <a class="reference internal" href="#g"><span> <strong>-G</strong></span></a></strong><em>ghost_path</em> ]
+[ <a class="reference internal" href="#h"><span> <strong>-H</strong></span></a></strong><em>factor</em> ]
+[ <a class="reference internal" href="#i"><span> <strong>-I</strong></span></a></strong> ]
+[ <a class="reference internal" href="#l"><span> <strong>-L</strong></span></a></strong><em>listfile</em> ]
+[ <strong>-Mb</strong>|<strong>f</strong><em>pslayer</em> ]
+[ <a class="reference internal" href="#q"><span> <strong>-Q</strong></span></a></strong>[<strong>g</strong>|<strong>p</strong>|<strong>t</strong>][1|2|4] ]
+[ <a class="reference internal" href="#s"><span> <strong>-S</strong></span></a></strong> ]
+[ <a class="reference internal" href="#t"><span> <strong>-T</strong></span></a></strong><strong>b</strong>|<strong>e</strong>|<strong>E</strong>|<strong>f</strong>|<strong>F</strong>|<strong>j</strong>|<strong>g</strong>|<strong>G</strong>|<strong>m</strong>|<strong>s</strong>|<strong>t</strong>[<strong>+m</strong>] ]
+[ <a class="reference internal" href="#v"><span> <strong>-V</strong></span></a></strong>[<em>level</em>] ]
+[ <a class="reference internal" href="#w"><span> <strong>-W</strong></span></a></strong><em>params</em> ]
+[ <a class="reference internal" href="#z"><span> <strong>-Z</strong></span></a></strong> ]
+[ <strong>--PAR</strong>=<em>value</em> ]</p>
+</div>
+<div class="section" id="id2">
+<h2>必須選項<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<dl class="docutils">
+<dt><em>psfiles</em></dt>
+<dd><p class="first">要轉換格式的 PS 文件名</p>
+<p class="last">默認會在當前目錄下生成與與原始PS文件相同文件名的新格式文件，文件後綴由文件格式決定。可以使用 <strong>-F</strong> 設置文件名，使用 <strong>-D</strong> 設置文件後綴。</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="id3">
+<h2>可選選項<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<dl class="docutils" id="a">
+<dt><strong>-A</strong>[<strong>+g</strong><em>paint</em>][<strong>+m</strong><em>margins</em>][<strong>+n</strong>][<strong>+p</strong>[<em>pen</em>]][<strong>+r</strong>][<strong>+s</strong>[<strong>m</strong>]|<strong>S</strong><em>width</em>[<strong>u</strong>]/<em>height</em>[<strong>u</strong>]][<strong>+u</strong>]</dt>
+<dd><p class="first">對輸出的圖片做裁邊。</p>
+<p>默認情況下，轉換得到的圖片的大小由PS文件的紙張尺寸決定。通常畫圖的時候是不會把一張A4紙畫滿的，所以在圖片周圍就會出現多餘的白色部分。</p>
+<p><strong>-A</strong> 選項會對PS文件進行裁剪，僅保留其中有繪圖的部分，即裁去白邊:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt psconvert -A test.ps
+</pre></div>
+</div>
+<p>默認的裁剪方式會將圖片裁剪到儘可能小。如果想要圖片周圍有額外的白色區域，可以使用 <strong>+m</strong><em>margins</em> 指定額外的空白量。其中 <em>margins</em> 可以取：</p>
+<ul class="simple">
+<li>一個數，表示四條邊的額外邊距相同，如 <code class="docutils literal notranslate"><span class="pre">-A0.5c</span></code></li>
+<li>兩個數字，表示分別指定X和Y方向的額外邊距，如 <code class="docutils literal notranslate"><span class="pre">-A0.5c/1c</span></code></li>
+<li>四個數字，表示分別指定左右下上四條邊的邊距，如 <code class="docutils literal notranslate"><span class="pre">-A0.5c/0.5c/0.5c/0.5c</span></code></li>
+</ul>
+<p><strong>-A+s</strong> 可以直接指定最終圖片的尺寸：</p>
+<ul class="simple">
+<li><strong>-A+s</strong><em>width</em> 指定最終生成的圖片的寬度，高度自動決定。程序會對圖片做插值以保證 <strong>-E</strong> 設置的DPI值</li>
+<li><strong>-A+S</strong><em>scale</em> 指定圖片的縮放比例</li>
+<li><strong>-A+sm</strong><em>width</em>/<em>height</em> 設置圖片所允許的最大尺寸。若原始圖片的寬度不大於 <em>width</em> 則使用圖片的原始尺寸，<em>height</em> 同理。</li>
+</ul>
+<p>其它子選項：</p>
+<ul class="last simple">
+<li><strong>-A+r</strong> 使得在計算圖片大小時使用 <code class="docutils literal notranslate"><span class="pre">round</span></code> 函數而不是 <code class="docutils literal notranslate"><span class="pre">ceil</span></code> 函數，這會對裁剪造成極其微小的區別，僅當要處理非常小的圖片時才需要使用。</li>
+<li><code class="docutils literal notranslate"><span class="pre">-A+g&lt;paint&gt;</span></code> 爲BoundingBox指定填充色</li>
+<li><code class="docutils literal notranslate"><span class="pre">-A+p&lt;pen&gt;</span></code> 爲BoundingBox指定邊框顏色，默認顏色爲 <code class="docutils literal notranslate"><span class="pre">0.25p,black</span></code></li>
+<li><strong>+g</strong><em>paint</em> 爲圖片的BoundingBox指定背景填充色</li>
+<li><strong>+p</strong>[<em>pen</em>] 爲圖片的BoundingBox繪製邊界 [若不指定 <em>pen</em>，則默認 0.25p,black]</li>
+<li><strong>+n</strong> 不做任何裁剪，以用於忽略到默認的裁剪設置</li>
+<li><strong>+u</strong> 先去掉GMT繪製的時間戳再裁剪</li>
+</ul>
+</dd>
+</dl>
+<dl class="docutils" id="c">
+<dt><strong>-C</strong><em>gs_option</em></dt>
+<dd><p class="first">額外傳遞給 Ghostscript 的選項</p>
+<p>該選項用於在調用 Ghostscript 時傳給 Ghostscript 額外的選項，若要額外給
+Ghostscript增加多個選項，可重複使用 <strong>-C</strong> 命令。</p>
+<p>在Windows下，若PS文件中含中文，則可能需要使用 <strong>-C</strong> 選項告訴Ghostscript字體路徑:</p>
+<div class="last highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt psconvert -C-sFONTPATH<span class="o">=</span>C:<span class="se">\W</span>indows<span class="se">\F</span>onts chinese.ps
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="docutils" id="d">
+<dt><strong>-D</strong><em>outdir</em></dt>
+<dd><p class="first">設置輸出目錄</p>
+<p class="last">默認情況下，會在PS文件同一目錄中生成其他圖片文件，使用 <strong>-D</strong> 選項可以指定輸出目錄。<strong>-D.</strong> 表示在當前目錄輸出。</p>
+</dd>
+</dl>
+<dl class="docutils" id="e">
+<dt><strong>-E</strong><em>dpi</em></dt>
+<dd><p class="first">設置圖片精度</p>
+<p class="last">值越大，圖片越清晰，文件也越大。PDF格式默認值爲720，其他格式默認值爲300，單位爲dpi。</p>
+</dd>
+</dl>
+<dl class="docutils" id="f">
+<dt><strong>-F</strong><em>out_name</em></dt>
+<dd><p class="first">指定輸出的文件名</p>
+<p>默認使用使用輸入的PS文件名，並修改其後綴作爲輸出文件的文件名。比如 <em>test.ps</em> 轉換出的JPG格式的圖片則爲 <em>test.jpg</em>。</p>
+<p class="last"><strong>-F</strong> 選項可強制指定輸出文件名，文件後綴由輸出的文件格式自動決定。</p>
+</dd>
+</dl>
+<dl class="docutils" id="g">
+<dt><strong>-G</strong><em>ghost_path</em></dt>
+<dd><p class="first">指定Ghostscript可執行文件的路徑</p>
+<p><strong>psconvert</strong> 底層調用了 Ghostscript 來實現PS到其他格式的轉換，因而成功轉換的前提是必須能夠找到 Ghostscript 的可執行文件。<strong>-G</strong> 選項即用於顯式指定
+ghostscript可執行文件的路徑。</p>
+<p>說明：</p>
+<ul class="last simple">
+<li>Linux下一般不需要設置Ghostscript的路徑，除非你自己重新編譯並安裝到了非標準路徑下</li>
+<li>Windows下，一般也不需要使用該選項，程序會自動從註冊表裏獲取路徑信息</li>
+<li>如果從註冊表中獲取路徑失敗，則必須使用 <strong>-G</strong> 選項指定路徑，如 <code class="docutils literal notranslate"><span class="pre">-GC:\programs\gs\gs9.02\bin\gswin64c</span></code></li>
+</ul>
+</dd>
+</dl>
+<dl class="docutils" id="h">
+<dt><strong>-H</strong><em>factor</em></dt>
+<dd><p class="first">在生成光柵格式圖片時，先將圖片精度DPI提高 <em>factor</em> 倍，然後進行光柵化，再減採樣 <em>factor</em> 倍，以此來提升光柵圖片的平滑度，避免鋸齒現象。</p>
+<p class="last"><em>factor</em> 越大，最終的光柵圖片越平滑。但 <em>factor</em> 太大也會使得圖片轉換變慢。建議的取值範圍是2到5。</p>
+</dd>
+</dl>
+<dl class="docutils" id="i">
+<dt><strong>-I</strong></dt>
+<dd>Enforce gray-shades by using ICC profiles.  Ghostscript versions
+&gt;= 9.00 change gray-shades by using ICC profiles.  Ghostscript 9.05
+and above provide the ‘-dUseFastColor=true’ option to prevent that
+and that is what <strong>psconvert</strong> does by default, unless option <strong>-I</strong> is
+set.  Note that for Ghostscript &gt;= 9.00 and &lt; 9.05 the gray-shade
+shifting is applied to all but PDF format.  We have no solution to
+offer other than upgrade Ghostscript.</dd>
+</dl>
+<dl class="docutils" id="l">
+<dt><strong>-L</strong><em>listfile</em></dt>
+<dd><em>listfile</em> 中列出要轉換的所有PS文件名</dd>
+</dl>
+<dl class="docutils" id="m">
+<dt><strong>-Mb</strong>|<strong>f</strong><em>pslayer</em></dt>
+<dd>將 PS 文件 <em>pslayer</em> 作爲背景或前景 PS 圖層。</dd>
+</dl>
+<dl class="docutils" id="p">
+<dt><strong>-P</strong></dt>
+<dd>強制轉換後的圖片爲Portrait模式。</dd>
+</dl>
+<dl class="docutils" id="q">
+<dt><strong>-Q</strong>[<strong>g</strong>|<strong>p</strong>|<strong>t</strong>][1|2|4]</dt>
+<dd><p class="first">設置圖片(<strong>g</strong>) 或文字(<strong>t</strong>) 的抗鋸齒選項。</p>
+<p>對於矢量格式，默認不做抗鋸齒處理。對於光柵格式，默認參數爲 <strong>-Qt4</strong>；對於透明PNG格式而言，默認參數是 <strong>-Qt4 -Qg2</strong>。</p>
+<p class="last"><strong>-Qp</strong> 表示打開生成GeoPDF開頭（需要使用 <strong>-Tf</strong> 選項）。</p>
+</dd>
+</dl>
+<dl class="docutils" id="s">
+<dt><strong>-S</strong></dt>
+<dd>在執行Ghostscript命令後，將具體的命令打印到標準錯誤流中，且保留轉換過程中的所有臨時文件。該選項主要用於調試。</dd>
+</dl>
+<dl class="docutils" id="t">
+<dt><strong>-Tb</strong>|<strong>e</strong>|<strong>E</strong>|<strong>f</strong>|<strong>F</strong>|<strong>j</strong>|<strong>g</strong>|<strong>G</strong>|<strong>m</strong>|<strong>s</strong>|<strong>t</strong>[<strong>+m</strong>]</dt>
+<dd><p class="first">指定要轉換的圖片格式。</p>
+<p>可以取值：</p>
+<ul class="simple">
+<li><strong>b</strong> ：BMP；</li>
+<li><strong>e</strong> ：EPS；</li>
+<li><strong>E</strong> ：帶有PageSize命令的EPS；</li>
+<li><strong>f</strong> ：PDF；</li>
+<li><strong>F</strong> ：多頁PDF；</li>
+<li><strong>j</strong> ：JPEG（默認值）；</li>
+<li><strong>g</strong> ：PNG（不透明背景）；</li>
+<li><strong>G</strong> ：PNG（透明背景）；</li>
+<li><strong>m</strong> ：PPM；</li>
+<li><strong>s</strong> ：SVG；</li>
+<li><strong>t</strong> ：TIFF；</li>
+</ul>
+<p>說明：</p>
+<ul class="simple">
+<li><strong>g</strong> 和 <strong>G</strong> 的區別在於前者背景色爲白色，後者背景色爲透明；</li>
+<li>對於 <strong>bjgt</strong> 格式可以在其後加 <strong>+m</strong> 將PS文件轉換爲灰度圖；</li>
+<li>EPS格式可以與其他格式合在一起使用。比如 <strong>-Tef</strong> 會同時生成EPS和PDF文件。除此之外，該模塊一次只能轉換一種格式，比如 <strong>-Tbf</strong> 則只會生成PDF格式</li>
+<li><strong>-TF</strong> 會將多個PS/PDF文件轉換併合併成一個多頁的PDF文件，需要使用
+<strong>-F</strong> 選項指定輸出的文件名</li>
+</ul>
+<p>轉換爲PDF格式:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt psconvert -Tf test.ps
+</pre></div>
+</div>
+<p>利用一堆PS文件生成一個多頁PDF:</p>
+<div class="last highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt psconvert -TF -Fout *.ps
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="docutils" id="v">
+<dt><strong>-V</strong>[<em>level</em>] <a class="reference internal" href="../option/V.html"><span class="doc">(more …)</span></a></dt>
+<dd>设置 verbose 等级 [c]</dd>
+</dl>
+<dl class="docutils" id="w">
+<dt><strong>-W</strong></dt>
+<dd><p class="first">生成geoTIFF或KML文件</p>
+<p class="last">該選項很複雜，見官方文件的說明。</p>
+</dd>
+</dl>
+<dl class="docutils" id="z">
+<dt><strong>-Z</strong></dt>
+<dd>轉換完成後刪除輸入的PS文件。若轉換失敗，輸入的PS文件不會被刪除。</dd>
+</dl>
+<dl class="docutils">
+<dt><strong>-^</strong> 或 <strong>-</strong></dt>
+<dd>显示简短的帮助信息，包括模块简介和基本语法信息（Windows下只能使用 <strong>-</strong>）</dd>
+<dt><strong>-+</strong> 或 <strong>+</strong></dt>
+<dd>显示帮助信息，包括模块简介、基本语法以及模块特有选项的说明</dd>
+<dt><strong>-?</strong> 或无参数</dt>
+<dd>显示完整的帮助信息，包括模块简介、基本语法以及所有选项的说明</dd>
+<dt><strong>--PAR</strong>=<em>value</em></dt>
+<dd>临时修改GMT参数的值，可重复多次使用。参数列表见 <a class="reference external" href="https://docs.generic-mapping-tools.org/6.0/gmt.conf.html" title="(在 GMT v6.0)"><span class="xref std std-doc">gmt.conf</span></a></dd>
+</dl>
+</div>
+</div>
+
+
+           </div>
+           
+           <div class="articleComments">
+            
+
+<!-- gitalk 脚本-->
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'b2dfca9a4bfad764aa2b',
+    clientSecret: '4ae5ddcd25c6b6d6bc07ac39201ea417054a530a',
+    owner: 'gmt-china',
+    repo: 'gitalk',
+    admin: ['zhaozhiyuan1989','cehui07226','NothingIsBig','seisman','SeisPider','wangliang1989','sqdeng'],
+    id: md5(location.pathname),
+    body: location.href,
+  });
+gitalk.render('gitalk-container');
+</script>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="rose.html" class="btn btn-neutral float-right" title="rose" accesskey="n" rel="next">下頁 <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="project.html" class="btn btn-neutral float-left" title="project" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> 上頁</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014 - 2020, GMT中文社区.
+      <span class="lastupdated">
+        最后更新于 2020年05月29日.
+      </span>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

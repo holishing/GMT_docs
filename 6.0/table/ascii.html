@@ -1,0 +1,403 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ASCII表 &mdash; GMT中文手册</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+    <link rel="canonical" href="https://docs.gmt-china.org/latest/table/ascii.html"/>
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
+        <script async="async" type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="二進制表" href="binary.html" />
+    <link rel="prev" title="表數據" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+    
+    <a href="../index.html" class="icon icon-home"> GMT中文手册
+    
+
+    
+    </a>
+
+    
+    
+    
+    <div class="version">
+        <select onchange="location = this.options[this.selectedIndex].value;">
+            
+            <option value="/6.0/"  selected > v6.0 </option>
+            
+            <option value="/5.4/" > v5.4 </option>
+            
+        </select>
+    </div>
+    
+    
+
+    
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文件" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+    
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">目 錄</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">簡介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/index.html">安裝</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migrating/index.html">版本遷移</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">入門教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basis/index.html">GMT基礎</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">表數據</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">ASCII表</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">ASCII表簡介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">文件頭記錄</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">多段數據</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">數據段頭記錄中的額外屬性</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="binary.html">二進制表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="netcdf.html">netCDF表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ogr.html">兼容OGR的GMT矢量數據格式</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../grid/index.html">網格檔</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cpt/index.html">CPT文件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../option/index.html">標準選項</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../proj/index.html">地圖投影</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conf/index.html">配置參數</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dataset/index.html">地學數據集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chinese/index.html">中文支持</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../module/index.html">模塊手冊</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery/index.html">繪圖示例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/index.html">附錄</a></li>
+</ul>
+
+            
+          
+
+    
+        <p class="caption">
+            <span class="caption-text">外部链接</span>
+        </p>
+        <ul>
+            
+                <li class="toctree-l1"><a href="https://docs.gmt-china.org/6.0/GMT_docs.pdf"><i class="fa fa-book fa-fw"></i> PDF下载</a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/gmt-china/GMT_Docs"><i class="fa fa-github fa-fw"></i> 源代码</a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/gmt-china/GMT_docs/blob/master/CONTRIBUTING.md"><i class="fa fa-edit fa-fw"></i> 贡献指南</a></li>
+            
+                <li class="toctree-l1"><a href="https://gmt-china.org"><i class="fa fa-globe fa-fw"></i> GMT中文社区</a></li>
+            
+                <li class="toctree-l1"><a href="mailto:admin@gmt-china.org"><i class="fa fa-envelope fa-fw"></i> 联系我们</a></li>
+            
+        </ul>
+    
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">GMT中文手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">首頁</a> &raquo;</li>
+        
+          <li><a href="index.html">表數據</a> &raquo;</li>
+        
+      <li>ASCII表</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/gmt-china/GMT_Docs/blob/master/source/table/ascii.rst" class="fa fa-github"> 編輯本頁</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="ascii">
+<h1>ASCII表<a class="headerlink" href="#ascii" title="永久链接至标题">¶</a></h1>
+<div class="section" id="id1">
+<h2>ASCII表簡介<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p>ASCII表是最常見的數據形式，可以用編輯器直接編輯。ASCII表常用於表示點或線。表數據中有N行M列，每行稱爲一個記錄，每列稱爲一個字段。一個記錄內的字段之間用空格、製表符、逗號或分號分隔。每個字段可以是整數（<code class="docutils literal notranslate"><span class="pre">12</span></code>）、浮點數（<code class="docutils literal notranslate"><span class="pre">20.34</span></code>）、地理座標（<code class="docutils literal notranslate"><span class="pre">12:23:44.5W</span></code>）、絕對時間（<code class="docutils literal notranslate"><span class="pre">2010-10-20T10:30:53.250</span></code>）、相對時間（<code class="docutils literal notranslate"><span class="pre">30t</span></code>）。同時，GMT還可以處理大多數CVS（Comma-Separated Values）文件，包括被雙引號擴起來的數字。</p>
+<p>例如:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># This is a comment line</span>
+<span class="c1"># lon      lat  evdp</span>
+<span class="c1"># This is another comment line</span>
+<span class="m">133</span>.949  <span class="m">34</span>.219  <span class="m">20</span>
+<span class="m">133</span>.528  <span class="m">34</span>.676  <span class="m">15</span>
+<span class="m">130</span>.233  <span class="m">33</span>.410  <span class="m">43</span>
+<span class="m">135</span>.133  <span class="m">35</span>.313  <span class="m">35</span>
+<span class="m">131</span>.377  <span class="m">34</span>.398  <span class="m">22</span>
+<span class="m">132</span>.792  <span class="m">34</span>.457  <span class="m">34</span>
+<span class="m">133</span>.620  <span class="m">34</span>.936  <span class="m">6</span>
+<span class="m">131</span>.101  <span class="m">32</span>.811  <span class="m">23</span>
+<span class="m">129</span>.435  <span class="m">33</span>.212  <span class="m">55</span>
+<span class="m">133</span>.144  <span class="m">33</span>.647  <span class="m">67</span>
+</pre></div>
+</div>
+<p>記錄中以 <code class="docutils literal notranslate"><span class="pre">#</span></code> 開頭的行，即第一列是 <code class="docutils literal notranslate"><span class="pre">#</span></code> 的記錄，會被當做註釋行直接忽略，不算在N個記錄之內。所以這個ASCII表可以認爲有10行3列，三列數據分別代表經度、緯度和深度。</p>
+<p>不同的模塊和選項的組合會對數據的列數以及每列的含義都有不同的定義，因而需要根據具體情況去準備數據。準備數據的過程中可能會用到GMT的 <code class="docutils literal notranslate"><span class="pre">-i</span></code>、<code class="docutils literal notranslate"><span class="pre">-o</span></code> 選項以及 <code class="docutils literal notranslate"><span class="pre">gawk</span></code> 等工具。</p>
+<p>在輸出ASCII 表時，字段之間默認用 TAB 鍵分隔，可以通過修改
+<a class="reference internal" href="../conf/io.html#term-io-col-separator"><span class="xref std std-term">IO_COL_SEPARATOR</span></a> 來設置字段的分隔符，</p>
+</div>
+<div class="section" id="id2">
+<h2>文件頭記錄<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>在第一個記錄前，可以有一個或多個與數據無關的記錄，稱爲文件頭記錄（file header records）。</p>
+<p>記錄中以 <code class="docutils literal notranslate"><span class="pre">#</span></code> 開頭的行都被當做註釋忽略，所以不算是文件頭記錄。其他不以 <code class="docutils literal notranslate"><span class="pre">#</span></code>
+開頭但與數據無關的行，則是文件頭記錄。可以使用 <a class="reference internal" href="../option/h.html"><span class="doc">-h 選項</span></a> 選項或設置參數
+<a class="reference internal" href="../conf/io.html#term-io-n-header-recs"><span class="xref std std-term">IO_N_HEADER_RECS</span></a> 跳過這些文件頭記錄。</p>
+<p>下面的ASCII表有一個文件頭記錄，可以使用 <code class="docutils literal notranslate"><span class="pre">-h1</span></code> 選項跳過該文件頭段記錄:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># This is a comment line</span>
+<span class="c1"># lon      lat  evdp</span>
+<span class="c1"># This is another comment line</span>
+<span class="m">2015</span>-01-05 <span class="m">10</span>:20:30.456 <span class="m">15</span> <span class="m">45</span> <span class="m">60</span> <span class="m">6</span>.0
+<span class="m">133</span>.949  <span class="m">34</span>.219  <span class="m">20</span>
+<span class="m">133</span>.528  <span class="m">34</span>.676  <span class="m">15</span>
+<span class="m">130</span>.233  <span class="m">33</span>.410  <span class="m">43</span>
+<span class="m">135</span>.133  <span class="m">35</span>.313  <span class="m">35</span>
+<span class="m">131</span>.377  <span class="m">34</span>.398  <span class="m">22</span>
+<span class="m">132</span>.792  <span class="m">34</span>.457  <span class="m">34</span>
+<span class="m">133</span>.620  <span class="m">34</span>.936  <span class="m">6</span>
+<span class="m">131</span>.101  <span class="m">32</span>.811  <span class="m">23</span>
+<span class="m">129</span>.435  <span class="m">33</span>.212  <span class="m">55</span>
+<span class="m">133</span>.144  <span class="m">33</span>.647  <span class="m">67</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>多段數據<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>以繪製斷層爲例，在繪製斷層的時候，可以將每條斷層線的經緯度信息分別放在單獨的文件中。但當斷層數量很多時，這樣做會導致目錄下有太多數據文件而混亂不堪。爲了解決類似的問題，GMT引入了多段數據的概念。</p>
+<p>多段數據，顧名思義，就是一個文件中包含了多個數據段。爲了區分每個數據段，需要在每段數據的開頭加上一個額外的數據段頭記錄（segment header records）來標記一段新數據的開始。</p>
+<p>數據段頭記錄總是以某個特定的字符作爲開頭，GMT默認的段頭記錄的標識符爲 <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>，即所有以 <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> 開頭的行都會被認爲是一個段頭記錄，其標誌着新一段數據的開始。</p>
+<p>下面是一個包含兩個數據段的多段數據，每段數據分別構成一個多邊形:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt;
+<span class="m">10</span>  <span class="m">20</span>
+<span class="m">15</span>  <span class="m">30</span>
+<span class="m">5</span>   <span class="m">25</span>
+&gt;
+<span class="m">20</span>  <span class="m">20</span>
+<span class="m">35</span>  <span class="m">30</span>
+<span class="m">40</span>  <span class="m">40</span>
+<span class="m">35</span>  <span class="m">40</span>
+</pre></div>
+</div>
+<p>可以使用如下命令繪製上面的多段文件:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt plot input.dat -JX10c -R0/50/0/50 -Baf -W1p -Gred -pdf lines
+</pre></div>
+</div>
+<p>用戶可以通過設置 <a class="reference internal" href="../conf/io.html#term-io-segment-marker"><span class="xref std std-term">IO_SEGMENT_MARKER</span></a> 將段頭記錄的標識符修改爲任意字符，例如 <code class="docutils literal notranslate"><span class="pre">&#64;</span></code>、<code class="docutils literal notranslate"><span class="pre">%</span></code>等。</p>
+<p><a class="reference internal" href="../conf/io.html#term-io-segment-marker"><span class="xref std std-term">IO_SEGMENT_MARKER</span></a> 可以取兩個特殊的值：</p>
+<ul class="simple">
+<li>取 <code class="docutils literal notranslate"><span class="pre">B</span></code> 表示用空行作爲數據段的分隔符</li>
+<li>取 <code class="docutils literal notranslate"><span class="pre">N</span></code> 表示用一個所有列都是NaN的記錄作爲數據段分隔符</li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h2>數據段頭記錄中的額外屬性<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<p>數據段頭記錄不僅用於標記數據段的開始，還可以額外指定該段數據的其他屬性。比如在繪製線段時，可以在段頭記錄中加上如下一系列選項，以分別控制每段線段的屬性：</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">-W</span></code> 指定當前數據段的畫筆顏色</li>
+<li><code class="docutils literal notranslate"><span class="pre">-G</span></code> 指定當前數據段的填充色</li>
+<li><code class="docutils literal notranslate"><span class="pre">-Z</span></code> 設置當前數據對應的Z值，並從CPT文件中獲取Z值對應的顏色</li>
+<li><code class="docutils literal notranslate"><span class="pre">-L</span></code> 設置當前數據段的標籤信息</li>
+<li><code class="docutils literal notranslate"><span class="pre">-T</span></code> 設置當前數據段的一般描述信息</li>
+<li><code class="docutils literal notranslate"><span class="pre">-Ph</span></code> 表明當前數據段構成的閉合多邊形位於另一個閉合多邊形的內部</li>
+<li>…</li>
+</ul>
+<p>下面的多段數據，分別設置兩段數據擁有不同的畫筆顏色和填充色:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; -W2p,red -Glightred
+<span class="m">10</span>  <span class="m">20</span>
+<span class="m">15</span>  <span class="m">30</span>
+<span class="m">12</span>  <span class="m">25</span>
+&gt; -W2p,blue -Glightblue
+<span class="m">22</span>  <span class="m">20</span>
+<span class="m">30</span>  <span class="m">30</span>
+<span class="m">40</span>  <span class="m">50</span>
+<span class="m">35</span>  <span class="m">44</span>
+</pre></div>
+</div>
+<p>可以使用如下命令繪製上面的多段數據:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt plot input.dat -JX10c -R0/50/0/50 -Baf -W1p -Gred -pdf lines
+</pre></div>
+</div>
+<p>查看繪圖結果可以發現，數據段頭記錄中的選項參數會覆蓋命令行中相應選項的值。</p>
+</div>
+</div>
+
+
+           </div>
+           
+           <div class="articleComments">
+            
+
+<!-- gitalk 脚本-->
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'b2dfca9a4bfad764aa2b',
+    clientSecret: '4ae5ddcd25c6b6d6bc07ac39201ea417054a530a',
+    owner: 'gmt-china',
+    repo: 'gitalk',
+    admin: ['zhaozhiyuan1989','cehui07226','NothingIsBig','seisman','SeisPider','wangliang1989','sqdeng'],
+    id: md5(location.pathname),
+    body: location.href,
+  });
+gitalk.render('gitalk-container');
+</script>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="binary.html" class="btn btn-neutral float-right" title="二進制表" accesskey="n" rel="next">下頁 <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="表數據" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> 上頁</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014 - 2020, GMT中文社区.
+      <span class="lastupdated">
+        最后更新于 2020年05月29日.
+      </span>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

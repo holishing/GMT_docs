@@ -1,0 +1,424 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>繪製海岸線 &mdash; GMT中文手册</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+    <link rel="canonical" href="https://docs.gmt-china.org/latest/tutorial/coastline.html"/>
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
+        <script async="async" type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="繪製線段和多邊形" href="lines.html" />
+    <link rel="prev" title="繪製底圖" href="basemap.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+    
+    <a href="../index.html" class="icon icon-home"> GMT中文手册
+    
+
+    
+    </a>
+
+    
+    
+    
+    <div class="version">
+        <select onchange="location = this.options[this.selectedIndex].value;">
+            
+            <option value="/6.0/"  selected > v6.0 </option>
+            
+            <option value="/5.4/" > v5.4 </option>
+            
+        </select>
+    </div>
+    
+    
+
+    
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文件" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+    
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">目 錄</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">簡介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/index.html">安裝</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migrating/index.html">版本遷移</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">入門教程</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="get-started/index.html">GMT初探</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commands.html">命令初探</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scripting.html">腳本編程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basemap.html">繪製底圖</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">繪製海岸線</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">繪製海岸線和湖岸線</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">設置要繪製的對象的最小面積</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">填充陸地與水體</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">繪製國界/州界</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">添加比例尺</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lines.html">繪製線段和多邊形</a></li>
+<li class="toctree-l2"><a class="reference internal" href="symbols.html">繪製符號</a></li>
+<li class="toctree-l2"><a class="reference internal" href="texts.html">添加文字</a></li>
+<li class="toctree-l2"><a class="reference internal" href="legend.html">添加圖例</a></li>
+<li class="toctree-l2"><a class="reference internal" href="earth-relief.html">繪製地形起伏</a></li>
+<li class="toctree-l2"><a class="reference internal" href="layers.html">理解圖層</a></li>
+<li class="toctree-l2"><a class="reference internal" href="histogram/index.html">繪製直方圖</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oneliner.html">GMT單行模式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inset.html">GMT圖中圖模式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="subplot.html">GMT子圖模式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multifig.html">GMT多圖模式</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../basis/index.html">GMT基礎</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../table/index.html">表數據</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grid/index.html">網格檔</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cpt/index.html">CPT文件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../option/index.html">標準選項</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../proj/index.html">地圖投影</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conf/index.html">配置參數</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dataset/index.html">地學數據集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chinese/index.html">中文支持</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../module/index.html">模塊手冊</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery/index.html">繪圖示例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/index.html">附錄</a></li>
+</ul>
+
+            
+          
+
+    
+        <p class="caption">
+            <span class="caption-text">外部链接</span>
+        </p>
+        <ul>
+            
+                <li class="toctree-l1"><a href="https://docs.gmt-china.org/6.0/GMT_docs.pdf"><i class="fa fa-book fa-fw"></i> PDF下载</a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/gmt-china/GMT_Docs"><i class="fa fa-github fa-fw"></i> 源代码</a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/gmt-china/GMT_docs/blob/master/CONTRIBUTING.md"><i class="fa fa-edit fa-fw"></i> 贡献指南</a></li>
+            
+                <li class="toctree-l1"><a href="https://gmt-china.org"><i class="fa fa-globe fa-fw"></i> GMT中文社区</a></li>
+            
+                <li class="toctree-l1"><a href="mailto:admin@gmt-china.org"><i class="fa fa-envelope fa-fw"></i> 联系我们</a></li>
+            
+        </ul>
+    
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">GMT中文手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">首頁</a> &raquo;</li>
+        
+          <li><a href="index.html">入門教程</a> &raquo;</li>
+        
+      <li>繪製海岸線</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/gmt-china/GMT_Docs/blob/master/source/tutorial/coastline.rst" class="fa fa-github"> 編輯本頁</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>繪製海岸線<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<p>GMT中使用 <a class="reference internal" href="../module/coast.html"><span class="doc">coast</span></a> 模塊繪製海岸線。
+<strong>coast</strong> 模塊，顧名思義是海岸線、湖岸線的意思。該模塊不僅可以繪製這些岸線，還可以繪製比例尺和行政邊界等。</p>
+<p>這一節我們將通過繪製一張美國地圖來介紹 <strong>coast</strong> 模塊的基本用法。</p>
+<div class="section" id="id2">
+<h2>繪製海岸線和湖岸線<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>下面的腳本用最簡單的命令繪製了一張美國地圖。其中
+<strong>-R</strong> 選項設置了繪圖區域，<strong>-JM15c</strong> 設置投影方式和圖片尺寸，
+<strong>-Baf</strong> 設置底圖邊框屬性，這些在前一節都已經做了介紹。</p>
+<p><strong>coast</strong> 模塊的選項 <strong>-W0.5p,black</strong> 表示繪製岸線，並設置岸線爲
+0.5p寬的黑色線條。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt begin coastline png,pdf
+    gmt coast -R-130/-50/20/60 -JM15c -Baf -W0.5p,black
+gmt end show
+</pre></div>
+</div>
+<div class="figure align-center" id="id7">
+<a class="reference internal image-reference" href="../_images/coastline-gmtplot-0.png"><img alt="../_images/coastline-gmtplot-0.png" src="../_images/coastline-gmtplot-0.png" style="width: 80%;" /></a>
+<p class="caption"><span class="caption-text">美國海岸線</span></p>
+</div>
+<p>上圖看上去有些複雜。這是因爲默認情況下 <strong>-W</strong> 選項會繪製所有水體與陸地的界限，包括海岸線、湖岸線、湖中島的邊界等。根據水體或陸地的不同，<strong>coast</strong>模塊將岸線分爲從1到4的四個級別，依次指海岸線、湖岸線、湖中島，以及湖中島內的湖邊界。</p>
+<p>因而，我們可以在使用 <strong>-W</strong> 選項時指定要繪製哪一個等級的岸線。下面的腳本中，我們使用 <strong>-W1/0.5p,black</strong> 表示用 0.5p 寬的黑色線條繪製1級海岸線。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt begin coastline png,pdf
+    gmt coast -R-130/-50/20/60 -JM15c -Baf -W1/0.5p,black
+gmt end show
+</pre></div>
+</div>
+<div class="figure align-center" id="id8">
+<a class="reference internal image-reference" href="../_images/coastline-gmtplot-1.png"><img alt="../_images/coastline-gmtplot-1.png" src="../_images/coastline-gmtplot-1.png" style="width: 80%;" /></a>
+<p class="caption"><span class="caption-text">繪製海岸線</span></p>
+</div>
+<p>可以在一個命令中多次使用 <strong>-W</strong> 選項，分別用不同的線條繪製不同等級的岸線。這裏我們使用 <strong>-W1/0.5p,black</strong> 繪製0.5p黑色的海岸線，同時使用 <strong>-W2/1p,lightred</strong>
+繪製1p寬的淺紅色湖岸線。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt begin coastline png,pdf
+    gmt coast -R-130/-50/20/60 -JM15c -Baf -W1/0.5p,black -W2/1p,lightred
+gmt end show
+</pre></div>
+</div>
+<div class="figure align-center" id="id9">
+<a class="reference internal image-reference" href="../_images/coastline-gmtplot-2.png"><img alt="../_images/coastline-gmtplot-2.png" src="../_images/coastline-gmtplot-2.png" style="width: 80%;" /></a>
+<p class="caption"><span class="caption-text">繪製海岸線和湖岸線</span></p>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>設置要繪製的對象的最小面積<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>上圖看上去依然有些亂。主要是因爲美國有大大小小的很多島嶼和湖泊，GMT默認會把這些島嶼和湖泊都畫出來。如果能夠只繪製比較大的島嶼或湖泊就好了，我們可以通過 <strong>-A</strong> 選項設置要繪製的對象的最小面積（單位爲平方千米）。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt begin coastline png,pdf
+    gmt coast -R-130/-50/20/60 -JM15c -Baf -W1/0.5p,black -W2/1p,lightred -A5000
+gmt end show
+</pre></div>
+</div>
+<div class="figure align-center" id="id10">
+<a class="reference internal image-reference" href="../_images/coastline-gmtplot-3.png"><img alt="../_images/coastline-gmtplot-3.png" src="../_images/coastline-gmtplot-3.png" style="width: 80%;" /></a>
+<p class="caption"><span class="caption-text">設置要繪製的對象的最小面積</span></p>
+</div>
+<p>這裏我們使用 <strong>-A5000</strong> 表示只繪製面積大於5000平方千米的湖泊或島嶼。這樣子得到的圖看上去更加乾淨簡潔了。</p>
+</div>
+<div class="section" id="id4">
+<h2>填充陸地與水體<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<p>上面介紹瞭如何使用 <strong>-W</strong> 繪製海岸線和湖岸線。我們還可以不繪製岸線，而是爲陸地和水體設置不同的填充色。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt begin coastline png,pdf
+    gmt coast -R-130/-50/20/60 -JM15c -Baf -A5000 -Gred -Slightblue -Clightred
+gmt end show
+</pre></div>
+</div>
+<div class="figure align-center" id="id11">
+<a class="reference internal image-reference" href="../_images/coastline-gmtplot-4.png"><img alt="../_images/coastline-gmtplot-4.png" src="../_images/coastline-gmtplot-4.png" style="width: 80%;" /></a>
+<p class="caption"><span class="caption-text">填充顏色</span></p>
+</div>
+<p>其中，<strong>-G</strong> 設置了陸地區域的填充色，<strong>-S</strong> 設置水體的顏色，
+<strong>-C</strong> 則設置湖泊的顏色（若不指定 <strong>-C</strong>，則湖泊顏色由 <strong>-S</strong> 控制）。</p>
+<p>當然，你也可以同時使用 <strong>-W</strong> 選項和 <strong>-G</strong> 選項，即繪製岸線並填充顏色。</p>
+</div>
+<div class="section" id="id5">
+<h2>繪製國界/州界<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<p>使用 <strong>-N</strong> 選項可以繪製國界/州界等行政邊界。<strong>-N1</strong> 表示繪製國界線，
+<strong>-N2</strong> 表示繪製州界/省界線（目前只有美洲各國以及澳大利亞的國界的數據）。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt begin coastline png,pdf
+    gmt coast -R-130/-50/20/60 -JM15c -Baf -A5000 -Gred -Slightblue -Clightred -N1/1p -N2/0.25p
+gmt end show
+</pre></div>
+</div>
+<div class="figure align-center" id="id12">
+<a class="reference internal image-reference" href="../_images/coastline-gmtplot-5.png"><img alt="../_images/coastline-gmtplot-5.png" src="../_images/coastline-gmtplot-5.png" style="width: 80%;" /></a>
+<p class="caption"><span class="caption-text">繪製國界與州界</span></p>
+</div>
+<p>除了 <strong>-N</strong> 選項之外，<strong>-E</strong> 選項也可以用於繪製州界、國界和省界，在
+<a class="reference internal" href="../dataset/dcw/index.html"><span class="doc">DCW: 世界數字圖表</span></a> 一節會詳細介紹。本入門教程中暫時略過。</p>
+</div>
+<div class="section" id="id6">
+<h2>添加比例尺<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<p>最後，我們還需要爲地圖添加比例尺。爲了繪製比例尺，我們需要提供如下參數：</p>
+<ul class="simple">
+<li>要繪製哪個緯度的比例尺</li>
+<li>比例尺在圖中的位置</li>
+<li>比例尺的長度</li>
+</ul>
+<p>在下面的例子中，我們使用了 <strong>-Lg-60/25+c25+w1000k+f+u</strong> 增加比例尺，其中：</p>
+<ul class="simple">
+<li><strong>+w1000k</strong> 表示比例尺長度爲1000千米</li>
+<li><strong>+c25</strong> 表示繪製緯度爲北緯25°處的比例尺</li>
+<li><strong>g-60/25</strong> 則表示將比例尺畫在北緯25°西經60°處</li>
+<li><strong>+f</strong> 表示比例尺的風格爲圖中所示黑白相間的鐵軌形式</li>
+<li><strong>+u</strong> 表示顯示比例尺對應的單位</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt begin coastline png,pdf
+gmt coast -R-130/-50/20/60 -JM15c -Baf -A5000 -Gred -Slightblue -Clightred -Lg-60/25+c25+w1000k+f+u
+gmt end show
+</pre></div>
+</div>
+<div class="figure align-center" id="id13">
+<a class="reference internal image-reference" href="../_images/coastline-gmtplot-6.png"><img alt="../_images/coastline-gmtplot-6.png" src="../_images/coastline-gmtplot-6.png" style="width: 80%;" /></a>
+<p class="caption"><span class="caption-text">添加比例尺</span></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+           <div class="articleComments">
+            
+
+<!-- gitalk 脚本-->
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'b2dfca9a4bfad764aa2b',
+    clientSecret: '4ae5ddcd25c6b6d6bc07ac39201ea417054a530a',
+    owner: 'gmt-china',
+    repo: 'gitalk',
+    admin: ['zhaozhiyuan1989','cehui07226','NothingIsBig','seisman','SeisPider','wangliang1989','sqdeng'],
+    id: md5(location.pathname),
+    body: location.href,
+  });
+gitalk.render('gitalk-container');
+</script>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="lines.html" class="btn btn-neutral float-right" title="繪製線段和多邊形" accesskey="n" rel="next">下頁 <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="basemap.html" class="btn btn-neutral float-left" title="繪製底圖" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> 上頁</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014 - 2020, GMT中文社区.
+      <span class="lastupdated">
+        最后更新于 2020年05月29日.
+      </span>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

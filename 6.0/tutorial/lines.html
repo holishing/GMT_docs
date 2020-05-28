@@ -1,0 +1,509 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>繪製線段和多邊形 &mdash; GMT中文手册</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+    <link rel="canonical" href="https://docs.gmt-china.org/latest/tutorial/lines.html"/>
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
+        <script async="async" type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="繪製符號" href="symbols.html" />
+    <link rel="prev" title="繪製海岸線" href="coastline.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+    
+    <a href="../index.html" class="icon icon-home"> GMT中文手册
+    
+
+    
+    </a>
+
+    
+    
+    
+    <div class="version">
+        <select onchange="location = this.options[this.selectedIndex].value;">
+            
+            <option value="/6.0/"  selected > v6.0 </option>
+            
+            <option value="/5.4/" > v5.4 </option>
+            
+        </select>
+    </div>
+    
+    
+
+    
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文件" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+    
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">目 錄</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">簡介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/index.html">安裝</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migrating/index.html">版本遷移</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">入門教程</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="get-started/index.html">GMT初探</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commands.html">命令初探</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scripting.html">腳本編程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basemap.html">繪製底圖</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coastline.html">繪製海岸線</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">繪製線段和多邊形</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">繪製一條線段</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">繪製一個多邊形</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">繪製多條線段</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">繪製多個多邊形</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">大圓弧路徑</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="symbols.html">繪製符號</a></li>
+<li class="toctree-l2"><a class="reference internal" href="texts.html">添加文字</a></li>
+<li class="toctree-l2"><a class="reference internal" href="legend.html">添加圖例</a></li>
+<li class="toctree-l2"><a class="reference internal" href="earth-relief.html">繪製地形起伏</a></li>
+<li class="toctree-l2"><a class="reference internal" href="layers.html">理解圖層</a></li>
+<li class="toctree-l2"><a class="reference internal" href="histogram/index.html">繪製直方圖</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oneliner.html">GMT單行模式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inset.html">GMT圖中圖模式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="subplot.html">GMT子圖模式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multifig.html">GMT多圖模式</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../basis/index.html">GMT基礎</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../table/index.html">表數據</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grid/index.html">網格檔</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cpt/index.html">CPT文件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../option/index.html">標準選項</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../proj/index.html">地圖投影</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conf/index.html">配置參數</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dataset/index.html">地學數據集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chinese/index.html">中文支持</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../module/index.html">模塊手冊</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery/index.html">繪圖示例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/index.html">附錄</a></li>
+</ul>
+
+            
+          
+
+    
+        <p class="caption">
+            <span class="caption-text">外部链接</span>
+        </p>
+        <ul>
+            
+                <li class="toctree-l1"><a href="https://docs.gmt-china.org/6.0/GMT_docs.pdf"><i class="fa fa-book fa-fw"></i> PDF下载</a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/gmt-china/GMT_Docs"><i class="fa fa-github fa-fw"></i> 源代码</a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/gmt-china/GMT_docs/blob/master/CONTRIBUTING.md"><i class="fa fa-edit fa-fw"></i> 贡献指南</a></li>
+            
+                <li class="toctree-l1"><a href="https://gmt-china.org"><i class="fa fa-globe fa-fw"></i> GMT中文社区</a></li>
+            
+                <li class="toctree-l1"><a href="mailto:admin@gmt-china.org"><i class="fa fa-envelope fa-fw"></i> 联系我们</a></li>
+            
+        </ul>
+    
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">GMT中文手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">首頁</a> &raquo;</li>
+        
+          <li><a href="index.html">入門教程</a> &raquo;</li>
+        
+      <li>繪製線段和多邊形</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/gmt-china/GMT_Docs/blob/master/source/tutorial/lines.rst" class="fa fa-github"> 編輯本頁</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>繪製線段和多邊形<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<p>繪製線條和多邊形是日常繪圖最常見的需求之一，也是所有繪圖軟體必備的功能。這一節我們將學習如何使用 GMT 的 <a class="reference internal" href="../module/plot.html"><span class="doc">plot</span></a> 模塊繪製線段和多邊形。</p>
+<div class="section" id="id2">
+<h2>繪製一條線段<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>要繪製一條線段，就必須提供線段上數據點的信息，即數據的X座標和Y座標。
+<a class="reference internal" href="../module/plot.html"><span class="doc">plot</span></a> 會自動將輸入數據中相鄰的兩點連接起來。</p>
+<p>以下面的數據爲例，這個數據中包含了三個座標點 (2,2)、(8,2) 和 (5,7):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="m">2</span>   <span class="m">2</span>
+<span class="m">8</span>   <span class="m">2</span>
+<span class="m">5</span>   <span class="m">7</span>
+</pre></div>
+</div>
+<p>下面的例子中，我們首先使用 UNIX 下的 <code class="docutils literal notranslate"><span class="pre">cat</span></code> 命令將數據寫入到文件
+<code class="file docutils literal notranslate"><span class="pre">points.dat</span></code> 中，然後使用 <strong>basemap</strong> 模塊繪製了一張底圖，並使用 <strong>plot</strong> 模塊繪製輸入文件 <code class="file docutils literal notranslate"><span class="pre">points.dat</span></code> 中的數據。</p>
+<div class="admonition warning">
+<p class="first admonition-title">警告</p>
+<p>下面的幾行代碼的作用是將兩個EOF中間的三行數據保存到文件 <code class="file docutils literal notranslate"><span class="pre">points.dat</span></code> 中:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cat &gt; points.dat <span class="s">&lt;&lt; EOF</span>
+<span class="s">2   2</span>
+<span class="s">8   2</span>
+<span class="s">5   7</span>
+<span class="s">EOF</span>
+</pre></div>
+</div>
+<p><strong>需要注意：Windows Batch 不支持 EOF 語法！</strong>
+因而Batch用戶需要使用:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="m">2</span> <span class="m">2</span>  &gt; points.dat
+<span class="nb">echo</span> <span class="m">8</span> <span class="m">2</span> &gt;&gt; points.dat
+<span class="nb">echo</span> <span class="m">5</span> <span class="m">7</span> &gt;&gt; points.dat
+</pre></div>
+</div>
+<p class="last">將數據寫到文件 <code class="file docutils literal notranslate"><span class="pre">points.dat</span></code>。其它示例也有相同的問題，Batch用戶自行修改，不再專門解釋。</p>
+</div>
+<p>圖中，<strong>plot</strong> 模塊在繪圖時自動將三個點連接起來，繪製出了一條線段。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cat &gt; points.dat <span class="s">&lt;&lt; EOF</span>
+<span class="s">2   2</span>
+<span class="s">8   2</span>
+<span class="s">5   7</span>
+<span class="s">EOF</span>
+
+gmt begin SimpleLine png,pdf
+    gmt basemap -JX10c -R0/10/0/10 -Baf
+    gmt plot points.dat
+gmt end show
+</pre></div>
+</div>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/lines-gmtplot-0.png"><img alt="../_images/lines-gmtplot-0.png" src="../_images/lines-gmtplot-0.png" style="width: 50%;" /></a>
+</div>
+<p>想要修改線段的粗細或顏色？很簡單，可以使用 <strong>plot</strong> 模塊的 <strong>-W</strong> 選項設置畫筆屬性。畫筆屬性包括三個部分：線寬、顏色以及線型，三者之間用逗號隔開。</p>
+<p>下面的腳本中，我們給 <strong>plot</strong> 模塊添加了 <strong>-W2p,red,-</strong> 選項，即設置了畫筆屬性爲 <strong>2p</strong> 寬的紅色虛線。<strong>p</strong> 是GMT中的一個長度單位。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cat &gt; points.dat <span class="s">&lt;&lt; EOF</span>
+<span class="s">2   2</span>
+<span class="s">8   2</span>
+<span class="s">5   7</span>
+<span class="s">EOF</span>
+
+gmt begin SimpleLine png,pdf
+    gmt basemap -JX10c -R0/10/0/10 -Baf
+    gmt plot points.dat -W2p,red,-
+gmt end show
+</pre></div>
+</div>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/lines-gmtplot-1.png"><img alt="../_images/lines-gmtplot-1.png" src="../_images/lines-gmtplot-1.png" style="width: 50%;" /></a>
+</div>
+<p>你可以嘗試修改線寬、顏色和線型，並查看繪圖效果。幾種常見的線型包括
+<code class="docutils literal notranslate"><span class="pre">-</span></code>、<code class="docutils literal notranslate"><span class="pre">.</span></code>、<code class="docutils literal notranslate"><span class="pre">.-</span></code>和 <code class="docutils literal notranslate"><span class="pre">-.</span></code>。</p>
+</div>
+<div class="section" id="id3">
+<h2>繪製一個多邊形<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p><strong>plot</strong> 在繪製線段時默認是不將線段首尾連接起來的，可以使用 <strong>-L</strong> 選項將線段的首尾連接起來，構成了一個閉合多邊形。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cat &gt; points.dat <span class="s">&lt;&lt; EOF</span>
+<span class="s">2   2</span>
+<span class="s">8   2</span>
+<span class="s">5   7</span>
+<span class="s">EOF</span>
+
+gmt begin polygon png,pdf
+    gmt basemap -JX10c -R0/10/0/10 -Baf
+    gmt plot points.dat -W4p,lightblue -L
+gmt end show
+</pre></div>
+</div>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/lines-gmtplot-2.png"><img alt="../_images/lines-gmtplot-2.png" src="../_images/lines-gmtplot-2.png" style="width: 50%;" /></a>
+</div>
+<p>我們還可以使用 <strong>-G</strong> 選項爲閉合多邊形填充顏色。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cat &gt; points.dat <span class="s">&lt;&lt; EOF</span>
+<span class="s">2   2</span>
+<span class="s">8   2</span>
+<span class="s">5   7</span>
+<span class="s">EOF</span>
+
+gmt begin polygon png,pdf
+    gmt basemap -JX10c -R0/10/0/10 -Baf
+    gmt plot points.dat -W4p,lightblue -Glightred -L
+gmt end show
+</pre></div>
+</div>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/lines-gmtplot-3.png"><img alt="../_images/lines-gmtplot-3.png" src="../_images/lines-gmtplot-3.png" style="width: 50%;" /></a>
+</div>
+<p>這樣我們就得到了一個內部爲淺紅色、輪廓爲淺藍色的多邊形了。如果只想要填充顏色而不繪製輪廓，只需要使用 <strong>-G</strong> 而不使用 <strong>-W</strong> 即可。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cat &gt; points.dat <span class="s">&lt;&lt; EOF</span>
+<span class="s">2   2</span>
+<span class="s">8   2</span>
+<span class="s">5   7</span>
+<span class="s">EOF</span>
+
+gmt begin polygon png,pdf
+    gmt basemap -JX10c -R0/10/0/10 -Baf
+    gmt plot points.dat -Glightred -L
+gmt end show
+</pre></div>
+</div>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/lines-gmtplot-4.png"><img alt="../_images/lines-gmtplot-4.png" src="../_images/lines-gmtplot-4.png" style="width: 50%;" /></a>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>繪製多條線段<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<p>學會了如何繪製一條線段，下面介紹如何一次性繪製很多條線段。可以將所有線段的數據點都保存到一個輸入文件中，例如:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt;
+<span class="m">1</span>   <span class="m">2</span>
+<span class="m">4</span>   <span class="m">2</span>
+<span class="m">4</span>   <span class="m">8</span>
+&gt;
+<span class="m">9</span>   <span class="m">2</span>
+<span class="m">6</span>   <span class="m">2</span>
+<span class="m">6</span>   <span class="m">8</span>
+</pre></div>
+</div>
+<p>每個線段都包含了若干個數據點，在第一個數據點之前有一個 <strong>&gt;</strong> 用於標記新的一段數據的開始。這種數據稱之爲<strong>多段數據</strong>。</p>
+<p>與繪製一條線段的命令完全相同，由於輸入數據中有兩段數據，<strong>plot</strong> 模塊爲我們繪製出了兩條線段。同樣的，兩條線段均爲線寬爲 <strong>1p</strong> 的紅色實線。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cat &gt; lines.dat <span class="s">&lt;&lt; EOF</span>
+<span class="s">&gt;</span>
+<span class="s">1   2</span>
+<span class="s">4   2</span>
+<span class="s">4   8</span>
+<span class="s">&gt;</span>
+<span class="s">9   2</span>
+<span class="s">6   2</span>
+<span class="s">6   8</span>
+<span class="s">EOF</span>
+
+gmt begin MultiLines png,pdf
+    gmt basemap -JX10c -R0/10/0/10 -Baf
+    gmt plot lines.dat -W1p,red
+gmt end show
+</pre></div>
+</div>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/lines-gmtplot-5.png"><img alt="../_images/lines-gmtplot-5.png" src="../_images/lines-gmtplot-5.png" style="width: 50%;" /></a>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>繪製多個多邊形<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<p>使用相同的輸入數據，通過加上 <strong>-L</strong> 可以構成閉合多邊形，加上 <strong>-G</strong> 爲多邊形設置填充色。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cat &gt; lines.dat <span class="s">&lt;&lt; EOF</span>
+<span class="s">&gt;</span>
+<span class="s">1   2</span>
+<span class="s">4   2</span>
+<span class="s">4   8</span>
+<span class="s">&gt;</span>
+<span class="s">9   2</span>
+<span class="s">6   2</span>
+<span class="s">6   8</span>
+<span class="s">EOF</span>
+
+gmt begin MultiPolygons png,pdf
+    gmt basemap -JX10c -R0/10/0/10 -Baf
+    gmt plot lines.dat -W1p,red -L -Glightred
+gmt end show
+</pre></div>
+</div>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/lines-gmtplot-6.png"><img alt="../_images/lines-gmtplot-6.png" src="../_images/lines-gmtplot-6.png" style="width: 50%;" /></a>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>大圓弧路徑<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<p>在笛卡爾座標系下，繪製線段時，任意兩點之間會以直線方式連接；而在地理投影下，任意兩點之間則使用大圓弧路徑方法會連接。如果想要在地理投影下也是要直線連接兩點，則需要使用 <strong>-A</strong> 選項。</p>
+<p>下面的命令中，我們首先使用 <strong>coast</strong> 繪製了一張全球地圖，接着使用 <strong>plot</strong> 模塊繪製了地球上兩點之間的連線（紅色，以大圓弧路徑方式連接），然後，我們加上了 <strong>-A</strong> 選項再次繪製了這兩點之間的連線（藍色，以直線方式連接）。從中可以看到 <strong>-A</strong> 選項的效果。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cat &gt; twopoints.dat <span class="s">&lt;&lt; EOF</span>
+<span class="s">115         30</span>
+<span class="s">250         30</span>
+<span class="s">EOF</span>
+
+gmt begin map png,pdf
+    gmt coast -JH180/12c -Rg -B0 -W0.5p -A10000
+    gmt plot twopoints.dat -W2p,red
+    gmt plot twopoints.dat -W2p,blue -A
+gmt end show
+</pre></div>
+</div>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/lines-gmtplot-7.png"><img alt="../_images/lines-gmtplot-7.png" src="../_images/lines-gmtplot-7.png" style="width: 80%;" /></a>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+           <div class="articleComments">
+            
+
+<!-- gitalk 脚本-->
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'b2dfca9a4bfad764aa2b',
+    clientSecret: '4ae5ddcd25c6b6d6bc07ac39201ea417054a530a',
+    owner: 'gmt-china',
+    repo: 'gitalk',
+    admin: ['zhaozhiyuan1989','cehui07226','NothingIsBig','seisman','SeisPider','wangliang1989','sqdeng'],
+    id: md5(location.pathname),
+    body: location.href,
+  });
+gitalk.render('gitalk-container');
+</script>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="symbols.html" class="btn btn-neutral float-right" title="繪製符號" accesskey="n" rel="next">下頁 <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="coastline.html" class="btn btn-neutral float-left" title="繪製海岸線" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> 上頁</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014 - 2020, GMT中文社区.
+      <span class="lastupdated">
+        最后更新于 2020年05月29日.
+      </span>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

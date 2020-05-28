@@ -4,21 +4,21 @@
 begin
 =====
 
-:官方文档: :doc:`gmt:begin`
-:简介: 初始化一个新的GMT现代模式会话
+:官方文件: :doc:`gmt:begin`
+:簡介: 初始化一個新的GMT現代模式會話
 
-在GMT现代模式下，一个GMT绘图总是以 **gmt begin** 开始，以 **gmt end** 结束。
+在GMT現代模式下，一個GMT繪圖總是以 **gmt begin** 開始，以 **gmt end** 結束。
 
-**begin** 模块告诉GMT要开始一个新的现代模式会话。如果你的脚本只绘制一张图，
-那么你可以直接指定要生成的图片的文件名和文件格式。如果你的脚本绘制多张图，
-则你需要使用 :doc:`figure` 来分别为每张图指定文件名和文件格式。
-现代会话模式下，每个会话均独立于其他进程，每个会话负责管理各自的配置参数、
-命令历史等，因而可以同时执行多个GMT会话而不会互相干扰。
+**begin** 模塊告訴GMT要開始一個新的現代模式會話。如果你的腳本只繪製一張圖，
+那麼你可以直接指定要生成的圖片的文件名和文件格式。如果你的腳本繪製多張圖，
+則你需要使用 :doc:`figure` 來分別爲每張圖指定文件名和文件格式。
+現代會話模式下，每個會話均獨立於其他進程，每個會話負責管理各自的配置參數、
+命令歷史等，因而可以同時執行多個GMT會話而不會互相干擾。
 
-除了可以指定图片文件名和文件格式之外，还可以通过 *options* 指定生成图片过程
-中所使用的 :doc:`psconvert` 选项。
+除了可以指定圖片文件名和文件格式之外，還可以通過 *options* 指定生成圖片過程
+中所使用的 :doc:`psconvert` 選項。
 
-语法
+語法
 ----
 
 **gmt begin**
@@ -27,32 +27,32 @@ begin
 [ *options* ]
 [ |SYN_OPT-V| ]
 
-可选选项
+可選選項
 --------
 
 *prefix*
-    图片文件名前缀，默认值为 **gmtsession**\ 。
-    图片文件名后缀由 *formats* 自动决定。
+    圖片文件名前綴，默認值爲 **gmtsession**\ 。
+    圖片文件名後綴由 *formats* 自動決定。
 
-    如果一个GMT会话只用于进行计算而不绘图，或者需要绘制多张图，则不需要指定该参数。
+    如果一個GMT會話只用於進行計算而不繪圖，或者需要繪製多張圖，則不需要指定該參數。
 
     .. note::
 
-        文件名中应尽量避免出现空格。若存在空格，则文件名必须用单引号括起来。
+        文件名中應儘量避免出現空格。若存在空格，則文件名必須用單引號括起來。
 
 .. _fig-formats:
 
 *formats*
-    图片文件格式。多个格式之间可以用逗号分开。默认图片格式为 **pdf**\ ，由
-    参数 :term:`GMT_GRAPHICS_FORMAT` 控制。
+    圖片文件格式。多個格式之間可以用逗號分開。默認圖片格式爲 **pdf**\ ，由
+    參數 :term:`GMT_GRAPHICS_FORMAT` 控制。
 
-    GMT支持输出如下矢量图片格式：
+    GMT支持輸出如下矢量圖片格式：
 
-    - ``pdf``\ ：\ `Portable Document Format <https://zh.wikipedia.org/wiki/可移植文档格式>`_ [默认格式]
+    - ``pdf``\ ：\ `Portable Document Format <https://zh.wikipedia.org/wiki/可移植文件格式>`_ [默認格式]
     - ``ps``\ ：\  `Plain PostScript <https://zh.wikipedia.org/wiki/PostScript>`_
     - ``eps``\ ：\ `Encapsulated PostScript <https://zh.wikipedia.org/wiki/EPS>`_
 
-    GMT支持输出如下位图图片格式：
+    GMT支持輸出如下位圖圖片格式：
 
     - ``bmp``\ ：\ `Microsoft Bit Map <https://zh.wikipedia.org/wiki/BMP>`_
     - ``jpg``\ ：\ `Joint Photographic Experts Group Format <https://zh.wikipedia.org/wiki/JPEG>`_
@@ -62,24 +62,24 @@ begin
     - ``tif``\ ：\ `Tagged Image Format File <https://zh.wikipedia.org/wiki/TIFF>`_
 
 *options*
-    GMT现代模式本质上是先生成PS文件，再通过调用 :doc:`psconvert` 自动转换成用户
-    指定的图片格式。此处可以设置要传递给模块 :doc:`psconvert` 的选项，
-    多个选项之间用逗号分隔。
+    GMT現代模式本質上是先生成PS文件，再通過調用 :doc:`psconvert` 自動轉換成用戶
+    指定的圖片格式。此處可以設置要傳遞給模塊 :doc:`psconvert` 的選項，
+    多個選項之間用逗號分隔。
 
-    默认值为 **A**\ ，表示将 **-A** 选项传给 :doc:`psconvert`\ 。
+    默認值爲 **A**\ ，表示將 **-A** 選項傳給 :doc:`psconvert`\ 。
 
-    其他可选的选项包括：
+    其他可選的選項包括：
 
-    - **A**\ [*args*]: 裁剪图片
-    - **C**\ *args*: 额外传递给Ghostscript的选项
-    - **D**\ *dir*: 指定图片的输出目录
-    - **E**\ *dpi*: 设置图片分辨率
-    - **H**\ *factor*: 对图片做平滑以避免混叠
-    - **M**\ *args*: 为当前图片叠加前景图片或背景图片
-    - **Q**\ *args*: 设置图像和文本的抗锯齿选项
-    - **S** : 把 Ghostscript 命令输出到标准错误输出，且不删除所有中间文件
+    - **A**\ [*args*]: 裁剪圖片
+    - **C**\ *args*: 額外傳遞給Ghostscript的選項
+    - **D**\ *dir*: 指定圖片的輸出目錄
+    - **E**\ *dpi*: 設置圖片分辨率
+    - **H**\ *factor*: 對圖片做平滑以避免混疊
+    - **M**\ *args*: 爲當前圖片疊加前景圖片或背景圖片
+    - **Q**\ *args*: 設置圖像和文本的抗鋸齒選項
+    - **S** : 把 Ghostscript 命令輸出到標準錯誤輸出，且不刪除所有中間文件
 
-    详细解释见 :doc:`psconvert` 的说明文档。
+    詳細解釋見 :doc:`psconvert` 的說明文件。
 
 .. include:: explain_-V.rst_
 
@@ -88,64 +88,64 @@ begin
 示例
 ----
 
-开始一个会话，并使用默认值。此时会生成名为 gmtsession.pdf 的图片文件::
+開始一個會話，並使用默認值。此時會生成名爲 gmtsession.pdf 的圖片文件::
 
     gmt begin
     gmt ...
     gmt end
 
-开始一个GMT会话，并指定图片名为 *Figure_2*\ ，图片格式为PDF和PNG格式::
+開始一個GMT會話，並指定圖片名爲 *Figure_2*\ ，圖片格式爲PDF和PNG格式::
 
     gmt begin Figure_2 pdf,png
     gmt ...
     gmt end show
 
-设置额外的参数以控制生成图片时的额外空白::
+設置額外的參數以控制生成圖片時的額外空白::
 
     gmt begin map pdf,png A+m1c
     gmt ...
     gmt end show
 
-PS文件注意事项
+PS文件注意事項
 --------------
 
-如果用户想要输出PS格式的图片，则应额外留意画布尺寸。对于其他图片格式而言，
-GMT默认使用无穷大（10米x10米）的画布。而对于PS格式而言，GMT则默认使用A4大小的画布。
-若用户绘制的图片超过A4纸张的大小，则可能会造成显示不完全。针对这种情况，
-建议用户修改参数 :ref:`PS_MEDIA` 以显式指定纸张大小。例如::
+如果用戶想要輸出PS格式的圖片，則應額外留意畫布尺寸。對於其他圖片格式而言，
+GMT默認使用無窮大（10米x10米）的畫布。而對於PS格式而言，GMT則默認使用A4大小的畫布。
+若用戶繪製的圖片超過A4紙張的大小，則可能會造成顯示不完全。針對這種情況，
+建議用戶修改參數 :ref:`PS_MEDIA` 以顯式指定紙張大小。例如::
 
     gmt begin map ps
     gmt set PS_MEDIA A3
     gmt ...
     gmt end
 
-UNIX shell 注意事项
+UNIX shell 注意事項
 -------------------
 
-现代模式的工作原理是，在使用 **gmt begin** 时利用父进程ID创建唯一的会话目录，
-并将很多信息保存到该会话目录中。脚本中接下来的命令拥有共同的父进程ID，因而
-接下来的命令可以向唯一会话目录中写入信息或读取信息，以实现多个命令之间的互相
-通信。然而，UNIX下某些shell的实现不完全统一，脚本执行过程中父进程ID可能出现变化，
-后面执行的命令无法正确获取前面命令的父进程ID，因而导致命令之间的信息交流出现
-错误。最常见的情况是在使用UNIX管道时，可能会生成子shell进而导致父进程ID出现变化。
+現代模式的工作原理是，在使用 **gmt begin** 時利用父進程ID創建唯一的會話目錄，
+並將很多信息保存到該會話目錄中。腳本中接下來的命令擁有共同的父進程ID，因而
+接下來的命令可以向唯一會話目錄中寫入信息或讀取信息，以實現多個命令之間的互相
+通信。然而，UNIX下某些shell的實現不完全統一，腳本執行過程中父進程ID可能出現變化，
+後面執行的命令無法正確獲取前面命令的父進程ID，因而導致命令之間的信息交流出現
+錯誤。最常見的情況是在使用UNIX管道時，可能會生成子shell進而導致父進程ID出現變化。
 
-如果你在GMT现代模式脚本中使用了管道，执行过程中出现了类似无法找到目录 ``gmt6.#####``
-这样的错误，这极有可能是你所使用的UNIX shell存在此类问题。解决办法是，
-在脚本开始的地方设置环境变量 **GMT_SESSION_NAME** 为进程ID。在Bash shell应该是::
+如果你在GMT現代模式腳本中使用了管道，執行過程中出現了類似無法找到目錄 ``gmt6.#####``
+這樣的錯誤，這極有可能是你所使用的UNIX shell存在此類問題。解決辦法是，
+在腳本開始的地方設置環境變量 **GMT_SESSION_NAME** 爲進程ID。在Bash shell應該是::
 
     export GMT_SESSION_NAME=$$
     gmt begin
     gmt ...
     gmt end show
 
-在C shell中应该是::
+在C shell中應該是::
 
     setenv GMT_SESSION_NAME $$
     gmt begin
     gmt ..
     gmt end show
 
-相关模块
+相關模塊
 --------
 
 :doc:`clear`,

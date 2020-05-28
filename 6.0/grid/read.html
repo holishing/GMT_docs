@@ -1,0 +1,440 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>讀netCDF文件 &mdash; GMT中文手册</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+    <link rel="canonical" href="https://docs.gmt-china.org/latest/grid/read.html"/>
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
+        <script async="async" type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="寫netCDF文件" href="write.html" />
+    <link rel="prev" title="網格檔格式" href="format.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+    
+    <a href="../index.html" class="icon icon-home"> GMT中文手册
+    
+
+    
+    </a>
+
+    
+    
+    
+    <div class="version">
+        <select onchange="location = this.options[this.selectedIndex].value;">
+            
+            <option value="/6.0/"  selected > v6.0 </option>
+            
+            <option value="/5.4/" > v5.4 </option>
+            
+        </select>
+    </div>
+    
+    
+
+    
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文件" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+    
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">目 錄</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">簡介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/index.html">安裝</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migrating/index.html">版本遷移</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">入門教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basis/index.html">GMT基礎</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../table/index.html">表數據</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">網格檔</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="format.html">網格檔格式</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">讀netCDF文件</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">讀二維單變量netCDF文件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">讀取二維多變量netCDF文件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">讀取三維單/多變量netCDF文件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">讀取四維單/多變量netCDF文件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">讀取一維單/多變量netCDF文件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">修改座標單位</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="write.html">寫netCDF文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="registration.html">網格配準</a></li>
+<li class="toctree-l2"><a class="reference internal" href="boundary-condition.html">邊界條件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="viewer.html">查看netCDF文件</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../cpt/index.html">CPT文件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../option/index.html">標準選項</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../proj/index.html">地圖投影</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conf/index.html">配置參數</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dataset/index.html">地學數據集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chinese/index.html">中文支持</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../module/index.html">模塊手冊</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery/index.html">繪圖示例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/index.html">附錄</a></li>
+</ul>
+
+            
+          
+
+    
+        <p class="caption">
+            <span class="caption-text">外部链接</span>
+        </p>
+        <ul>
+            
+                <li class="toctree-l1"><a href="https://docs.gmt-china.org/6.0/GMT_docs.pdf"><i class="fa fa-book fa-fw"></i> PDF下载</a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/gmt-china/GMT_Docs"><i class="fa fa-github fa-fw"></i> 源代码</a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/gmt-china/GMT_docs/blob/master/CONTRIBUTING.md"><i class="fa fa-edit fa-fw"></i> 贡献指南</a></li>
+            
+                <li class="toctree-l1"><a href="https://gmt-china.org"><i class="fa fa-globe fa-fw"></i> GMT中文社区</a></li>
+            
+                <li class="toctree-l1"><a href="mailto:admin@gmt-china.org"><i class="fa fa-envelope fa-fw"></i> 联系我们</a></li>
+            
+        </ul>
+    
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">GMT中文手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">首頁</a> &raquo;</li>
+        
+          <li><a href="index.html">網格檔</a> &raquo;</li>
+        
+      <li>讀netCDF文件</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/gmt-china/GMT_Docs/blob/master/source/grid/read.rst" class="fa fa-github"> 編輯本頁</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="netcdf">
+<h1>讀netCDF文件<a class="headerlink" href="#netcdf" title="永久链接至标题">¶</a></h1>
+<p>netCDF格式的設計相當靈活，單個netCDF文件中可以包含<strong>多個多維變量</strong>。而GMT只能直接處理包含單個二維變量的netCDF文件。因而，對於單變量二維netCDF文件，直接給出文件名即可；而對於複雜的多變量多維netCDF文件，則需要用戶在指定文件名時給出額外的信息。</p>
+<div class="section" id="id1">
+<h2>讀二維單變量netCDF文件<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p>對於二維單變量netCDF文件，用戶只需要直接給出網格檔的文件名，GMT可以自動檢測
+netCDF文件的格式並讀入。具體來說，可以按照如下格式指定網格檔文件名:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&lt;name&gt;<span class="o">[=</span>&lt;ID&gt;<span class="o">][</span>+s&lt;scale&gt;<span class="o">][</span>+o&lt;offset&gt;<span class="o">][</span>+n&lt;nan&gt;<span class="o">]</span>
+</pre></div>
+</div>
+<p>其中</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code> 是網格檔名，必須指定，其它均是可選項</li>
+<li><code class="docutils literal notranslate"><span class="pre">&lt;ID&gt;</span></code> 顯式告訴GMT當前文件的格式ID</li>
+<li><code class="docutils literal notranslate"><span class="pre">&lt;scale&gt;</span></code> 將數據乘以比例因子 <code class="docutils literal notranslate"><span class="pre">&lt;scale&gt;</span></code>，默認值爲1</li>
+<li><code class="docutils literal notranslate"><span class="pre">&lt;offset&gt;</span></code> 將數據加上一個常數 <code class="docutils literal notranslate"><span class="pre">&lt;offset&gt;</span></code>，默認值爲0</li>
+<li><code class="docutils literal notranslate"><span class="pre">&lt;nan&gt;</span></code> 表明將文件中值爲 <code class="docutils literal notranslate"><span class="pre">&lt;nan&gt;</span></code> 認爲是NaN</li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;scale&gt;</span></code> 和 <code class="docutils literal notranslate"><span class="pre">&lt;offset&gt;</span></code> 都可以取爲 <code class="docutils literal notranslate"><span class="pre">a</span></code>，表明由程序自動決定比例因子和偏移量的值。在讀入網格檔時，會先乘以比例因子再加上偏移量。</p>
+<p>舉幾個例子：</p>
+<ol class="arabic simple">
+<li>讀入Golden軟體公司的surfer軟體生成的網格檔，GMT可以自動識別，故而直接用 <code class="docutils literal notranslate"><span class="pre">file.grd</span></code></li>
+<li>讀一個二進制短整型網格檔，先將所有值爲32767的值設置爲NaN，再將數據乘以10
+並加上32000，可以用 <code class="docutils literal notranslate"><span class="pre">myfile.i2=bs+s10+o32000+n32767</span></code></li>
+<li>將一個二進制短整數網格檔減去32000再除以10，然後寫到標準輸出，可以用 <code class="docutils literal notranslate"><span class="pre">=bs+s0.1+o-3200</span></code></li>
+<li>讀一個8字節標準Sun光柵文件（其原始範圍爲0到255），並將其歸一化到正負1範圍內，可以用 <code class="docutils literal notranslate"><span class="pre">rasterfile+s7.84313725e-3+o-1</span></code>，即先乘以因子使得數據範圍從0到255
+變成0到2，再減去1，則數據範圍變成-1到1</li>
+</ol>
+</div>
+<div class="section" id="id2">
+<h2>讀取二維多變量netCDF文件<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>對於包含多個二維變量的netCDF網格檔，GMT默認會讀取第一個二維變量作爲Z值，並忽略其餘的二維變量。用戶可以通過在網格檔名後加上後綴 <code class="docutils literal notranslate"><span class="pre">?&lt;varname&gt;</span></code> 的方式指定要讀取某個特定的二維變量，即:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&lt;filename&gt;?&lt;varname&gt;
+</pre></div>
+</div>
+<p>其中 <code class="docutils literal notranslate"><span class="pre">&lt;varname&gt;</span></code> 是netCDF文件中包含的變量名，其可以通過netCDF提供的命令
+<code class="docutils literal notranslate"><span class="pre">ncdump</span> <span class="pre">-c</span> <span class="pre">file.nc</span></code> 得到。</p>
+<p>比如想要從文件中獲取名爲 <code class="docutils literal notranslate"><span class="pre">slp</span></code> 的二維變量的信息，可以用:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt grdinfo <span class="s2">&quot;file.nc?slp&quot;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">Linux下問號會被解析爲通配符，因而在命令行或Bash中使用時需要將問號轉義，或者將整個文件名放在單引號或雙引號內。</p>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>讀取三維單/多變量netCDF文件<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>最常見的三維單/多變量netCDF文件是地震成像得到的三維地球參考模型。三個維度分別是經度、緯度和深度，變量通常是P波速度、S波速度等。</p>
+<p>在遇到三維單/多變量netCDF文件時，GMT默認只讀取第一個變量的第一層數據（通常是深度值最小的那一層）。此時，可以將其當做一個變量數組，並通過如下兩種方式指定讀取特定層的數據。</p>
+<ol class="arabic simple">
+<li>變量名後加上 <code class="docutils literal notranslate"><span class="pre">[&lt;index&gt;]</span></code> 以指定某一層的索引值。第一層的索引值爲0，第二層的索引值爲1，依次類推。</li>
+<li>變量名後加上 <code class="docutils literal notranslate"><span class="pre">(&lt;level&gt;)</span></code> 以指定獲取深度爲 <code class="docutils literal notranslate"><span class="pre">&lt;level&gt;</span></code> 處值。若網格檔中在 <code class="docutils literal notranslate"><span class="pre">&lt;level&gt;</span></code> 指定的深度處並不存在數據，則GMT會找到離 <code class="docutils literal notranslate"><span class="pre">&lt;level&gt;</span></code>
+最近的有數據的那一深度的值，而不會去做插值。</li>
+</ol>
+<p>假設有一個地球模型文件，<code class="docutils literal notranslate"><span class="pre">ncdump</span> <span class="pre">-c</span> <span class="pre">file.nc</span></code> 的結果爲（下面只列出與深度有關的部分）:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 前面省略部分內容</span>
+dimensions:
+    <span class="nv">depth</span> <span class="o">=</span> <span class="m">32</span> <span class="p">;</span>
+variables:
+    float depth<span class="o">(</span>depth<span class="o">)</span> <span class="p">;</span>
+    depth:long_name <span class="o">=</span> <span class="s2">&quot;depth below earth surface&quot;</span> <span class="p">;</span>
+    depth:units <span class="o">=</span> <span class="s2">&quot;km&quot;</span> <span class="p">;</span>
+    depth:positive <span class="o">=</span> <span class="s2">&quot;down&quot;</span> <span class="p">;</span>
+data:
+    <span class="nv">depth</span> <span class="o">=</span> <span class="m">50</span>, <span class="m">100</span>, <span class="m">200</span>, <span class="m">300</span>, <span class="m">400</span>, <span class="m">400</span>, <span class="m">500</span>, <span class="m">600</span>, <span class="m">600</span>, <span class="m">700</span>, <span class="m">800</span>, <span class="m">900</span>, <span class="m">1000</span>,
+        <span class="m">1100</span>, <span class="m">1200</span>, <span class="m">1300</span>, <span class="m">1400</span>, <span class="m">1500</span>, <span class="m">1600</span>, <span class="m">1700</span>, <span class="m">1800</span>, <span class="m">1900</span>, <span class="m">2000</span>, <span class="m">2100</span>, <span class="m">2200</span>,
+        <span class="m">2300</span>, <span class="m">2400</span>, <span class="m">2500</span>, <span class="m">2600</span>, <span class="m">2700</span>, <span class="m">2800</span>, <span class="m">2850</span> <span class="p">;</span>
+</pre></div>
+</div>
+<p>從中可以看到，該模型在深度方向上有32層，分別對應50千米、100千米，一直到2850千米。則可以使用如下命令:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 讀取第二層（即深度100km）處的P波速度</span>
+gmt grdinfo <span class="s2">&quot;file.nc?vp[1]&quot;</span>
+
+<span class="c1"># 讀取深度200千米處的P波速度</span>
+gmt grdinfo <span class="s2">&quot;file.nc?vp(200)&quot;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">Linux下問號、中括號和小括號有特殊含義，因而在命令行或Bash中使用時需要進行轉義，或者將整個文件名放在單引號或雙引號內</p>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>讀取四維單/多變量netCDF文件<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<p>對於四維單/多變量netCDF文件，處理方法類似。假設有一個四維單變量netCDF文件，四個維度分別是緯度、經度、深度、時間，變量爲壓強。利用 <code class="docutils literal notranslate"><span class="pre">ncdump</span></code> 可以查看四個緯度的取值範圍:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>lat<span class="o">(</span>lat<span class="o">)</span>: <span class="m">0</span>, <span class="m">1</span>, <span class="m">2</span>, <span class="m">3</span>, <span class="m">4</span>, <span class="m">5</span>, <span class="m">6</span>, <span class="m">7</span>, <span class="m">8</span>, <span class="m">9</span>
+lon<span class="o">(</span>lon<span class="o">)</span>: <span class="m">0</span>, <span class="m">1</span>, <span class="m">2</span>, <span class="m">3</span>, <span class="m">4</span>, <span class="m">5</span>, <span class="m">6</span>, <span class="m">7</span>, <span class="m">8</span>, <span class="m">9</span>
+depth<span class="o">(</span>depth<span class="o">)</span>: <span class="m">0</span>, <span class="m">10</span>, <span class="m">20</span>, <span class="m">30</span>, <span class="m">40</span>, <span class="m">50</span>, <span class="m">60</span>, <span class="m">70</span>, <span class="m">80</span>, <span class="m">90</span>
+time<span class="o">(</span><span class="nb">time</span><span class="o">)</span>: <span class="m">0</span>, <span class="m">12</span>, <span class="m">24</span>, <span class="m">36</span>, <span class="m">48</span>
+pressure<span class="o">(</span>time,depth,lat,lon<span class="o">)</span>: <span class="nv">共10x10x10x5</span><span class="o">=</span>5000個值
+</pre></div>
+</div>
+<p>此時可以將變量 <code class="docutils literal notranslate"><span class="pre">&lt;pressure&gt;</span></code> 當成一個二維數組。</p>
+<p>爲了得到depth=10，time=24處的變量值，可以用:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt grdinfo <span class="s2">&quot;file.nc?pressure[2,1]&quot;</span>
+</pre></div>
+</div>
+<p>或者:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt grdinfo <span class="s2">&quot;file.nc?pressure(24,10)&quot;</span>
+</pre></div>
+</div>
+<p>在本例中，時間維度在前，深度維度在後。</p>
+</div>
+<div class="section" id="id5">
+<h2>讀取一維單/多變量netCDF文件<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<p>一維單/多變量netCDF文件，即前面所說的以netCDF格式保存的表數據。即表數據中的每一列分別保存爲netCDF文件中的一個變量。GMT自帶的GSHHG數據和DCW數據就是一維多變量netCDF文件。</p>
+<p>同樣的，可以使用 <code class="docutils literal notranslate"><span class="pre">ncdump</span> <span class="pre">-c</span> <span class="pre">file.nc</span></code> 來查看netCDF文件所包含的變量名。然後即可通過在文件名後加上一系列用斜槓分隔的變量名來使用這些一維變量。例如:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 將文件中的lon變量和lat變量作爲輸入數據的第1和2列</span>
+gmt plot <span class="s2">&quot;file.nc?lon/lat&quot;</span> ...
+gmt plot <span class="s2">&quot;file.nc?lon/lat&quot;</span> ...
+
+<span class="c1"># 將文件中的變量time、lat和lon分別作爲輸入數據的三列</span>
+gmt convert <span class="s2">&quot;file.nc?time/lat/lon&quot;</span> ...
+</pre></div>
+</div>
+<p>如果要使用的變量是一個二維變量，並且其優先維度與其他被選變量相同，則該變量整體會被輸出。例如，一個netCDF文件中包含6個時間步，其記錄了4個點的溫度。則變量 <code class="docutils literal notranslate"><span class="pre">temp</span></code> 是一個6x4的數組，因而使用如下命令會輸出如下信息:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ gmt convert <span class="s2">&quot;file.nc?time/temp</span>
+<span class="s2">2012-06-25T00:00:00 20.1 20.2 20.1 20.3</span>
+<span class="s2">2012-06-25T12:00:00 24.2 23.2 24.5 23.5</span>
+<span class="s2">2012-06-26T00:00:00 16.1 16.2 16.1 16.3</span>
+<span class="s2">2012-06-26T12:00:00 22.1 23.0 23.9 23.5</span>
+<span class="s2">2012-06-27T00:00:00 17.5 16.9 17.2 16.8</span>
+<span class="s2">2012-06-27T12:00:00 27.2 27.2 27.5 27.5</span>
+</pre></div>
+</div>
+<p>如果只需要某個點的溫度，例如第二列數據，則可以使用:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ gmt convert <span class="s2">&quot;file.nc?time/temp[1]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>修改座標單位<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<p>某些GMT模塊要求網格中的兩個維度的單位必須是米，若輸入數據中的維度的單位不是米，則需要對網格座標做一些變換。</p>
+<ol class="arabic simple">
+<li>如果使用的是地理網格數據（即兩個維度是經度和緯度），可以加上 <code class="docutils literal notranslate"><span class="pre">-fg</span></code> 選項，則網格座標會根據Flat Earth近似，自動轉換成以米爲單位。</li>
+<li>若使用的是笛卡爾座標下的網格，但維度的單位不是米（比如是千米），則可以在網格檔名後加上 <code class="docutils literal notranslate"><span class="pre">+u&lt;unit&gt;</span></code> 選項來指定當前網格的維度單位，程序會在內部自動轉換成以米爲單位。比如，要讀入一個維度單位爲千米的網格檔，可以通過
+<code class="docutils literal notranslate"><span class="pre">filename+uk</span></code> 將其轉換成以米爲單位。在輸出網格時，會自動使用輸入數據的原始單位，除非輸出網格檔名中有額外的 <code class="docutils literal notranslate"><span class="pre">+u</span></code> 選項。也可以使用 <code class="docutils literal notranslate"><span class="pre">+U&lt;unit&gt;</span></code>
+實現逆變換，將以米爲單位的網格座標變成以 <code class="docutils literal notranslate"><span class="pre">&lt;unit&gt;</span></code> 爲單位。</li>
+</ol>
+</div>
+</div>
+
+
+           </div>
+           
+           <div class="articleComments">
+            
+
+<!-- gitalk 脚本-->
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'b2dfca9a4bfad764aa2b',
+    clientSecret: '4ae5ddcd25c6b6d6bc07ac39201ea417054a530a',
+    owner: 'gmt-china',
+    repo: 'gitalk',
+    admin: ['zhaozhiyuan1989','cehui07226','NothingIsBig','seisman','SeisPider','wangliang1989','sqdeng'],
+    id: md5(location.pathname),
+    body: location.href,
+  });
+gitalk.render('gitalk-container');
+</script>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="write.html" class="btn btn-neutral float-right" title="寫netCDF文件" accesskey="n" rel="next">下頁 <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="format.html" class="btn btn-neutral float-left" title="網格檔格式" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> 上頁</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014 - 2020, GMT中文社区.
+      <span class="lastupdated">
+        最后更新于 2020年05月29日.
+      </span>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

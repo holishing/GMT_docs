@@ -1,0 +1,336 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>-Jm：Mercator投影 &mdash; GMT中文手册</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+    <link rel="canonical" href="https://docs.gmt-china.org/latest/proj/Jm.html"/>
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
+        <script async="async" type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="-Jn：Robinson投影" href="Jn.html" />
+    <link rel="prev" title="-Jl：Lambert圓錐保角投影" href="Jl.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+    
+    <a href="../index.html" class="icon icon-home"> GMT中文手册
+    
+
+    
+    </a>
+
+    
+    
+    
+    <div class="version">
+        <select onchange="location = this.options[this.selectedIndex].value;">
+            
+            <option value="/6.0/"  selected > v6.0 </option>
+            
+            <option value="/5.4/" > v5.4 </option>
+            
+        </select>
+    </div>
+    
+    
+
+    
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文件" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+    
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">目 錄</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">簡介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/index.html">安裝</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migrating/index.html">版本遷移</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">入門教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basis/index.html">GMT基礎</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../table/index.html">表數據</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grid/index.html">網格檔</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cpt/index.html">CPT文件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../option/index.html">標準選項</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">地圖投影</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Jx.html">-Jx：笛卡爾變換</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Jp.html">-Jp：極座標線性投影</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Ja.html">-Ja：Lambert方位等面積投影</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Jb.html">-Jb：Albers圓錐等面積投影</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Jc.html">-Jc：Cassini圓柱投影</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Jcyl_stere.html">-Jcyl_stere：圓柱立體投影</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Jd.html">-Jd：等距圓錐投影</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Je.html">-Je：方位等距投影</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Jf.html">-Jf：球心方位投影</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Jg.html">-Jg：正交投影</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Jh.html">-Jh：等面積Hammer投影</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Ji.html">-Ji：正弦曲線投影</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Jj.html">-Jj：Miller圓柱投影</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Jk.html">-Jk：Eckert投影</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Jl.html">-Jl：Lambert圓錐保角投影</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">-Jm：Mercator投影</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Jn.html">-Jn：Robinson投影</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Jo.html">-Jo：傾斜Mercator投影</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Jpoly.html">-Jpoly：多圓錐投影</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Jq.html">-Jq：圓柱等距投影</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Jr.html">-Jr：Winkel Tripel投影</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Js.html">-Js：立體等角投影</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Jt.html">-Jt：橫向Mercator投影</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Ju.html">-Ju：通用橫向Mercator(UTM)投影</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Jv.html">-Jv：Van der Grinten投影</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Jw.html">-Jw：Mollweide投影</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Jy.html">-Jy：圓柱等面積投影</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../conf/index.html">配置參數</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dataset/index.html">地學數據集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chinese/index.html">中文支持</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../module/index.html">模塊手冊</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery/index.html">繪圖示例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/index.html">附錄</a></li>
+</ul>
+
+            
+          
+
+    
+        <p class="caption">
+            <span class="caption-text">外部链接</span>
+        </p>
+        <ul>
+            
+                <li class="toctree-l1"><a href="https://docs.gmt-china.org/6.0/GMT_docs.pdf"><i class="fa fa-book fa-fw"></i> PDF下载</a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/gmt-china/GMT_Docs"><i class="fa fa-github fa-fw"></i> 源代码</a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/gmt-china/GMT_docs/blob/master/CONTRIBUTING.md"><i class="fa fa-edit fa-fw"></i> 贡献指南</a></li>
+            
+                <li class="toctree-l1"><a href="https://gmt-china.org"><i class="fa fa-globe fa-fw"></i> GMT中文社区</a></li>
+            
+                <li class="toctree-l1"><a href="mailto:admin@gmt-china.org"><i class="fa fa-envelope fa-fw"></i> 联系我们</a></li>
+            
+        </ul>
+    
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">GMT中文手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">首頁</a> &raquo;</li>
+        
+          <li><a href="index.html">地圖投影</a> &raquo;</li>
+        
+      <li>-Jm：Mercator投影</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/gmt-china/GMT_Docs/blob/master/source/proj/Jm.rst" class="fa fa-github"> 編輯本頁</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="jm-mercator">
+<h1>-Jm：Mercator投影<a class="headerlink" href="#jm-mercator" title="永久链接至标题">¶</a></h1>
+<p>維基鏈接：<a class="reference external" href="https://en.wikipedia.org/wiki/Mercator_projection">https://en.wikipedia.org/wiki/Mercator_projection</a></p>
+<p>此投影是圓柱保角投影，沿着赤道無畸變，但兩極畸變嚴重。此投影的主要特點是等方位角的線是一條直線，這樣一條線稱爲rhumb線或loxodrome。</p>
+<p>在常規Mercator投影中，圓柱與赤道相切。若圓柱沿着其他方向與地球相切，則稱爲橫向
+Mercator投影或傾斜Mercator投影。</p>
+<p>常規的Mercator投影需要的參數如下：</p>
+<p><strong>-JM</strong>[<em>lon</em>[/<em>lat</em>]/]<em>width</em>
+或
+<strong>-Jm</strong>[<em>lon</em>[/<em>lat</em>]/]<em>scale</em></p>
+<ul class="simple">
+<li><em>lon</em> 中心經線，默認爲地圖區域的中心</li>
+<li><em>lat</em> 標準緯線，默認值爲赤道。若要指定標準緯線，則必須同時指定中心經線</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt begin GMT_mercator pdf,png
+gmt <span class="nb">set</span> MAP_FRAME_TYPE fancy
+gmt coast -R0/360/-70/70 -Jm1.2e-2i -Bxa60f15 -Bya30f15 -Dc -A5000 -Gred
+gmt end
+</pre></div>
+</div>
+<div class="figure align-center" id="id1">
+<a class="reference internal image-reference" href="../_images/Jm-gmtplot-0.png"><img alt="../_images/Jm-gmtplot-0.png" src="../_images/Jm-gmtplot-0.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">Mercator投影</span></p>
+</div>
+</div>
+
+
+           </div>
+           
+           <div class="articleComments">
+            
+
+<!-- gitalk 脚本-->
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'b2dfca9a4bfad764aa2b',
+    clientSecret: '4ae5ddcd25c6b6d6bc07ac39201ea417054a530a',
+    owner: 'gmt-china',
+    repo: 'gitalk',
+    admin: ['zhaozhiyuan1989','cehui07226','NothingIsBig','seisman','SeisPider','wangliang1989','sqdeng'],
+    id: md5(location.pathname),
+    body: location.href,
+  });
+gitalk.render('gitalk-container');
+</script>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Jn.html" class="btn btn-neutral float-right" title="-Jn：Robinson投影" accesskey="n" rel="next">下頁 <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Jl.html" class="btn btn-neutral float-left" title="-Jl：Lambert圓錐保角投影" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> 上頁</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014 - 2020, GMT中文社区.
+      <span class="lastupdated">
+        最后更新于 2020年05月29日.
+      </span>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

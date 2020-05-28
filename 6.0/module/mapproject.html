@@ -1,0 +1,620 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>mapproject &mdash; GMT中文手册</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+    <link rel="canonical" href="https://docs.gmt-china.org/latest/module/mapproject.html"/>
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
+        <script async="async" type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="meca" href="meca.html" />
+    <link rel="prev" title="makecpt" href="makecpt.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+    
+    <a href="../index.html" class="icon icon-home"> GMT中文手册
+    
+
+    
+    </a>
+
+    
+    
+    
+    <div class="version">
+        <select onchange="location = this.options[this.selectedIndex].value;">
+            
+            <option value="/6.0/"  selected > v6.0 </option>
+            
+            <option value="/5.4/" > v5.4 </option>
+            
+        </select>
+    </div>
+    
+    
+
+    
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文件" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+    
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">目 錄</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">簡介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/index.html">安裝</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migrating/index.html">版本遷移</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">入門教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basis/index.html">GMT基礎</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../table/index.html">表數據</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grid/index.html">網格檔</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cpt/index.html">CPT文件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../option/index.html">標準選項</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../proj/index.html">地圖投影</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conf/index.html">配置參數</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dataset/index.html">地學數據集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chinese/index.html">中文支持</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">模塊手冊</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="basemap.html">basemap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="begin.html">begin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clear.html">clear</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clip.html">clip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coast.html">coast</a></li>
+<li class="toctree-l2"><a class="reference internal" href="colorbar.html">colorbar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coupe.html">coupe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs.html">docs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="end.html">end</a></li>
+<li class="toctree-l2"><a class="reference internal" href="figure.html">figure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filter1d.html">filter1d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fitcircle.html">fitcircle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gmt.html">gmt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gmt-config.html">gmt-config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gmtconnect.html">gmtconnect</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gmtdefaults.html">gmtdefaults</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gmtget.html">gmtget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gmtinfo.html">gmtinfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gmtlogo.html">gmtlogo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gmtselect.html">gmtselect</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gmtset.html">gmtset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gmtsimplify.html">gmtsimplify</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gmtwhich.html">gmtwhich</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grd2xyz.html">grd2xyz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdblend.html">grdblend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdclip.html">grdclip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdconvert.html">grdconvert</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdcut.html">grdcut</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdedit.html">grdedit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdfill.html">grdfill</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdimage.html">grdimage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdinfo.html">grdinfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdlandmask.html">grdlandmask</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdmask.html">grdmask</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdpaste.html">grdpaste</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdproject.html">grdproject</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdsample.html">grdsample</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdtrack.html">grdtrack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdtrend.html">grdtrend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdvector.html">grdvector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grdvolume.html">grdvolume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="histogram.html">histogram</a></li>
+<li class="toctree-l2"><a class="reference internal" href="image.html">image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inset.html">inset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kml2gmt.html">kml2gmt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="legend.html">legend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="makecpt.html">makecpt</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">mapproject</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">語法</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">必須選項</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">可選選項</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">示例</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#mercatorcm-x-y">將經緯度座標數據轉換爲Mercator網格上以cm爲單位的（x,y）</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utm">UTM轉化爲地理座標</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">經緯度轉化爲UTM</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="meca.html">meca</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot.html">plot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="polar.html">polar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="project.html">project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="psconvert.html">psconvert</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rose.html">rose</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sac.html">sac</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sample1d.html">sample1d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="solar.html">solar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spectrum1d.html">spectrum1d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="subplot.html">subplot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ternary.html">ternary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="text.html">text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="velo.html">velo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xyz2grd.html">xyz2grd</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery/index.html">繪圖示例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/index.html">附錄</a></li>
+</ul>
+
+            
+          
+
+    
+        <p class="caption">
+            <span class="caption-text">外部链接</span>
+        </p>
+        <ul>
+            
+                <li class="toctree-l1"><a href="https://docs.gmt-china.org/6.0/GMT_docs.pdf"><i class="fa fa-book fa-fw"></i> PDF下载</a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/gmt-china/GMT_Docs"><i class="fa fa-github fa-fw"></i> 源代码</a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/gmt-china/GMT_docs/blob/master/CONTRIBUTING.md"><i class="fa fa-edit fa-fw"></i> 贡献指南</a></li>
+            
+                <li class="toctree-l1"><a href="https://gmt-china.org"><i class="fa fa-globe fa-fw"></i> GMT中文社区</a></li>
+            
+                <li class="toctree-l1"><a href="mailto:admin@gmt-china.org"><i class="fa fa-envelope fa-fw"></i> 联系我们</a></li>
+            
+        </ul>
+    
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">GMT中文手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">首頁</a> &raquo;</li>
+        
+          <li><a href="index.html">模塊手冊</a> &raquo;</li>
+        
+      <li>mapproject</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/gmt-china/GMT_Docs/blob/master/source/module/mapproject.rst" class="fa fa-github"> 編輯本頁</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="mapproject">
+<span id="index-0"></span><h1>mapproject<a class="headerlink" href="#mapproject" title="永久链接至标题">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">官方文件:</th><td class="field-body"><a class="reference external" href="https://docs.generic-mapping-tools.org/6.0/mapproject.html" title="(在 GMT v6.0)"><span>mapproject</span></a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">簡介:</th><td class="field-body">地圖投影正變換及逆變換</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">譯文作者:</th><td class="field-body"><a class="reference external" href="https://github.com/cugliming/">&#64;cugliming</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>mapproject</strong> 從表數據中讀取（經度，緯度）位置，並使用指定的地圖投影和比例尺計算（x，y）座標。</p>
+<p>也可以讀取（x，y）位置並通過逆變換計算（經度，緯度）值。通過這種方式，我們可以將已知投影類型的地圖數字化爲線性（x，y）點，再將其變換爲地理座標。</p>
+<p>也可以計算沿軌道到固定點的距離，或者最接近直線的距離。或用於執行各種基準轉換。</p>
+<p>讀入的數據字段必須具有（經度，緯度）或（x，y）；關於如何讀取（緯度，經度）文件，請參閱選項 <strong>-:</strong>。</p>
+<p><strong>mapproject</strong>還可以根據構成軌跡的輸入座標來計算各種輔助輸出數據。方位角、距離、到其它直線的距離以及沿着直線的行進時間等，都可以通過使用 <strong>-A</strong>，<strong>-G</strong>，<strong>-L</strong>，<strong>-Z</strong>選項中的一個或多個來計算。</p>
+<div class="section" id="id1">
+<h2>語法<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p><strong>gmt mapproject</strong> [ <em>tables</em> ] <a class="reference internal" href="#j"><span> <strong>-J</strong></span></a></strong><em>parameters</em>
+<a class="reference internal" href="#r"><span> <strong>-R</strong></span></a></strong><em>region</em>
+[ <a class="reference internal" href="#a"><span> <strong>-A</strong></span></a></strong><strong>b</strong>|<strong>B</strong>|<strong>f</strong>|<strong>F</strong>|<strong>o</strong>|<strong>O</strong>[<em>lon0</em>/<em>lat0</em>][<strong>+v</strong>] ]
+[ <a class="reference internal" href="#c"><span> <strong>-C</strong></span></a></strong>[<em>dx</em>/<em>dy</em>] ]
+[ <a class="reference internal" href="#d"><span> <strong>-D</strong></span></a></strong><strong>c</strong>|<strong>i</strong>|<strong>p</strong> ]
+[ <a class="reference internal" href="#e"><span> <strong>-E</strong></span></a></strong>[<em>datum</em>] ] [ <a class="reference internal" href="#f"><span> <strong>-F</strong></span></a></strong>[<em>unit</em>] ]
+[ <a class="reference internal" href="#g"><span> <strong>-G</strong></span></a></strong>[<em>lon0</em>/<em>lat0</em>][<strong>+a</strong>][<strong>+i</strong>][<strong>+u</strong><em>unit</em>][<strong>+v</strong>] ]
+[ <a class="reference internal" href="#i"><span> <strong>-I</strong></span></a></strong> ]
+[ <a class="reference internal" href="#l"><span> <strong>-L</strong></span></a></strong><em>line.xy</em>[<strong>+u</strong><em>unit</em>][<strong>+p</strong>] ]
+[ <a class="reference internal" href="#n"><span> <strong>-N</strong></span></a></strong>[<strong>a</strong>|<strong>c</strong>|<strong>g</strong>|<strong>m</strong>] ]
+[ <a class="reference internal" href="#q"><span> <strong>-Q</strong></span></a></strong>[<strong>d</strong>|<strong>e</strong>] ]
+[ <a class="reference internal" href="#s"><span> <strong>-S</strong></span></a></strong> ]
+[ <a class="reference internal" href="#t"><span> <strong>-T</strong></span></a></strong>[<strong>h</strong>]<em>from</em>[/<em>to</em>] ]
+[ <a class="reference internal" href="#v"><span> <strong>-V</strong></span></a></strong>[<em>level</em>] ]
+[ <a class="reference internal" href="#w"><span> <strong>-W</strong></span></a></strong>[<strong>g</strong>|<strong>h</strong>|<strong>j</strong>|<strong>n</strong>|<strong>w</strong>|<strong>x</strong>] ]
+[ <a class="reference internal" href="#z"><span> <strong>-Z</strong></span></a></strong>[<em>speed</em>][<strong>+a</strong>][<strong>+i</strong>][<strong>+f</strong>][<strong>+t</strong><em>epoch</em>] ]
+[ <strong>-b</strong><a class="reference internal" href="../option/binary.html"><span class="doc">binary</span></a> ]
+[ <strong>-d</strong><a class="reference internal" href="../option/d.html"><span class="doc">nodata</span></a> ]
+[ <strong>-e</strong><a class="reference internal" href="../option/e.html"><span class="doc">regexp</span></a> ]
+[ <strong>-f</strong><a class="reference internal" href="../option/f.html"><span class="doc">flags</span></a> ]
+[ <strong>-g</strong><a class="reference internal" href="../option/g.html"><span class="doc">gaps</span></a> ]
+[ <strong>-h</strong><a class="reference internal" href="../option/h.html"><span class="doc">headers</span></a> ]
+[ <strong>-i</strong><a class="reference internal" href="../option/io.html"><span class="doc">flags</span></a> ]
+[ <strong>-j</strong><a class="reference internal" href="../option/distcal.html"><span class="doc">flags</span></a> ]
+[ <strong>-o</strong><a class="reference internal" href="../option/io.html"><span class="doc">flags</span></a> ]
+[ <strong>-p</strong><a class="reference internal" href="../option/perspective.html"><span class="doc">flags</span></a> ]
+[ <strong>-s</strong><a class="reference internal" href="../option/s.html"><span class="doc">flags</span></a> ]
+[ <strong>-:</strong>[<strong>i</strong>|<strong>o</strong>] ]
+[ <strong>--PAR</strong>=<em>value</em> ]</p>
+</div>
+<div class="section" id="id2">
+<h2>必須選項<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<dl class="docutils" id="j">
+<dt><strong>-J</strong><em>projection</em> <a class="reference internal" href="../option/J.html"><span class="doc">(more …)</span></a></dt>
+<dd>设置地图投影方式。</dd>
+</dl>
+<dl class="docutils" id="r">
+<dt><strong>-R</strong><em>xmin</em>/<em>xmax</em>/<em>ymin</em>/<em>ymax</em>[<strong>+r</strong>][<strong>+u</strong><em>unit</em>] <a class="reference internal" href="../option/R.html"><span class="doc">(more …)</span></a></dt>
+<dd>指定数据范围</dd>
+</dl>
+<blockquote>
+<div>UTM投影比較特殊：如果使用 <strong>-C</strong> 選項且未指定 <strong>-R</strong> 範圍，則將區域設置爲給定的UTM區域，以保留完整的橢圓形解（有關更多信息，請參見RESTRICTIONS）。</div></blockquote>
+</div>
+<div class="section" id="id3">
+<h2>可選選項<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<dl class="docutils">
+<dt><em>table</em></dt>
+<dd>一个或多个ASCII或二进制表数据。若不提供表数据，则会从标准输入中读取。</dd>
+</dl>
+<dl class="docutils" id="a">
+<dt><strong>-Ab</strong>|<strong>B</strong>|<strong>f</strong>|<strong>F</strong>|<strong>o</strong>|<strong>O</strong>[<em>lon0</em>/<em>lat0</em>][<strong>+v</strong>]</dt>
+<dd>計算沿着某軌跡，或到某固定點（lon/lat）的方位角。<code class="docutils literal notranslate"><span class="pre">-Af</span></code>計算每個數據點的（前向）方位角，使用<code class="docutils literal notranslate"><span class="pre">-Ab</span></code>計算數據點到固定點的反方位角。使用<code class="docutils literal notranslate"><span class="pre">-Ao</span></code>可獲得（-90/90）方向，而非方位角（0/360）。大寫的F，B，O，表示從大地緯度轉換爲地心緯度，並估計測地線的方位角（假設當前的橢球體不是球體）。如果沒有給出固定點，則從上一個點開始計算方位角（或反方位角）。或者，通過輸入文件中的3-4列，利用<code class="docutils literal notranslate"><span class="pre">+v</span></code>選項以獲得可變的第二個點（lon0 / lat0）。有關-A如何影響輸出記錄的信息，請參見輸出順序。</dd>
+</dl>
+<dl class="docutils" id="c">
+<dt><strong>-C</strong>[<em>dx</em>/<em>dy</em>]</dt>
+<dd>將投影座標的中心設置爲地圖投影中心(默認爲左下角)。也可以通過指定<code class="docutils literal notranslate"><span class="pre">dx/dy</span></code>，在投影結果中加上一定的偏移量(指定<code class="docutils literal notranslate"><span class="pre">-I</span></code>後，則減去該偏移量)，如特定投影類型中的東、北僞偏移量。偏移量的單位是有效的繪圖距離單位（請參閱<code class="docutils literal notranslate"><span class="pre">PROJ_LENGTH_UNIT</span></code>），但如果指定了<code class="docutils literal notranslate"><span class="pre">-F</span></code>，偏移量單位爲米。</dd>
+</dl>
+<dl class="docutils" id="d">
+<dt><strong>-Dc</strong>|<strong>i</strong>|<strong>p</strong></dt>
+<dd>臨時覆蓋<code class="docutils literal notranslate"><span class="pre">PROJ_LENGTH_UNIT</span></code>，並改用<code class="docutils literal notranslate"><span class="pre">c</span></code>(釐米)，<code class="docutils literal notranslate"><span class="pre">i</span></code>(英寸)或<code class="docutils literal notranslate"><span class="pre">p</span></code>(像素)爲單位。該選項不能與<code class="docutils literal notranslate"><span class="pre">-F</span></code>一起使用。</dd>
+</dl>
+<dl class="docutils" id="e">
+<dt><strong>-E</strong>[<em>datum</em>]</dt>
+<dd>將大地座標（lon，lat，height）轉換爲以地球爲中心的地球固定座標（ECEF）（x，y，z）（逆向轉換，添加<code class="docutils literal notranslate"><span class="pre">-I</span></code>）。</dd>
+</dl>
+<dl class="docutils" id="f">
+<dt><strong>-F</strong>[<em>unit</em>]</dt>
+<dd>強制使用1:1比例尺，即輸出數據（或輸入，參見<code class="docutils literal notranslate"><span class="pre">-I</span></code>）爲真實投影下的米數。如果要指定其他單位，請附加所需的單位（請參閱<code class="docutils literal notranslate"><span class="pre">units</span></code>）。如果沒有<code class="docutils literal notranslate"><span class="pre">-F</span></code>，則輸出（或輸入，請參見<code class="docutils literal notranslate"><span class="pre">-I</span></code>）以<code class="docutils literal notranslate"><span class="pre">PROJ_LENGTH_UNIT</span></code>指定的單位（或者採用<code class="docutils literal notranslate"><span class="pre">-D</span></code>）。</dd>
+</dl>
+<dl class="docutils" id="g">
+<dt><strong>-G</strong>[<em>lon0</em>/<em>lat0</em>][<strong>+a</strong>][<strong>+i</strong>][<strong>+u</strong><em>unit</em>][<strong>+v</strong>]</dt>
+<dd><p class="first">計算沿某軌跡的距離，或到某固定點（用<code class="docutils literal notranslate"><span class="pre">-Glon0</span> <span class="pre">/</span> <span class="pre">lat0</span></code>指定）的距離。</p>
+<p class="last">在距離後加上<code class="docutils literal notranslate"><span class="pre">+u</span></code>以指定單位（參閱<code class="docutils literal notranslate"><span class="pre">Units</span></code>，以瞭解可用單位及如何計算距離[真實半徑的大圓]）；例如，<code class="docutils literal notranslate"><span class="pre">c</span></code>表示使用輸入座標的笛卡爾距離，<code class="docutils literal notranslate"><span class="pre">C</span></code>使用投影座標的笛卡爾距離。<code class="docutils literal notranslate"><span class="pre">C</span></code>單位需要設置<code class="docutils literal notranslate"><span class="pre">-R</span></code>和<code class="docutils literal notranslate"><span class="pre">-J</span></code>。如果沒有給出固定點，將計算沿輸入點定義的軌跡的累積距離[指定<code class="docutils literal notranslate"><span class="pre">+a</span></code>，也表示計算累積距離];
+附加<code class="docutils literal notranslate"><span class="pre">+i</span></code>可獲取連續點之間的增量距離，或者同時附加<code class="docutils literal notranslate"><span class="pre">+a</span></code>
+<code class="docutils literal notranslate"><span class="pre">+i</span></code>，以同時獲得累積距離及增量距離。或者，通過輸入文件中的3-4列，附加<code class="docutils literal notranslate"><span class="pre">+v</span></code>以獲得可變的第二個點（lon0 / lat0）。有關<code class="docutils literal notranslate"><span class="pre">-G</span></code>如何影響輸出記錄的信息，參見輸出順序。</p>
+</dd>
+</dl>
+<dl class="docutils" id="i">
+<dt><strong>-I</strong></dt>
+<dd>進行逆變換，即從（x，y）數據獲取（經度，緯度）。</dd>
+</dl>
+<dl class="docutils" id="l">
+<dt><strong>-L</strong><em>line.xy</em>[<strong>+u</strong><em>unit</em>][<strong>+p</strong>]</dt>
+<dd><p class="first">判斷從輸入數據點到ASCII多段文件line.xy中指定的行的最短距離。</p>
+<p class="last">距離和最近點的座標將作爲三個新列添加到輸出中。追加距離單位（參閱<code class="docutils literal notranslate"><span class="pre">Unites</span></code>以獲取可用單位以及如何計算距離[使用真實半徑的大圓]），例如<code class="docutils literal notranslate"><span class="pre">c</span></code>(使用輸入座標的笛卡爾距離)，<code class="docutils literal notranslate"><span class="pre">C</span></code>(使用投影座標的笛卡爾距離)。<code class="docutils literal notranslate"><span class="pre">C</span></code>單位需要設置<code class="docutils literal notranslate"><span class="pre">-R</span></code>和<code class="docutils literal notranslate"><span class="pre">-J</span></code>。附加<code class="docutils literal notranslate"><span class="pre">+p</span></code>以報告線段ID和小數點編號，而不是最近點的lon/lat。 有關<code class="docutils literal notranslate"><span class="pre">-L</span></code>如何影響輸出記錄的信息，請參見輸出順序。</p>
+</dd>
+</dl>
+<dl class="docutils" id="n">
+<dt><strong>-N</strong>[<strong>a</strong>|<strong>c</strong>|<strong>g</strong>|<strong>m</strong>]</dt>
+<dd>從大地緯度（使用當前的橢球，參閱<code class="docutils literal notranslate"><span class="pre">PROJ_ELLIPSOID</span></code>）轉換爲四個不同輔助緯度中的一個，經度不受影響。從authalic（等積？），conformal（等角？），geocentric（地心座標系？）和meridional
+latitudes（子午線緯度？）[地心座標系]中選擇。使用<code class="docutils literal notranslate"><span class="pre">-I</span></code>將輔助緯度轉換爲大地緯度。</dd>
+</dl>
+<dl class="docutils" id="q">
+<dt><strong>-Q</strong>[<strong>d</strong>|<strong>e</strong>]</dt>
+<dd><p class="first">列出所有投影參數。</p>
+<p class="last"><code class="docutils literal notranslate"><span class="pre">-Qd</span></code>，僅列出基準；<code class="docutils literal notranslate"><span class="pre">-Qe</span></code>僅列出橢圓體。</p>
+</dd>
+</dl>
+<dl class="docutils" id="s">
+<dt><strong>-S</strong></dt>
+<dd>不轉換區域之外的點。</dd>
+</dl>
+<dl class="docutils" id="t">
+<dt><strong>-T</strong>[<strong>h</strong>]<em>from</em>[/<em>to</em>]</dt>
+<dd>使用標準的Molodensky轉換對datums(基準面？)之間進行座標轉換。如果第3個輸入列的高度高於橢圓形，則使用<code class="docutils literal notranslate"><span class="pre">-Th</span></code>
+[默認假定height = 0，即在橢圓形上]。使用基準面的ID（參見<code class="docutils literal notranslate"><span class="pre">-Qd</span></code>）指定基準或給出橢球：dx，dy，dz，其中橢球可以是橢球ID（參見<code class="docutils literal notranslate"><span class="pre">-Qe</span></code>），也可以指定爲a[，inv_f]，其中a是半長軸，inv_f是反展平（如果省略，則爲<code class="docutils literal notranslate"><span class="pre">0</span></code>）。</dd>
+</dl>
+<dl class="docutils" id="v">
+<dt><strong>-V</strong>[<em>level</em>] <a class="reference internal" href="../option/V.html"><span class="doc">(more …)</span></a></dt>
+<dd>设置 verbose 等级 [c]</dd>
+</dl>
+<dl class="docutils" id="w">
+<dt><strong>-W</strong>[<strong>g</strong>|<strong>h</strong>|<strong>j</strong>|<strong>n</strong>|<strong>w</strong>|<strong>x</strong>]</dt>
+<dd>在標準輸出上打印地圖的寬度和高度。 沒有讀取輸入文件。要僅輸出寬度或高度，請分別附加<code class="docutils literal notranslate"><span class="pre">w</span></code>或<code class="docutils literal notranslate"><span class="pre">h</span></code>。要輸出地圖點的繪圖座標，請輸入<code class="docutils literal notranslate"><span class="pre">g</span></code>lon /lat。報告的繪圖尺寸的單位可以通過-D進行更改。要輸出參考點的地圖座標，請選擇<code class="docutils literal notranslate"><span class="pre">j</span></code>code（使用標準的兩個字符對齊代碼），nrx / ry（其中參考點以0-1範圍內的標準化位置給出）或xpx / py，直接給出點。[默認值返回地圖的寬度和高度]。</dd>
+</dl>
+<dl class="docutils" id="z">
+<dt><strong>-Z</strong>[<em>speed</em>][<strong>+a</strong>][<strong>+i</strong>][<strong>+f</strong>][<strong>+t</strong><em>epoch</em>]</dt>
+<dd><p class="first">計算沿<code class="docutils literal notranslate"><span class="pre">-G</span></code>指定軌跡的行進時間；附加一個恆定的單位，如果缺失，則會從第3列讀取。</p>
+<p class="last">速度爲單位時間(單位由<code class="docutils literal notranslate"><span class="pre">TIME_UNIT</span></code> [m / s]指定)內通過的距離（單位由<code class="docutils literal notranslate"><span class="pre">-G</span></code>指定）。附加<code class="docutils literal notranslate"><span class="pre">+i</span></code>可以輸出連續點之間的增量行進時間，<code class="docutils literal notranslate"><span class="pre">+a</span></code>可以獲取累積的行進時間，或者同時加上以獲取兩種時間信息。使用<code class="docutils literal notranslate"><span class="pre">+f</span></code>將累積的（經過的）旅行時間格式化爲ISO 8601規定格式。至於用於表示秒的小數位數，請查閱<code class="docutils literal notranslate"><span class="pre">FORMAT_CLOCK_OUT</span></code>設置。附加<code class="docutils literal notranslate"><span class="pre">+t</span></code>epoch以報告連續點的絕對時間（ETA）。最後，由於需要增加距離，因此需要帶有<code class="docutils literal notranslate"><span class="pre">+i</span></code>修飾符的<code class="docutils literal notranslate"><span class="pre">-G</span></code>選項。有關<code class="docutils literal notranslate"><span class="pre">-Z</span></code>如何影響輸出記錄的信息，請參見輸出順序。</p>
+</dd>
+</dl>
+<dl class="docutils">
+<dt><strong>-bi</strong>[<em>ncols</em>][<strong>t</strong>] <a class="reference internal" href="../option/binary.html"><span class="doc">(more …)</span></a></dt>
+<dd>设置二进制输入数据的格式</dd>
+</dl>
+<dl class="docutils">
+<dt><strong>-bo</strong>[<em>ncols</em>][<em>type</em>] <a class="reference internal" href="../option/binary.html"><span class="doc">(more …)</span></a></dt>
+<dd>设置二进制输出的数据格式</dd>
+</dl>
+<dl class="docutils">
+<dt><strong>-d</strong>[<strong>i</strong>|<strong>o</strong>]<em>nodata</em> <a class="reference internal" href="../option/d.html"><span class="doc">(more …)</span></a></dt>
+<dd>将输入数据中等于 <em>nodata</em> 的记录替换为 NaN，或将输出数据中值为 NaN 的记录替换为 <em>nodata</em></dd>
+</dl>
+<dl class="docutils">
+<dt><strong>-e</strong>[<strong>~</strong>]<em>”pattern”</em> | <strong>-e</strong>[<strong>~</strong>]/<em>regexp</em>/[<strong>i</strong>] <a class="reference internal" href="../option/e.html"><span class="doc">(more …)</span></a></dt>
+<dd>只接受匹配指定模式的数据记录</dd>
+</dl>
+<dl class="docutils">
+<dt><strong>-f</strong>[<strong>i</strong>|<strong>o</strong>]<em>colinfo</em> <a class="reference internal" href="../option/f.html"><span class="doc">(more …)</span></a></dt>
+<dd>指定输入或输出列的数据类型</dd>
+</dl>
+<dl class="docutils">
+<dt><strong>-g</strong>[<strong>a</strong>]<strong>x</strong>|<strong>y</strong>|<strong>d</strong>|<strong>X</strong>|<strong>Y</strong>|<strong>D</strong>|[<em>col</em>]<strong>z</strong><em>gap</em>[<strong>u</strong>][<strong>+n</strong>|<strong>p</strong>] <a class="reference internal" href="../option/g.html"><span class="doc">(more …)</span></a></dt>
+<dd>确定数据或线段的间断</dd>
+</dl>
+<dl class="docutils" id="h">
+<dt><strong>-h</strong>[<strong>i</strong>|<strong>o</strong>][<em>n</em>][<strong>+c</strong>][<strong>+d</strong>][<strong>+r</strong><em>remark</em>][<strong>+r</strong><em>title</em>] <a class="reference internal" href="../option/h.html"><span class="doc">(more …)</span></a></dt>
+<dd>跳过或生成指定数目的头段记录</dd>
+</dl>
+<dl class="docutils">
+<dt><strong>-i</strong><em>cols</em>[<strong>+l</strong>][<strong>+s</strong><em>scale</em>][<strong>+o</strong><em>offset</em>][,<em>…</em>][,<strong>t</strong>[<em>word</em>]] <a class="reference internal" href="../option/io.html"><span class="doc">(more …)</span></a></dt>
+<dd>设置输入数据列及简单变换（0表示第一列，<strong>t</strong> 表示文本列）</dd>
+</dl>
+<dl class="docutils">
+<dt><strong>-je</strong>|<strong>f</strong>|<strong>g</strong> <a class="reference internal" href="../option/distcal.html"><span class="doc">(more …)</span></a></dt>
+<dd>设置球面距离的计算方式</dd>
+</dl>
+<dl class="docutils">
+<dt><strong>-o</strong><em>cols</em>[,…][,<strong>t</strong>[<em>word</em>]] <a class="reference internal" href="../option/io.html"><span class="doc">(more …)</span></a></dt>
+<dd>设置输出数据列（0表示第一列，<strong>t</strong> 表示文本列）</dd>
+</dl>
+<dl class="docutils">
+<dt><strong>-p</strong>[<strong>x</strong>|<strong>y</strong>|<strong>z</strong>]<em>azim</em>[/<em>elev</em>[/<em>zlevel</em>]][<strong>+w</strong><em>lon0</em>/<em>lat0</em>[/<em>z0</em>]][<strong>+v</strong><em>x0</em>/<em>y0</em>] <a class="reference internal" href="../option/perspective.html"><span class="doc">(more …)</span></a></dt>
+<dd>设置3D透视视角</dd>
+</dl>
+<dl class="docutils">
+<dt><strong>-s</strong>[<em>cols</em>][<strong>+a</strong>|<strong>+r</strong>] <a class="reference internal" href="../option/s.html"><span class="doc">(more …)</span></a></dt>
+<dd>设置 NaN 记录的处理方式</dd>
+</dl>
+<dl class="docutils">
+<dt><strong>-:</strong>[<strong>i</strong>|<strong>o</strong>] <a class="reference internal" href="../option/colon.html"><span class="doc">(more …)</span></a></dt>
+<dd>交换输入或输出中的第1和第二列。</dd>
+</dl>
+<dl class="docutils">
+<dt><strong>-^</strong> 或 <strong>-</strong></dt>
+<dd>显示简短的帮助信息，包括模块简介和基本语法信息（Windows下只能使用 <strong>-</strong>）</dd>
+<dt><strong>-+</strong> 或 <strong>+</strong></dt>
+<dd>显示帮助信息，包括模块简介、基本语法以及模块特有选项的说明</dd>
+<dt><strong>-?</strong> 或无参数</dt>
+<dd>显示完整的帮助信息，包括模块简介、基本语法以及所有选项的说明</dd>
+<dt><strong>--PAR</strong>=<em>value</em></dt>
+<dd>临时修改GMT参数的值，可重复多次使用。参数列表见 <a class="reference external" href="https://docs.generic-mapping-tools.org/6.0/gmt.conf.html" title="(在 GMT v6.0)"><span class="xref std std-doc">gmt.conf</span></a></dd>
+</dl>
+</div>
+<div class="section" id="id4">
+<h2>示例<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<div class="section" id="mercatorcm-x-y">
+<h3>將經緯度座標數據轉換爲Mercator網格上以cm爲單位的（x,y）<a class="headerlink" href="#mercatorcm-x-y" title="永久链接至标题">¶</a></h3>
+<p>本示例中，Mercator每度表示爲2cm:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt mapproject  -R105/108/33/36 -Jm2c <span class="s">&lt;&lt; EOF</span>
+<span class="s">105 33</span>
+<span class="s">106 34</span>
+<span class="s">107 35</span>
+<span class="s">108 36</span>
+<span class="s">EOF</span>
+</pre></div>
+</div>
+<p>輸出結果:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="m">0</span>       <span class="m">0</span>
+<span class="m">2</span>       <span class="m">2</span>.38727963335
+<span class="m">4</span>       <span class="m">4</span>.80309472214
+<span class="m">6</span>       <span class="m">7</span>.24888693724
+</pre></div>
+</div>
+</div>
+<div class="section" id="utm">
+<h3>UTM轉化爲地理座標<a class="headerlink" href="#utm" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li>UTM座標單位爲m</li>
+<li>需要知道該座標的UTM分帶號，本示例座標所在帶號爲51</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 將UTM座標轉換爲經緯度</span>
+<span class="nb">echo</span> <span class="m">311072</span>.4 <span class="m">3542183</span>.5 <span class="p">|</span> gmt mapproject -Ju51/1:1 -C -F -I
+<span class="c1"># 輸出結果：</span>
+<span class="m">121</span>.000000401   <span class="m">32</span>.0000000858
+
+<span class="c1"># 將Gauss-Kruger座標轉換爲經緯度</span>
+<span class="nb">echo</span> <span class="m">310996</span>.760635 <span class="m">3543600</span>.93152 <span class="p">|</span> gmt mapproject -Ju51/1:1 -C -F -I --PROJ_SCALE_FACTOR<span class="o">=</span><span class="m">1</span>
+<span class="c1"># 輸出結果：</span>
+<span class="m">121</span> <span class="m">31</span>.9999999997
+</pre></div>
+</div>
+<p><strong>注意：</strong>
+Gauss-Kruger座標可直接使用UTM的-Ju投影，曲別在於Gauss-Kruger的比例因子爲1，而UTM比例因子爲0.9996.</p>
+</div>
+<div class="section" id="id5">
+<h3>經緯度轉化爲UTM<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 經緯度轉換爲Gauss-Kruger</span>
+<span class="nb">echo</span> <span class="m">121</span> <span class="m">32</span> <span class="p">|</span> gmt mapproject -Ju51/1:1 -C -F --PROJ_SCALE_FACTOR<span class="o">=</span><span class="m">1</span>
+<span class="c1"># 輸出結果</span>
+<span class="m">310996</span>.760635 <span class="m">3543600</span>.93152
+
+<span class="c1"># 經緯度轉換爲UTM</span>
+<span class="nb">echo</span> <span class="m">121</span> <span class="m">32</span> <span class="p">|</span> gmt mapproject -Ju51/1:1 -C -F
+<span class="c1"># 輸出結果</span>
+<span class="m">311072</span>.361931 <span class="m">3542183</span>.49115
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+           <div class="articleComments">
+            
+
+<!-- gitalk 脚本-->
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'b2dfca9a4bfad764aa2b',
+    clientSecret: '4ae5ddcd25c6b6d6bc07ac39201ea417054a530a',
+    owner: 'gmt-china',
+    repo: 'gitalk',
+    admin: ['zhaozhiyuan1989','cehui07226','NothingIsBig','seisman','SeisPider','wangliang1989','sqdeng'],
+    id: md5(location.pathname),
+    body: location.href,
+  });
+gitalk.render('gitalk-container');
+</script>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="meca.html" class="btn btn-neutral float-right" title="meca" accesskey="n" rel="next">下頁 <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="makecpt.html" class="btn btn-neutral float-left" title="makecpt" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> 上頁</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014 - 2020, GMT中文社区.
+      <span class="lastupdated">
+        最后更新于 2020年05月29日.
+      </span>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

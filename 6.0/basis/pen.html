@@ -1,0 +1,442 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>畫筆 &mdash; GMT中文手册</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+    <link rel="canonical" href="https://docs.gmt-china.org/latest/basis/pen.html"/>
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
+        <script async="async" type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="填充" href="fill.html" />
+    <link rel="prev" title="顏色" href="color.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+    
+    <a href="../index.html" class="icon icon-home"> GMT中文手册
+    
+
+    
+    </a>
+
+    
+    
+    
+    <div class="version">
+        <select onchange="location = this.options[this.selectedIndex].value;">
+            
+            <option value="/6.0/"  selected > v6.0 </option>
+            
+            <option value="/5.4/" > v5.4 </option>
+            
+        </select>
+    </div>
+    
+    
+
+    
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文件" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+    
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">目 錄</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">簡介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/index.html">安裝</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migrating/index.html">版本遷移</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">入門教程</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">GMT基礎</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="paper.html">畫布</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unit.html">單位</a></li>
+<li class="toctree-l2"><a class="reference internal" href="color.html">顏色</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">畫筆</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">畫筆線寬</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">畫筆顏色</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">畫筆線型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">小練習</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fill.html">填充</a></li>
+<li class="toctree-l2"><a class="reference internal" href="text.html">文字</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special-character.html">特殊字符</a></li>
+<li class="toctree-l2"><a class="reference internal" href="escape-character.html">轉義序列</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vector.html">繪製矢量/箭頭</a></li>
+<li class="toctree-l2"><a class="reference internal" href="line.html">線條屬性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="anchor.html">錨點</a></li>
+<li class="toctree-l2"><a class="reference internal" href="embellishment.html">繪製修飾物</a></li>
+<li class="toctree-l2"><a class="reference internal" href="io-format.html">數據類型</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../table/index.html">表數據</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grid/index.html">網格檔</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cpt/index.html">CPT文件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../option/index.html">標準選項</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../proj/index.html">地圖投影</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conf/index.html">配置參數</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dataset/index.html">地學數據集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chinese/index.html">中文支持</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../module/index.html">模塊手冊</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery/index.html">繪圖示例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/index.html">附錄</a></li>
+</ul>
+
+            
+          
+
+    
+        <p class="caption">
+            <span class="caption-text">外部链接</span>
+        </p>
+        <ul>
+            
+                <li class="toctree-l1"><a href="https://docs.gmt-china.org/6.0/GMT_docs.pdf"><i class="fa fa-book fa-fw"></i> PDF下载</a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/gmt-china/GMT_Docs"><i class="fa fa-github fa-fw"></i> 源代码</a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/gmt-china/GMT_docs/blob/master/CONTRIBUTING.md"><i class="fa fa-edit fa-fw"></i> 贡献指南</a></li>
+            
+                <li class="toctree-l1"><a href="https://gmt-china.org"><i class="fa fa-globe fa-fw"></i> GMT中文社区</a></li>
+            
+                <li class="toctree-l1"><a href="mailto:admin@gmt-china.org"><i class="fa fa-envelope fa-fw"></i> 联系我们</a></li>
+            
+        </ul>
+    
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">GMT中文手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">首頁</a> &raquo;</li>
+        
+          <li><a href="index.html">GMT基礎</a> &raquo;</li>
+        
+      <li>畫筆</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/gmt-china/GMT_Docs/blob/master/source/basis/pen.rst" class="fa fa-github"> 編輯本頁</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="index-0">
+<span id="id1"></span><h1>畫筆<a class="headerlink" href="#index-0" title="永久链接至标题">¶</a></h1>
+<p>有畫筆才能畫線條、三角形、圓形等各種複雜的形狀。</p>
+<p>GMT中的畫筆有三個屬性：筆寬、顏色和線型，三者用逗號分隔，即 <em>width</em>,<em>color</em>,<em>style</em>。</p>
+<p>在 GMT 模塊的語法介紹中，一般用 <em>pen</em> 表示畫筆屬性，讀者在見到 <em>pen</em>
+時應自行腦補成 <em>width</em>,<em>color</em>,<em>style</em>。</p>
+<p>在指定畫筆屬性時，可以指定三個屬性中的任意一個或多個屬性，但要保證屬性的相對順序。</p>
+<div class="section" id="id2">
+<h2>畫筆線寬<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>GMT中可以通過兩種方式指定畫筆寬度：</p>
+<ol class="arabic">
+<li><p class="first">寬度值+單位，即 <em>width</em><strong>c</strong>|<strong>i</strong>|<strong>p</strong></p>
+<p>在不指定線寬單位時，GMT使用的默認線寬單位爲 <strong>p</strong>。除了 <strong>p</strong> 之外，還可以使用 <strong>c</strong> 或 <strong>i</strong> 指定線寬單位爲釐米或英寸。</p>
+<p>推薦只使用 <strong>p</strong> 作爲線寬單位，畢竟多數情況下線條的寬度都比較小，用“小”單位
+<strong>p</strong> 作爲單位更方便些。且建議總是顯式指定線寬單位，以使得命令的參數更加易讀，比如 <strong>1p</strong>、<strong>0.25p</strong>。</p>
+</li>
+<li><p class="first">預定義畫筆寬度名</p>
+<p>對於一些常用的畫筆寬度，GMT將其定義爲特定的名字，以方便用戶使用。下表中列出了GMT預定義畫筆寬度名及其對應的線寬。</p>
+<table border="1" class="docutils align-center" id="id6">
+<caption><span class="caption-text">GMT預定義畫筆寬度名</span><a class="headerlink" href="#id6" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col width="32%" />
+<col width="19%" />
+<col width="32%" />
+<col width="17%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">線寬名</th>
+<th class="head">線寬</th>
+<th class="head">線寬名</th>
+<th class="head">線寬</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>faint</strong></td>
+<td>0</td>
+<td><strong>thicker</strong></td>
+<td>1.5p</td>
+</tr>
+<tr class="row-odd"><td><strong>default</strong></td>
+<td>0.25p</td>
+<td><strong>thickest</strong></td>
+<td>2p</td>
+</tr>
+<tr class="row-even"><td><strong>thinnest</strong></td>
+<td>0.25p</td>
+<td><strong>fat</strong></td>
+<td>3p</td>
+</tr>
+<tr class="row-odd"><td><strong>thinner</strong></td>
+<td>0.50p</td>
+<td><strong>fatter</strong></td>
+<td>6p</td>
+</tr>
+<tr class="row-even"><td><strong>thin</strong></td>
+<td>0.75p</td>
+<td><strong>fattest</strong></td>
+<td>10p</td>
+</tr>
+<tr class="row-odd"><td><strong>thick</strong></td>
+<td>1.0p</td>
+<td><strong>obese</strong></td>
+<td>18p</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">指定線寬爲 <strong>0p</strong> 或者 <strong>faint</strong> 並不表示不繪製線段，而是指定了畫筆的寬度爲最細寬度。畫筆的實際最細寬度由具體的設備來決定。通常情況下，線寬爲 <strong>0p</strong> 的線條在圖片縮放時線條寬度總是保持最小值。</p>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>畫筆顏色<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>在 <a class="reference internal" href="color.html"><span class="doc">顏色</span></a> 中已經介紹瞭如何指定顏色，所有的顏色均可用於指定畫筆的顏色。</p>
+</div>
+<div class="section" id="id4">
+<h2>畫筆線型<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<p>畫筆線型屬性 <em>style</em> 控制了線條的外觀，可以用四種方式表示：</p>
+<ol class="arabic">
+<li><p class="first">簡單符號</p>
+<ul class="simple">
+<li><strong>.</strong> 表示點線</li>
+<li><strong>-</strong> 表示虛線</li>
+</ul>
+</li>
+<li><p class="first">組合符號</p>
+<p>通過對簡單符號的任意組合可以獲得更多的線型，比如 <strong>.-</strong> 表示點劃線，<strong>..-</strong> 表示兩個點號與一個破折號交替出現。</p>
+</li>
+<li><p class="first">預定義線型名</p>
+<p>GMT預定義了幾種線型名，包括：</p>
+<ul class="simple">
+<li><strong>solid</strong>：即實線；</li>
+<li><strong>dashed</strong>：即虛線，等效於 <strong>-</strong>；</li>
+<li><strong>dotted</strong>：即點線，等效於 <strong>.</strong>；</li>
+<li><strong>dashdot</strong>：劃點線，等效於 <strong>-.</strong>；</li>
+<li><strong>dotdash</strong>：點劃線，等效於 <strong>.-</strong>。</li>
+</ul>
+</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last"><strong>.</strong> 和 <strong>-</strong> 的絕對長度由畫筆寬度來決定。
+<strong>.</strong> 的長度等於畫筆寬度；<strong>-</strong> 的長度爲8倍畫筆寬度；點線或虛線中段間空白的長度爲4倍畫筆寬度。</p>
+</div>
+<ol class="arabic" start="4">
+<li><p class="first">複雜線型</p>
+<p>通過 <em>string</em>[<strong>:</strong><em>offset</em>] 的形式可以自定義任意複雜的線型。</p>
+<p><em>string</em> 是一系列由下劃線 <strong>_</strong> 分隔的數字組成。這一系列數字中，第奇數個數字表示實線的長度，第偶數個數字表示空白的長度。通過實線和空白的長度的不同組合，即可構成多種複雜的線型。
+<strong>offset</strong> 表示線段開始處整個線型的初始相位移動（默認值爲0）。</p>
+<p>例如，<strong>4_8_5_8:2</strong> 表示線型首先是長度爲 <strong>4p</strong> 的實線，然後是長度爲 <strong>8p</strong>
+的空白，緊接着長度爲 <strong>5p</strong> 的實線和長度爲 <strong>8p</strong> 的空白，然後按照該模式不斷重複。此處的 <strong>offset</strong> 值爲 <strong>2p</strong>，因而線段的最開始處，第一條實線的長度
+<strong>4p</strong> 經過相移後長度爲 <strong>2p</strong>。</p>
+<p>線型中的這些數值，默認單位是 <strong>p</strong>，也可以使用 <strong>c</strong> 或 <strong>i</strong>。</p>
+</li>
+</ol>
+</div>
+<div class="section" id="id5">
+<h2>小練習<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<p>下面的命令用 <a class="reference internal" href="../module/plot.html"><span class="doc">plot</span></a> 模塊繪製了一條線段。讀者可以將命令中
+<strong>-W</strong><em>pen</em> 中的 <em>pen</em> 修改爲不同的值來理解如何指定不同的畫筆屬性:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt plot -R0/10/0/5 -JX10c/5c -Wpen -pdf pens <span class="s">&lt;&lt; EOF</span>
+<span class="s">0 2</span>
+<span class="s">10 2</span>
+<span class="s">EOF</span>
+</pre></div>
+</div>
+<p><a class="reference download internal" download="" href="../_downloads/aeaead9070c4fabe0c2e7505c80d3753/pen-gmtplot-0.sh"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">Code</span></code></a></p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/pen-gmtplot-0.png"><img alt="../_images/pen-gmtplot-0.png" src="../_images/pen-gmtplot-0.png" style="width: 75%;" /></a>
+</div>
+<p>發揮你的想象力，想想如何繪製如下圖所示的黑白相間的鐵軌線？點擊“Source Code”可以查看下圖對應的繪圖腳本。</p>
+<p><a class="reference download internal" download="" href="../_downloads/f1180d29d811c259ca2291d90cd62d96/pen-gmtplot-1.sh"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">Code</span></code></a></p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/pen-gmtplot-1.png"><img alt="../_images/pen-gmtplot-1.png" src="../_images/pen-gmtplot-1.png" style="width: 75%;" /></a>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+           <div class="articleComments">
+            
+
+<!-- gitalk 脚本-->
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'b2dfca9a4bfad764aa2b',
+    clientSecret: '4ae5ddcd25c6b6d6bc07ac39201ea417054a530a',
+    owner: 'gmt-china',
+    repo: 'gitalk',
+    admin: ['zhaozhiyuan1989','cehui07226','NothingIsBig','seisman','SeisPider','wangliang1989','sqdeng'],
+    id: md5(location.pathname),
+    body: location.href,
+  });
+gitalk.render('gitalk-container');
+</script>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="fill.html" class="btn btn-neutral float-right" title="填充" accesskey="n" rel="next">下頁 <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="color.html" class="btn btn-neutral float-left" title="顏色" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> 上頁</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014 - 2020, GMT中文社区.
+      <span class="lastupdated">
+        最后更新于 2020年05月29日.
+      </span>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

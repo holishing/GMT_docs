@@ -1,0 +1,582 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>理解圖層 &mdash; GMT中文手册</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+    <link rel="canonical" href="https://docs.gmt-china.org/latest/tutorial/layers.html"/>
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
+        <script async="async" type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="繪製直方圖" href="histogram/index.html" />
+    <link rel="prev" title="繪製地形起伏" href="earth-relief.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+    
+    <a href="../index.html" class="icon icon-home"> GMT中文手册
+    
+
+    
+    </a>
+
+    
+    
+    
+    <div class="version">
+        <select onchange="location = this.options[this.selectedIndex].value;">
+            
+            <option value="/6.0/"  selected > v6.0 </option>
+            
+            <option value="/5.4/" > v5.4 </option>
+            
+        </select>
+    </div>
+    
+    
+
+    
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文件" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+    
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">目 錄</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">簡介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/index.html">安裝</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migrating/index.html">版本遷移</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">入門教程</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="get-started/index.html">GMT初探</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commands.html">命令初探</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scripting.html">腳本編程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basemap.html">繪製底圖</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coastline.html">繪製海岸線</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lines.html">繪製線段和多邊形</a></li>
+<li class="toctree-l2"><a class="reference internal" href="symbols.html">繪製符號</a></li>
+<li class="toctree-l2"><a class="reference internal" href="texts.html">添加文字</a></li>
+<li class="toctree-l2"><a class="reference internal" href="legend.html">添加圖例</a></li>
+<li class="toctree-l2"><a class="reference internal" href="earth-relief.html">繪製地形起伏</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">理解圖層</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">圖件分析與拆解</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">繪製底圖</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">繪製震中和臺站位置</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">繪製射線路徑</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">添加臺站名</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">圖層的先後順序</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="histogram/index.html">繪製直方圖</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oneliner.html">GMT單行模式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inset.html">GMT圖中圖模式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="subplot.html">GMT子圖模式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multifig.html">GMT多圖模式</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../basis/index.html">GMT基礎</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../table/index.html">表數據</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grid/index.html">網格檔</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cpt/index.html">CPT文件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../option/index.html">標準選項</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../proj/index.html">地圖投影</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conf/index.html">配置參數</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dataset/index.html">地學數據集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chinese/index.html">中文支持</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../module/index.html">模塊手冊</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery/index.html">繪圖示例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/index.html">附錄</a></li>
+</ul>
+
+            
+          
+
+    
+        <p class="caption">
+            <span class="caption-text">外部链接</span>
+        </p>
+        <ul>
+            
+                <li class="toctree-l1"><a href="https://docs.gmt-china.org/6.0/GMT_docs.pdf"><i class="fa fa-book fa-fw"></i> PDF下载</a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/gmt-china/GMT_Docs"><i class="fa fa-github fa-fw"></i> 源代码</a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/gmt-china/GMT_docs/blob/master/CONTRIBUTING.md"><i class="fa fa-edit fa-fw"></i> 贡献指南</a></li>
+            
+                <li class="toctree-l1"><a href="https://gmt-china.org"><i class="fa fa-globe fa-fw"></i> GMT中文社区</a></li>
+            
+                <li class="toctree-l1"><a href="mailto:admin@gmt-china.org"><i class="fa fa-envelope fa-fw"></i> 联系我们</a></li>
+            
+        </ul>
+    
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">GMT中文手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">首頁</a> &raquo;</li>
+        
+          <li><a href="index.html">入門教程</a> &raquo;</li>
+        
+      <li>理解圖層</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/gmt-china/GMT_Docs/blob/master/source/tutorial/layers.rst" class="fa fa-github"> 編輯本頁</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>理解圖層<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<p>在前面幾節中，我們已經學會了如何使用GMT繪製底圖、海岸線、線段、符號、文字、地形起伏等等。這一節我們將把前面學到的內容綜合起來，試着去繪製下面這張地震學經常見到的大圓弧路徑圖。在這一過程中，我們將試着去理解GMT中圖層的概念。</p>
+<p><a class="reference download internal" download="" href="../_downloads/2381c6d7d2baeaebf1c5987496875fb9/layers-gmtplot-0.sh"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">Code</span></code></a></p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/layers-gmtplot-0.png"><img alt="../_images/layers-gmtplot-0.png" src="../_images/layers-gmtplot-0.png" style="width: 75%;" /></a>
+</div>
+<div class="section" id="id2">
+<h2>圖件分析與拆解<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>上面這張圖看上去有些複雜，實際上是由很多部分構成的。將整張圖拆解一下可知，上圖由如下幾個部分構成：</p>
+<ol class="arabic simple">
+<li>地形起伏作爲底圖</li>
+<li>震中位置（五角星）</li>
+<li>臺站位置（三角形）</li>
+<li>射線路徑（圖中大圓弧）</li>
+<li>臺站名（文字）</li>
+</ol>
+<p>這幾個部分，在教程的前幾節都已經做過介紹，因而只需要將前幾節的內容綜合起來即可。</p>
+</div>
+<div class="section" id="id3">
+<h2>繪製底圖<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>我們首先使用 <a class="reference internal" href="../module/grdimage.html"><span class="doc">grdimage</span></a> 模塊繪製底圖，並使用 <a class="reference internal" href="../module/colorbar.html"><span class="doc">colorbar</span></a>
+模塊添加色標：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+gmt begin layers png,pdf
+
+<span class="c1"># 绘制地形起伏底图</span>
+gmt basemap -JH180/15c -Rg -B0
+gmt grdimage @earth_relief_10m -Cetopo1 -I+d
+gmt colorbar -Bxa2000f+l<span class="s2">&quot;Elevation (m)&quot;</span>
+gmt end show
+</pre></div>
+</div>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/layers-gmtplot-1.png"><img alt="../_images/layers-gmtplot-1.png" src="../_images/layers-gmtplot-1.png" style="width: 75%;" /></a>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>繪製震中和臺站位置<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<p>接下來，使用 <a class="reference internal" href="../module/plot.html"><span class="doc">plot</span></a> 模塊繪製五角星和三角形。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+gmt begin layers png,pdf
+
+<span class="c1"># 绘制地形起伏底图</span>
+gmt basemap -JH180/15c -Rg -B0
+gmt grdimage @earth_relief_10m -Cetopo1 -I+d
+gmt colorbar -Bxa2000f+l<span class="s2">&quot;Elevation (m)&quot;</span>
+
+<span class="c1"># 绘制震中位置</span>
+gmt plot -Sa0.5c -W0.5p,black,solid -Gyellow <span class="s">&lt;&lt; EOF</span>
+<span class="s">130.72 32.78</span>
+<span class="s">EOF</span>
+
+<span class="c1"># 绘制台站位置</span>
+gmt plot -St0.2c -W0.5p,black,solid -Gblack <span class="s">&lt;&lt; EOF</span>
+<span class="s">104.39 29.90</span>
+<span class="s">13.14 52.50</span>
+<span class="s">19.99 -34.52</span>
+<span class="s">-77.15 38.89</span>
+<span class="s">-52.47 -31.62</span>
+<span class="s">150.36 -33.79</span>
+<span class="s">76.22 -69.22</span>
+<span class="s">EOF</span>
+
+gmt end show
+</pre></div>
+</div>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/layers-gmtplot-2.png"><img alt="../_images/layers-gmtplot-2.png" src="../_images/layers-gmtplot-2.png" style="width: 75%;" /></a>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>繪製射線路徑<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<p>再使用 <a class="reference internal" href="../module/plot.html"><span class="doc">plot</span></a> 模塊繪製線段。默認情況下，<strong>plot</strong>會自動用大圓路徑連接地球上的兩個位置，因而我們只需要用 <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> 分隔多個線段，每個線段給定兩個座標點（即地震位置和臺站位置）即可。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+gmt begin layers png,pdf
+
+<span class="c1"># 绘制地形起伏底图</span>
+gmt basemap -JH180/15c -Rg -B0
+gmt grdimage @earth_relief_10m -Cetopo1 -I+d
+gmt colorbar -Bxa2000f+l<span class="s2">&quot;Elevation (m)&quot;</span>
+
+<span class="c1"># 绘制震中位置</span>
+gmt plot -Sa0.5c -W0.5p,black,solid -Gyellow <span class="s">&lt;&lt; EOF</span>
+<span class="s">130.72 32.78</span>
+<span class="s">EOF</span>
+
+<span class="c1"># 绘制台站位置</span>
+gmt plot -St0.2c -W0.5p,black,solid -Gblack <span class="s">&lt;&lt; EOF</span>
+<span class="s">104.39 29.90</span>
+<span class="s">13.14 52.50</span>
+<span class="s">19.99 -34.52</span>
+<span class="s">-77.15 38.89</span>
+<span class="s">-52.47 -31.62</span>
+<span class="s">150.36 -33.79</span>
+<span class="s">76.22 -69.22</span>
+<span class="s">EOF</span>
+
+<span class="c1"># 绘制大圆路径</span>
+gmt plot -W1p,red <span class="s">&lt;&lt; EOF</span>
+<span class="s">&gt;</span>
+<span class="s">130.72 32.78</span>
+<span class="s">104.39 29.90</span>
+<span class="s">&gt;</span>
+<span class="s">130.72 32.78</span>
+<span class="s">13.14 52.50</span>
+<span class="s">&gt;</span>
+<span class="s">130.72 32.78</span>
+<span class="s">19.99 -34.52</span>
+<span class="s">&gt;</span>
+<span class="s">130.72 32.78</span>
+<span class="s">-77.15 38.89</span>
+<span class="s">&gt;</span>
+<span class="s">130.72 32.78</span>
+<span class="s">-52.47 -31.62</span>
+<span class="s">&gt;</span>
+<span class="s">130.72 32.78</span>
+<span class="s">150.36 -33.79</span>
+<span class="s">&gt;</span>
+<span class="s">130.72 32.78</span>
+<span class="s">76.22 -69.22</span>
+<span class="s">EOF</span>
+
+gmt end show
+</pre></div>
+</div>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/layers-gmtplot-3.png"><img alt="../_images/layers-gmtplot-3.png" src="../_images/layers-gmtplot-3.png" style="width: 75%;" /></a>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>添加臺站名<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<p>最後還需要往圖畫裏添加臺站所在地區的名字。添加文字使用 <a class="reference internal" href="../module/text.html"><span class="doc">text</span></a> 模塊。這裏我們使用了 <strong>-F+f9p,1,black+j</strong> 選項，因而輸入數據是4列:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>X   Y   對齊方式    TEXT
+</pre></div>
+</div>
+<p><strong>-Dj0.1c/0.1c</strong> 則是將文本在對齊方式的基礎上做進一步的偏移以避免文字覆蓋線段或符號。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+gmt begin layers png,pdf
+gmt basemap -JH180/15c -Rg -B0
+gmt grdimage @earth_relief_10m -Cetopo1 -I+d
+gmt colorbar -Bxa2000f+l<span class="s2">&quot;Elevation (m)&quot;</span>
+
+<span class="c1"># 绘制震中位置</span>
+gmt plot -Sa0.5c -W0.5p,black,solid -Gyellow <span class="s">&lt;&lt; EOF</span>
+<span class="s">130.72 32.78</span>
+<span class="s">EOF</span>
+
+<span class="c1"># 绘制台站位置</span>
+gmt plot -St0.2c -W0.5p,black,solid -Gblack <span class="s">&lt;&lt; EOF</span>
+<span class="s">104.39 29.90</span>
+<span class="s">13.14 52.50</span>
+<span class="s">19.99 -34.52</span>
+<span class="s">-77.15 38.89</span>
+<span class="s">-52.47 -31.62</span>
+<span class="s">150.36 -33.79</span>
+<span class="s">76.22 -69.22</span>
+<span class="s">EOF</span>
+
+<span class="c1"># 绘制大圆路径</span>
+gmt plot -W1p,red <span class="s">&lt;&lt; EOF</span>
+<span class="s">&gt;</span>
+<span class="s">130.72 32.78</span>
+<span class="s">104.39 29.90</span>
+<span class="s">&gt;</span>
+<span class="s">130.72 32.78</span>
+<span class="s">13.14 52.50</span>
+<span class="s">&gt;</span>
+<span class="s">130.72 32.78</span>
+<span class="s">19.99 -34.52</span>
+<span class="s">&gt;</span>
+<span class="s">130.72 32.78</span>
+<span class="s">-77.15 38.89</span>
+<span class="s">&gt;</span>
+<span class="s">130.72 32.78</span>
+<span class="s">-52.47 -31.62</span>
+<span class="s">&gt;</span>
+<span class="s">130.72 32.78</span>
+<span class="s">150.36 -33.79</span>
+<span class="s">&gt;</span>
+<span class="s">130.72 32.78</span>
+<span class="s">76.22 -69.22</span>
+<span class="s">EOF</span>
+
+<span class="c1"># 添加文本</span>
+gmt text -F+f9p,1,black+j -Dj0.1c/0.1c <span class="s">&lt;&lt; EOF</span>
+<span class="s">-77.15  38.89 ML Washington</span>
+<span class="s">76.22  -69.22 ML Zhongshanzhan</span>
+<span class="s">104.39  29.90 MR Zigong</span>
+<span class="s">13.14   52.50 TC Berlin</span>
+<span class="s">19.99  -34.52 ML Bredasdorp</span>
+<span class="s">150.36 -33.79 ML Sydney</span>
+<span class="s">-52.47 -31.62 ML Pelotas</span>
+<span class="s">EOF</span>
+
+gmt end show
+</pre></div>
+</div>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/layers-gmtplot-4.png"><img alt="../_images/layers-gmtplot-4.png" src="../_images/layers-gmtplot-4.png" style="width: 75%;" /></a>
+</div>
+</div>
+<div class="section" id="id7">
+<h2>圖層的先後順序<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
+<p>上面的繪圖腳本已經基本繪製出我們最初想要的圖件了。細細看會發現，還有一些不完美的地方：比如黃色五角星和三角形被線段蓋住了。</p>
+<p>這是因爲，GMT的每一個繪圖命令都會產生一個圖層，後繪製的圖層會覆蓋在先繪製的圖層的上面，即後來者居上。解決辦法也很簡單，先繪製線段，再繪製三角形和五角星即可。</p>
+<p>對腳本中命令的先後順序進行微調，如下所示：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+gmt begin layers png,pdf
+gmt basemap -JH180/15c -Rg -B0
+gmt grdimage @earth_relief_10m -Cetopo1 -I+d
+gmt colorbar -Bxa2000f+l<span class="s2">&quot;Elevation (m)&quot;</span>
+
+<span class="c1"># 绘制大圆路径</span>
+gmt plot -W1p,red <span class="s">&lt;&lt; EOF</span>
+<span class="s">&gt;</span>
+<span class="s">130.72 32.78</span>
+<span class="s">104.39 29.90</span>
+<span class="s">&gt;</span>
+<span class="s">130.72 32.78</span>
+<span class="s">13.14 52.50</span>
+<span class="s">&gt;</span>
+<span class="s">130.72 32.78</span>
+<span class="s">19.99 -34.52</span>
+<span class="s">&gt;</span>
+<span class="s">130.72 32.78</span>
+<span class="s">-77.15 38.89</span>
+<span class="s">&gt;</span>
+<span class="s">130.72 32.78</span>
+<span class="s">-52.47 -31.62</span>
+<span class="s">&gt;</span>
+<span class="s">130.72 32.78</span>
+<span class="s">150.36 -33.79</span>
+<span class="s">&gt;</span>
+<span class="s">130.72 32.78</span>
+<span class="s">76.22 -69.22</span>
+<span class="s">EOF</span>
+
+<span class="c1"># 绘制震中位置</span>
+gmt plot -Sa0.5c -W0.5p,black,solid -Gyellow <span class="s">&lt;&lt; EOF</span>
+<span class="s">130.72 32.78</span>
+<span class="s">EOF</span>
+
+<span class="c1"># 绘制台站位置</span>
+gmt plot -St0.2c -W0.5p,black,solid -Gblack <span class="s">&lt;&lt; EOF</span>
+<span class="s">104.39 29.90</span>
+<span class="s">13.14 52.50</span>
+<span class="s">19.99 -34.52</span>
+<span class="s">-77.15 38.89</span>
+<span class="s">-52.47 -31.62</span>
+<span class="s">150.36 -33.79</span>
+<span class="s">76.22 -69.22</span>
+<span class="s">EOF</span>
+
+<span class="c1"># 添加文本</span>
+gmt text -F+f9p,1,black+j -Dj0.1c/0.1c <span class="s">&lt;&lt; EOF</span>
+<span class="s">-77.15  38.89 ML Washington</span>
+<span class="s">76.22  -69.22 ML Zhongshanzhan</span>
+<span class="s">104.39  29.90 MR Zigong</span>
+<span class="s">13.14   52.50 TC Berlin</span>
+<span class="s">19.99  -34.52 ML Bredasdorp</span>
+<span class="s">150.36 -33.79 ML Sydney</span>
+<span class="s">-52.47 -31.62 ML Pelotas</span>
+<span class="s">EOF</span>
+
+gmt end show
+</pre></div>
+</div>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/layers-gmtplot-5.png"><img alt="../_images/layers-gmtplot-5.png" src="../_images/layers-gmtplot-5.png" style="width: 75%;" /></a>
+</div>
+<p>這樣我們就通過組合一系列簡單的GMT命令，得到了一個複雜的GMT圖件。</p>
+</div>
+</div>
+
+
+           </div>
+           
+           <div class="articleComments">
+            
+
+<!-- gitalk 脚本-->
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'b2dfca9a4bfad764aa2b',
+    clientSecret: '4ae5ddcd25c6b6d6bc07ac39201ea417054a530a',
+    owner: 'gmt-china',
+    repo: 'gitalk',
+    admin: ['zhaozhiyuan1989','cehui07226','NothingIsBig','seisman','SeisPider','wangliang1989','sqdeng'],
+    id: md5(location.pathname),
+    body: location.href,
+  });
+gitalk.render('gitalk-container');
+</script>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="histogram/index.html" class="btn btn-neutral float-right" title="繪製直方圖" accesskey="n" rel="next">下頁 <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="earth-relief.html" class="btn btn-neutral float-left" title="繪製地形起伏" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> 上頁</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014 - 2020, GMT中文社区.
+      <span class="lastupdated">
+        最后更新于 2020年05月29日.
+      </span>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,441 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>-Jx：笛卡爾變換 &mdash; GMT中文手册</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+    <link rel="canonical" href="https://docs.gmt-china.org/latest/proj/Jx.html"/>
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
+        <script async="async" type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="-Jp：極座標線性投影" href="Jp.html" />
+    <link rel="prev" title="地圖投影" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+    
+    <a href="../index.html" class="icon icon-home"> GMT中文手册
+    
+
+    
+    </a>
+
+    
+    
+    
+    <div class="version">
+        <select onchange="location = this.options[this.selectedIndex].value;">
+            
+            <option value="/6.0/"  selected > v6.0 </option>
+            
+            <option value="/5.4/" > v5.4 </option>
+            
+        </select>
+    </div>
+    
+    
+
+    
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文件" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+    
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">目 錄</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">簡介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/index.html">安裝</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migrating/index.html">版本遷移</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">入門教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basis/index.html">GMT基礎</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../table/index.html">表數據</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grid/index.html">網格檔</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cpt/index.html">CPT文件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../option/index.html">標準選項</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">地圖投影</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">-Jx：笛卡爾變換</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">笛卡爾線性座標</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">常規浮點數座標</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">地理座標</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">日期時間座標</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">笛卡爾對數投影</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">笛卡爾指數投影</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Jp.html">-Jp：極座標線性投影</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Ja.html">-Ja：Lambert方位等面積投影</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Jb.html">-Jb：Albers圓錐等面積投影</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Jc.html">-Jc：Cassini圓柱投影</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Jcyl_stere.html">-Jcyl_stere：圓柱立體投影</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Jd.html">-Jd：等距圓錐投影</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Je.html">-Je：方位等距投影</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Jf.html">-Jf：球心方位投影</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Jg.html">-Jg：正交投影</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Jh.html">-Jh：等面積Hammer投影</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Ji.html">-Ji：正弦曲線投影</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Jj.html">-Jj：Miller圓柱投影</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Jk.html">-Jk：Eckert投影</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Jl.html">-Jl：Lambert圓錐保角投影</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Jm.html">-Jm：Mercator投影</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Jn.html">-Jn：Robinson投影</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Jo.html">-Jo：傾斜Mercator投影</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Jpoly.html">-Jpoly：多圓錐投影</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Jq.html">-Jq：圓柱等距投影</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Jr.html">-Jr：Winkel Tripel投影</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Js.html">-Js：立體等角投影</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Jt.html">-Jt：橫向Mercator投影</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Ju.html">-Ju：通用橫向Mercator(UTM)投影</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Jv.html">-Jv：Van der Grinten投影</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Jw.html">-Jw：Mollweide投影</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Jy.html">-Jy：圓柱等面積投影</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../conf/index.html">配置參數</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dataset/index.html">地學數據集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chinese/index.html">中文支持</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../module/index.html">模塊手冊</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery/index.html">繪圖示例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/index.html">附錄</a></li>
+</ul>
+
+            
+          
+
+    
+        <p class="caption">
+            <span class="caption-text">外部链接</span>
+        </p>
+        <ul>
+            
+                <li class="toctree-l1"><a href="https://docs.gmt-china.org/6.0/GMT_docs.pdf"><i class="fa fa-book fa-fw"></i> PDF下载</a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/gmt-china/GMT_Docs"><i class="fa fa-github fa-fw"></i> 源代码</a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/gmt-china/GMT_docs/blob/master/CONTRIBUTING.md"><i class="fa fa-edit fa-fw"></i> 贡献指南</a></li>
+            
+                <li class="toctree-l1"><a href="https://gmt-china.org"><i class="fa fa-globe fa-fw"></i> GMT中文社区</a></li>
+            
+                <li class="toctree-l1"><a href="mailto:admin@gmt-china.org"><i class="fa fa-envelope fa-fw"></i> 联系我们</a></li>
+            
+        </ul>
+    
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">GMT中文手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">首頁</a> &raquo;</li>
+        
+          <li><a href="index.html">地圖投影</a> &raquo;</li>
+        
+      <li>-Jx：笛卡爾變換</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/gmt-china/GMT_Docs/blob/master/source/proj/Jx.rst" class="fa fa-github"> 編輯本頁</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="jx">
+<h1>-Jx：笛卡爾變換<a class="headerlink" href="#jx" title="永久链接至标题">¶</a></h1>
+<p>GMT中笛卡爾座標變換分爲三類：</p>
+<ul class="simple">
+<li>線性座標</li>
+<li>log<span class="math notranslate nohighlight">\(_{10}\)</span> 座標</li>
+<li>指數座標</li>
+</ul>
+<p>在開始之前，先用 <a class="reference external" href="https://docs.generic-mapping-tools.org/6.0/gmtmath.html" title="(在 GMT v6.0)"><span>gmtmath</span></a> 生成兩個數據以供接下來示例使用:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt math -T0/100/1  T <span class="nv">SQRT</span> <span class="o">=</span> sqrt.txt
+gmt math -T0/100/10 T <span class="nv">SQRT</span> <span class="o">=</span> sqrt10.txt
+</pre></div>
+</div>
+<div class="section" id="id1">
+<h2>笛卡爾線性座標<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p>笛卡爾線性座標可以通過四種方式指定：</p>
+<ul class="simple">
+<li><strong>-Jx</strong><em>scale</em> X軸和Y軸擁有相同的比例尺 <em>scale</em></li>
+<li><strong>-JX</strong><em>width</em> X軸和Y軸擁有相同的長度 <em>width</em></li>
+<li><strong>-Jx</strong><em>xscale</em>/<em>yscale</em> 分別爲X軸和Y軸指定不同的比例尺</li>
+<li><strong>-JX</strong><em>width</em>/<em>height</em> 分別爲X軸和Y軸指定不同的長度</li>
+</ul>
+<p>笛卡爾線性座標的使用場景可以分爲三類：</p>
+<ol class="arabic simple">
+<li>常規的浮點數座標</li>
+<li>地理座標</li>
+<li>日期時間座標</li>
+</ol>
+<div class="section" id="id2">
+<h3>常規浮點數座標<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h3>
+<p>對於常規的浮點型數據而言，選擇笛卡爾線性座標意味着對輸入座標做簡單的線性變換
+<span class="math notranslate nohighlight">\(u' = a u + b\)</span>，即將輸入座標 <span class="math notranslate nohighlight">\(u\)</span> 投影到紙張座標 <span class="math notranslate nohighlight">\(u'\)</span>。</p>
+<p>下面的命令將函數 <span class="math notranslate nohighlight">\(y=\sqrt{x}\)</span> 用笛卡爾線性變換畫在圖上。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt begin GMT_linear pdf,png
+gmt plot -R0/100/0/10 -JX3i/1.5i -Bag -BWSne+gsnow -Wthick,blue,- sqrt.txt
+gmt plot -St0.1i -N -Gred -Wfaint sqrt10.txt
+gmt end
+</pre></div>
+</div>
+<div class="figure align-center" id="id7">
+<a class="reference internal image-reference" href="../_images/Jx-gmtplot-0.png"><img alt="../_images/Jx-gmtplot-0.png" src="../_images/Jx-gmtplot-0.png" style="width: 60%;" /></a>
+<p class="caption"><span class="caption-text">笛卡爾座標的線性變換</span></p>
+</div>
+<p>說明：</p>
+<ul class="simple">
+<li>正常情況下，X軸向右遞增，Y軸向上遞增。有些時候可能需要X軸向左遞增或者Y軸向下遞增（比如Y軸是深度時），只要將軸的比例尺或者軸長度設置爲負值即可。</li>
+<li>若指定X軸的長度，並設置Y軸的長度爲0，則會根據X軸的長度和範圍計算出X軸的比例尺，並對Y軸使用相同的比例尺，進而計算出Y軸的長度，即 <strong>-JX10c/0c</strong>，<strong>-JX0c/10c</strong> 同理。</li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h3>地理座標<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
+<p>理論上地理座標應該用地理投影畫，而不應該用線性投影，但是有時候可能的確需要使用線性投影。用線性投影繪製地理座標時會碰到一個問題，即經度有一個360度的週期性。因而在使用線性投影時需要通知GMT數據實際上是地理座標。有三種辦法：</p>
+<ol class="arabic simple">
+<li>在 <strong>-R</strong> 後、數據範圍前加上 <strong>g</strong> 或 <strong>d</strong>，比如 <strong>-Rg-55/305/-90/90</strong></li>
+<li>在 <strong>-Jx</strong> 或 <strong>-JX</strong> 選項的最後加上 <strong>g</strong> 或 <strong>d</strong>，比如 <strong>-JX10c/6cd</strong></li>
+<li>使用 <strong>-fg</strong> 選項</li>
+</ol>
+<p>下面的例子用線性投影繪製了一箇中心位於125°E的世界地圖。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt begin GMT_linear_d pdf,png
+gmt <span class="nb">set</span> MAP_GRID_CROSS_SIZE_PRIMARY <span class="m">0</span>.1i MAP_FRAME_TYPE FANCY FORMAT_GEO_MAP ddd:mm:ssF
+gmt coast -Rg-55/305/-90/90 -Jx0.014i -Bagf -BWSen -Dc -A1000 -Glightbrown -Wthinnest -Slightblue
+gmt end
+</pre></div>
+</div>
+<div class="figure align-center" id="id8">
+<a class="reference internal image-reference" href="../_images/Jx-gmtplot-1.png"><img alt="../_images/Jx-gmtplot-1.png" src="../_images/Jx-gmtplot-1.png" style="width: 60%;" /></a>
+<p class="caption"><span class="caption-text">地理座標的線性變換</span></p>
+</div>
+</div>
+<div class="section" id="id4">
+<h3>日期時間座標<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
+<p>時間日期座標也可以用線性投影繪製，此時需要告訴GMT輸入座標是絕對時間還是相對時間。</p>
+<p>可以通過在 <strong>-Jx</strong> 或 <strong>-JX</strong> 的最後加上 <strong>T</strong> 或 <strong>t</strong>，不過實際上 <strong>-R</strong>
+選項中已經指定了時間範圍，所以沒有必要在 <strong>-J</strong> 和 <strong>-R</strong> 選項中都指定。當 <strong>-R</strong> 和 <strong>-J</strong> 選項給出的座標類型相沖突時，GMT會給出警告，並以 <strong>-JX</strong> 選項爲準。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt begin GMT_linear_cal pdf,png
+gmt <span class="nb">set</span> FORMAT_DATE_MAP o TIME_WEEK_START Sunday <span class="nv">FORMAT_CLOCK_MAP</span><span class="o">=</span>-hham FORMAT_TIME_PRIMARY_MAP full
+gmt basemap -R2001-9-24T/2001-9-29T/T07:0/T15:0 -JX4i/-2i -Bxa1Kf1kg1d -Bya1Hg1h -BWsNe+glightyellow
+gmt end
+</pre></div>
+</div>
+<div class="figure align-center" id="id9">
+<a class="reference internal image-reference" href="../_images/Jx-gmtplot-2.png"><img alt="../_images/Jx-gmtplot-2.png" src="../_images/Jx-gmtplot-2.png" style="width: 60%;" /></a>
+<p class="caption"><span class="caption-text">日期時間座標的線性變換</span></p>
+</div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>笛卡爾對數投影<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<p>對數變換 <span class="math notranslate nohighlight">\(\log_{10}\)</span> 的數學表示是 <span class="math notranslate nohighlight">\(u' = a \log_{10}(u) + b\)</span> ，可以通過在比例尺或軸長度後加上 <strong>l</strong> 指定。</p>
+<p>下面的命令繪製了一個X軸爲對數軸Y軸爲線性軸的圖。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt begin GMT_log pdf,png
+gmt plot -R1/100/0/10 -Jx1.5il/0.15i -Bx2g3 -Bya2f1g2 -BWSne+gbisque -Wthick,blue,- -h sqrt.txt
+gmt plot -Ss0.1i -N -Gred -W -h sqrt10.txt
+gmt end
+</pre></div>
+</div>
+<div class="figure align-center" id="id10">
+<a class="reference internal image-reference" href="../_images/Jx-gmtplot-3.png"><img alt="../_images/Jx-gmtplot-3.png" src="../_images/Jx-gmtplot-3.png" style="width: 60%;" /></a>
+<p class="caption"><span class="caption-text">對數投影</span></p>
+</div>
+<p>注意：若想要X軸和Y軸都使用對數投影，且X軸和Y軸比例尺不同，則必須在指定每個軸的比例尺時分別加上 <strong>l</strong>，例如 <strong>-JX10cl/6cl</strong>。</p>
+</div>
+<div class="section" id="id6">
+<h2>笛卡爾指數投影<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<p>指數投影的函數表示是 <span class="math notranslate nohighlight">\(u' = a u^b + c\)</span> ，使得用戶可以繪製類似
+<span class="math notranslate nohighlight">\(x^p\)</span> - <span class="math notranslate nohighlight">\(y^q\)</span> 這樣的函數關係。如果選 p=0.5、q=1
+則相對於繪製 <strong>x</strong> 與 <span class="math notranslate nohighlight">\(\sqrt{x}\)</span> 的函數曲線。</p>
+<p>要使用指數投影，需要在比例尺或軸長度後加上 <strong>p</strong><em>exp</em>，其中 <em>exp</em> 是要使用的指數。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt begin GMT_pow pdf,png
+gmt plot -R0/100/0/10 -Jx0.3ip0.5/0.15i -Bxa1p -Bya2f1 -BWSne+givory -Wthick sqrt.txt
+gmt plot -Sc0.075i -Ggreen -W sqrt10.txt
+gmt end
+</pre></div>
+</div>
+<div class="figure align-center" id="id11">
+<a class="reference internal image-reference" href="../_images/Jx-gmtplot-4.png"><img alt="../_images/Jx-gmtplot-4.png" src="../_images/Jx-gmtplot-4.png" style="width: 60%;" /></a>
+<p class="caption"><span class="caption-text">指數變換</span></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+           <div class="articleComments">
+            
+
+<!-- gitalk 脚本-->
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'b2dfca9a4bfad764aa2b',
+    clientSecret: '4ae5ddcd25c6b6d6bc07ac39201ea417054a530a',
+    owner: 'gmt-china',
+    repo: 'gitalk',
+    admin: ['zhaozhiyuan1989','cehui07226','NothingIsBig','seisman','SeisPider','wangliang1989','sqdeng'],
+    id: md5(location.pathname),
+    body: location.href,
+  });
+gitalk.render('gitalk-container');
+</script>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Jp.html" class="btn btn-neutral float-right" title="-Jp：極座標線性投影" accesskey="n" rel="next">下頁 <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="地圖投影" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> 上頁</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014 - 2020, GMT中文社区.
+      <span class="lastupdated">
+        最后更新于 2020年05月29日.
+      </span>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

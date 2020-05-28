@@ -1,0 +1,449 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>繪製底圖 &mdash; GMT中文手册</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+    <link rel="canonical" href="https://docs.gmt-china.org/latest/tutorial/basemap.html"/>
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
+        <script async="async" type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="繪製海岸線" href="coastline.html" />
+    <link rel="prev" title="腳本編程" href="scripting.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+    
+    <a href="../index.html" class="icon icon-home"> GMT中文手册
+    
+
+    
+    </a>
+
+    
+    
+    
+    <div class="version">
+        <select onchange="location = this.options[this.selectedIndex].value;">
+            
+            <option value="/6.0/"  selected > v6.0 </option>
+            
+            <option value="/5.4/" > v5.4 </option>
+            
+        </select>
+    </div>
+    
+    
+
+    
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文件" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+    
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">目 錄</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">簡介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/index.html">安裝</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migrating/index.html">版本遷移</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">入門教程</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="get-started/index.html">GMT初探</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commands.html">命令初探</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scripting.html">腳本編程</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">繪製底圖</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">全球地圖</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">區域地圖</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">線性座標軸</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">三維線性座標軸</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="coastline.html">繪製海岸線</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lines.html">繪製線段和多邊形</a></li>
+<li class="toctree-l2"><a class="reference internal" href="symbols.html">繪製符號</a></li>
+<li class="toctree-l2"><a class="reference internal" href="texts.html">添加文字</a></li>
+<li class="toctree-l2"><a class="reference internal" href="legend.html">添加圖例</a></li>
+<li class="toctree-l2"><a class="reference internal" href="earth-relief.html">繪製地形起伏</a></li>
+<li class="toctree-l2"><a class="reference internal" href="layers.html">理解圖層</a></li>
+<li class="toctree-l2"><a class="reference internal" href="histogram/index.html">繪製直方圖</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oneliner.html">GMT單行模式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inset.html">GMT圖中圖模式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="subplot.html">GMT子圖模式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multifig.html">GMT多圖模式</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../basis/index.html">GMT基礎</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../table/index.html">表數據</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grid/index.html">網格檔</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cpt/index.html">CPT文件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../option/index.html">標準選項</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../proj/index.html">地圖投影</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conf/index.html">配置參數</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dataset/index.html">地學數據集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chinese/index.html">中文支持</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../module/index.html">模塊手冊</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery/index.html">繪圖示例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/index.html">附錄</a></li>
+</ul>
+
+            
+          
+
+    
+        <p class="caption">
+            <span class="caption-text">外部链接</span>
+        </p>
+        <ul>
+            
+                <li class="toctree-l1"><a href="https://docs.gmt-china.org/6.0/GMT_docs.pdf"><i class="fa fa-book fa-fw"></i> PDF下载</a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/gmt-china/GMT_Docs"><i class="fa fa-github fa-fw"></i> 源代码</a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/gmt-china/GMT_docs/blob/master/CONTRIBUTING.md"><i class="fa fa-edit fa-fw"></i> 贡献指南</a></li>
+            
+                <li class="toctree-l1"><a href="https://gmt-china.org"><i class="fa fa-globe fa-fw"></i> GMT中文社区</a></li>
+            
+                <li class="toctree-l1"><a href="mailto:admin@gmt-china.org"><i class="fa fa-envelope fa-fw"></i> 联系我们</a></li>
+            
+        </ul>
+    
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">GMT中文手册</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">首頁</a> &raquo;</li>
+        
+          <li><a href="index.html">入門教程</a> &raquo;</li>
+        
+      <li>繪製底圖</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/gmt-china/GMT_Docs/blob/master/source/tutorial/basemap.rst" class="fa fa-github"> 編輯本頁</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>繪製底圖<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<p>GMT可以繪製多種不同類型的底圖，包括全球地圖、區域地圖，以及線性座標軸、對數軸、指數軸、極座標軸，甚至3D座標軸。</p>
+<p>這一節我們將通過使用 <a class="reference internal" href="../module/coast.html"><span class="doc">coast</span></a> 和 <a class="reference internal" href="../module/basemap.html"><span class="doc">basemap</span></a> 模塊繪製不同類型的底圖，並瞭解GMT中 <strong>-J</strong>、<strong>-R</strong>和 <strong>-B</strong> 選項的基本用法。</p>
+<div class="section" id="id2">
+<h2>全球地圖<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>要繪製地圖，就需要將地球的三維球面投影到一個二維面上，投影的過程需要指定投影方式。GMT中使用 <strong>-J</strong> 選項指定地圖投影參數以及地圖的尺寸。同時，我們還需要使用 <strong>-R</strong> 選項指定要繪製的區域範圍（即經緯度範圍）。</p>
+<p>下面用最簡單的命令繪製了一張全球地圖。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt begin GlobalMap png,pdf
+    gmt coast -JH180/12c -R0/360/-90/90 -W0.5p -A10000
+gmt end show
+</pre></div>
+</div>
+<div class="figure align-center" id="id6">
+<a class="reference internal image-reference" href="../_images/basemap-gmtplot-01.png"><img alt="../_images/basemap-gmtplot-01.png" src="../_images/basemap-gmtplot-01.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">全球地圖（無邊框版）</span></p>
+</div>
+<p>先忽略後面的 <strong>-W0.5p -A10000</strong>（後面章節會介紹到），這裏只關注 <strong>-J</strong> 和 <strong>-R</strong> 選項。此示例中：</p>
+<ol class="arabic simple">
+<li><strong>-JH180/12c</strong> 指定地圖投影參數，<strong>H</strong> 表示使用Hammer投影，地圖中心位於經度180°處，地圖寬度爲12釐米（<strong>12c</strong>，<strong>c</strong> 表示單位釐米）；</li>
+<li><strong>-R0/360/-90/90</strong> 指定要繪製的區域範圍，即經度0°到360°，緯度-90°到90°，四個數字之間用斜槓 <strong>/</strong> 分隔。</li>
+</ol>
+<p>上面使用了非常簡單的GMT命令即繪製出了一張全球地圖的底圖，但其跟我們常見的全球地圖比還缺了個底圖邊框。GMT中可以使用 <strong>-B</strong> 選項爲地理底圖加上邊框並繪製經緯線。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt begin GlobalMap png,pdf
+    gmt coast -JH180/12c -Rg -Bg -W0.5p -A10000
+gmt end show
+</pre></div>
+</div>
+<div class="figure align-center" id="id7">
+<a class="reference internal image-reference" href="../_images/basemap-gmtplot-11.png"><img alt="../_images/basemap-gmtplot-11.png" src="../_images/basemap-gmtplot-11.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">全球地圖（有邊框版）</span></p>
+</div>
+<p>跟上一個腳本相比，此處我們做了兩點修改：</p>
+<ol class="arabic simple">
+<li>使用 <strong>-Rg</strong> 代替了 <strong>-R0/360/-90/90</strong>。這二者是完全等效的。由於繪製全球地圖是很常見的需求，因而GMT爲其設計了一個更簡單的寫法。
+<strong>-Rg</strong> 中 <strong>g</strong> 代表 <strong>g</strong>lobal。</li>
+<li>增加了 <strong>-Bg</strong> 選項。<strong>-B</strong> 用於給底圖加上邊框，其中的 <strong>g</strong> 則用於向底圖中加入網格線（<strong>g</strong> 代表 <strong>g</strong>rid）。</li>
+</ol>
+<div class="admonition tip">
+<p class="first admonition-title">小技巧</p>
+<p>GMT支持30多種不同的地圖投影方式，詳情見 <a class="reference internal" href="../proj/index.html"><span class="doc">地圖投影</span></a> 一章。將上面的示例腳本中 <strong>-JH180/12c</strong> 修改爲下面列出的一些值以瞭解不同投影方式之間的差異：</p>
+<ul class="last simple">
+<li><strong>-JA280/30/12c</strong></li>
+<li><strong>-JI180/12c</strong></li>
+<li><strong>-JK180/12c</strong></li>
+<li><strong>-JN180/12c</strong></li>
+<li><strong>-JR180/12c</strong></li>
+</ul>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>區域地圖<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>繪製區域地圖與繪製全球地圖沒有本質區別，我們依然需要使用 <strong>-J</strong> 指定投影方式，使用 <strong>-R</strong> 指定繪圖區域範圍，使用 <strong>-B</strong> 指定底圖邊框。</p>
+<p>下面的GMT命令繪製了一張新西蘭地圖。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt begin NewZealandMap png,pdf
+    gmt coast -JM12c -RNZ -Ba -W0.5p -A10000
+gmt end show
+</pre></div>
+</div>
+<div class="figure align-center" id="id8">
+<a class="reference internal image-reference" href="../_images/basemap-gmtplot-2.png"><img alt="../_images/basemap-gmtplot-2.png" src="../_images/basemap-gmtplot-2.png" style="width: 50%;" /></a>
+<p class="caption"><span class="caption-text">使用國家代碼指定繪圖區域</span></p>
+</div>
+<p>這裏我們使用了：</p>
+<ul class="simple">
+<li><strong>-JM12c</strong> 指定了使用墨卡託投影（繪製區域地圖最常用的投影方式），地圖寬度爲12釐米；</li>
+<li><strong>-RNZ</strong> 指定了繪圖區域範圍，此處 <strong>NZ</strong> 是新西蘭的國家代碼，GMT會自動根據國家代碼提取該國家的區域範圍並用於繪圖；</li>
+<li><strong>-Ba</strong> 用於給底圖添加邊框。對於某些地圖投影，GMT默認使用圖中所示的黑白相間的底圖邊框。<strong>a</strong> 用於添加標註（<strong>a</strong>nnotation，即圖中的經緯度數字）。</li>
+</ul>
+<p>如果對於根據國家代碼自動確定的區域範圍不太滿意，我們也可以使用 <strong>-R</strong> 選項最原始的方式來指定區域範圍。即依次給定繪圖區域的最小經度、最大經度、最小緯度和最大緯度。記起來也很容易，可以記爲 <em>xmin/xmax/ymin/ymax</em>，或者直接記“西東南北”。</p>
+<p>通過上面的圖，我們大概知道了新西蘭的經緯度範圍。我們可以直接使用
+<strong>-R165/180/-48/-32</strong> 指定繪圖區域。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt begin NewZealandMap png,pdf
+    gmt coast -JM12c -R165/180/-48/-32 -Bafg -W0.5p -A10000
+gmt end show
+</pre></div>
+</div>
+<div class="figure align-center" id="id9">
+<a class="reference internal image-reference" href="../_images/basemap-gmtplot-3.png"><img alt="../_images/basemap-gmtplot-3.png" src="../_images/basemap-gmtplot-3.png" style="width: 50%;" /></a>
+<p class="caption"><span class="caption-text">使用經緯度範圍指定繪圖區域</span></p>
+</div>
+<p>上面的例子中我們還調整了 <strong>-B</strong> 選項，<strong>-Bafg</strong> 表示繪製底圖邊框的標註（<strong>a</strong>nnotation）、刻度線（<strong>f</strong>rame，即圖中黑白線段的間隔）和網格線（<strong>g</strong>rid）。標註、刻度線以及網格線的間隔由GMT算法自動決定。</p>
+<p>對GMT自動算法確定的間隔不滿意？你還可以任意指定自己想要的間隔。下面例子中，我們對底圖進行了進一步的自定義，爲X軸和Y軸分別指定了間隔，並給底圖添加了標題：</p>
+<ul class="simple">
+<li><strong>-Bxa4g2</strong> 表示設置X軸（<strong>x</strong>）的標註間隔爲4度、網格線間隔爲2度（<strong>a4g2</strong>）</li>
+<li><strong>-Bya3g3</strong> 表示設置X軸（<strong>y</strong>）的標註間隔爲3度、網格間隔爲3度（<strong>a3g3</strong>）</li>
+<li><strong>-BWSen</strong> 中WSEN分別是西南東北四個方向的英文單詞首字母，用於控制四條邊的屬性。大寫的 <strong>WS</strong> 表示給西邊和南邊添加標註，而小寫的 <strong>en</strong> 則表示對於東邊和北邊只繪製邊框但不顯示標註</li>
+<li><strong>-BWSen+t”New Zealand”</strong> 中 <strong>+t</strong> 用於給整張圖添加標題（<strong>t</strong>itle）。由於標題 New Zealand 中含有空格，我們需要使用引號將其括起來</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt begin NewZealandMap png,pdf
+    gmt coast -JM12c -R165/180/-48/-32 -Bxa4g2 -Bya3g3 -BWSen+t<span class="s2">&quot;New Zealand&quot;</span> -W0.5p -A10000
+gmt end show
+</pre></div>
+</div>
+<div class="figure align-center" id="id10">
+<a class="reference internal image-reference" href="../_images/basemap-gmtplot-4.png"><img alt="../_images/basemap-gmtplot-4.png" src="../_images/basemap-gmtplot-4.png" style="width: 50%;" /></a>
+<p class="caption"><span class="caption-text">爲區域地圖添加標題</span></p>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>線性座標軸<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<p>GMT最擅長繪製地圖，同時也適合繪製最簡單的線性座標軸。同樣的，要想繪製線性座標軸，我們依然需要使用 <strong>-R</strong> 指定座標軸範圍，使用 <strong>-B</strong> 繪製邊框並指定邊框和座標軸屬性，同時，我們還需要使用 <strong>-JX</strong> 指定線性座標軸的寬度和高度。</p>
+<p>下面的示例中，我們使用了：</p>
+<ul class="simple">
+<li><strong>-JX8c/5c</strong> 表明線性座標軸的寬度爲8釐米，高度爲5釐米</li>
+<li><strong>-R10/70/-4/8</strong> 表明X軸範圍爲10到70，Y軸範圍爲-4到8</li>
+<li><strong>-Bxa10f5g10+l”X Label”</strong> 設置了X軸的屬性，
+<strong>a10f5g10</strong> 分別設置了標註（<strong>a</strong>nnotation）間隔爲10，刻度（<strong>f</strong>rame）間隔爲5，網格線（<strong>g</strong>rid ）間隔爲10；
+<strong>+l”X Label”</strong> 則爲X軸添加了標籤；對於Y軸同理；</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt begin linearXY png,pdf
+    gmt basemap -R10/70/-4/8 -JX8c/5c -Bxa10f5g10+l<span class="s2">&quot;X Label&quot;</span> -Bya4f2g2+l<span class="s2">&quot;Y Label&quot;</span> -BWSen+t<span class="s2">&quot;Linear X-Y Plot&quot;</span>
+gmt end show
+</pre></div>
+</div>
+<div class="figure align-center" id="id11">
+<a class="reference internal image-reference" href="../_images/basemap-gmtplot-5.png"><img alt="../_images/basemap-gmtplot-5.png" src="../_images/basemap-gmtplot-5.png" style="width: 60%;" /></a>
+<p class="caption"><span class="caption-text">線性座標軸</span></p>
+</div>
+<p>GMT同樣也可以繪製對數軸、指數軸以及極座標軸，在這一節中不再介紹。</p>
+</div>
+<div class="section" id="id5">
+<h2>三維線性座標軸<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<p>三維座標軸相對於二維座標軸多了一個Z軸。與二維線性座標軸類似，我們需要針對Z軸指定Z軸的範圍、Z軸的高度以及三維視角。</p>
+<p>下面的命令繪製了一個三維線性座標軸，相比於傳統的二維線性座標軸，其不同之處在於：</p>
+<ul class="simple">
+<li><strong>-R</strong> 選項中有6個數字，後面兩個數字表示Z軸最小值和最大值</li>
+<li><strong>-JZ5c</strong> 指定了Z軸的高度爲5釐米</li>
+<li><strong>-Bzaf</strong> 指定了Z軸的標註和刻度屬性</li>
+<li><strong>-BSEwnZ+b</strong> 中 <strong>Z+b</strong> 表示繪製一條Z軸，並繪製出整個長方體的所有邊</li>
+<li><strong>-p130/30</strong> 指定了看這個長方形的視角。130和30分別爲三維視角的方位角和高度角。這個解釋起來稍複雜，讀者可以自己試試修改這兩個參數並查看效果。方位角的取值範圍爲0到360度，高度角的取值範圍爲0到90度。</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gmt begin 3DMap png,pdf
+    gmt basemap -R10/70/-4/8/-10/10 -JX8c/5c -JZ5c -Bxa10+lX -Bya4+lY -Bzaf+lDepth -BSEwnZ+b+t<span class="s2">&quot;3D Plot&quot;</span> -p130/30
+gmt end show
+</pre></div>
+</div>
+<div class="figure align-center" id="id12">
+<a class="reference internal image-reference" href="../_images/basemap-gmtplot-6.png"><img alt="../_images/basemap-gmtplot-6.png" src="../_images/basemap-gmtplot-6.png" style="width: 50%;" /></a>
+<p class="caption"><span class="caption-text">三維線性座標軸</span></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+           <div class="articleComments">
+            
+
+<!-- gitalk 脚本-->
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'b2dfca9a4bfad764aa2b',
+    clientSecret: '4ae5ddcd25c6b6d6bc07ac39201ea417054a530a',
+    owner: 'gmt-china',
+    repo: 'gitalk',
+    admin: ['zhaozhiyuan1989','cehui07226','NothingIsBig','seisman','SeisPider','wangliang1989','sqdeng'],
+    id: md5(location.pathname),
+    body: location.href,
+  });
+gitalk.render('gitalk-container');
+</script>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="coastline.html" class="btn btn-neutral float-right" title="繪製海岸線" accesskey="n" rel="next">下頁 <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="scripting.html" class="btn btn-neutral float-left" title="腳本編程" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> 上頁</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014 - 2020, GMT中文社区.
+      <span class="lastupdated">
+        最后更新于 2020年05月29日.
+      </span>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
